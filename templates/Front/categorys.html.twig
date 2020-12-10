@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        {# lien pour creer un article avec la propriété path #}
+        {% for category in categorys %}
+            {# avec la boucle for j'appel un article dans mes articles avec clipable avec le lien a href  #}
+            {# avec la propriete path j'appel un de mes articles qui sera clipable et qui affichera le contenu
+             de ma page modify_static.html.twig#}
+            {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
+            {# j'appel mes images et mes titres  #}
+            <article class="article">
+                <h2>{{ category.title }}</h2>
+                <div class="content">
+                    <p id="test">{{ category.article  }}</p>
+                </div>
+            </article>
+        {% endfor %}
+    </div><hr>
+{% endblock main%}

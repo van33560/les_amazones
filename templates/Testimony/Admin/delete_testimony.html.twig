@@ -1,0 +1,8 @@
+{# avec la div button j'affiche un visuel #}
+
+{%  block%}
+   {%  for message in app.flashes ('success') %}
+       <p>{{ message }}</p>
+   {% endfor %}
+
+{%  blockend %}

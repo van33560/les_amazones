@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site pour les femmes qui ont eu un cancerdu sein">
+    <meta name="author" content="vanessa">
+    <meta name="keywords" content="cancer,sein,maladie,accessoires">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/base.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet1">
+    <link rel="stylesheet" media="screen and (max-width: 540px)" href="smallscreen.css" type="text/css" />
+    <title>témoignages</title>
+</head>
+<header class="container-fluid" id="bg">
+    <nav class="">
+        <ul class="">
+            <li class="deroulant"><a href="#Généralités">Généralités &ensp;</a>
+                <ul class="sous">
+                    <li class="col-1-lg-2  text-center"><a href="index.html">Statistiques</a></li>
+                    <li class="col-1-lg-2 text-center"><a href="#">Newsletter</a></li>
+                    <li class="col-1-lg-2 text-left"><a href="contact.html">Contact</a></li>
+                    <li class="col-1-lg-2 text-center"><a href="Apropos.html">A propos</a></li>
+                </ul>
+            </li>
+            <li class="deroulant"><a href="#Pages">Pages &ensp;</a>
+                <ul class="sous">
+                    <li class="col-1-lg-2 text-center"><a href="psychologique.html">Psychologique</a></li>
+                    <li class="col-1-lg-2 text-center"><a href="esthetique.html">Esthétique</a></li>
+                    <li class="col-1-lg-2 text-center"><a href="perruques.html">Pérruques</a></li>
+                    <li class="col-1-lg-2 text-center"><a href="assurances.html">Assurances</a></li>
+                </ul>
+            </li>
+            <li class="deroulant"><a href="#Actualités">Actualités&ensp;</a>
+                <ul class="sous">
+                    <li class="col-1-lg-2 text-center"><a href="larecherche.html">La recherche</a></li>
+                    <li class="col-1-lg-2 text-center"><a href="temoignages.html">Témoignages</a></li>
+                    <li class="col-1-lg-2 text-left"><a href="annuaire.html">Annuaire</a></li>
+                </ul>
+            </li>
+            <div class="lg-1 col-2" id="login">
+                <a href="#lienlogin"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
+            </div>
+        </ul>
+    </nav>
+</header>
+<!--lien vers asso -->
+<main class="container-fluid mt-5 ">
+    <div class="row p-3" id="dons">
+        <div class="col-12 d-flex">
+            <p class="faireundon">Faire un Don <br>Pour la ligue contre le cancer</p>
+            <a href="https://don.ligue-cancer.net/octobrerose2020/~mon-don?utm_source=sidiese&utm_medium=octobrerose20&utm_campaign=LP&utm_content=boutondon" target="_blank" id="button"><span>Faire un don</span></a>
+        </div>
+    </div>
+    {% block message %}{% endblock message %}
+    {% block header%}{% endblock header %}
+    {% block main %}{% endblock main%}
+    {% block section%}{% endblock section%}
+</main>
+<footer class="container-fluid  mt-5 py-5" id="footer">
+    <div class="container">
+        <div class="row position-relative justify-content-center">
+            <div class="col-12 text-center">
+                <a class="col-6  ml-5 text-center" id="footer" href=" #mentionslégales/ #Copyright ">Mentions légales||Copyright</a>
+            </div>
+
+            <div class="col-2 col-lg-1 position-absolute offset-lg-2" id="logoarrow">
+                {# la fonction asset permet de recuperer dans un autre dossier son contenu ici dossier img  #}
+                <a href="#"><img src="{{ asset('assets/img/up-arrow.svg') }}" alt=""></a>
+            </div>
+
+            <div class="col-2 col-lg-1 mt-2 position-absolute offset-lg-2" id="facebook">
+                <a href="https://fr-fr.facebook.com/ " target="_blank"><img src=" {{ asset('assets/img/facebook.svg') }}" alt="" class=""></a>
+            </div>
+
+            <div class="col-2 col-lg-1 position-absolute " id="twitter">
+                <a href="https://mobile.twitter.com/?lang=fr " target="_blank"><img src=" {{ asset('assets/img/twitter.svg') }}" alt="" class=""></a>
+            </div>
+
+            <div class="col-2 col-lg-1  position-absolute" id="instagram">
+                <a href="https://www.instagram.com/?hl=fr " target="_blank"><img src="{{ asset('assets/img/instagram.svg') }}" alt="" class=""></a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+</body>
+</html>

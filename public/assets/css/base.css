@@ -1,0 +1,245 @@
+body {
+    font-family: 'Dancing Script', cursive;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    box-sizing: border-box;
+}
+/*nav barre menu*/
+
+#bg {
+    background-color: #d3fdfd;
+    height:18vh;
+}
+
+#logo {
+    width: 12%;
+    bottom:12%;
+}
+
+#login {
+    position: relative;
+    left: 85%;
+    top:20%;
+}
+
+/*nav*/
+
+nav {
+    width: 100%;
+    margin: 0 auto;
+    background-color: transparent;
+    position: sticky;
+    top: 20px;
+    left: 40px;
+}
+
+nav a {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    color: #616161;
+    font-size: 27px;
+    display: block;
+    text-decoration: none;
+    padding-left: 30px;
+
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+li {
+    width: 25%;
+    text-align: center;
+    padding-right: 30px;
+}
+
+ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    position: relative;
+}
+
+nav ul::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+nav a:hover {
+    color: #616161;
+}
+
+.sous {
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: rgba(253, 244, 249, 0.2);
+    position: absolute;
+    left: 10%;
+}
+
+nav>ul li:hover .sous {
+    display: block;
+}
+
+.sous li {
+    float: none;
+    width: 100%;
+    text-align: center;
+}
+
+.sous a {
+    padding: 0px;
+    border-bottom: none;
+}
+
+.deroulant>a::after {
+    content: "▼";
+    font-size: 12px;
+}
+
+
+/*lien don */
+
+a{
+    color: #6897be;
+}
+a:hover {
+    color: #6897be;
+}
+span {
+    font-size: 20px;
+}
+#dons {
+    margin-top: 15%;
+}
+/*button*/
+#button {
+    width: 100px;
+    height: 50px;
+    border-radius: 25px;
+    color: black;
+    text-align: center;
+    line-height: 50px;
+    background-color: #fdf4f9;
+    box-shadow: 0px 1px 2px #616161;
+    display: inline-block;
+    font-size: x-large;
+    display: inline-block;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+#but{
+    width: 210px;
+    height: 170px;
+    border-radius: 25px;
+    color: black;
+    text-align: center;
+    line-height: 50px;
+    background-color: #fdf4f9;
+    box-shadow: 0px 1px 2px #616161;
+    display: inline-block;
+    font-size: x-large;
+    display: inline-block;
+    margin-top: 10%;
+    margin-left:40%;
+    padding-top: 1%;
+
+}
+/*articles images*/
+.container{
+    display: flex;
+    display:inline-block;
+    width:100%;
+}
+.article {
+    display: flex;
+    display: inline-block;
+    width:30%;
+    margin:20px;
+}
+.content {
+    width:80%;
+    padding-top: 20%;
+}
+/*formilaire*/
+.form-group{
+    margin-left: 80%;
+}
+.form-group2{
+    margin-left: 50%;
+}
+/*articles police */
+.cont{
+    margin-top:10%;
+    margin-left: -2%;
+}
+p {
+    font-size: 16px;
+    font-family: 'Philosopher', sans-serif;
+    margin-left: 2%;
+}
+/*footer liens facebook*/
+
+#news {
+    margin-top: 20%;
+    text-align: center;
+    margin-left: 50%
+}
+
+#logoNewsletter {
+    width: 70px;
+}
+
+#ins {
+    text-align: center;
+}
+
+#footer {
+    background-color: #d3fdfd;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    color: #6897be;
+    font-size: 27px;
+}
+
+#logoarrow {
+    float: right;
+    right: 2%;
+    bottom: 2px;
+    top: 1px;
+}
+
+#facebook {
+    width: 5%;
+    margin-left: 70%;
+}
+#twitter {
+    margin-right: 60%;
+}
+
+#instagram {
+    margin-right: 83%
+}
+@media screen and (min-width: 100px) and (max-width: 640px ){
+    .nav {
+        display:block;
+        clear:both;
+    }
+    ul li{
+        padding-left:5%;
+    }
+    .deroulant{
+        margin-left:5%;
+    }
+    #dons{
+        margin-top:50%;
+    }
+    #login{
+        position: relative;
+       margin-right:80%;
+    }
+}
