@@ -20,17 +20,18 @@
 <body>
 {# fichier base de mon projet ou le header et le footer se repeterons sur mes autres pages  #}
 <header class="container-fluid" id="bg">
-    <nav class="">
-         <div class=" d-none d-lg-block col-lg-2  position-absolute" id="logo">
-            <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="img-fluid">
-        </div>
-        <ul class="">
+    <nav>
+        <li class="logo">
+            <a href="#lienlogin"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class=" d-block d-lg-none"></a>
+            <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="logo d-none d-lg-block">
+        </li>
+        <ul class="nav">
             <li class="deroulant"><a href="#Généralités">Généralités &ensp;</a>
                 <ul class="sous">
                     <li class="col-1-lg-2  text-center"><a href="index.html">Statistiques</a></li>
                     <li class="col-1-lg-2 text-center"><a href="#">Newsletter</a></li>
                     <li class="col-1-lg-2 text-left"><a href="contact.html">Contact</a></li>
-                    <li class="col-1-lg-2 text-center"><a href="Apropos.html">A propos</a></li>
+                    <li class="col-1-lg-2 text-center"><a href="A propos.html">Apropos</a></li>
                 </ul>
             </li>
             <li class="deroulant"><a href="#Pages">Pages &ensp;</a>
@@ -43,14 +44,12 @@
             </li>
             <li class="deroulant"><a href="#Actualités">Actualités&ensp;</a>
                 <ul class="sous">
-                    <li class="col-1-lg-2 text-center"><a href="larecherche.html">La recherche</a></li>
+                    <li class="col-1-lg-2 text-center"><a href="larecherche.html">Recherche</a></li>
                     <li class="col-1-lg-2 text-center"><a href="temoignages.html">Témoignages</a></li>
                     <li class="col-1-lg-2 text-left"><a href="annuaire.html">Annuaire</a></li>
                 </ul>
             </li>
-            <div class="offset-lg-1 col-2" id="login">
-                <a href="#lienlogin"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
-            </div>
+            <li class="amazone d-none d-lg-block"><a href="#lienlogin"><img src="{{ asset('assets/img/woman4.png') }}" alt="" ></a></li>
         </ul>
     </nav>
     <h1 class="d-none d-lg-block text-center w-100" id="intro">Bienvenue sur <br>votre site les Amazones!<br> Toutes unies contre le cancer du sien!! </h1>
@@ -65,7 +64,7 @@
     {# les blocks  permettent  de rappeler le contenu d'un autre ficher twig dans une partie d'un autre fichier  #}
     <div class="container">
         <div class="row position-relative mt-5">
-            <h2 class=" mt-5 w-100 text-center ">Les Statistiques en France</h2>
+            <h2 class=" mt-5 w-100 text-center">Les Statistiques en France</h2>
             <div class="col-12 col-lg-6 mr-5 mt-5">
                 <P> 58 459 nouveaux cas de cancer du sein en France métropolitaine en 2018. <br> Taux d’incidence : entre 1990 et 2018, le nombre annuel de nouveaux cas de cancer du sein chez la femme a presque doublé, passant de 30 000 à 58 400 cas annuels,
                     soit +1,1 % par an en moyenne 12 146 décès estimés en 2018. <br> Âge médian au moment du décès :74 <br> Diminution du taux de mortalité : -1,5 par an en moyenne entre 2005 et 2012 Survie nette standardisée sur l’âge à 5 ans : 87
@@ -79,7 +78,7 @@
             </div>
         </div>
         <div class="container mt-5">
-            <h4 class="text-center mt-5">Le dépistage</h4>
+            <h3 class="text-center mt-5">Le dépistage</h3>
             <div class="row mt-5">
                 <div class="col-12 col-lg-6 ">
                     <img src="{{ asset ('assets/img/statistiques.png')}}" alt="" class="resp" id="vivre">
@@ -94,7 +93,7 @@
             </div>
         </div>
             <div class="row position-relative mt-5">
-                <h2 class=" mt-5 w-100 text-center">Vivre avec le cancer</h2>
+                <h4 class=" mt-5 w-100 text-center">Vivre avec le cancer</h4>
                 <div class="col-12 col-lg-6 mr-5 mt-5">
                     <p>Les semaines que vous venez de vivre, partagées entre la peur et l’espoir, ont usé vos forces tant physiques que morales et vous ont peut-être amenée à remettre en question des choses qui vous semblaient parfaitement claires jusqu’à
                         aujourd’hui.
@@ -122,7 +121,7 @@
     <div class="container">
         <div class="row position-relative justify-content-center">
             <div class="col-12 text-center">
-                <a class="col-4 ml-5 text-center" id="footer" href=" #mentionslégales/ #Copyright ">Mentions légales||Copyright</a>
+                <a class="col-4 ml-5 text-center" id="footer" href=" #mentionslégales/ #Copyright ">Mentions légales||©Labat</a>
             </div>
             <div class="col-2 col-lg-1 position-absolute offset-lg-2" id="logoarrow">
                 {# la fonction asset permet de recuperer dans un autre dossier son contenu ici dossier img  #}

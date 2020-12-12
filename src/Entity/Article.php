@@ -20,6 +20,14 @@ class Article
     private $id;
 
     /**
+     * @return mixed
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $date;
@@ -33,28 +41,6 @@ class Article
      * @ORM\Column(type="string", length=6500)
      */
     private $content;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $articlePicture;
-
-    /**
-     * @return mixed
-     */
-    public function getArticlePicture()
-    {
-        return $this->articlePicture;
-    }
-
-    /**
-     * @param mixed $articlePicture
-     */
-    public function setArticlePicture($articlePicture): void
-    {
-        $this->articlePicture = $articlePicture;
-    }
-
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -81,11 +67,6 @@ class Article
     }
 
     /**
-     * @ORM\Column(type="string", length=300)
-     */
-    private $video;
-
-    /**
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="Article")
      */
     private $users;
@@ -101,10 +82,7 @@ class Article
         $this->Category = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+
 
     public function getDate(): ?\DateTimeInterface
     {
@@ -144,17 +122,6 @@ class Article
 
 
 
-    public function getVideo(): ?string
-    {
-        return $this->video;
-    }
-
-    public function setVideo(string $video): self
-    {
-        $this->video = $video;
-
-        return $this;
-    }
 
     /**
      * @return Collection|User[]
@@ -197,5 +164,12 @@ class Article
         $this->Category->removeElement($category);
 
         return $this;
+    }
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString() {
+        return $this->getTitle();
     }
 }

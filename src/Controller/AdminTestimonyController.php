@@ -20,14 +20,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminTestimonyController extends AbstractController
 {
-    /**
-     * @Route("admin/testimony/testimonys", name="admin_testimony_list")
-     * @param TestimonyRepository $testimonyRepository
-     * @return Response
-     */
-     //ma methode testimonyrepository me permet de recuperer via la bdd les données et de les afficher
-    // via mon fichier twig et la propriete  render
-    public function TestimonyList(TestimonyRepository $testimonyRepository)
+/**
+ * @Route("admin/testimony/testimonys", name="admin_testimony_list")
+ * @param TestimonyRepository $testimonyRepository
+ * @return Response
+ */
+ //ma methode testimonyrepository me permet de recuperer via la bdd les données et de les afficher
+// via mon fichier twig et la propriete  render
+public function TestimonyList(TestimonyRepository $testimonyRepository)
     {    //find all est une methode qui permet de recuperer tous les temoignages
         //doctrine effectue la requete pour moi ici select*from testimony
         $testimonys = $testimonyRepository->findAll();
@@ -36,33 +36,33 @@ class AdminTestimonyController extends AbstractController
             'testimonys' => $testimonys
         ]);
     }
-    /**
-     * @route("admin/testimony/show/{id}",name="testimonyShow")
-     * @param $id
-     * @param TestimonyRepository $testimonyRepository
-     * @return Response
-     */
-    // ma methode testimonyrepository me permet de recuperer les données de ma bdd et de retourner un resultat via la propriete render
-    public function testimonyShow($id, TestimonyRepository $testimonyRepository)
+/**
+ * @route("admin/testimony/show/{id}",name="testimonyShow")
+ * @param $id
+ * @param TestimonyRepository $testimonyRepository
+ * @return Response
+ */
+// ma methode testimonyrepository me permet de recuperer les données de ma bdd et de retourner un resultat via la propriete render
+public function testimonyShow($id, TestimonyRepository $testimonyRepository)
     {
         $testimony = $testimonyRepository->find($id);
 
-        return $this->render("front/testimony.html.twig", [
+        return $this->render("Front/testimony.html.twig", [
             'testimony' => $testimony
         ]);
 
     }
-    /**
-     * @route("admin/testimony/insert",name="admin_testimony_insert")
-     * @param Request $request
-     * @param EntityManagerInterface $entityManager
-     * @return RedirectResponse|Response
-     */
+/**
+ * @route("admin/testimony/insert",name="admin_testimony_insert")
+ * @param Request $request
+ * @param EntityManagerInterface $entityManager
+ * @return RedirectResponse|Response
+ */
 
-    //je crée une methode pour créer un formulaire avec la methode inserttestimony en parametre
-    // methode request pour recuperer les infos post, get dans l'url
-    // entitymanager gerer les entités les champs de ma bdd
-    public function insertTestimony(Request $request , EntityManagerInterface $entityManager)
+//je crée une methode pour créer un formulaire avec la methode inserttestimony en parametre
+// methode request pour recuperer les infos post, get dans l'url
+// entitymanager gerer les entités les champs de ma bdd
+public function insertTestimony(Request $request , EntityManagerInterface $entityManager)
     {   //j' indique a sf que je crée un nouvelle objet
         $testimony = new Testimony();
         //autowire fait le liens entre les fichiers dependance
@@ -91,23 +91,23 @@ class AdminTestimonyController extends AbstractController
         //je crée grâce à la fonction createview une vue qui pourra  en suite être lu par twig
         $formView = $form-> createView();
         //la fonction render me permet d'envoyer a twig les infos qui seront affichés
-        return $this->render('Testimony/admin/insert_testimony.html.twig',[
+            return $this->render('Testimony/Admin/insert_testimony.html.twig',[
             'formView' => $formView
         ]);
     }
 
-    /**
-     * @route("admin/testimony/update/{id}",name="admin_testimony_update")
-     * @param $id
-     * @param TestimonyRepository $testimonyRepository
-     * @param Request $request
-     * @param EntityManagerInterface $entityManager
-     * @return RedirectResponse|Response
-     */
-    //je crée une methode updatetestimony pour modifier le contenu du formulaire je lui passe en parametre id pour pouvoir
-    //  modifier le temoignage grace a son id,la prropriété repository me permettra de modifier les données de la bdd et
-    // la propriéte request me permettra de recuperer les modification
-    public function updatetesimony($id, TestimonyRepository $testimonyRepository,Request $request, EntityManagerInterface $entityManager)
+/**
+ * @route("admin/testimony/update/{id}",name="admin_testimony_update")
+ * @param $id
+ * @param TestimonyRepository $testimonyRepository
+ * @param Request $request
+ * @param EntityManagerInterface $entityManager
+ * @return RedirectResponse|Response
+ */
+//je crée une methode updatetestimony pour modifier le contenu du formulaire je lui passe en parametre id pour pouvoir
+//  modifier le temoignage grace a son id,la prropriété repository me permettra de modifier les données de la bdd et
+// la propriéte request me permettra de recuperer les modification
+public function updatetesimony($id, TestimonyRepository $testimonyRepository,Request $request, EntityManagerInterface $entityManager)
     {
 
         //je récupére en bdd  l'id wild card qui correspond a celui renseigner dans url
@@ -132,28 +132,28 @@ class AdminTestimonyController extends AbstractController
                 "le temoignage a été modifié"
             );
 
-            return $this->redirectToRoute('testimonyShow');
+            return $this->redirectToRoute('admin_testimony_list');
 
         }
         //je crée grâce à la fonction createview une vue qui pourra  en suite être lu par twig
         $formView = $form-> createView();
         //la methode render me permet d'envoyer a twig les infos qui seront affichés
-        return $this->render('testimony/admin/update_testimony.html.twig',[
+        return $this->render('Testimony/Admin/update_testimony.html.twig',[
             'formView' => $formView
         ]);
     }
-    /**
-     * @route("admin/testimony/delete/{id}",name="admin_testimony_delete")
-     * @param $id
-     * @param TestimonyRepository $testimonyRepository
-     * @param EntityManagerInterface $entityManager
-     * @return RedirectResponse
-     */
-    //je crée une methode deletetestimony qui aura pour paramétres $id(me permettra de recuperer le temoignage),
-    //testimonyrepository(qui me permettra de récuperer les données des champs de la base de données)
-    //, sf effectuera la requete delete et entityManagerinterface,(me permettra de faire des réquetes ici delete)
-    // ces classes seront intanciés grace a entitymanager qui le gerera à ma place
-    public function deleteTestimony($id,TestimonyRepository $testimonyRepository,EntityManagerInterface $entityManager)
+/**
+ * @route("admin/testimony/delete/{id}",name="admin_testimony_delete")
+ * @param $id
+ * @param TestimonyRepository $testimonyRepository
+ * @param EntityManagerInterface $entityManager
+ * @return RedirectResponse
+ */
+//je crée une methode deletetestimony qui aura pour paramétres $id(me permettra de recuperer le temoignage),
+//testimonyrepository(qui me permettra de récuperer les données des champs de la base de données)
+//, sf effectuera la requete delete et entityManagerinterface,(me permettra de faire des réquetes ici delete)
+// ces classes seront intanciés grace a entitymanager qui le gerera à ma place
+public function deleteTestimony($id,TestimonyRepository $testimonyRepository,EntityManagerInterface $entityManager)
     {
         //je récupére en bdd  l'id wild card qui correspond a celui renseigner dans url
         $testimony = $testimonyRepository->find($id);
@@ -171,8 +171,8 @@ class AdminTestimonyController extends AbstractController
             );
 
         }
-        // la fonction redirecttoroute permet de retrouner un visuel via le name de mon fichier 'articlelist'
-        return $this->redirectToRoute('testimonyShow');
+             // la fonction redirecttoroute permet de retrouner un visuel via le name de mon fichier 'les temoignages'
+            return $this->redirectToRoute('admin_testimony_list');
 
     }
 

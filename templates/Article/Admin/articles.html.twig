@@ -12,6 +12,7 @@
                 <h2>{{ article.title }}</h2>
                 <div class="content col-12 col-lg-6">
                     <p id="test">{{ article.content }}
+                          <div id="button"><a href="{{ path('admin_delete_article', {'id':article.id}) }}">supprimer</a></div>
                         <button class="button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">modifier</a></button>
                 </div>
             </article>

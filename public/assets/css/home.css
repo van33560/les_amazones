@@ -1,5 +1,4 @@
 /*pages principales header*/
-
 body {
     font-family: 'Dancing Script', cursive;
     font-size: 16px;
@@ -13,40 +12,35 @@ body {
     height:auto;
 }
 /*nav barre menu*/
-
 header {
     background-image: url(../img/rubans.jpg);
     background-size: cover;
     padding-left: 1em;
     background-repeat: no-repeat;
-    height: 110vh;
+    height: 130vh;
 }
-
 .filtre {
     width: 100%;
     height: 100%;
     background-color: rgba(30, 30, 30, 0.2);
 }
-
-#logo {
-    width: 12%;
-    top:12%;
+li .logo {
+    width:100px;
 }
 
-#login {
-    position: relative;
-    left: 78%;
-    top:-10%;
+li.amazone {
+    width:100px;
+    margin-left: 50px;
+
 }
+
 nav {
     width: 100%;
-    margin: 0 auto;
+    height:200px;
     background-color: transparent;
     position: sticky;
-    top: 20px;
-    left: 40px;
+    margin-left:100px;
 }
-
 nav a {
     font-family: 'Dancing Script', cursive;
     text-align: center;
@@ -54,57 +48,42 @@ nav a {
     font-size: 27px;
     display: block;
     text-decoration: none;
-    padding-left: 30px;
 }
-
 nav ul {
     list-style-type: none;
+    justify-content: space-between;
 }
-
 li {
-    width: 25%;
+    width: 100px;
     text-align: center;
-    padding-right: 30px;
 }
-
 ul li {
-    float: left;
-    width: 25%;
+    display: inline-block;
+    width: 200px;
     text-align: center;
-    position: relative;
 }
-
 nav ul::after {
     content: "";
     display: table;
     clear: both;
 }
-
 nav a:hover {
     color: #616161;
 }
-
 .sous {
     display: none;
     box-shadow: 0px 1px 0px #CCC;
     background-color: rgba(253, 244, 249, 0.2);
-    position: absolute;
-    width: 90%;
-    left: 40%;
 }
-
 nav>ul li:hover .sous {
     display: block;
 }
-
 .sous li {
-    float: none;
-    width: 100%;
+   display:block;
+    width: 20%;
     text-align: center;
 }
-
 .sous a {
-    padding: 0px;
     border-bottom: none;
 }
 
@@ -116,22 +95,15 @@ nav>ul li:hover .sous {
 h1 {
     font-family: 'Dancing Script', cursive;
     display: inline-block;
-    margin-top: 20%;
+    margin-top: 12%;
     color: #616161;
 }
 .don{
     margin-top: 12%;
 }
-#accroche{
-    font-family: 'Dancing Script', cursive;
-    display: inline-block;
-    margin-top: 12%;
-    color: #616161;
-}
 span {
     font-size: medium;
 }
-
 #dons {
     height: 150px;
 }
@@ -152,10 +124,8 @@ span {
     margin-top: 12%;
 }
 /*articles*/
-
-
-h4{
-    font-size: xx-large;
+h3,h4,h5{
+    font-size: 2em;
 }
 p {
     font-size: 16px;
@@ -221,21 +191,16 @@ p {
     margin-right: 83%
 }
 @media screen and (min-width: 100px) and (max-width: 640px ){
-    .nav {
-        display:block;
-        clear:both;
-    }
-    ul li{
-        padding-left:5%;
-    }
-    .deroulant{
-        margin-left:5%;
+    nav{
+       margin-left:50px ;
+        display:flex;
     }
     #dons{
         margin-top:50%;
     }
-    #login {
-        position: relative;
-        right: 78%;
+    li.logo{
+        width:20px;
+        margin-right: 40px;
     }
+
 }

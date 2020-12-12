@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{# j'utilise la fonction form de twig et en paramétre formView pour afficher la vue de mon formulaire #}
+
+{% block main%}
+    {%  for message in app.flashes ('success') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    <h1 class=" d-none d-lg-block text-center w-100" id="creer">Créer votre article</h1>
+<div class="form-group ml-5 col-12 col-lg-6  mt-5">
+    {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
+ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
+    #}
+    {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
+    {# avec la fonction form_label je crée un label title  #}
+
+    <div class="form-group col-md-2"id=date">
+        {{ form_label(formView.date) }}
+        {{ form_widget(formView.date,{ 'attr':{'class':'article_form_date'}}) }}
+        {{ form_errors(formView.date) }}
+    </div>
+    <div class="form-group col-md-2" id="article_title">
+        {{ form_label(formView.title) }}
+        {# avec la fonction form_widget je crée un input  #}
+        {{ form_widget(formView.title,{ 'attr':{'class':'article_form_title'}}) }}
+        {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+        {{ form_errors(formView.title) }}
+    </div>
+
+    <div class="form-group col-md-2"id="article_content">
+        {{ form_label(formView.content) }}
+        {{ form_widget(formView.content,{ 'attr':{'class':'article_form_content'}}) }}
+        {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+        {{ form_errors(formView.content) }}
+    </div>
+
+    <div class="form-group col-md-2"id="category">
+        {# ici je creer un input dans mon formulaire qui sera affichera les titres de mes categories #}
+        {{ form_label(formView.category) }}
+        {{ form_widget(formView.category,{ 'attr':{'class':'article_form_category'}}) }}
+        {{ form_errors(formView.category) }}
+    </div>
+
+    <div class="form-group col-md-2"id="val">
+        {{ form_label(formView.valider) }}
+        {{ form_widget(formView.valider,{ 'attr':{'class':'article_form_valider'}}) }}
+    </div>
+    {# form_end ferme mon formulaire #}
+    {{ form_end(formView) }}
+</div>
+{% endblock main%}

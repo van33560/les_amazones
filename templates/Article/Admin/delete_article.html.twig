@@ -1,0 +1,7 @@
+
+{%  block%}
+   {%  for message in app.flashes ('success') %}
+       <p>{{ message }}</p>
+   {% endfor %}
+
+{%  blockend %}

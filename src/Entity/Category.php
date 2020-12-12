@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\CategorysRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,7 +22,23 @@ class Category
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $genre;
+    private $title;
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title): void
+    {
+        $this->title = $title;
+    }
 
     /**
      * @ORM\Column(type="datetime")
@@ -31,7 +47,7 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
-     *@ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
      */
     private $articles;
 
@@ -66,17 +82,7 @@ class Category
         return $this->id;
     }
 
-    public function getGenre(): ?string
-    {
-        return $this->genre;
-    }
 
-    public function setGenre(string $genre): self
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
 
     public function getDate(): ?\DateTimeInterface
     {
@@ -112,8 +118,16 @@ class Category
     {
         if ($this->new_article->removeElement($newArticle)) {
             $newArticle->removeCategory($this);
+
         }
 
         return $this;
+    }
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString() {
+        return $this->getTitle();
     }
 }

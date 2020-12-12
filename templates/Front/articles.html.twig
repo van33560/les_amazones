@@ -13,9 +13,9 @@ de ma page modify_static.html.twig#}
     <div class=" content col-12 col-lg-5 ml-5 mt-5">
         <h2>{{ article.title }}</h2>
         <p class="mt-5">{{ article.content }}</p>
-<img src="">
+        <button><a href="{{ path('admin_article_update') }}">Modifier un article</a></button>
+        <button><a href="{{ path('admin_delete_article') }}">Supprimer un article</a></button>
     </div>
-   
 </div>
 {% endfor %}
 {% endblock main%}

@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block message %}
+    {# je mets mon message dans un block message, qui  est redefini dan mon fichier twig#}
+    {#  si mon message est supprimé j'affiche mon message grace a la variable globale app sur l page principale#}
 {% block main %}
     <div class="container">
         {# lien pour creer un article avec la propriété path #}
@@ -10,7 +12,8 @@
             {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
             {# j'appel mes images et mes titres  #}
             <article class="article">
-                <h2>{{ category.title }}</h2>
+                <h2>{{ category.genre }}
+                    <a href="{{ path('categoryShow', {'id': category.id}) }}"><p>{{ category.genre }}</p></a>
                 <div class="content">
                     <p id="test">{{ category.article  }}</p>
                 </div>

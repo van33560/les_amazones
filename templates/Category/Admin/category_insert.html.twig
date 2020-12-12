@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{# j'utilise la fonction form de twig et en paramétre formView pour afficher la vue de mon formulaire #}
+
+{% block main%}
+    {%  for message in app.flashes ('success') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    <h1 class="cree_categorie">Gérer vos categories</h1>
+    {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
+ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
+    #}
+
+    {{ form_start(formView) }}
+    <div class="form-group col-md-2 mt-5">
+        {{ form_label(formView.genre) }}
+        {{ form_widget(formView.genre,{ 'attr':{'class':'category_form_genre'}}) }}
+        {{ form_errors(formView.genre) }}
+    </div>
+
+    <div class="form-group col-md-2">
+        {{ form_label(formView.date) }}
+        {{ form_widget(formView.date,{ 'attr':{'class':'category_form_date'}}) }}
+
+    </div>
+    <div class="form-group col-md-2">
+        {{ form_label(formView.article) }}
+        {{ form_widget(formView.article,{ 'attr':{'class':'category_form_article'}}) }}
+
+    </div>
+
+    <div class="form-group col-md-2">
+        {{ form_label(formView.new_article) }}
+        {{ form_widget(formView.new_article,{ 'attr':{'class':'category_form_new_article'}}) }}
+    </div>
+
+    <div class="form-group col-md-2">
+        {{ form_label(formView.valider) }}
+        {{ form_widget(formView.valider,{ 'attr':{'class':'category_form_valider'}}) }}
+    </div>
+
+    {{ form_end(formView) }}
+
+{% endblock main%}
