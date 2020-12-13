@@ -51,10 +51,6 @@ class Category
      */
     private $articles;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="Category")
-     */
-    private $new_article;
 
     public function __construct()
     {

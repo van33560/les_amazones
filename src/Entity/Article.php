@@ -6,6 +6,7 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use PhpParser\Node\Scalar\String_;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -53,7 +54,7 @@ class Article
     /**
      * @return mixed
      */
-    public function getCategory()
+    public function getCategory(): ?string
     {
         return $this->category;
     }
@@ -72,7 +73,7 @@ class Article
     private $users;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="new_article")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="article")
      */
     private $Category;
 

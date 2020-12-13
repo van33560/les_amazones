@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ArticleController extends AbstractController
 {
 /**
- * @Route("admin/article/articles", name="admin_articlelist")
+ * @Route("Front/article/articles", name="Front_articlelist")
  * @param ArticleRepository $articlesRepository
  * @return Response
  */
@@ -28,7 +28,7 @@ public function Articlelist(ArticleRepository $articlesRepository)
 
 // chemin de ma route avec id
 /**
- * @route("/article/show/{id}",name="articleShow")
+ * @route("Front/article/show/{id}",name="Front_articleShow")
  * @param $id
  * @param ArticleRepository $articlesRepository
  * @return Response;

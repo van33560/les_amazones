@@ -6,6 +6,18 @@ body {
     background-color: #f7f7f7;
     box-sizing: border-box;
 }
+/*login /logout/form*/
+
+#connect{
+  margin-right: 48%;
+   margin-bottom:10%;
+}
+#connexion{
+
+    margin-left: 45%;
+
+}
+
 /*nav barre menu*/
 #bg {
     background-color: #d3fdfd;
@@ -206,6 +218,7 @@ p {
 #instagram {
     margin-right: 83%
 }
+/*responsive menu*/
 @media screen and (min-width: 100px) and (max-width: 640px ){
     .nav {
         display:block;

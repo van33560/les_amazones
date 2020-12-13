@@ -19,7 +19,10 @@ class CategoryType extends AbstractType
             ->add('title')
             ->add('date',DateType::class,[
                 'widget'=>'single_text'])
-            ->add('articles')
+            ->add('articles', EntityType::class, [
+                'class' => ContactArticle::class,
+                'builder' => $builder->getData()->article,
+            ])
             ->add('new_article')
             ->add('valider', SubmitType::class)
         ;

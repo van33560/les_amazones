@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use phpDocumentor\Reflection\Type;
+use phpDocumentor\Reflection\Types\String_;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -26,6 +28,7 @@ class ArticleType extends AbstractType
                 'choice_label'=>'title'
             ])
             ->add('valider', SubmitType::class)
+
         ;
     }
 
@@ -33,6 +36,7 @@ class ArticleType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Article::class,
+
         ]);
     }
 

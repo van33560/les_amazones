@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block main %}
-    <div class="container col-12 col-lg-6">
+<div id="but"><a href="{{ path('admin_article_insert') }}"><h1>Créer votre article</h1></a></div>
+    <div class="cont">
         {# lien pour creer un article avec la propriété path #}
         {% for article in articles %}
             {# avec la boucle for j'appel un article dans mes articles avec clipable avec le lien a href  #}
@@ -8,14 +9,16 @@
              de ma page modify_static.html.twig#}
             {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
             {# j'appel mes images et mes titres  #}
-            <article class="article col-12 col-lg-6">
-                <h2>{{ article.title }}</h2>
-                <div class="content col-12 col-lg-6">
+            <article class="article ml-5 mb-5">
+                <h2 class="titre">{{ article.title }}</h2>
+                <div class="content">
                     <p id="test">{{ article.content }}
-                          <div id="button"><a href="{{ path('admin_delete_article', {'id':article.id}) }}">supprimer</a></div>
-                        <button class="button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">modifier</a></button>
+                    <div id="button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">supprimer</a></div>
+                    <div id="button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">modifier</a></div>
                 </div>
             </article>
         {% endfor %}
     </div>
-{% endblock main%}
+{% endblock main %}
+
+

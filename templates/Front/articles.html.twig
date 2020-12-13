@@ -1,7 +1,7 @@
 {% extends 'home.html.twig' %}
 
 {% block main %}
-<h1 class=" w-100 text-center ml-5 mt-5">Les statistiques</h1>
+<h1 class=" w-100 text-center ml-5 mt-5">Vos articles</h1>
 {# lien pour creer un article avec la propriété path #}
 {% for article in articles %}
 {# avec la boucle for j'appel un article dans mes articles avec clipable avec le lien a href  #}
@@ -13,8 +13,6 @@ de ma page modify_static.html.twig#}
     <div class=" content col-12 col-lg-5 ml-5 mt-5">
         <h2>{{ article.title }}</h2>
         <p class="mt-5">{{ article.content }}</p>
-        <button><a href="{{ path('admin_article_update') }}">Modifier un article</a></button>
-        <button><a href="{{ path('admin_delete_article') }}">Supprimer un article</a></button>
     </div>
 </div>
 {% endfor %}

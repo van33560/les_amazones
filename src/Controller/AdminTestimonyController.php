@@ -8,14 +8,12 @@ namespace App\Controller;
 use App\Entity\Testimony;
 
 use App\Form\TestimonyType;
-use App\Repository\ArticleRepository;
 use App\Repository\TestimonyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminTestimonyController extends AbstractController

@@ -7,39 +7,37 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use App\Repository\TestimonyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 
 
 class AdminArticleController extends AbstractController
 {
-/**
- * @Route("admin/article/articles", name="admin_articlelist")
- * @param ArticleRepository $articleRepository
- * @return Response
- */
+    /**
+     * @Route("Article/Admin/articles", name="admin_articleList")
+     * @param ArticleRepository $articleRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
 //ma methode acticle repository me permet de recuperer via la bdd les données et de les afficher avec return render
 public function ArticleList(ArticleRepository $articleRepository)
 {       //find all est une methode qui permet de recuperer tous les articles
         //doctrine effectue la requete pour moi ici select*from article
         $articles = $articleRepository->findAll();
         //la fonction render me permet d'envoyer a twig les infos qui seront affichés
-        return $this->render("article/admin/articles.html.twig",[
+        return $this->render("Article/Admin/articles.html.twig",[
         'articles' => $articles
     ]);
 }
-/**
- * @route("admin/article/insert",name="admin_article_insert")
- * @param Request $request
- * @param EntityManagerInterface $entityManager
- * @return RedirectResponse|Response
- */
+    /**
+     * @route ("admin/article/insert",name="admin_article_insert")
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
 
         //je crée une methode pour créer un formulaire avec la methode insertArticle en parametre methode request pour recuperer
         //les infos post get url entitymanager gerer les entités creation  d'un nouvel objet Slugger, je change le nom de mon image
@@ -67,7 +65,7 @@ public function ArticleList(ArticleRepository $articleRepository)
                 "sucess",
                 "l'article a ete ajouté"
             );
-            return $this->redirectToRoute('admin_articlelist');
+            return $this->redirectToRoute('admin_articleList');
         }
             //je crée grâce à la fonction createview une vue qui pourra  en suite être lu par twig
             $formView = $form-> createView();
@@ -79,62 +77,58 @@ public function ArticleList(ArticleRepository $articleRepository)
 
 
     }
-/**
- * @route("admin/article/update/{id}",name="admin_article_update")
- * @param $id
- * @param ArticleRepository $articleRepository
- * @param Request $request
- * @param EntityManagerInterface $entityManager
- * @return RedirectResponse|Response
- */
+    /**
+     * @route("admin/article/update/{id}",name="admin_article_update")
+     * @param $id
+     * @param ArticleRepository $articleRepository
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
 //je crée une methode updateArticle pour modifier le contenu du formulaire je lui passe en parametre id pour pouvoir
 //  modifier un article grace a son id,la prropriété repository me permettra de modifier les données de la bdd et
 // la propriéte request me permettra de recuperer les modification
     public function updateArticle($id, ArticleRepository $articleRepository,Request $request, EntityManagerInterface $entityManager)
-{
+    {
         //je récupére en bdd  l'id wild card qui correspond a celui renseigner dans url
         $article = $articleRepository -> find($id);
 
-        if(is_null($article))
-        {
-            return $this->redirectToRoute('admin_articlelist');
+        if(is_null($article)){
+            return $this->redirectToRoute('admin_articleList');
         }
         //je crée un formulaire grâce à la fonction createFrom et je passe en paramétre le chemin vers le fichierArticleType
         $form = $this -> createForm(ArticleType::class,$article);
 
         //avec la methode handle de la class form je récupère les données en post
         $form->handleRequest($request);
-             // je récupère le fichier uploadé dans le formulaire
-            //je recupere le contenu du champ imageFileName
-            //je fait une contidion si mon formulaire et envoyer et valide alors je pré-sauvegarde
-            //avec la fonction persist et j'insere avec la fonction flush
-        if ($form->isSubmitted() && $form->isValid()) {
-              $entityManager->persist($article);
-              $entityManager->flush();
+        //je fait une contidion si mon formulaire et envoyer et valide alors je pré-sauvegarde
+        //avec la fonction persist et j'insere avec la fonction flush
 
-              //j'ajoute un message de type flash qui s'affichera  la suppression de l'article
-              $this->addFlash(
-                    "sucess",
-                    "l'article a été modifié"
-                );
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($article);
+            $entityManager->flush();
 
-                }
-              //je crée grâce à la fonction createview une vue qui pourra  en suite être lu par twig
-              $formView = $form->createView();
-              //la fonction render me permet d'envoyer a twig les infos qui seront affichés
-              return $this->render('Article/Admin/article_update.html.twig', [
-                  'formView' => $formView
-            ]);
+            //j'ajoute un message de type flash qui s'affichera  la suppression de l'article
+            $this->addFlash(
+                "sucess",
+                "l'article a été modifié"
+            );
 
-
-       }
+        }
+        //je crée grâce à la fonction createview une vue qui pourra  en suite être lu par twig
+        $formView = $form-> createView();
+        //la fonction render me permet d'envoyer a twig les infos qui seront affichés
+        return $this->render('Article/Admin/article_update.html.twig',[
+            'formView' => $formView
+        ]);
+    }
 
     /**
      * @route("admin/article/delete/{id}",name="admin_article_delete")
      * @param $id
      * @param ArticleRepository $articleRepository
      * @param EntityManagerInterface $entityManager
-     * @return RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deletearticle($id,ArticleRepository $articleRepository,EntityManagerInterface $entityManager)
     {
@@ -155,7 +149,7 @@ public function ArticleList(ArticleRepository $articleRepository)
 
         }
         // la fonction redirecttoroute permet de retrouner un visuel via le name de mon fichier 'articlelist'
-        return $this->redirectToRoute('articleShow');
+        return $this->redirectToRoute('admin_articleList');
 
     }
 
