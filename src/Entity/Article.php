@@ -44,43 +44,25 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *  grace a la ligne de commande bin/console make:entity j'ai ajouté une propriete a mon entité
-     * celle ci crée une relation vers ma table category inversedBy pointe vers ma category target entite ciblée
-     *@ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
-     */
-    private $category;
-
-    /**
-     * @return mixed
-     */
-    public function getCategory(): ?string
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param mixed $category
-     */
-    public function setCategory($category): void
-    {
-        $this->category = $category;
-    }
-
-    /**
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="Article")
      */
     private $users;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="article")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="Articles")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $Category;
+    private $category;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $illustration;
+
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
-        $this->Category = new ArrayCollection();
     }
 
 
@@ -151,26 +133,36 @@ class Article
         return $this;
     }
 
-    public function addCategory(Category $category): self
-    {
-        if (!$this->Category->contains($category)) {
-            $this->Category[] = $category;
-        }
 
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        $this->Category->removeElement($category);
-
-        return $this;
-    }
     /**
      * toString
      * @return string
      */
     public function __toString() {
         return $this->getTitle();
+    }
+
+    public function getCategory(): ?category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(string $illustration): self
+    {
+        $this->illustration = $illustration;
+
+        return $this;
     }
 }

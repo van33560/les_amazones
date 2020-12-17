@@ -10,9 +10,9 @@ use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 
 class AdminArticleController extends AbstractController
@@ -20,7 +20,7 @@ class AdminArticleController extends AbstractController
     /**
      * @Route("Article/Admin/articles", name="admin_articleList")
      * @param ArticleRepository $articleRepository
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
 //ma methode acticle repository me permet de recuperer via la bdd les données et de les afficher avec return render
 public function ArticleList(ArticleRepository $articleRepository)
@@ -36,13 +36,14 @@ public function ArticleList(ArticleRepository $articleRepository)
      * @route ("admin/article/insert",name="admin_article_insert")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param SluggerInterface $slugger
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
 
         //je crée une methode pour créer un formulaire avec la methode insertArticle en parametre methode request pour recuperer
         //les infos post get url entitymanager gerer les entités creation  d'un nouvel objet Slugger, je change le nom de mon image
         // et pour sortir tous les caractères spéciaux
- public function insertArticle(Request $request, EntityManagerInterface $entityManager)
+ public function insertArticle(Request $request, EntityManagerInterface $entityManager,SluggerInterface $slugger)
 {       //j' indique a sf que je crée un nouvelle objet
         $article = new Article();
 
@@ -51,8 +52,26 @@ public function ArticleList(ArticleRepository $articleRepository)
         $form = $this->createForm(ArticleType::class, $article);
         //avec la methode handle de la class form je récupère les données en post
         $form->handleRequest($request); //autowire fait le liens entre les fichiers dependance
+
         if($form->isSubmitted() && $form->isValid())
         {
+            $illustration=$form->get('illustration')->getData();
+
+            if($illustration){
+                //je recupere le nom d'origine de l'image
+                $originalFilename = pathinfo($illustration->getClientOriginalName(), PATHINFO_FILENAME);
+                // grâce à la classe Slugger, je change le nom de mon image
+                // et pour sortir tous les caractères spéciaux
+                $safeFilename = $slugger->slug($originalFilename);
+
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$illustration->guessExtension();
+                //je déplace l'image dans un dossier temporaire services.yaml ou je precise  en parametre son nom
+                $illustration->move(
+                    $this->getParameter('images_directory'),//recuperer envoyer les données vers parametres
+                    $newFilename
+                );
+                $article->setIllustration($newFilename);
+            }
             // je récupère le fichier uploadé dans le formulaire
             //je recupere le contenu du champ imageFileName
             //je fait une contidion si mon formulaire et envoyer et valide alors je pré-sauvegarde
@@ -83,7 +102,7 @@ public function ArticleList(ArticleRepository $articleRepository)
      * @param ArticleRepository $articleRepository
      * @param Request $request
      * @param EntityManagerInterface $entityManager
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
 //je crée une methode updateArticle pour modifier le contenu du formulaire je lui passe en parametre id pour pouvoir
 //  modifier un article grace a son id,la prropriété repository me permettra de modifier les données de la bdd et
@@ -96,8 +115,9 @@ public function ArticleList(ArticleRepository $articleRepository)
         if(is_null($article)){
             return $this->redirectToRoute('admin_articleList');
         }
+
         //je crée un formulaire grâce à la fonction createFrom et je passe en paramétre le chemin vers le fichierArticleType
-        $form = $this -> createForm(ArticleType::class,$article);
+        $form = $this->createForm(ArticleType::class, $article);
 
         //avec la methode handle de la class form je récupère les données en post
         $form->handleRequest($request);
@@ -124,7 +144,7 @@ public function ArticleList(ArticleRepository $articleRepository)
     }
 
     /**
-     * @route("admin/article/delete/{id}",name="admin_article_delete")
+     * @route("Admin/Article/delete/{id}",name="admin_article_delete")
      * @param $id
      * @param ArticleRepository $articleRepository
      * @param EntityManagerInterface $entityManager

@@ -33,13 +33,16 @@
         {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
         {{ form_errors(formView.date) }}
     </div>
+    <div class="form-group col-md-2"id="file">
+        {{ form_label(formView.picture) }}
+        {{ form_widget(formView.picture, {'attr': {'class': 'testimony_form_picture'}}) }}
+        {{ form_errors(formView.picture) }}
+    </div>
 
     <div class="form-group col-md-2">
-
         {{ form_label (formView.article) }}
         {{ form_widget(formView.article,{ 'attr':{'class':'testimony_form_article'}}) }}
         {{ form_errors(formView.article) }}
-
     </div>
 
     <div class="form-group col-md-2">

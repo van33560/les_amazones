@@ -7,21 +7,29 @@
 {% endfor %}
 {% endblock message%}
 {% block main %}
-    <div id="but"><a href="{{ path('admin_testimony_insert') }}"></a><h1>Créer votre témoignage</h1></div>
-    <div class="cont">
-    {# lien pour creer un temoignage avec la propriété path #}
-     {% for testimony in testimonys %}
-        {# avec la boucle for j'appel un temoignage parmis tous les temoignages avec un lien clipable a href  #}
-        {# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}
-        <article class="article">
-            <h2 class="titre">{{ testimony.title }}</h2>
-            <div class="content">
-                <p id="test">{{ testimony.article }}</p>
-            </div>
-            <div id="button"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">supprimer</a></div>
-            <div id="button"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">modifier</a></div>
-        </article>
-        </div>
-    {% endfor %}
-    </div>
+<div id="but"><a href="{{ path('admin_testimony_insert') }}"></a><h1>Créer votre témoignage</h1></div>
+<div class="front_container_testimony">
+{# lien pour creer un temoignage avec la propriété path #}
+{% for testimony in testimonys %}
+      {# avec la boucle for j'appel un temoignage parmis tous les temoignages avec un lien clipable a href  #}
+      {# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}
+        {% if loop.index is odd %}
+             <article class="front_article_testimony">
+                    <div class="front_content_testimony">
+                        <h2 >{{ testimony.title }}</h2>
+                        <p>{{ testimony.article }}</p>
+                        <div class="front_picture_testimony">
+                            <img src="{{ testimony.picture }}" alt="" class="resp">
+                        </div>
+                    </div>
+              </article>
+  {% if testimony.picture %}
+{# je récupère le nom du fichier uploadé
+ que je concatène avec le dossier
+ dans le dossier uploadé #}
+<img src="{{ asset('uploads/testimonys/' ~ testimony.picture) }}" alt="">
+  {% endif %}
+{% endif %}
+{% endfor %}
+</div>
 {% endblock main%}

@@ -5,20 +5,35 @@
 {% endblock message%}
 {% block main %}
 <div id="but"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
-<div class="cont">
-    {# lien pour creer un temoignage avec la propriété path #}
-    {% for testimony in testimonys %}
-        {# avec la boucle for j'appel un temoignage parmis tous les temoignages avec un lien clipable a href  #}
-        {# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}
-        <article class="article ml-5 mb-5">
-            <h2 class="titre">{{ testimony.title }}</h2>
-             <div class="content ">
-                 <p id="test">{{ testimony.article }}</p>
-             </div>
-               <div id="button"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">supprimer</a></div>
-               <div id="button"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">modifier</a></div>
-        </article>
-    </div>
+<div class="admin_container_testimonys">
+{# lien pour creer un temoignage avec la propriété path #}
+{% for testimony in testimonys %}
+{# avec la boucle for j'appel un temoignage parmis tous les temoignages avec un lien clipable a href  #}
+{# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}
+        {% if loop.index is odd %}
+             <article class="admin_testimony_articles mt-5">
+                <h2 class="mt-5">{{ testimony.title }}</h2>
+                  <p class="mt-5">{{ testimony.article }}</p>
+                 <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="mt-5 admin_testimonys_picture">
+             </article>
+                <div id="button_testimony"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">supprimer</a></div>
+                <div id="button_testimony"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">modifier</a></div>
+            {% else %}
+            <article class="admin_testimony_articles">
+                <h2 class="mt-5">{{ testimony.title }}</h2>
+                <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt=""class=" mt-5 admin_testimonys_picture">
+                <p class="mt-5">{{ testimony.article }}</p>
+            </article>
+            <div id="button_testimony"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">supprimer</a></div>
+            <div id="button_testimony"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">modifier</a></div>
+        {% endif %}
+{# {% if testimony.picture %}
+{#
+je récupère le nom du fichier uploadé
+que je concatène avec le dossier
+dans le dossier uploadé
+<img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="">
+{% endif %} #}
 {% endfor %}
 </div>
 {% endblock main%}

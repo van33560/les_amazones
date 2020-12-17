@@ -1,71 +1,63 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site pour les femmes qui ont eu un cancerdu sein">
-    <meta name="author" content="vanessa">
-    <meta name="keywords" content="cancer,sein,maladie,accessoires">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet">
-    <link rel="stylesheet" media="screen and (max-width: 540px)" href="smallscreen.css" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
-    <title>{% block title %}sitelesamazones{% endblock %}</title>
-{% block stylesheets %}{% endblock %}
-</head>
-<body>
+{% extends 'base.html.twig' %}
+
+{% block title %}sitelesamazones{% endblock %}
+{% block stylesheet %}{{ asset('assets/css/home.css') }}{% endblock stylesheet %}
 {# fichier base de mon projet ou le header et le footer se repeterons sur mes autres pages  #}
-<header class="container-fluid" id="bg">
-    <nav>
-        <li class="logo">
-            <a href="#lienlogin"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class=" d-block d-lg-none"></a>
-            <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="logo d-none d-lg-block">
-        </li>
-        <ul class="nav">
-            <li class="deroulant"><a href="#Généralités">Généralités &ensp;</a>
-                <ul class="sous">
-                    <li class="col-1-lg-2  text-center"><a href="{{path('Front_articlelist')}}">Statistiques</a></li>
-                    <li class="col-1-lg-2 text-center"><a href="#">Newsletter</a></li>
-                    <li class="col-1-lg-2 text-left"><a href="contact.html">Contact</a></li>
-                    <li class="col-1-lg-2 text-center"><a href="A propos.html">Apropos</a></li>
-                </ul>
-            </li>
-            <li class="deroulant"><a href="#Pages">Pages &ensp;</a>
-                <ul class="sous">
-                    <li class="col-1-lg-2 text-center"><a href="psychologique.html">Psychologique</a></li>
-                    <li class="col-1-lg-2 text-center"><a href="esthetique.html">Esthétique</a></li>
-                    <li class="col-1-lg-2 text-center"><a href="perruques.html">Pérruques</a></li>
-                    <li class="col-1-lg-2 text-center"><a href="assurances.html">Assurances</a></li>
-                </ul>
-            </li>
-            <li class="deroulant"><a href="#Actualités">Actualités&ensp;</a>
-                <ul class="sous">
-                    <li class="col-1-lg-2 text-center"><a href="larecherche.html">Recherche</a></li>
-                    <li class="col-1-lg-2 text-center"><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
-                    <li class="col-1-lg-2 text-left"><a href="annuaire.html">Annuaire</a></li>
-                </ul>
-            </li>
-            <li class="amazone d-none d-lg-block"><a href="#lienlogin"><img src="{{ asset('assets/img/woman4.png') }}" alt="" ></a></li>
-        </ul>
-    </nav>
-    <h1 class="d-none d-lg-block text-center w-100" id="intro">Bienvenue sur <br>votre site les Amazones!<br> Toutes unies contre le cancer du sien!! </h1>
-</header>
-<main class="container-fluid">
-            <div class="row p-3" id="don">
-                <div class="col-10 mt-3 d-flex">
-                    <p class="don">Faire un Don <br>A la ligue contre le cancer!</p>
-                    <a href="https://don.ligue-cancer.net/octobrerose2020/~mon-don?utm_source=sidiese&utm_medium=octobrerose20&utm_campaign=LP&utm_content=boutondon " target="_blank" id="button"><span>Faire un don</span></a>
-                </div>
-            </div>
+{% block header %}
+    <header>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check"class="checkbtn">
+                <i class="fa fa-bars"></i>
+            </label>
+           <li>
+               <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="woman_login d-lg-block"></a>
+                <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="amazone">
+           </li>
+            <ul>
+                <li class=""><a href="#Généralités">Généralités &ensp;</a>
+                    <ul class="sous">
+                        <li class=""><a href="{{path('home_page')}}">Statistiques</a></li>
+                        <li class=""><a href="#">Newsletter</a></li>
+                        <li class=""><a href="contact.html">Contact</a></li>
+                        <li class=""><a href="Apropos.html">Apropos</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="#Pages">Pages &ensp;</a>
+                    <ul class="sous">
+                        <li class=""><a href="psychologique.html">Psychologique</a></li>
+                        <li class=""><a href="esthetique.html">Esthétique</a></li>
+                        <li class=""><a href="perruques.html">Pérruques</a></li>
+                        <li class=""><a href="assurances.html">Assurances</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="#Actualités">Actualités&ensp;</a>
+                    <ul class="sous">
+                        <li class=""><a href="larecherche.html">Recherche</a></li>
+                        <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
+                        <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
+                        <li class=""><a href="annuaire.html">Annuaire</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+{% endblock header %}
+
+
+{% block main %}
+    <div class="row p-3" id="don">
+        <div class="col-10 mt-3 d-flex">
+            <p class="don">Faire un Don <br>A la ligue contre le cancer!</p>
+            <a href="https://don.ligue-cancer.net/octobrerose2020/~mon-don?utm_source=sidiese&utm_medium=octobrerose20&utm_campaign=LP&utm_content=boutondon " target="_blank" id="button"><span>Faire un don</span></a>
+        </div>
+    </div>
     {# les blocks  permettent  de rappeler le contenu d'un autre ficher twig dans une partie d'un autre fichier  #}
     <div class="container">
         <div class="row position-relative mt-5">
             <h2 class=" mt-5 w-100 text-center">Les Statistiques en France</h2>
-            <div class="col-12 col-lg-6 mr-5 mt-5">
+            <div class="col-12 col-lg-6 mt-5">
                 <P> 58 459 nouveaux cas de cancer du sein en France métropolitaine en 2018. <br> Taux d’incidence : entre 1990 et 2018, le nombre annuel de nouveaux cas de cancer du sein chez la femme a presque doublé, passant de 30 000 à 58 400 cas annuels,
                     soit +1,1 % par an en moyenne 12 146 décès estimés en 2018. <br> Âge médian au moment du décès :74 <br> Diminution du taux de mortalité : -1,5 par an en moyenne entre 2005 et 2012 Survie nette standardisée sur l’âge à 5 ans : 87
                     % ; à 10 ans : 76 %.
@@ -73,17 +65,17 @@
                     14 % des décès féminins par cancer (ref. 2018). </P>
                 <em>Source: Estimation nationale de l'indice et de la mortalité par cancer en France entre 1990 et 2018 - Volume 1 - Tumeurs solides.</em>
             </div>
-            <div class="col-12 col-lg-4 mt-5" id="">
+            <div class="col-12 col-lg-5 ml-5 mt-5" id="">
                 <img src="{{ asset ('assets/img/cancerdusein.jpg')}}" alt="" class="resp">
             </div>
         </div>
-        <div class="container mt-5">
-            <h3 class="text-center mt-5">Le dépistage</h3>
+        <div class="container mr-5 mt-5">
             <div class="row mt-5">
-                <div class="col-12 col-lg-6 ">
+                <h3 class=" mt-5 w-100 text-center">Le dépistage</h3>
+                <div class="col-12 col-lg-6">
                     <img src="{{ asset ('assets/img/statistiques.png')}}" alt="" class="resp" id="vivre">
                 </div>
-                <div class="col-12 col-lg-5 mr-5 mt-5" id="solutions">
+                <div class="col-12 col-lg-6  mt-5" id="solutions">
                     <p class="depistage">Au cours de l’année 2019, 2 551 000 femmes se sont fait dépistées, ce qui correspond à un taux national de participation de 48,6 % (voir tableau onglet annuels). <br> Pour la période 2018-2019, le taux de participation est de 49,3
                         %. Tous les taux standardisés annuels et biennaux sont disponibles ici.<br> Il y a une évolution de la participation nationale, de tous âges et par tranche d’âge. <br> Après avoir augmenté jusqu’en 2011-2012 pour atteindre un pic
                         à 52,4 %, la participation au programme est en diminution. <br> Les derniers indicateurs de participation, pour la période 2018-2019, indiquent que cette diminution se poursuit lentement. <br> Cette baisse s’observe pour toutes
@@ -92,53 +84,32 @@
                 </div>
             </div>
         </div>
-            <div class="row position-relative mt-5">
-                <h4 class=" mt-5 w-100 text-center">Vivre avec le cancer</h4>
-                <div class="col-12 col-lg-6 mr-5 mt-5">
-                    <p>Les semaines que vous venez de vivre, partagées entre la peur et l’espoir, ont usé vos forces tant physiques que morales et vous ont peut-être amenée à remettre en question des choses qui vous semblaient parfaitement claires jusqu’à
-                        aujourd’hui.
-                        <br> Malgré les soins et l’attention que l’on vous prodigue à l’hôpital pour vous faciliter le retour à la vie de tous les jours, vous avez peut-être l’impression d’être seule avec vos incertitudes. <br>Mais vous sentirez bientôt
-                        renaître en vous la volonté de vivre. <br> Vous recommencerez à songer à l’avenir, même si celui- ci vous apparaît encore bien flou. Des solutions peuvent vous aider:
-                        <br> - Aide psychologique:(Médecins, Hypnose,séance de relaxation, Yoga, reiki, séance énergetique,groupe de soutien).<br> - Conseils ésthétique:(Prothéses capillaires, turban, tatouages des sourcils de l'aréole mammaire, extention
-                        de cils).<br> - Conseils financier(Crédits et assurances). <br>Retouvez tous les détailles dans les pages du menu.</p> <em>Source: Mon réseaux cancer du sein</em>
-                </div>
-                <div class="col-12 col-lg-4 mt-5" id="">
-                    <img src="{{ asset ('assets/img/vivre-avec.jpg')}}" alt="" class="resp">
-                </div>
+        <div class="row position-relative mt-5">
+            <h4 class=" mt-5 w-100 text-center">Vivre avec le cancer</h4>
+            <div class="col-12 col-lg-6  mt-5">
+                <p>Les semaines que vous venez de vivre, partagées entre la peur et l’espoir, ont usé vos forces tant physiques que morales et vous ont peut-être amenée à remettre en question des choses qui vous semblaient parfaitement claires jusqu’à
+                    aujourd’hui.
+                    <br> Malgré les soins et l’attention que l’on vous prodigue à l’hôpital pour vous faciliter le retour à la vie de tous les jours, vous avez peut-être l’impression d’être seule avec vos incertitudes. <br>Mais vous sentirez bientôt
+                    renaître en vous la volonté de vivre. <br> Vous recommencerez à songer à l’avenir, même si celui- ci vous apparaît encore bien flou. Des solutions peuvent vous aider:
+                    <br> - Aide psychologique:(Médecins, Hypnose,séance de relaxation, Yoga, reiki, séance énergetique,groupe de soutien).<br> - Conseils ésthétique:(Prothéses capillaires, turban, tatouages des sourcils de l'aréole mammaire, extention
+                    de cils).<br> - Conseils financier(Crédits et assurances). <br>Retouvez tous les détailles dans les pages du menu.</p> <em>Source: Mon réseaux cancer du sein</em>
             </div>
-    </div>
-</main>
-<!--newslettes recuperation email-->
-<div class="row justify-content-center">
-    <h5 class="col-2  text-center" id="new">Newsletter
-        <a class="d-block mt-5 mx-auto" href="newsletter.html"><img src="{{ asset('assets/img/newsletter.svg') }}" alt="" id="logoNewsletter"></a>
-    </h5>
-     <div class="col-12 py-5 text-center" id="ins">
-         <p>Choisissez l'actualité qui vous intéresse et rester informer !!!</p>
-     </div>
-</div>
-<footer class="container-fluid  mt-5 py-5" id="footer">
-    <div class="container">
-        <div class="row position-relative justify-content-center">
-            <div class="col-12 text-center">
-                <a class="col-4 ml-5 text-center" id="footer" href=" #mentionslégales/ #Copyright ">Mentions légales||©Labat</a>
+            <div class="col-12 col-lg-5 ml-5 mt-5" id="">
+                <img src="{{ asset ('assets/img/vivre-avec.jpg')}}" alt="" class="resp">
             </div>
-            <div class="col-2 col-lg-1 position-absolute offset-lg-2" id="logoarrow">
-                {# la fonction asset permet de recuperer dans un autre dossier son contenu ici dossier img  #}
-                <a href="#"><img src="{{ asset('assets/img/up-arrow.svg') }}" alt=""></a>
-            </div>
-            <div class="col-2 col-lg-1 mt-2 position-absolute offset-lg-2" id="facebook">
-               <a href="https://fr-fr.facebook.com/ " target="_blank"><img src=" {{ asset('assets/img/facebook.svg') }}" alt="" class=""></a>
-            </div>
-             <div class="col-2 col-lg-1 position-absolute " id="twitter">
-                <a href="https://mobile.twitter.com/?lang=fr " target="_blank"><img src=" {{ asset('assets/img/twitter.svg') }}" alt="" class=""></a>
-             </div>
-             <div class="col-2 col-lg-1  position-absolute" id="instagram">
-                 <a href="https://www.instagram.com/?hl=fr " target="_blank"><img src="{{ asset('assets/img/instagram.svg') }}" alt="" class=""></a>
-            </div>
-
         </div>
     </div>
-</footer>
-</body>
-</html>
+
+    <!--newsletter recuperation email-->
+    <div class="row justify-content-center">
+        <h5 class="col-2  text-center" id="new">Newsletter
+            <a class="d-block mt-5 mx-auto" href="newsletter.html"><img src="{{ asset('assets/img/newsletter.svg') }}" alt="" id="logoNewsletter"></a>
+        </h5>
+        <div class="col-12 py-5 text-center" id="ins">
+            <p>Choisissez l'actualité qui vous intéresse et rester informer !!!</p>
+        </div>
+    </div>
+{% endblock main%}
+
+
+

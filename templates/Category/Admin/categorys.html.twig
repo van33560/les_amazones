@@ -10,7 +10,7 @@
             {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
             {# j'appel mes images et mes titres  #}
             <article class="article">
-                <h2>{{ category.genre }}</h2>
+                <h2>{{ category.title}}</h2>
                 <div class="content">
                     <p id="test">{{ category.article  }}</p>
                     <div id="button"><a href="{{ path('admin_category_insert', {'id':category.id}) }}">modifier</a></div>

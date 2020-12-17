@@ -1,24 +1,42 @@
 {% extends 'base.html.twig' %}
-{% block main %}
+{% block main%}
+{%  for message in app.flashes ('success') %}
+    <p>{{ message }}</p>
+{% endfor %}
 <div id="but"><a href="{{ path('admin_article_insert') }}"><h1>Créer votre article</h1></a></div>
-    <div class="cont">
-        {# lien pour creer un article avec la propriété path #}
-        {% for article in articles %}
-            {# avec la boucle for j'appel un article dans mes articles avec clipable avec le lien a href  #}
-            {# avec la propriete path j'appel un de mes articles qui sera clipable et qui affichera le contenu
-             de ma page modify_static.html.twig#}
-            {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
-            {# j'appel mes images et mes titres  #}
-            <article class="article ml-5 mb-5">
-                <h2 class="titre">{{ article.title }}</h2>
-                <div class="content">
-                    <p id="test">{{ article.content }}
-                    <div id="button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">supprimer</a></div>
-                    <div id="button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">modifier</a></div>
-                </div>
+    {# lien pour creer un article avec la propriété path #}
+  <div class="admin_container_articles">
+    {% for article in articles %}
+    {# avec la boucle for j'appel un article dans mes articles avec clipable avec le lien a href  #}
+    {# avec la propriete path j'appel un de mes articles qui sera clipable et qui affichera le contenu
+    de ma page modify_static.html.twig#}
+    {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
+    {# j'appel mes images et mes titres  #}
+        {% if loop.index is odd %}
+            <article class="admin_articles">
+                <h2>{{ article.title }}</h2>
+                    <p>{{ article.content }}</p>
+                <li><img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="admin_illustration_articles"></li>
             </article>
-        {% endfor %}
-    </div>
+            <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">supprimer</a></div>
+            <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">modifier</a></div>
+          {% else %}
+            <article class="admin_articles">
+                <h2>{{ article.title }}</h2>
+                <li><img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="admin_illustration_articles"></li>
+                    <p>{{ article.content }}</p>
+            </article>
+            <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">supprimer</a></div>
+            <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">modifier</a></div>
+        {% endif %}
+{#{% if article.illustration %}
+{#
+je récupère le nom du fichier uploadé
+que je concatène avec le dossier
+dans le dossier uploadé #}
+{# {% endif %} #}
+    {% endfor %}
+  </div>
 {% endblock main %}
 
 

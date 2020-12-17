@@ -1,24 +1,21 @@
 {% extends 'base.html.twig' %}
 {# j'utilise la fonction form de twig et en paramétre formView pour afficher la vue de mon formulaire #}
+{% block main %}
 
-{% block main%}
-    {%  for message in app.flashes ('success') %}
-        <p>{{ message }}</p>
-    {% endfor %}
-    <h1 class=" d-none d-lg-block text-center w-100" id="creer">Créer votre article</h1>
 <div class="form-group ml-5 col-12 col-lg-6  mt-5">
+    <h1 class="text-center" id="creer">Créer votre article</h1>
     {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
  generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
     #}
     {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
     {# avec la fonction form_label je crée un label title  #}
 
-    <div class="form-group col-md-2"id=date">
+    <div class="form-group col-md-1"id=date">
         {{ form_label(formView.date) }}
         {{ form_widget(formView.date,{ 'attr':{'class':'article_form_date'}}) }}
         {{ form_errors(formView.date) }}
     </div>
-    <div class="form-group col-md-2" id="article_title">
+    <div class="form-group col-md-1" id="article_title">
         {{ form_label(formView.title) }}
         {# avec la fonction form_widget je crée un input  #}
         {{ form_widget(formView.title,{ 'attr':{'class':'article_form_title'}}) }}
@@ -26,11 +23,16 @@
         {{ form_errors(formView.title) }}
     </div>
 
-    <div class="form-group col-md-2"id="article_content">
+    <div class="form-group col-md-1"id="article_content">
         {{ form_label(formView.content) }}
         {{ form_widget(formView.content,{ 'attr':{'class':'article_form_content'}}) }}
         {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
         {{ form_errors(formView.content) }}
+    </div>
+    <div class="form-group col-md-1"id="file">
+        {{ form_label(formView.illustration) }}
+        {{ form_widget(formView.illustration, {'attr': {'class': 'article_form_illustration'}}) }}
+        {{ form_errors(formView.illustration) }}
     </div>
 
     <div class="form-group col-md-2"id="category">

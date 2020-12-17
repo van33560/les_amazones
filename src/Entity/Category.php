@@ -46,31 +46,47 @@ class Category
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=255)
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
      */
-    private $articles;
+    private $article;
+
+    /**
+     * @return mixed
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param mixed $article
+     */
+    public function setArticle($article): void
+    {
+        $this->article = $article;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getNewArticle(): ArrayCollection
+    {
+        return $this->new_article;
+    }
+
+    /**
+     * @param ArrayCollection $new_article
+     */
+    public function setNewArticle(ArrayCollection $new_article): void
+    {
+        $this->new_article = $new_article;
+    }
 
 
     public function __construct()
     {
         $this->new_article = new ArrayCollection();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getArticles()
-    {
-        return $this->articles;
-    }
-
-    /**
-     * @param mixed $articles
-     */
-    public function setArticles($articles): void
-    {
-        $this->articles = $articles;
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,38 +108,43 @@ class Category
         return $this;
     }
 
-    /**
-     * @return Collection|Article[]
-     */
-    public function getNewArticle(): Collection
-    {
-        return $this->new_article;
-    }
 
-    public function addNewArticle(Article $newArticle): self
-    {
-        if (!$this->new_article->contains($newArticle)) {
-            $this->new_article[] = $newArticle;
-            $newArticle->addCategory($this);
-        }
 
-        return $this;
-    }
-
-    public function removeNewArticle(Article $newArticle): self
-    {
-        if ($this->new_article->removeElement($newArticle)) {
-            $newArticle->removeCategory($this);
-
-        }
-
-        return $this;
-    }
     /**
      * toString
      * @return string
      */
     public function __toString() {
         return $this->getTitle();
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getCategory() === $this) {
+                $article->setCategory(null);
+            }
+        }
+
+        return $this;
     }
 }

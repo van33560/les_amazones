@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminTestimonyController extends AbstractController
 {
@@ -60,7 +61,7 @@ public function testimonyShow($id, TestimonyRepository $testimonyRepository)
 //je crée une methode pour créer un formulaire avec la methode inserttestimony en parametre
 // methode request pour recuperer les infos post, get dans l'url
 // entitymanager gerer les entités les champs de ma bdd
-public function insertTestimony(Request $request , EntityManagerInterface $entityManager)
+public function insertTestimony(Request $request , EntityManagerInterface $entityManager,SluggerInterface $slugger)
     {   //j' indique a sf que je crée un nouvelle objet
         $testimony = new Testimony();
         //autowire fait le liens entre les fichiers dependance
@@ -76,6 +77,23 @@ public function insertTestimony(Request $request , EntityManagerInterface $entit
             //je recupere le contenu du champ imageFileName
             //je fait une contidion si mon formulaire et envoyer et valide alors je pré-sauvegarde
             //avec la fonction persist
+            $picture=$form->get('picture')->getData();
+
+            if($picture){
+                //je recupere le nom d'origine de l'image
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // grâce à la classe Slugger, je change le nom de mon image
+                // et pour sortir tous les caractères spéciaux
+                $safeFilename = $slugger->slug($originalFilename);
+
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$picture->guessExtension();
+                //je déplace l'image dans un dossier temporaire services.yaml ou je precise  en parametre son nom
+                $picture->move(
+                    $this->getParameter('picture_directory'),//recuperer envoyer les données vers parametres
+                    $newFilename
+                );
+                $testimony->setPicture($newFilename);
+            }
             $entityManager->persist($testimony);
             // j'insere avec la fonction flush
             $entityManager->flush();

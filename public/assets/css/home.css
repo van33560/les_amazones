@@ -1,15 +1,22 @@
 /*pages principales header*/
+*{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+
+}
+
 body {
     font-family: 'Dancing Script', cursive;
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
+    font-size: 16px;;
     background-color: #f7f7f7;
-    box-sizing: border-box;
 }
 .resp{
     width:100%;
     height:auto;
+
 }
 /*nav barre menu*/
 header {
@@ -24,17 +31,96 @@ header {
     height: 100%;
     background-color: rgba(30, 30, 30, 0.2);
 }
-li .logo {
+img.woman_login{
+    display: block;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 1200px;
+}
+.amazone{
     width:100px;
+    display: block;
+}
+nav{
+  padding-top: 10px;
+    height:80px;
+    width:100%;
+}
+label.logo{
+    color:#616161;
+    font-size: 35px;
+    padding:0 100px;
+    font-weight: bold;
+}
+nav ul{
+    float:right;
+    margin-right: 20px;
+
+}
+nav ul li{
+    margin:0 5px;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+
+}
+nav ul li a{
+    color:#616161;
+    font-size: 25px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    list-style-type: none;
+    justify-content: space-between;
+}
+nav ul::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+li {
+    width: 100px;
+    text-align: center;
+}
+ul{
+    margin-top: -60px;
 }
 
-li.amazone {
-    width:100px;
-    margin-left: 50px;
-
+nav>ul li:hover .sous {
+    display: block;
+    margin-top: 5px;
 }
+.sous {
+    display: none;
+    box-shadow: 0px 1px 0px #CCC;
+    background-color: rgba(253, 244, 249, 0.2);
+}
+.sous li {
+    display:block;
+    width: 30%;
+    text-align: center;
+    margin-top: 30px;
+}
+.sous a {
+    border-bottom: none;
+    margin-top: 30px;
+}
+a.active,a:hover{
+    background:#e0e0e0;
+    transition: .5s;
+}
+.checkbtn{
+    font-size:30px;
+    color:white;
+    float:right;
 
-nav {
+    margin-right:40Px;
+    cursor:pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
+/*nav {
     width: 100%;
     height:200px;
     background-color: transparent;
@@ -164,6 +250,35 @@ p {
     text-align: center;
 }
 
+/*page article admin*/
+/*.container{
+    display:flex;
+    justify-content: space-around;
+}*/
+.content {
+    display: flex;
+    justify-content: space-around;
+}
+.image{
+    width: 40%;
+}
+
+/*footer liens facebook*/
+
+#news {
+    margin-top: 20%;
+    text-align: center;
+    margin-left: 50%
+}
+
+#logoNewsletter {
+    width: 70px;
+}
+
+#ins {
+    text-align: center;
+}
+
 #footer {
     background-color: #d3fdfd;
     font-family: 'Dancing Script', cursive;
@@ -190,7 +305,8 @@ p {
 #instagram {
     margin-right: 83%
 }
-@media screen and (min-width: 100px) and (max-width: 640px ){
+
+/*@media screen and (min-width: 100px) and (max-width: 640px ){
     nav{
        margin-left:50px ;
         display:flex;
@@ -203,4 +319,82 @@ p {
         margin-right: 40px;
     }
 
+}*/
+@media  screen and (min-width: 200px) and (max-width: 858px ){
+    label.logo{
+        color:#616161;
+        font-size: 35px;
+        padding:0 100px;
+        font-weight: bold;
+    }
+    nav>ul li:hover .sous {
+        display: block;
+
+    }
+    li {
+        width: 100px;
+        text-align: center;
+    }
+    ul li {
+        display: inline-block;
+        width: 200px;
+        text-align: center;
+    }
+    .sous {
+        display: none;
+        box-shadow: 0px 1px 0px #CCC;
+        background-color: rgba(253, 244, 249, 0.2);
+    }
+    .sous li {
+        display:block;
+        width: 30%;
+        text-align: center;
+    }
+    .sous a {
+        border-bottom: none;
+    }
+    a.active,a:hover{
+        background:#e0e0e0;
+        transition: .5s;
+    }
+
+    .checkbtn{
+        display:block;
+    }
+    ul{
+        display: block;
+        width:100%;
+        height:160vh;
+        background:#89bfd9;
+        top:80px;
+        margin-left: 100px;
+        transition: all .5s;
+    }
+    nav ul li{
+        display:block;
+        margin:50px 0;
+    }
+    nav ul li a{
+        font-size:25px;
+    }
+    a.active, a:hover{
+        background:none;
+        color:#616161;
+        margin-left:30px ;
+    }
+    #check:checked ~ ul{
+        left:0;
+    }
+    .form-group{
+        margin-left: 80%;
+    }
+    .form-group2{
+        margin-left: 50%;
+    }
+
 }
+/*section{
+    background:url(../img/rubans.jpg) no-repeat;
+    background-size: cover;
+    height:calc(100vh - 80px);
+}*/
