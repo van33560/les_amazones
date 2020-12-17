@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/categorys", name="categorylist")
+     * @Route("/categorys", name="Front_categorylist")
      * @param CategoryRepository $categoryRepository
      * @return Response
      */
@@ -29,7 +29,7 @@ public function CategoryList(CategoryRepository $categoryRepository)
 
 // chemin de ma route qui renvoi au contenu d'une de mes categories via son id
     /**
-     * @route("/category/show/{id}",name="categoryShow")
+     * @route("/category/show/{id}",name="Front_categoryShow")
      * @param $id
      * @param CategoryRepository $categoryRepository
      * @return Response

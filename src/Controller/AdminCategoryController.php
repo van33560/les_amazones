@@ -73,6 +73,11 @@ public function insertCategory(Request $request, EntityManagerInterface $entityM
     }
     /**
      * @route("admin/category/update/{id}",name="admin_category_update")
+     * @param $id
+     * @param CategoryRepository $categoryRepository
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return RedirectResponse|Response
      */
     //je crée une methode updateArticle pour modifier le contenu du formulaire je lui passe en parametre id pour pouvoir
     //  modifier un article grace a son id,la prropriété repository me permettra de modifier les données de la bdd et
@@ -112,6 +117,10 @@ public function insertCategory(Request $request, EntityManagerInterface $entityM
     }
     /**
      * @route("admin/category/delete/{id}",name="admin_category_delete")
+     * @param $id
+     * @param CategoryRepository $categoryRepository
+     * @param EntityManagerInterface $entityManager
+     * @return RedirectResponse
      */
     //je crée une methode deletearticle qui aura pour paramétres $id(me permettra de recuperer l'article),articlerepository(qui me permettra de récuperer
     //les données de la base de données, sf effectuera la requete delete) et entityManagerinterface,

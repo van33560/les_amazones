@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <div class="container">
+{%  for message in app.flashes ('success') %}
+    <p>{{ message }}</p>
+{% endfor %}
+    <div class="">
         {# lien pour creer un article avec la propriété path #}
         {% for category in categorys %}
             {# avec la boucle for j'appel un article dans mes articles avec clipable avec le lien a href  #}
@@ -9,12 +12,17 @@
              de ma page modify_static.html.twig#}
             {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
             {# j'appel mes images et mes titres  #}
-            <article class="article">
+            <article class="">
                 <h2>{{ category.title}}</h2>
-                <div class="content">
-                    <p id="test">{{ category.article  }}</p>
-                    <div id="button"><a href="{{ path('admin_category_insert', {'id':category.id}) }}">modifier</a></div>
+                <div class="">
+                    <p>{{ category.Date|date("m/d/Y") }}</p>
+                    <p>{{ category.article }}</p>
+                    <a href="{{ path('categoryShow', {'id': category.id}) }}"></a>
+                    <div id=""><a href="{{ path('admin_category_insert', {'id':category.id}) }}">créer</a></div>
                 </div>
+                <button class=""><a href="{{ path('admin_category_update', {'id': category.id}) }}">modifier cette categorie</a></button>
+                {#  Je créer le lien qui va supprimer la category de la liste via son id #}
+                <button class=""><a href="{{ path('admin_category_delete', {'id': category.id}) }}">supprimer cette categorie</a></button>
             </article>
         {% endfor %}
     </div><hr>

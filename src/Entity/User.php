@@ -19,23 +19,6 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
-
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
-    private $password;
-
     /**
      * @ORM\Column(type="string")
      */
@@ -67,9 +50,26 @@ class User implements UserInterface
     private $phone;
 
     /**
+     * @ORM\Column(type="string", length=180, unique=true)
+     */
+    private $email;
+
+    /**
+     * @var string The hashed password
      * @ORM\Column(type="string")
      */
+    private $password;
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     private $user_picture;
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
 
     /**
      * @ORM\ManyToMany(targetEntity=Testimony::class, inversedBy="users")
@@ -85,6 +85,11 @@ class User implements UserInterface
      * @ORM\ManyToMany(targetEntity=Article::class, inversedBy="users")
      */
     private $Article;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $Activation_token;
 
     public function __construct()
     {
@@ -357,6 +362,18 @@ class User implements UserInterface
     public function removeArticle(Article $article): self
     {
         $this->Article->removeElement($article);
+
+        return $this;
+    }
+
+    public function getActivationToken(): ?string
+    {
+        return $this->Activation_token;
+    }
+
+    public function setActivationToken(?string $Activation_token): self
+    {
+        $this->Activation_token = $Activation_token;
 
         return $this;
     }

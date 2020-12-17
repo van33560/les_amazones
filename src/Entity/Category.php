@@ -46,6 +46,7 @@ class Category
     private $date;
 
     /**
+     * @ORM\Column(type="string", length=6500)
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
      */
     private $article;
@@ -66,35 +67,15 @@ class Category
         $this->article = $article;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getNewArticle(): ArrayCollection
-    {
-        return $this->new_article;
-    }
-
-    /**
-     * @param ArrayCollection $new_article
-     */
-    public function setNewArticle(ArrayCollection $new_article): void
-    {
-        $this->new_article = $new_article;
-    }
-
-
     public function __construct()
     {
-        $this->new_article = new ArrayCollection();
-        $this->articles = new ArrayCollection();
+        $this->article = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
     }
-
-
 
     public function getDate(): ?\DateTimeInterface
     {
@@ -107,8 +88,6 @@ class Category
 
         return $this;
     }
-
-
 
     /**
      * toString
@@ -123,13 +102,13 @@ class Category
      */
     public function getArticles(): Collection
     {
-        return $this->articles;
+        return $this->article;
     }
 
     public function addArticle(Article $article): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
+        if (!$this->article->contains($article)) {
+            $this->article[] = $article;
             $article->setCategory($this);
         }
 
@@ -138,7 +117,7 @@ class Category
 
     public function removeArticle(Article $article): self
     {
-        if ($this->articles->removeElement($article)) {
+        if ($this->article->removeElement($article)) {
             // set the owning side to null (unless already changed)
             if ($article->getCategory() === $this) {
                 $article->setCategory(null);

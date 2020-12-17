@@ -24,7 +24,7 @@ header {
     background-size: cover;
     padding-left: 1em;
     background-repeat: no-repeat;
-    height: 130vh;
+    height: 100vh;
 }
 .filtre {
     width: 100%;
@@ -35,7 +35,7 @@ img.woman_login{
     display: block;
     flex-direction: row;
     justify-content: space-around;
-    margin-left: 1200px;
+    margin-left: 1270px;
 }
 .amazone{
     width:100px;

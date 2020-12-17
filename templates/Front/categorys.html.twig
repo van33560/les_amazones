@@ -2,8 +2,12 @@
 {% block message %}
     {# je mets mon message dans un block message, qui  est redefini dan mon fichier twig#}
     {#  si mon message est supprimé j'affiche mon message grace a la variable globale app sur l page principale#}
+{%  for message in app.flashes ('success') %}
+      <p>{{ message }}</p>
+{% endfor%}
+{% endblock message%}
 {% block main %}
-    <div class="container">
+    <div class="">
         {# lien pour creer un article avec la propriété path #}
         {% for category in categorys %}
             {# avec la boucle for j'appel un article dans mes articles avec clipable avec le lien a href  #}
@@ -11,11 +15,12 @@
              de ma page modify_static.html.twig#}
             {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
             {# j'appel mes images et mes titres  #}
-            <article class="article">
-                <h2>{{ category.genre }}
-                    <a href="{{ path('categoryShow', {'id': category.id}) }}"><p>{{ category.genre }}</p></a>
-                <div class="content">
-                    <p id="test">{{ category.article  }}</p>
+            <article class="">
+                <h2>{{ category.title }}</h2>
+                <p>{{ category.Date|date("m/d/Y") }}</p>
+                    <a href="{{ path('Front_categoryShow', {'id': category.id}) }}"><p>{{ category.title }}</p></a>
+                <div class="">
+                    <p id="">{{ category.article }}</p>
                 </div>
             </article>
         {% endfor %}
