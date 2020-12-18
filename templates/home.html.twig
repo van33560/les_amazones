@@ -4,17 +4,17 @@
 {% block stylesheet %}{{ asset('assets/css/home.css') }}{% endblock stylesheet %}
 {# fichier base de mon projet ou le header et le footer se repeterons sur mes autres pages  #}
 {% block header %}
-    <header>
-        <nav>
-            <input type="checkbox" id="check">
-            <label for="check"class="checkbtn">
-                <i class="fa fa-bars"></i>
-            </label>
-           <li>
-               <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="woman_login d-lg-block"></a>
-                <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="amazone">
-           </li>
-            <ul>
+<header>
+
+    <div class="d-none col-lg-2 d-lg-block position-absolute" id="logo">
+    <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="img-fluid">
+    </div>
+    <nav class="relative">
+        <input type="checkbox" id="check">
+        <label for="check"class="checkbtn">
+            <i class="fa fa-bars"></i>
+        </label>
+            <ul class="lien">
                 <li class=""><a href="#Généralités">Généralités &ensp;</a>
                     <ul class="sous">
                         <li class=""><a href="{{path('home_page')}}">Statistiques</a></li>
@@ -41,9 +41,12 @@
                     </ul>
                 </li>
             </ul>
-
-        </nav>
-    </header>
+</nav>
+    <div class="col-lg-2  col-4 " id="login">
+        <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
+    </div>
+        <h1 class="d-none d-lg-block text-center w-100" id="">Bienvenue sur <br>votre site les Amazones!<br> Toutes unies contre le cancer du sien!! </h1>
+</header>
 {% endblock header %}
 
 

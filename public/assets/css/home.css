@@ -26,24 +26,37 @@ header {
     background-repeat: no-repeat;
     height: 100vh;
 }
+
 .filtre {
     width: 100%;
     height: 100%;
     background-color: rgba(30, 30, 30, 0.2);
 }
-img.woman_login{
-    display: block;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-left: 1270px;
+#logo {
+
+    left: 30px;
+    width: 12%;
 }
-.amazone{
+
+#login {
+    position: relative;
+    left: 90%;
+    bottom: 10%;
+}
+/*icones*/
+/*.woman_login{
+   display:block;
+
+
+}
+img.amazone{
     width:100px;
-    display: block;
-}
+
+}*/
+/*nav*/
+
 nav{
-  padding-top: 10px;
-    height:80px;
+    height:200px;
     width:100%;
 }
 label.logo{
@@ -52,17 +65,17 @@ label.logo{
     padding:0 100px;
     font-weight: bold;
 }
+
 nav ul{
     float:right;
-    margin-right: 20px;
+    margin-right: 50px;
 
 }
 nav ul li{
-    margin:0 5px;
+    margin:10px 10px;
     display: inline-block;
     width: 200px;
     text-align: center;
-
 }
 nav ul li a{
     color:#616161;
@@ -82,7 +95,8 @@ li {
     text-align: center;
 }
 ul{
-    margin-top: -60px;
+    margin-top: -150px;
+    padding-right: 40px;
 }
 
 nav>ul li:hover .sous {
@@ -96,17 +110,19 @@ nav>ul li:hover .sous {
 }
 .sous li {
     display:block;
-    width: 30%;
+    width: 1%;
     text-align: center;
     margin-top: 30px;
 }
 .sous a {
     border-bottom: none;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 a.active,a:hover{
     background:#e0e0e0;
     transition: .5s;
+
+
 }
 .checkbtn{
     font-size:30px;
@@ -120,68 +136,12 @@ a.active,a:hover{
 #check{
     display: none;
 }
-/*nav {
-    width: 100%;
-    height:200px;
-    background-color: transparent;
-    position: sticky;
-    margin-left:100px;
-}
-nav a {
-    font-family: 'Dancing Script', cursive;
-    text-align: center;
-    color: #616161;
-    font-size: 27px;
-    display: block;
-    text-decoration: none;
-}
-nav ul {
-    list-style-type: none;
-    justify-content: space-between;
-}
-li {
-    width: 100px;
-    text-align: center;
-}
-ul li {
-    display: inline-block;
-    width: 200px;
-    text-align: center;
-}
-nav ul::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-nav a:hover {
-    color: #616161;
-}
-.sous {
-    display: none;
-    box-shadow: 0px 1px 0px #CCC;
-    background-color: rgba(253, 244, 249, 0.2);
-}
-nav>ul li:hover .sous {
-    display: block;
-}
-.sous li {
-   display:block;
-    width: 20%;
-    text-align: center;
-}
-.sous a {
-    border-bottom: none;
-}
 
-.deroulant>a::after {
-    content: "▼";
-    font-size: 12px;
-}
 /*lien don*/
 h1 {
     font-family: 'Dancing Script', cursive;
     display: inline-block;
-    margin-top: 12%;
+    margin-top: 200px;
     color: #616161;
 }
 .don{
