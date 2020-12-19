@@ -5,50 +5,46 @@
 {# fichier base de mon projet ou le header et le footer se repeterons sur mes autres pages  #}
 {% block header %}
 <header>
-
-    <div class="d-none col-lg-2 d-lg-block position-absolute" id="logo">
+    <div class="d-none col-lg-2 mr-0 d-lg-block position-absolute" id="logo">
     <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="img-fluid">
     </div>
-    <nav class="relative">
-        <input type="checkbox" id="check">
-        <label for="check"class="checkbtn">
-            <i class="fa fa-bars"></i>
-        </label>
-            <ul class="lien">
-                <li class=""><a href="#Généralités">Généralités &ensp;</a>
-                    <ul class="sous">
-                        <li class=""><a href="{{path('home_page')}}">Statistiques</a></li>
-                        <li class=""><a href="#">Newsletter</a></li>
-                        <li class=""><a href="contact.html">Contact</a></li>
-                        <li class=""><a href="Apropos.html">Apropos</a></li>
-                    </ul>
-                </li>
-                <li class=""><a href="#Pages">Pages &ensp;</a>
-                    <ul class="sous">
-                        <li class=""><a href="psychologique.html">Psychologique</a></li>
-                        <li class=""><a href="esthetique.html">Esthétique</a></li>
-                        <li class=""><a href="perruques.html">Pérruques</a></li>
-                        <li class=""><a href="assurances.html">Assurances</a></li>
-                    </ul>
-                </li>
-                <li class=""><a href="#Actualités">Actualités&ensp;</a>
-                    <ul class="sous">
-                        <li class=""><a href="larecherche.html">Recherche</a></li>
-                        <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
-                        <li class=""><a href="{{path('Front_categorylist')}}">Categories</a></li>
-                        <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
-                        <li class=""><a href="annuaire.html">Annuaire</a></li>
-                    </ul>
-                </li>
+<nav>
+    <ul>
+        <li class=""><a href="#Généralités">Généralités &ensp;</a>
+            <ul class="soubmenu">
+                <li class=""><a href="{{path('home_page')}}">Statistiques</a></li>
+                <li class=""><a href="#">Newsletter</a></li>
+                <li class=""><a href="contact.html">Contact</a></li>
+                <li class=""><a href="Apropos.html">A propos</a></li>
             </ul>
+        </li>
+        <li class=""><a href="#Pages">Pages &ensp;</a>
+            <ul class="submenu">
+                <li class=""><a href="psychologique.html">Psychologique</a></li>
+                <li class=""><a href="esthetique.html">Esthétique</a></li>
+                <li class=""><a href="perruques.html">Pérruques</a></li>
+                <li class=""><a href="assurances.html">Assurances</a></li>
+            </ul>
+        </li>
+        <li class=""><a href="#Actualités">Actualités&ensp;</a>
+            <ul class="soumenu">
+                <li class=""><a href="larecherche.html">Recherche</a></li>
+                <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
+                <li class=""><a href="{{path('Front_categorylist')}}">Categories</a></li>
+                <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
+                <li class=""><a href="annuaire.html">Annuaire</a></li>
+            </ul>
+        </li>
+    </ul>
 </nav>
-    <div class="col-lg-2  col-4 " id="login">
+    <div class="col-lg-1  col-2 " id="login">
         <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
     </div>
-        <h1 class="d-none d-lg-block text-center w-100" id="">Bienvenue sur <br>votre site les Amazones!<br> Toutes unies contre le cancer du sien!! </h1>
+{% block section%}
+    <h1 class="d-none d-lg-block text-center w-100" id="">Bienvenue sur <br>votre site les Amazones!<br> Toutes unies contre le cancer du sien!! </h1>
+{% endblock section%}
 </header>
 {% endblock header %}
-
 
 {% block main %}
     <div class="row p-3" id="don">
@@ -69,7 +65,7 @@
                     14 % des décès féminins par cancer (ref. 2018). </P>
                 <em>Source: Estimation nationale de l'indice et de la mortalité par cancer en France entre 1990 et 2018 - Volume 1 - Tumeurs solides.</em>
             </div>
-            <div class="col-12 col-lg-5 ml-5 mt-5" id="">
+            <div class="col-10 col-lg-5 ml-5 mt-5" id="">
                 <img src="{{ asset ('assets/img/cancerdusein.jpg')}}" alt="" class="resp">
             </div>
         </div>
@@ -98,7 +94,7 @@
                     <br> - Aide psychologique:(Médecins, Hypnose,séance de relaxation, Yoga, reiki, séance énergetique,groupe de soutien).<br> - Conseils ésthétique:(Prothéses capillaires, turban, tatouages des sourcils de l'aréole mammaire, extention
                     de cils).<br> - Conseils financier(Crédits et assurances). <br>Retouvez tous les détailles dans les pages du menu.</p> <em>Source: Mon réseaux cancer du sein</em>
             </div>
-            <div class="col-12 col-lg-5 ml-5 mt-5" id="">
+            <div class="col-10 col-lg-5 ml-5 mt-5" id="">
                 <img src="{{ asset ('assets/img/vivre-avec.jpg')}}" alt="" class="resp">
             </div>
         </div>
@@ -106,10 +102,10 @@
 
     <!--newsletter recuperation email-->
     <div class="row justify-content-center">
-        <h5 class="col-2  text-center" id="new">Newsletter
+        <h5 class="col-2 text-center" id="new">Newsletter
             <a class="d-block mt-5 mx-auto" href="newsletter.html"><img src="{{ asset('assets/img/newsletter.svg') }}" alt="" id="logoNewsletter"></a>
         </h5>
-        <div class="col-12 py-5 text-center" id="ins">
+        <div class="col-12 py-5 text-center mr-5">
             <p>Choisissez l'actualité qui vous intéresse et rester informer !!!</p>
         </div>
     </div>

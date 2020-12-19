@@ -5,7 +5,6 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
-
 }
 
 body {
@@ -16,9 +15,8 @@ body {
 .resp{
     width:100%;
     height:auto;
-
 }
-/*nav barre menu*/
+/*header et logo*/
 header {
     background-image: url(../img/rubans.jpg);
     background-size: cover;
@@ -37,106 +35,60 @@ header {
     left: 30px;
     width: 12%;
 }
-
 #login {
     position: relative;
-    left: 90%;
-    bottom: 10%;
+    left: 1270px;
+    bottom: 70px;
 }
-/*icones*/
-/*.woman_login{
-   display:block;
-
-
-}
-img.amazone{
-    width:100px;
-
-}*/
 /*nav*/
-
 nav{
-    height:200px;
-    width:100%;
-}
-label.logo{
-    color:#616161;
-    font-size: 35px;
-    padding:0 100px;
-    font-weight: bold;
-}
-
-nav ul{
-    float:right;
-    margin-right: 50px;
-
-}
-nav ul li{
-    margin:10px 10px;
-    display: inline-block;
-    width: 200px;
-    text-align: center;
-}
-nav ul li a{
-    color:#616161;
-    font-size: 25px;
-    padding: 7px 13px;
-    border-radius: 3px;
-    list-style-type: none;
-    justify-content: space-between;
-}
-nav ul::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-li {
-    width: 100px;
-    text-align: center;
+    padding-top: 20px;
 }
 ul{
-    margin-top: -150px;
-    padding-right: 40px;
-}
-
-nav>ul li:hover .sous {
-    display: block;
-    margin-top: 5px;
-}
-.sous {
-    display: none;
-    box-shadow: 0px 1px 0px #CCC;
-    background-color: rgba(253, 244, 249, 0.2);
-}
-.sous li {
-    display:block;
-    width: 1%;
-    text-align: center;
-    margin-top: 30px;
-}
-.sous a {
-    border-bottom: none;
+    display:flex;
+    justify-content: flex-end;
+    max-width: 1100px;
     margin-top: 20px;
+    padding:0;
 }
-a.active,a:hover{
+ul li{
+    list-style: none;
+    font-size:27px;
+    position:relative;
+    transition: 0.5s;
+    padding:0px 30px;
+    box-shadow: 0px 1px 0px #CCC;
+}
+ul li:hover {
     background:#e0e0e0;
-    transition: .5s;
-
-
 }
-.checkbtn{
-    font-size:30px;
-    color:white;
-    float:right;
-
-    margin-right:40Px;
-    cursor:pointer;
-    display: none;
+ul li a{
+    text-decoration: none;
+    padding:0 30px;
+    color:#616161;
 }
-#check{
-    display: none;
+ul li ul{
+    color:#616161;
+    position: absolute;
+    top:20px;
+    left:0;
+    display: block;
+    transition:0.5s;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0px 1px 0px #CCC;
 }
-
+ul li:hover ul{
+    opacity: 1;
+    visibility: visible;
+    box-shadow: 0px 1px 0px #CCC;
+}
+a:hover{
+    color:#616161;
+}
+ul li ul li{
+    border-bottom:#e0e0e0;
+}
 /*lien don*/
 h1 {
     font-family: 'Dancing Script', cursive;
@@ -206,10 +158,6 @@ p {
     width: 70px;
 }
 
-#ins {
-    text-align: center;
-}
-
 /*page article admin*/
 /*.container{
     display:flex;
@@ -222,7 +170,6 @@ p {
 .image{
     width: 40%;
 }
-
 /*footer liens facebook*/
 
 #news {
@@ -238,7 +185,6 @@ p {
 #ins {
     text-align: center;
 }
-
 #footer {
     background-color: #d3fdfd;
     font-family: 'Dancing Script', cursive;
@@ -265,6 +211,31 @@ p {
 #instagram {
     margin-right: 83%
 }
+/*formulaire*/
+.form-group{
+    margin-left: 80%;
+}
+.form-group2{
+    margin-left: 50%;
+}
+@media  (max-width:768px){
+   ul{
+       flex-wrap: nowrap;
+        padding-left: 10px;
+    }
+   li{
+       padding:0px;
+       margin-left: -20px;
+    }
+    ul li:hover ul{
+        box-shadow: 0px 1px 0px #CCC;
+    }
+    ul li:hover {
+        background:transparent;
+    }
+}
+
+
 
 /*@media screen and (min-width: 100px) and (max-width: 640px ){
     nav{
@@ -280,79 +251,6 @@ p {
     }
 
 }*/
-@media  screen and (min-width: 200px) and (max-width: 858px ){
-    label.logo{
-        color:#616161;
-        font-size: 35px;
-        padding:0 100px;
-        font-weight: bold;
-    }
-    nav>ul li:hover .sous {
-        display: block;
-
-    }
-    li {
-        width: 100px;
-        text-align: center;
-    }
-    ul li {
-        display: inline-block;
-        width: 200px;
-        text-align: center;
-    }
-    .sous {
-        display: none;
-        box-shadow: 0px 1px 0px #CCC;
-        background-color: rgba(253, 244, 249, 0.2);
-    }
-    .sous li {
-        display:block;
-        width: 30%;
-        text-align: center;
-    }
-    .sous a {
-        border-bottom: none;
-    }
-    a.active,a:hover{
-        background:#e0e0e0;
-        transition: .5s;
-    }
-
-    .checkbtn{
-        display:block;
-    }
-    ul{
-        display: block;
-        width:100%;
-        height:160vh;
-        background:#89bfd9;
-        top:80px;
-        margin-left: 100px;
-        transition: all .5s;
-    }
-    nav ul li{
-        display:block;
-        margin:50px 0;
-    }
-    nav ul li a{
-        font-size:25px;
-    }
-    a.active, a:hover{
-        background:none;
-        color:#616161;
-        margin-left:30px ;
-    }
-    #check:checked ~ ul{
-        left:0;
-    }
-    .form-group{
-        margin-left: 80%;
-    }
-    .form-group2{
-        margin-left: 50%;
-    }
-
-}
 /*section{
     background:url(../img/rubans.jpg) no-repeat;
     background-size: cover;

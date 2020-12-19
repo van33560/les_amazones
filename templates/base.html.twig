@@ -18,39 +18,36 @@
 <body>
 {% block header%}
     <header class="" id="bg">
+        <div class="d-none col-lg-2 mr-0 d-lg-block position-absolute" id="logo">
+            <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="img-fluid">
+        </div>
         <nav>
-            <input type="checkbox" id="check">
-              <label for="check"class="checkbtn">
-                  <i class="fa fa-bars"></i>
-               </label>
-              <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="amazone d-lg-block">
-
             <ul>
                 <li class=""><a href="#Généralités">Généralités &ensp;</a>
-                  <ul class="sous">
-                      <li class=""><a href="{{path('home_page')}}">Statistiques</a></li>
-                      <li class=""><a href="#">Newsletter</a></li>
-                      <li class=""><a href="contact.html">Contact</a></li>
-                      <li class=""><a href="Apropos.html">Apropos</a></li>
-                  </ul>
+                    <ul class="soubmenu">
+                        <li class=""><a href="{{path('home_page')}}">Statistiques</a></li>
+                        <li class=""><a href="#">Newsletter</a></li>
+                        <li class=""><a href="contact.html">Contact</a></li>
+                        <li class=""><a href="Apropos.html">A propos</a></li>
+                    </ul>
                 </li>
                 <li class=""><a href="#Pages">Pages &ensp;</a>
-                        <ul class="sous">
-                            <li class=""><a href="psychologique.html">Psychologique</a></li>
-                            <li class=""><a href="esthetique.html">Esthétique</a></li>
-                            <li class=""><a href="perruques.html">Pérruques</a></li>
-                            <li class=""><a href="assurances.html">Assurances</a></li>
-                        </ul>
-                    </li>
-                    <li class=""><a href="#Actualités">Actualités&ensp;</a>
-                        <ul class="sous">
-                            <li class=""><a href="larecherche.html">Recherche</a></li>
-                            <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
-                            <li class=""><a href="{{path('Front_categorylist')}}">Categories</a></li>
-                            <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
-                            <li class=""><a href="annuaire.html">Annuaire</a></li>
-                        </ul>
-                    </li>
+                    <ul class="submenu">
+                        <li class=""><a href="psychologique.html">Psychologique</a></li>
+                        <li class=""><a href="esthetique.html">Esthétique</a></li>
+                        <li class=""><a href="perruques.html">Pérruques</a></li>
+                        <li class=""><a href="assurances.html">Assurances</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="#Actualités">Actualités&ensp;</a>
+                    <ul class="soumenu">
+                        <li class=""><a href="larecherche.html">Recherche</a></li>
+                        <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
+                        <li class=""><a href="{{path('Front_categorylist')}}">Categories</a></li>
+                        <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
+                        <li class=""><a href="annuaire.html">Annuaire</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
