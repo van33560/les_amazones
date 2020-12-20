@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block main%}
-    {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
-     generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
-    #}
-    {%  for message in app.flashes ('success') %}
+{# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
+ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
+#}
+{%  for message in app.flashes ('success') %}
         <p>{{ message }}</p>
-    {% endfor %}
+{% endfor %}
     <h1 class="text-center mt-5"> Vous pouvez modifier votre Témoignage</h1>
     <div class="form-group ml-5 col-12 col-lg-5  mt-5">
         {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
@@ -34,11 +34,9 @@
         </div>
 
         <div class="form-group col-md-2">
-
             {{ form_label (formView.article) }}
             {{ form_widget(formView.article,{ 'attr':{'class':'testimony_form_article'}}) }}
             {{ form_errors(formView.article) }}
-
         </div>
 
         <div class="form-group col-md-2">

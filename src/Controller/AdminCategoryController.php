@@ -72,7 +72,7 @@ public function insertCategory(Request $request, EntityManagerInterface $entityM
 
     }
     /**
-     * @route("admin/category/update/{id}",name="admin_category_update")
+     * @route("category/admin/category/update/{id}",name="admin_category_update")
      * @param $id
      * @param CategoryRepository $categoryRepository
      * @param Request $request
@@ -116,7 +116,7 @@ public function insertCategory(Request $request, EntityManagerInterface $entityM
         ]);
     }
     /**
-     * @route("admin/category/delete/{id}",name="admin_category_delete")
+     * @route("category/admin/category/delete/{id}",name="admin_category_delete")
      * @param $id
      * @param CategoryRepository $categoryRepository
      * @param EntityManagerInterface $entityManager

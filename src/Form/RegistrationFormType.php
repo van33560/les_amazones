@@ -22,9 +22,6 @@ class RegistrationFormType extends AbstractType
             ->add('firstname')
             ->add('name')
             ->add('age')
-            ->add('adress')
-            ->add('city')
-            ->add('phone')
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -56,7 +53,7 @@ class RegistrationFormType extends AbstractType
                 //require =>le champs doit etre renseigner
                 //mapped pour sf ne gere pas le contenu
             ])
-            ->add('submit',SubmitType::class)
+            ->add('valider',SubmitType::class)
         ;
     }
 

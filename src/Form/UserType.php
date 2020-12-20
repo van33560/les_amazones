@@ -21,9 +21,6 @@ class UserType extends AbstractType
             ->add('firstname')
             ->add('name')
             ->add('age')
-            ->add('adress')
-            ->add('city')
-            ->add('phone')
             ->add('email')
             ->add('password', RepeatedType::class, array(
                 'type' => PasswordType::class,

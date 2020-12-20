@@ -35,22 +35,6 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $age;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $adress;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $city;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $phone;
-
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
@@ -122,55 +106,6 @@ class User implements UserInterface
     {
         $this->user_picture = $user_picture;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param mixed $phone
-     */
-    public function setPhone($phone): void
-    {
-        $this->phone = $phone;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param mixed $city
-     */
-    public function setCity($city): void
-    {
-        $this->city = $city;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdress()
-    {
-        return $this->adress;
-    }
-
-    /**
-     * @param mixed $adress
-     */
-    public function setAdress($adress): void
-    {
-        $this->adress = $adress;
-    }
-
     /**
      * @return mixed
      */

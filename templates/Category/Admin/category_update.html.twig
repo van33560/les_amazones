@@ -1,42 +1,41 @@
 {% extends 'base.html.twig' %}
 
-
 {% block main%}
-    <h1>Vous pouvez modifier votre categorie</h1>
-    {%  for message in app.flashes ('success') %}
-        <p>{{ message }}</p>
-    {% endfor %}
-    {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
+
+{%  for message in app.flashes ('success') %}
+    <p>{{ message }}</p>
+{% endfor %}
+{# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
  generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
-    #}
-    <form class="form">
+#}
+    <div class="row position relative">
+        <div class="position absolute">
+            <img src="{{ asset('assets/img/assurances.jpg') }}" alt="" class="img-fluid" id="assurances">
+        </div>
+    </div>
+    <h1 class="text-center" id="modif-category"> Vous pouvez modifier vos catégory</h1>
+    <div class="form-group col-12 col-lg-5" id="form-update-category">
         {{ form_start(formView) }}
         {# avec la fonction form_label je crée un label title  #}
         <div class="form-group col-md-2">
             {{ form_label(formView.title) }}
             {# avec la fonction form_widget je crée un input  #}
-            {{ form_widget(formView.title,{ 'attr':{'class':'article_form_title'}}) }}
+            {{ form_widget(formView.title,{ 'attr':{'class':'category_form_title'}}) }}
             {{ form_errors(formView.title) }}
         </div>
         <div class="form-group col-md-2">
             {{ form_label(formView.date) }}
-            {{ form_widget(formView.date,{ 'attr':{'class':'article_form_date'}}) }}
+            {{ form_widget(formView.date,{ 'attr':{'class':'category_form_date'}}) }}
 
         </div>
         <div class="form-group col-md-2">
             {{ form_label(formView.article) }}
-            {{ form_widget(formView.article,{ 'attr':{'class':'article_form_article'}}) }}
-        </div>
-        <div class="form-group col-md-2">
-            {{ form_label(formView.new_article) }}
-            {{ form_widget(formView.new_article,{ 'attr':{'class':'article_form_new_article'}}) }}
+            {{ form_widget(formView.article,{ 'attr':{'class':'category_form_article'}}) }}
         </div>
         <div class="form-group col-md-2">
             {{ form_label(formView.valider) }}
-            {{ form_widget(formView.valider,{ 'attr':{'class':'article_form_valider'}}) }}
+            {{ form_widget(formView.valider,{ 'attr':{'class':'category_form_valider'}}) }}
         </div>
         {# form_end ferme mon formulaire #}
         {{ form_end(formView) }}
-    </form>
-
 {% endblock main %}

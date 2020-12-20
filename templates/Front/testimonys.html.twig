@@ -1,35 +1,33 @@
 {% extends 'base.html.twig' %}
-{% block message %}
-    {# je mets mon message dans un block message, qui  est redefini dan mon fichier twig#}
-    {#  si mon message est supprimé j'affiche mon message grace a la variable globale app sur la page principale#}
-{%  for message in app.flashes ('success') %}
-        <p>{{ message }}</p>
-{% endfor %}
-{% endblock message%}
+{# {% block message %}
+{# je mets mon message dans un block message, qui  est redefini dans mon fichier twig#}
+{#  si mon message est supprimé j'affiche mon message grace a la variable globale app sur la page principale#}
+{# {% endblock message%} #}
 {% block main %}
-<div id="but"><a href="{{ path('admin_testimony_insert') }}"></a><h1>Créer votre témoignage</h1></div>
-<div class="front_container_testimony">
+<div id="but"><h1>Vos témoignages</h1></div>
+<div class="front_container_testimonys">
 {# lien pour creer un temoignage avec la propriété path #}
 {% for testimony in testimonys %}
       {# avec la boucle for j'appel un temoignage parmis tous les temoignages avec un lien clipable a href  #}
       {# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}
         {% if loop.index is odd %}
-             <article class="front_article_testimony">
-                    <div class="front_content_testimony">
-                        <h2 >{{ testimony.title }}</h2>
-                        <p>{{ testimony.article }}</p>
-                        <div class="front_picture_testimony">
-                            <img src="{{ testimony.picture }}" alt="" class="resp">
+             <article class="front_article_testimonys">
+                    <div class="front_content_testimonys">
+                        <h2>{{ testimony.title }}</h2>
+                             {{ testimony.article }}
+                        <div class="front_picture_testimonys">
+                            <img src="{{ asset('uploads/testimonys/' ~ testimony.picture) }}" alt="">
                         </div>
                     </div>
               </article>
-  {% if testimony.picture %}
-{# je récupère le nom du fichier uploadé
- que je concatène avec le dossier
- dans le dossier uploadé #}
-<img src="{{ asset('uploads/testimonys/' ~ testimony.picture) }}" alt="">
-  {% endif %}
-{% endif %}
+        {% endif %}
 {% endfor %}
 </div>
 {% endblock main%}
+{#  {% if testimony.picture %}#}
+{# je récupère le nom du fichier uploadé
+ que je concatène avec le dossier
+ dans le dossier uploadé
+<a href="{{ path('Front_testimony_list') }}"></a>#}
+{#  <img src="{{ asset('uploads/testimonys/' ~ testimony.picture) }}" alt="">
+  {% endif %}#}
