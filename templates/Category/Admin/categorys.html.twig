@@ -4,7 +4,7 @@
 {%  for message in app.flashes ('success') %}
     <p>{{ message }}</p>
 {% endfor %}
-    <div id="but"><a href="{{ path('admin_category_insert')}}"><h1>Créer votre catégory</h1></a></div>
+<div id="but"><a href="{{ path('admin_category_insert')}}"><h1>Créer votre catégory</h1></a></div>
     <div class="admin_container_categorys">
         {# lien pour creer un article avec la propriété path #}
         {% for category in categorys %}
@@ -13,25 +13,36 @@
              de ma page modify_static.html.twig#}
             {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
             {# j'appel mes images et mes titres  #}
+        <h2 class="title_categorys_admin">{{ category.title}}</h2>
+        <div class="display_categorys_admin">
             {% if loop.index is odd %}
-            <article class="admin_category mt-5">
-                <h2>{{ category.title}}</h2>
-                   <p>{{ category.Date|date("m/d/Y") }}</p>
-                        <p>{{ category.article }}</p>
-                        <button class="button_category"><a href="{{ path('admin_category_update', {'id': category.id}) }}">modifier cette categorie</a></button>
-                        {#  Je créer le lien qui va supprimer la category de la liste via son id #}
-                        <button class="button_category"><a href="{{ path('admin_category_delete', {'id': category.id}) }}">supprimer cette categorie</a></button>
+                <article class="box_categorys_admin">
+                    <p>{{ category.Date|date("m/d/Y") }}</p>
+                    <p>{{ category.article }}</p>
                 </article>
+                <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" class="box_categorys_admin">
             {% else %}
-                <article class="admin_category mt-5">
-                    <h2>{{ category.title}}</h2>
+                <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" class="box_categorys_admin">
+                <article class="box_categorys_admin">
                     <p>{{ category.article }}</p>
                     <p>{{ category.Date|date("m/d/Y") }}</p>
-                    <button class="button_category"><a href="{{ path('admin_category_update', {'id': category.id}) }}">modifier cette categorie</a></button>
-                    {#  Je créer le lien qui va supprimer la category de la liste via son id #}
-                    <button class="button_category"><a href="{{ path('admin_category_delete', {'id': category.id}) }}">supprimer cette categorie</a></button>
                 </article>
             {% endif %}
+        </div>
+                {#  Je créer le lien qui va supprimer la category de la liste via son id #}
+                <div class="button_category"><a href="{{ path('admin_category_update', {'id': category.id}) }}">Modifier</a></div>
+                <div class="button_category"><a href="{{ path('admin_category_delete', {'id': category.id}) }}">Supprimer</a></div>
+
         {% endfor %}
-    </div><hr>
+    </div>
 {% endblock main%}
+
+
+
+
+
+
+
+
+
+

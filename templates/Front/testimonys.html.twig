@@ -5,22 +5,30 @@
 {# {% endblock message%} #}
 {% block main %}
 <div id="but"><h1>Vos témoignages</h1></div>
-<div class="front_container_testimonys">
+ <div class="admin_container_testimonys">
 {# lien pour creer un temoignage avec la propriété path #}
 {% for testimony in testimonys %}
       {# avec la boucle for j'appel un temoignage parmis tous les temoignages avec un lien clipable a href  #}
       {# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}
-        {% if loop.index is odd %}
-             <article class="front_article_testimonys">
-                    <div class="front_content_testimonys">
-                        <h2>{{ testimony.title }}</h2>
-                             {{ testimony.article }}
-                        <div class="front_picture_testimonys">
-                            <img src="{{ asset('uploads/testimonys/' ~ testimony.picture) }}" alt="">
-                        </div>
-                    </div>
-              </article>
-        {% endif %}
+        <h2 class="title_testimonys_admin">{{ testimony.title }}</h2>
+        <div class ="display_testimonys_admin">
+            {% if loop.index is odd %}
+                     <article class="box_testimonys_admin">
+                        <p>{{ testimony.article }}</p>
+                     </article>
+                        <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
+             {% else %}
+                     <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
+                     <article class="box_testimonys_admin">
+                         <p>{{ testimony.article }}</p>
+                     </article>
+            {% endif %}
+        </div>
+            {% if is_granted('ROLE_ADMIN')%}
+                <div id="but"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
+                <div id="button_testimony"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">supprimer</a></div>
+                <div id="button_testimony"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">modifier</a></div>
+            {% endif %}
 {% endfor %}
 </div>
 {% endblock main%}
@@ -30,4 +38,5 @@
  dans le dossier uploadé
 <a href="{{ path('Front_testimony_list') }}"></a>#}
 {#  <img src="{{ asset('uploads/testimonys/' ~ testimony.picture) }}" alt="">
-  {% endif %}#}
+{% endif %}#}
+

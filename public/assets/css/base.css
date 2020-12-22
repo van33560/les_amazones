@@ -159,7 +159,7 @@ span {
     margin-left: 2%;
     margin-top: 1%;
 }
-#button,#admin_button,#button_testimony{
+#button,#admin_button,#button_testimony,.button_category{
     width: 100px;
     height: 50px;
     border-radius: 25px;
@@ -170,8 +170,8 @@ span {
     box-shadow: 0px 1px 2px #616161;
     display: inline-block;
     font-size: x-large;
-    margin:30px 80px;
-    padding:0;
+    margin:30px 50px;
+
 }
 #but{
     width: 210px;
@@ -186,84 +186,34 @@ span {
     margin-top: 300px;
     margin-left:40%;
 }
-#button_testimony{
-    margin:50px 170px;
-    padding:0;
 
-}
-.button_category{
-    margin:50px 170px;
-    padding:0;
-    width: 300px;
-    height: 50px;
-    border-radius: 25px;
-    color: black;
-    text-align: center;
-    line-height: 50px;
-    background-color: #fdf4f9;
-    box-shadow: 0px 1px 2px #616161;
-    display: inline-block;
-    font-size: x-large;
-}
-/*admin article images*/
-.admin_article {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin:60px;
-}
-.admin_container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top:600px;
-}
-.admin_image{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin:100px;
-}
-/*admin crud articles*/
+
+/*admin crud articles category testimony*/
 #creer{
     margin-top:200px;
 }
-.admin_container_articles{
-    margin-top: 100px;
+.admin_container_articles,.admin_container_categorys,.admin_container_testimonys{
+    margin: 100px 30px;
 }
-.admin_articles {
+.display_articles_admin,.display_categorys_admin{
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
-
 }
-
-admin_illustration_articles{
+.title_articles_admin,.title_categorys_admin,.title_testimonys_admin{
+    margin: 20px 40px;
+    padding:50px  30px;
+}
+.box_articles_admin,.box_categorys_admin,.box_testimonys_admin{
+    width: 45%;
+    height: auto;
+}
+.display_testimonys_admin{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: space-around;
-     margin-bottom: 100px;
-
-}
-/*admin crud testimonys*/
-.admin_container_testimonys{
-    margin:100px 40px;
-}
-.admin_testimony_articles{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding:50px 100px;
-    margin:30px 40px;
 }
 
-admin_testimonys_picture{
-    display: flex;
-    width:10%;
-    flex-direction: column;
-    padding:50px 50px;
-    margin:30px 40px;
-}
+/*images form testimony*/
 #mainsunis{
     position: absolute;
     width: 30%;
@@ -271,7 +221,7 @@ admin_testimonys_picture{
     margin-top: 280px;
     clear: both;
 }
-/*crud category*/
+/* image form category*/
 #assurances{
     position: absolute;
     width: 30%;
@@ -290,47 +240,6 @@ admin_testimonys_picture{
     margin-left: 330px;
     margin-top: 250px;
 }
-/*front articles images*/
-.vos_articles{
-    margin-top: 10px;
-}
-.front_articles {
-    display: block;
-    flex-direction: column;
-    justify-content: center;
-    margin:60px;
-}
-.front_container_articles {
-    display: block;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 100px;
-
-}
-front_illustration_articles{
-    display: block;
-    flex-direction: column;
-    justify-content: center;
-    margin:100px;
-}
-/*front testimony*/
-.front_container_testimonys{
-    display: flex;
-}
-.front_article_testimonys {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 200px 20px;
-    font-size: 16px;
-    font-family: 'Philosopher', sans-serif;
-}
-
-front_picture_testimonys{
-    display: flex;
-}
-
-/*footer liens facebook*/
-
 #news {
     margin-top: 20%;
     text-align: center;
@@ -372,10 +281,8 @@ front_picture_testimonys{
 #instagram {
     margin-right: 83%
 }
-
-
 /*responsive menu*/
-@media  (max-width:768px){
+@media  (max-width:968px){
     ul{
         flex-wrap: nowrap;
         padding-left: 10px;
@@ -402,9 +309,53 @@ front_picture_testimonys{
     }
 
 }
-@media (min-width:168px) {
+@media (max-width:768px) {
+
+/*crud articles et buttons*/
+    .display_articles-admin,.display_categorys-admin{
+        display: block;
+        margin: 0 auto;
+    }
+    .title_articles-admin,.title_categorys_admin{
+        display:inline-block;
+        font-size: 30px;
+    }
+    .box_articles_admin,.box_categorys_admin{
+        width: 100%;
+        height: auto;
+    }
+    #admin_button,.button_category{
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+        border-radius: 25px;
+        color: black;
+        text-align: center;
+        line-height: 50px;
+        background-color: #fdf4f9;
+        box-shadow: 0px 1px 2px #616161;
+        font-size: x-large;
+    }
+    #but{
+        width: 210px;
+        height: 100px;
+        border-radius: 25px;
+        color: black;
+        text-align: center;
+        background-color: #fdf4f9;
+        box-shadow: 0px 1px 2px #616161;
+        display: inline-block;
+        font-size: x-large;
+        margin-top: 300px;
+        margin-left: 140px;
+
+    }
+
+
+
+
     /*formulaires*/
-    #form_insert-article{
+   /* #form_insert-article{
         margin: 100px 600px;
     }
     #form_modifier-article{
@@ -413,7 +364,7 @@ front_picture_testimonys{
     .form-insert-testimony{
 
         margin-top: 200px;
-    }
+    }*/
 }
 
     /*section{

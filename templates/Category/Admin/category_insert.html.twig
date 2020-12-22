@@ -30,6 +30,11 @@ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elem
                     {{ form_label(formView.article) }}
                     {{ form_widget(formView.article,{ 'attr':{'class':'category_form_article'}}) }}
                 </div>
+                <div class="form-group col-md-1"id="file">
+                    {{ form_label(formView.photo) }}
+                    {{ form_widget(formView.photo, {'attr': {'class': 'category_form_photo'}}) }}
+                    {{ form_errors(formView.photo) }}
+                </div>
                 <div class="form-group col-md-2">
                     {{ form_label(formView.valider) }}
                     {{ form_widget(formView.valider,{ 'attr':{'class':'category_form_valider'}}) }}

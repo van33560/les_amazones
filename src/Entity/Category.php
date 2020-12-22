@@ -52,6 +52,30 @@ class Category
     private $article;
 
     /**
+     * @ORM\Column(type="string", length=6500)
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
+     */
+    private $photo;
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto($photo): void
+    {
+        $this->photo = $photo;
+    }
+
+
+
+    /**
      * @return mixed
      */
     public function getArticle()

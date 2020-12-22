@@ -2,25 +2,34 @@
 
 {% block main %}
 <div id="but"><h1 class="vos_articles">Vos articles</h1></div>
-<div class="front_container_articles">
+<div class="admin_container_articles">
 {% for article in articles %}
 {# avec la boucle for j'appel un article dans mes articles avec clipable avec le lien a href  #}
 {# avec la propriete path j'appel un de mes articles qui sera clipable et qui affichera le contenu
 de ma page modify_static.html.twig#}
 {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
 {# j'appel mes images et mes titres  #}
-     {% if loop.index is odd %}
-        <article class="front_articles">
-            <div class="front_content_articles">
-                <p>{{ article.category }}</p>
-                  <h2>{{ article.title }}</h2>
-                    <p>{{ article.content }}</p>
-                    <div class="front_illudtration_articles">
-                        <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="">
-                    </div>
-            </div>
-        </article>
-     {% endif %}
+
+         <h2 class="title_articles_admin">{{ article.title }}</h2>
+         <div class="display_articles_admin">
+             {% if loop.index is odd %}
+                 <article class="box_articles_admin">
+                     <p>{{ article.content }}</p>
+                 </article>
+                 <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="box_articles_admin">
+              {% else %}
+                 <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="box_articles_admin">
+                 <article class="box_articles_admin">
+                     <p>{{ article.content }}</p>
+                 </article>
+             {% endif %}
+         </div>
+         {% if is_granted('ROLE_ADMIN')%}
+              <div id="but"><a href="{{ path('admin_article_insert') }}"><h1>Créer votre article</h1></a></div>
+              <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
+              <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
+         {% endif %}
+
 {% endfor %}
 </div>
 {% endblock main%}

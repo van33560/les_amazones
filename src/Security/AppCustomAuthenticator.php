@@ -71,7 +71,7 @@ class AppCustomAuthenticator extends AbstractFormLoginAuthenticator implements P
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email could not be found.');
+            throw new CustomUserMessageAuthenticationException('Email non pas  trouvé');
         }
 
         return $user;
@@ -98,8 +98,8 @@ class AppCustomAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
 
-        //return new RedirectResponse($this->urlGenerator->generate('admin_article_update'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse($this->urlGenerator->generate('home_page'));
+        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
 
     }
 

@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 class AdminCategoryController extends AbstractController
 {    // chemin de ma route et son name
 /**
@@ -36,11 +38,12 @@ class AdminCategoryController extends AbstractController
      * @route("category/admin/category/insert",name="admin_category_insert")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
+     * @param SluggerInterface $slugger
      * @return RedirectResponse|Response
      */
 
     //je crée une methode pour créer un formulaire avec la methode insertArticle
-public function insertCategory(Request $request, EntityManagerInterface $entityManager)
+public function insertCategory(Request $request, EntityManagerInterface $entityManager,SluggerInterface $slugger)
     {   //j' indique a sf que je crée un nouvelle objet
         $category = new Category();
 
@@ -50,27 +53,51 @@ public function insertCategory(Request $request, EntityManagerInterface $entityM
         $form->handleRequest($request);
 
 
-        //je fait une contidion si mon formulaire et envoyer et valide alors je pré-sauvegarde
-        //avec la fonction persist et j'insere avec la fonction flush
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $photo=$form->get('photo')->getData();
 
+            if($photo){
+                //je recupere le nom d'origine de l'image
+                $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+                // grâce à la classe Slugger, je change le nom de mon image
+                // et pour sortir tous les caractères spéciaux
+                $safeFilename = $slugger->slug($originalFilename);
+
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$photo->guessExtension();
+                //je déplace l'image dans un dossier temporaire services.yaml ou je precise  en parametre son nom
+                $photo->move(
+                    $this->getParameter('photo_directory'),//recuperer envoyer les données vers parametres
+                    $newFilename
+                );
+                $category->setPhoto($newFilename);
+            }
+            // je récupère le fichier uploadé dans le formulaire
+            //je recupere le contenu du champ imageFileName
+            //je fait une contidion si mon formulaire et envoyer et valide alors je pré-sauvegarde
+            //avec la fonction persist
             $entityManager->persist($category);
+            // j'insere avec la fonction flush
             $entityManager->flush();
 
             $this->addFlash(
                 "sucess",
-                "la category a ete ajouté"
+                "la catégory a ete ajouté"
             );
             return $this->redirectToRoute('admin_categorylist');
         }
         //je crée grâce à la fonction createview une vue qui pourra  en suite être lu par twig
         $formView = $form-> createView();
+
         //la fonction render me permet d'envoyer a twig les infos qui seront affichés
-            return $this->render('Category/Admin/category_insert.html.twig',[
+        return $this->render('Category/Admin/category_insert.html.twig',[
             'formView' => $formView
         ]);
 
+
     }
+
+
     /**
      * @route("category/admin/category/update/{id}",name="admin_category_update")
      * @param $id
@@ -146,6 +173,7 @@ public function insertCategory(Request $request, EntityManagerInterface $entityM
         // la fonction redirecttoroute permet de retrouner un visuel via le name de mon fichier 'articlelist'
         return $this->redirectToRoute('admin_categorylist');
 
-    }
+     }
 
-}
+
+ }

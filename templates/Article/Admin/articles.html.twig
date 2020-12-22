@@ -12,23 +12,24 @@
     de ma page modify_static.html.twig#}
     {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
     {# j'appel mes images et mes titres  #}
-        {% if loop.index is odd %}
-            <article class="admin_articles">
-                <h2>{{ article.title }}</h2>
+
+        <h2 class="title_articles_admin">{{ article.title }}</h2>
+        <div class="display_articles_admin">
+            {% if loop.index is odd %}
+                <article class="box_articles_admin">
                     <p>{{ article.content }}</p>
-                <li><img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="admin_illustration_articles"></li>
-            </article>
-            <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">supprimer</a></div>
-            <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">modifier</a></div>
-          {% else %}
-            <article class="admin_articles">
-                <h2>{{ article.title }}</h2>
-                <li><img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="admin_illustration_articles"></li>
+                </article>
+                <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="box_articles_admin">
+              {% else %}
+                  <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="box_articles_admin">
+                  <article class="box_articles_admin">
                     <p>{{ article.content }}</p>
-            </article>
-            <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">supprimer</a></div>
-            <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">modifier</a></div>
-        {% endif %}
+                </article>
+            {% endif %}
+        </div>
+        <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
+        <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
+
 {#{% if article.illustration %}
 {#
 je récupère le nom du fichier uploadé

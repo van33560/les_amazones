@@ -95,7 +95,7 @@ public function ArticleList(ArticleRepository $articleRepository)
         ]);
 
 
-    }
+}
     /**
      * @route("admin/article/update/{id}",name="admin_article_update")
      * @param $id
