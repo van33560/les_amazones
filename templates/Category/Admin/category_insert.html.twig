@@ -8,37 +8,45 @@
 {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
 generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
 #}
+ <h1 class="form-group" id="gerer-category">Créer vos categories</h1>
 <div class="row position relative">
     <div class="position absolute">
         <img src="{{ asset('assets/img/smiles.jpg') }}" alt="" class="img-fluid" id="smiles">
     </div>
 </div>
-<div class="form-insert-category">
-    <div class="form-group col-10 col-lg-6 ml-5 mt-5">
-        <h1 class="form-group" id="gerer-category">Gérer vos categories</h1>
-            {{ form_start(formView) }}
-                <div class="form-group col-md-2 mt-5">
-                    {{ form_label(formView.title) }}
-                    {{ form_widget(formView.title,{ 'attr':{'class':'category_form_title'}}) }}
-                    {{ form_errors(formView.title) }}
-                </div>
-                <div class="form-group col-md-2">
-                    {{ form_label(formView.date) }}
-                    {{ form_widget(formView.date,{ 'attr':{'class':'category_form_date'}}) }}
-                </div>
-                <div class="form-group col-md-2">
-                    {{ form_label(formView.article) }}
-                    {{ form_widget(formView.article,{ 'attr':{'class':'category_form_article'}}) }}
-                </div>
-                <div class="form-group col-md-1"id="file">
-                    {{ form_label(formView.photo) }}
-                    {{ form_widget(formView.photo, {'attr': {'class': 'category_form_photo'}}) }}
-                    {{ form_errors(formView.photo) }}
-                </div>
-                <div class="form-group col-md-2">
-                    {{ form_label(formView.valider) }}
-                    {{ form_widget(formView.valider,{ 'attr':{'class':'category_form_valider'}}) }}
-                </div>
-            {{ form_end(formView) }}
+    {{ form_start(formView) }}
+        <form>
+            <div class="form-insert-category">
+
+                  <div class="form-group col-6 col-md-4 col-lg-3">
+                        {{ form_label(formView.title) }}
+                        {{ form_widget(formView.title,{ 'attr':{'class':'form-control'}}) }}
+                        {{ form_errors(formView.title) }}
+                    </div>
+
+                    <div class="form-group col-6 col-md-4 col-lg-3">
+                        {{ form_label(formView.date) }}
+                        {{ form_widget(formView.date,{ 'attr':{'class':'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group col-6 col-md-4 col-lg-3">
+                        {{ form_label(formView.article) }}
+                        {{ form_widget(formView.article,{ 'attr':{'class':'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group col-6 col-md-4 col-lg-3">
+                        {{ form_label(formView.photo) }}
+                        {{ form_widget(formView.photo, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(formView.photo) }}
+                    </div>
+
+                    <div class="form-group col-6 col-md-2 mt-5 col-lg-2">
+                        {{ form_label(formView.valider) }}
+                        {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
+                    </div>
+
+            </div>
+        </form>
+    {{ form_end(formView) }}
 
 {% endblock main%}

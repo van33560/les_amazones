@@ -38,21 +38,41 @@ form#connect{
     padding-bottom: 200px;
 
 }
-/*formulaires*/
-
-#form_modifier-article{
-    margin: 100px 600px;
-}
-.form-insert-testimony{
-    margin-left: 100px;
-    margin-top: 200px;
-}
+/*formulaires inserer article*/
 #creer-article{
-    margin-top: 300px;
+    margin-top: 250px;
+    margin-bottom: 120px;
 }
-#modifier-article{
-    margin-top: 300px;
+.modifier-article{
+    margin: 150px 600px;
+    text-align: center;
 }
+.titre-temoignage-insert{
+    margin:200px 450px 100px;
+}
+.form-group-article-insert,
+.form-group-article-modify,
+.form-group-testimony-insert,
+.form-group-testimony-modify,
+.form-group-register{
+    margin-left: 150px;
+    margin-bottom: 100px;
+}
+#contrats-assurance{
+    position: absolute;
+    width: 30%;
+    margin-top: 2px;
+    margin-left: 800px;
+    clear: both;
+}
+.titre-inscription{
+    margin: 230px 450px 100px;
+}
+/*inserer modifier category*/
+#gerer-category{
+    margin:250px 550px 100px;
+}
+
 .form-group2{
     margin-left: 40%;
 }
@@ -214,14 +234,17 @@ span {
 }
 
 /*images form testimony*/
+.titre-testimony-modif{
+    margin: 250px 480px 100px;
+}
 #mainsunis{
     position: absolute;
     width: 30%;
     margin-left: 800px;
-    margin-top: 280px;
+    margin-top: 360px;
     clear: both;
 }
-/* image form category*/
+/* image form */
 #assurances{
     position: absolute;
     width: 30%;
@@ -229,17 +252,28 @@ span {
     margin-top: 450px;
     clear: both;
 }
+#assurances-testimony{
+    position: absolute;
+    width: 30%;
+    margin-left: 800px;
+    margin-top: 20px;
+    clear: both;
+}
+/*image form category*/
 #smiles{
     position: absolute;
     width: 30%;
     margin-left: 800px;
-    margin-top: 450px;
     clear: both;
 }
-#gerer-category{
-    margin-left: 330px;
-    margin-top: 250px;
+#sport-rose{
+    position: absolute;
+    width: 30%;
+    top:220px;
+    margin-left: 800px;
+    clear: both;
 }
+
 #news {
     margin-top: 20%;
     text-align: center;
@@ -253,7 +287,7 @@ span {
 #ins {
     text-align: center;
 }
-
+/*footer*/
 #footer {
     background-color: #d3fdfd;
     font-family: 'Dancing Script', cursive;
@@ -310,6 +344,22 @@ span {
 
 }
 @media (max-width:768px) {
+    .modifier-article,#gerer-category{
+        margin:220px 0 90px 0;
+        text-align: center;
+    }
+    .titre-temoignage-insert{
+        margin:250px 140px 90px 0;
+        text-align: center;
+    }
+    .titre-testimony-modif{
+        margin:250px 20px 90px 0;
+        text-align: center;
+    }
+    .titre-inscription{
+        margin:250px 130px 90px 0;
+        text-align: center;
+    }
 
 /*crud articles et buttons*/
     .display_articles-admin,.display_categorys-admin{
@@ -354,17 +404,7 @@ span {
 
 
 
-    /*formulaires*/
-   /* #form_insert-article{
-        margin: 100px 600px;
-    }
-    #form_modifier-article{
-        margin: 100px 600px;
-    }
-    .form-insert-testimony{
 
-        margin-top: 200px;
-    }*/
 }
 
     /*section{

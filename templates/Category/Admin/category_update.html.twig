@@ -8,34 +8,45 @@
 {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
  generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
 #}
-    <div class="row position relative">
-        <div class="position absolute">
-            <img src="{{ asset('assets/img/assurances.jpg') }}" alt="" class="img-fluid" id="assurances">
-        </div>
+<div class="row position relative">
+    <div class="position absolute">
+        <img src="{{ asset('assets/img/assurances.jpg') }}" alt="" class="img-fluid" id="assurances">
     </div>
-    <h1 class="text-center" id="modif-category"> Vous pouvez modifier vos catégory</h1>
-    <div class="form-group col-12 col-lg-5" id="form-update-category">
-        {{ form_start(formView) }}
-        {# avec la fonction form_label je crée un label title  #}
-        <div class="form-group col-md-2">
-            {{ form_label(formView.title) }}
-            {# avec la fonction form_widget je crée un input  #}
-            {{ form_widget(formView.title,{ 'attr':{'class':'category_form_title'}}) }}
-            {{ form_errors(formView.title) }}
-        </div>
-        <div class="form-group col-md-2">
-            {{ form_label(formView.date) }}
-            {{ form_widget(formView.date,{ 'attr':{'class':'category_form_date'}}) }}
+</div>
+<h1 class="text-center" id="modif-category">Modifier vos catégories</h1>
 
+   {{ form_start(formView) }}
+   {# avec la fonction form_label je crée un label title  #}
+    <form>
+        <div class="form-group-article-insert">
+            <div class="form-group col-6 col-md-4 col-lg-3">
+                {{ form_label(formView.title) }}
+                {# avec la fonction form_widget je crée un input  #}
+                {{ form_widget(formView.title,{ 'attr':{'class':'form-control'}}) }}
+                {{ form_errors(formView.title) }}
+            </div>
+
+            <div class="form-group col-6 col-md-4 col-lg-3">
+                {{ form_label(formView.date) }}
+                {{ form_widget(formView.date,{ 'attr':{'class':'form-control'}}) }}
+            </div>
+
+            <div class="form-group col-6 col-md-4 col-lg-3">
+                {{ form_label(formView.article) }}
+                {{ form_widget(formView.article,{ 'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group col-6 col-md-4 col-lg-3">
+                {{ form_label(formView.photo) }}
+                {{ form_widget(formView.photo, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(formView.photo) }}
+            </div>
+
+            <div class="form-group col-6 col-md-2 mt-5 col-lg-2">
+                {{ form_label(formView.valider) }}
+                {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
+            </div>
         </div>
-        <div class="form-group col-md-2">
-            {{ form_label(formView.article) }}
-            {{ form_widget(formView.article,{ 'attr':{'class':'category_form_article'}}) }}
-        </div>
-        <div class="form-group col-md-2">
-            {{ form_label(formView.valider) }}
-            {{ form_widget(formView.valider,{ 'attr':{'class':'category_form_valider'}}) }}
-        </div>
-        {# form_end ferme mon formulaire #}
-        {{ form_end(formView) }}
+    </form>
+   {# form_end ferme mon formulaire #}
+   {{ form_end(formView) }}
 {% endblock main %}

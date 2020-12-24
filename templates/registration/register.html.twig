@@ -12,40 +12,57 @@
 
 
   {{ form_start(registrationForm) }}
-    <div class="form-insert-register">
-        <div class="form-group col-10 col-lg-6 ml-5 mt-5">
-            <h1 class="form-group">Inscription</h1>
-              <div class="form-group col-md-2">
-                    {{ form_row(registrationForm.firstname) }}
+<form>
+    <div class="form-group-register">
+        <h1 class="titre-inscription">Inscription</h1>
+                 <div class="form-group col-6 col-md-4 col-lg-3">
+                     {{ form_label(registrationForm.firstname) }}
+                     {{ form_widget(registrationForm.firstname,{ 'attr':{'class':'form-control'}}) }}
+                     {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+                     {{ form_errors(registrationForm.firstname) }}
                 </div>
-                <div class="form-group col-md-2">
-                    {{ form_row(registrationForm.name) }}
-                </div>
-                <div class="form-group col-md-2">
-                    {{ form_row(registrationForm.age) }}
-                </div>
-                <div class="form-group col-md-2">
-                    {{ form_row(registrationForm.email) }}
-                </div>
-
-                <div class="form-group col-md-2">
-                    {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }}
+                <div class="form-group col-6 col-md-4 col-lg-3">
+                    {{ form_label(registrationForm.name) }}
+                    {{ form_widget(registrationForm.name,{ 'attr':{'class':'form-control'}}) }}
+                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+                    {{ form_errors(registrationForm.name) }}
                 </div>
 
-                <div class="form-group col-md-2">
-                    {{ form_row(registrationForm.user_picture) }}
+                <div class="form-group col-6 col-md-4 col-lg-3">
+                    {{ form_label(registrationForm.age) }}
+                    {{ form_widget(registrationForm.age,{ 'attr':{'class':'form-control'}}) }}
+                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+                    {{ form_errors(registrationForm.age) }}
                 </div>
-                <div class="form-group col-md-2">
+
+                <div class="form-group col-6 col-md-4 col-lg-3">
+                    {{ form_label(registrationForm.email) }}
+                    {{ form_widget(registrationForm.email,{ 'attr':{'class':'form-control'}}) }}
+                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+                    {{ form_errors(registrationForm.email) }}
+                </div>
+
+                <div class="form-group col-6 col-md-4 col-lg-3">
+                    {{ form_label(registrationForm.plainPassword) }}
+                    {{ form_widget(registrationForm.plainPassword,{ 'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(registrationForm.plainPassword) }}
+                </div>
+
+                <div class="form-group col-6 col-md-4 col-lg-3">
+                    {{ form_label(registrationForm.user_picture)  }}
+                    {{ form_widget(registrationForm.user_picture,{ 'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(registrationForm.user_picture) }}
+                </div>
+                <div class="form-group col-6 col-md-4 col-lg-3">
                     {{ form_row(registrationForm.agreeTerms) }}
                 </div>
-                <div class="form-group col-md-2">
-                    {{ form_row(registrationForm.valider) }}
+                <div class="form-group col-6 col-md-2 mt-5 col-lg-2">
+                    {{ form_label(registrationForm.valider) }}
+                    {{ form_widget(registrationForm.valider,{ 'attr':{'class':'form-control'}}) }}
                 </div>
-        </div>
     </div>
-  {{ form_end(registrationForm) }}
-
-
+</form>
+    {{ form_end(registrationForm) }}
 {% endblock %}
 
 

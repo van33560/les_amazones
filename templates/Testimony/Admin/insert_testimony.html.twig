@@ -13,53 +13,51 @@
       <img src="{{ asset('assets/img/mainsunis.jpg') }}" alt="" class="img-fluid" id="mainsunis">
     </div>
 </div>
+{{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
+{# avec la fonction form_label je crée un label title  #}
+<form>
+    <div class="form-group-testimony-insert">
+           <h1 class="titre-temoignage-insert">Témoignagez</h1>
+                <div class="form-group col-6 col-md-4 col-lg-3">
+                    {{ form_label(formView.title) }}
+                    {# avec la fonction form_widget je crée un input  #}
+                    {{ form_widget(formView.title,{ 'attr':{'class':'form-control'}}) }}
+                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+                    {{ form_errors(formView.title) }}
+                </div>
 
-<div class="form-insert-testimony">
-    <div class="form-group col-10 col-lg-6 ml-5 mt-5">
-    <h1 class="form-group">Témoignagez</h1>
-    {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
-    {# avec la fonction form_label je crée un label title  #}
-        <div class="form-group col-md-2">
-            {{ form_label(formView.title) }}
-            {# avec la fonction form_widget je crée un input  #}
-            {{ form_widget(formView.title,{ 'attr':{'class':'testimony_form_title'}}) }}
-            {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
-            {{ form_errors(formView.title) }}
-        </div>
+                <div class="form-group col-6 col-md-4 col-lg-3">
+                    {{ form_label(formView.author) }}
+                    {# avec la fonction form_widget je crée un input  #}
+                    {{ form_widget(formView.author,{ 'attr':{'class':'form-control'}}) }}
+                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+                    {{ form_errors(formView.author) }}
+                </div>
 
-        <div class="form-group col-md-2">
-            {{ form_label(formView.author) }}
-            {# avec la fonction form_widget je crée un input  #}
-            {{ form_widget(formView.author,{ 'attr':{'class':'testimony_form_author'}}) }}
-            {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
-            {{ form_errors(formView.author) }}
-        </div>
+                <div class="form-group col-6 col-md-4 col-lg-3 ">
+                    {{ form_label(formView.date) }}
+                    {{ form_widget(formView.date,{ 'attr':{'class':'form-control'}}) }}
+                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+                    {{ form_errors(formView.date) }}
+                </div>
+                <div class="form-group col-6 col-md-4 col-lg-3">
+                    {{ form_label(formView.picture) }}
+                    {{ form_widget(formView.picture, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formView.picture) }}
+                </div>
 
-        <div class="form-group col-md-2 ">
-            {{ form_label(formView.date) }}
-            {{ form_widget(formView.date,{ 'attr':{'class':'testimony_form_date'}}) }}
-            {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
-            {{ form_errors(formView.date) }}
-        </div>
-        <div class="form-group col-md-2"id="file">
-            {{ form_label(formView.picture) }}
-            {{ form_widget(formView.picture, {'attr': {'class': 'testimony_form_picture'}}) }}
-            {{ form_errors(formView.picture) }}
-        </div>
+                <div class="form-group col-6 col-md-4 col-lg-3">
+                    {{ form_label (formView.article) }}
+                    {{ form_widget(formView.article,{ 'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(formView.article) }}
+                </div>
 
-        <div class="form-group col-md-2">
-            {{ form_label (formView.article) }}
-            {{ form_widget(formView.article,{ 'attr':{'class':'testimony_form_article'}}) }}
-            {{ form_errors(formView.article) }}
-        </div>
-
-        <div class="form-group col-md-2">
-            {{ form_label(formView.valider) }}
-            {{ form_widget(formView.valider,{ 'attr':{'class':'testimony_form_valider'}}) }}
-        </div>
+                <div class="form-group col-6 col-md-2 mt-5 col-lg-2">
+                    {{ form_label(formView.valider) }}
+                    {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
+                </div>
     {# form_end ferme mon formulaire #}
     {{ form_end(formView) }}
-
-  </div>
-</div>
+    </div>
+</form>
 {% endblock main%}

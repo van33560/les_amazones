@@ -5,48 +5,55 @@
 {%  for message in app.flashes ('success') %}
     <p>{{ message }}</p>
 {% endfor %}
-    <div class="form-group" id="form_insert-article">
-        <h1 class="" id="modifier-article">Modifier votre article</h1>
+<h1 class="modifier-article">Modifier votre article</h1>
+<div class="row position relative">
+    <div class="position absolute">
+        <img src="{{ asset('assets/img/contrats-assurance.png') }}" alt="" class="img-fluid" id="contrats-assurance">
+    </div>
+</div>
+
         {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
         {# avec la fonction form_label je crée un label title  #}
-
-        <div class="form-group col-md-1"id=date">
+<form>
+   <div class="form-group-article-modify">
+        <div class="form-group col-6 col-md-4 col-lg-3">
             {{ form_label(formView.date) }}
-            {{ form_widget(formView.date,{ 'attr':{'class':'article_form_date'}}) }}
+            {{ form_widget(formView.date,{ 'attr':{'class':'form-control'}}) }}
             {{ form_errors(formView.date) }}
         </div>
-        <div class="form-group col-md-1" id="article_title">
+        <div class="form-group col-6 col-md-4 col-lg-3">
             {{ form_label(formView.title) }}
             {# avec la fonction form_widget je crée un input  #}
-            {{ form_widget(formView.title,{ 'attr':{'class':'article_form_title'}}) }}
+            {{ form_widget(formView.title,{ 'attr':{'class':'form-control'}}) }}
             {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
             {{ form_errors(formView.title) }}
         </div>
 
-        <div class="form-group col-md-1"id="article_content">
+        <div class="form-group col-6 col-md-4 col-lg-3">
             {{ form_label(formView.content) }}
-            {{ form_widget(formView.content,{ 'attr':{'class':'article_form_content'}}) }}
+            {{ form_widget(formView.content,{ 'attr':{'class':'form-control'}}) }}
             {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
             {{ form_errors(formView.content) }}
         </div>
-        <div class="form-group col-md-1"id="file">
+        <div class="form-group col-6 col-md-4 col-lg-3">
             {{ form_label(formView.illustration) }}
-            {{ form_widget(formView.illustration, {'attr': {'class': 'article_form_illustration'}}) }}
+            {{ form_widget(formView.illustration, {'attr': {'class': 'form-control'}}) }}
             {{ form_errors(formView.illustration) }}
         </div>
 
-        <div class="form-group col-md-2"id="category">
+        <div class="form-group col-6 col-md-4 col-lg-3">
             {# ici je creer un input dans mon formulaire qui sera affichera les titres de mes categories #}
             {{ form_label(formView.category) }}
-            {{ form_widget(formView.category,{ 'attr':{'class':'article_form_category'}}) }}
+            {{ form_widget(formView.category,{ 'attr':{'class':'form-control'}}) }}
             {{ form_errors(formView.category) }}
         </div>
 
-        <div class="form-group col-md-2"id="val">
-            {{ form_label(formView.valider) }}
-            {{ form_widget(formView.valider,{ 'attr':{'class':'article_form_valider'}}) }}
-        </div>
+       <div class="form-group col-6 col-md-2 mt-5 col-lg-2">
+           {{ form_label(formView.valider) }}
+           {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
+       </div>
+    </div>
+</form>
         {# form_end ferme mon formulaire #}
         {{ form_end(formView) }}
-    </div>
 {% endblock main%}
