@@ -49,7 +49,7 @@ class Article
     private $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="Articles")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="Article")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;

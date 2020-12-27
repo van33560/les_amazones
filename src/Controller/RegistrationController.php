@@ -69,11 +69,13 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 'main' // firewall name in security.yaml
             );
+            return $this->redirectToRoute('home_page');
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+
     }
 
     /**
@@ -91,12 +93,12 @@ class RegistrationController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason());
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('home_page');
         }
 
         // /*@TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Votre adresse mail a bien été vérifier.');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('home_page');
     }
 }

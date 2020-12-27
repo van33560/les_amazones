@@ -15,7 +15,7 @@ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elem
     </div>
 </div>
     {{ form_start(formView) }}
-        <form>
+
             <div class="form-insert-category">
 
                   <div class="form-group col-6 col-md-4 col-lg-3">
@@ -44,9 +44,8 @@ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elem
                         {{ form_label(formView.valider) }}
                         {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
                     </div>
-
             </div>
-        </form>
+
     {{ form_end(formView) }}
 
 {% endblock main%}

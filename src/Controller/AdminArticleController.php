@@ -72,6 +72,7 @@ public function ArticleList(ArticleRepository $articleRepository)
                 );
                 $article->setIllustration($newFilename);
             }
+
             // je récupère le fichier uploadé dans le formulaire
             //je recupere le contenu du champ imageFileName
             //je fait une contidion si mon formulaire et envoyer et valide alors je pré-sauvegarde

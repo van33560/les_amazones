@@ -5,12 +5,13 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
+
 }
 
 body {
     font-family: 'Dancing Script', cursive;
     font-size: 16px;;
-    background-color: #f7f7f7;
+
 }
 .resp{
     width:100%;
@@ -121,7 +122,7 @@ span {
     margin-left: 2%;
     margin-top: 12%;
 }
-/*articles*/
+/*articles images*/
 h3,h4,h5{
     font-size: 2em;
 }
@@ -130,14 +131,22 @@ p {
     font-family: 'Philosopher', sans-serif;
     margin-left: 2%;
 }
-.depistage {
-    margin-left: 2%;
-    margin-top: 1%;
+#depistage-centre{
+    background-color: #F5F5F5;
 }
-
-#vivre {
+.depistage {
+    margin-left: 80px;
+    margin-top: 10px;
+}
+#vivre{
     margin-top: 11%;
     width: 80%;
+}
+#main-unis{
+    margin-left:180px;
+}
+ #vivre-avec{
+    margin: 50px 0 0 200px;
 }
 
 #solution,
@@ -148,12 +157,10 @@ p {
 #new{
     margin-top: 10%;
 }
-#news {
-    margin-top: 30%;
-    text-align: center;
-    margin-left: 50%
+#newsletter{
+    background-color: #F5F5F5;
+    height: 90%;
 }
-
 #logoNewsletter {
     width: 70px;
 }
@@ -192,24 +199,25 @@ p {
     color: #6897be;
     font-size: 27px;
 }
-
 #logoarrow {
     float: right;
     right: 2%;
     bottom: 2px;
     top: 1px;
-}
-
-#facebook {
     width: 5%;
+}
+#facebook {
     margin-left: 70%;
+    width: 50px;
 }
 #twitter {
     margin-right: 60%;
+    width:5%;
 }
 
 #instagram {
-    margin-right: 83%
+    margin-right: 83%;
+    width: 5%;
 }
 /*formulaire*/
 .form-group{

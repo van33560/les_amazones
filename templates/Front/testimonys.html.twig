@@ -17,20 +17,22 @@
                         <p>{{ testimony.article }}</p>
                      </article>
                         <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
-             {% else %}
+            {% else %}
                      <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
                      <article class="box_testimonys_admin">
                          <p>{{ testimony.article }}</p>
                      </article>
             {% endif %}
-        </div>
-            {% if is_granted('ROLE_ADMIN')%}
+            {% if is_granted ("ROLE_ADMIN") %}
                 <div id="but"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
                 <div id="button_testimony"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">supprimer</a></div>
                 <div id="button_testimony"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">modifier</a></div>
             {% endif %}
+        </div>
+
+
 {% endfor %}
-</div>
+ </div>
 {% endblock main%}
 {#  {% if testimony.picture %}#}
 {# je récupère le nom du fichier uploadé

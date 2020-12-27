@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les articles{% endblock %}
+
+{% block main %}
+<h1 class="administrateur">Administrateur</h1>
+<div class="display_index_admin">
+    <table class="table striped">
+        <h2>Gérer vos articles</h2>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th class="text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for article in articles %}
+            <tr>
+                <td>{{article.id}}</td>
+                <td>{{article.title}}</td>
+
+                <td class="text-center">
+                    <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
+                    <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

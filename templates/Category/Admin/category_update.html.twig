@@ -17,7 +17,7 @@
 
    {{ form_start(formView) }}
    {# avec la fonction form_label je crée un label title  #}
-    <form>
+
         <div class="form-group-article-insert">
             <div class="form-group col-6 col-md-4 col-lg-3">
                 {{ form_label(formView.title) }}
@@ -46,7 +46,7 @@
                 {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
             </div>
         </div>
-    </form>
+
    {# form_end ferme mon formulaire #}
    {{ form_end(formView) }}
 {% endblock main %}
