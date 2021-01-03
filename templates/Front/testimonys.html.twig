@@ -1,32 +1,49 @@
 {% extends 'base.html.twig' %}
-{# {% block message %}
-{# je mets mon message dans un block message, qui  est redefini dans mon fichier twig#}
-{#  si mon message est supprimé j'affiche mon message grace a la variable globale app sur la page principale#}
-{# {% endblock message%} #}
+{% block message %}
+{# dans une boucle for j'appel si success le message add flash que j'ai defini dans une des functions de
+mon controller testimony#}
+{# si mon temoignage est supprimé mon message s'affichera grace à la variable globale app sur la page principale#}
+{%  for message in app.flashes ('success') %}
+    <p>{{ message }}</p>
+{% endfor%}
+{% endblock message%}
+
 {% block main %}
-<div id="but"><h1>Vos témoignages</h1></div>
+    {# lien de redirection de don #}
+    <div class="container-fluid">
+        <div class="row" id="dons">
+            <div class="col-12 col-lg-6 d-flex">
+                <p class="faireundon">Faire un Don <br>Pour la ligue contre le cancer</p>
+                <a href="https://don.ligue-cancer.net/octobrerose2020/~mon-don?utm_source=sidiese&utm_medium=octobrerose20&utm_campaign=LP&utm_content=boutondon" target="_blank" id="button"><span>Faire un don</span></a>
+            </div>
+        </div>
+    </div>
+{# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
+<div id="lien_temoignage"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
  <div class="admin_container_testimonys">
-{# lien pour creer un temoignage avec la propriété path #}
-{% for testimony in testimonys %}
-      {# avec la boucle for j'appel un temoignage parmis tous les temoignages avec un lien clipable a href  #}
-      {# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}
-        <h2 class="title_testimonys_admin">{{ testimony.title }}</h2>
-        <div class ="display_testimonys_admin">
-            {% if loop.index is odd %}
+     {# avec la boucle for j'appel un temoignage dans mes temoignages #}
+     {% for testimony in testimonys %}
+         <h2 class="title_testimonys_admin">{{ testimony.title }}</h2>
+           <div class ="display_testimonys_admin">
+             {# ma condition if et la methode loop.index me permet de récuperer les entités de mes temoignages
+             et de les afficher en les alternants grâce à else #}
+             {% if loop.index is odd %}
                      <article class="box_testimonys_admin">
                         <p>{{ testimony.article }}</p>
                      </article>
+                        {# la methode asset(uploads:testimony me permet de recuperer les images qui ont été uploadé en bdd #}
                         <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
-            {% else %}
+             {% else %}
                      <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
                      <article class="box_testimonys_admin">
                          <p>{{ testimony.article }}</p>
                      </article>
             {% endif %}
             {% if is_granted ("ROLE_ADMIN") %}
-                <div id="but"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
-                <div id="button_testimony"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">supprimer</a></div>
-                <div id="button_testimony"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">modifier</a></div>
+                {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
+                 pour pouvoir supprimer ou modifier un article #}
+                <div id="button_testimony"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">Supprimer</a></div>
+                <div id="button_testimony"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">Modifier</a></div>
             {% endif %}
         </div>
 

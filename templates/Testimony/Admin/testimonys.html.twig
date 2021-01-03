@@ -1,31 +1,35 @@
 {% extends 'base.html.twig' %}
 {% block message %}
-    {# je mets mon message dans un block message, qui  est redefini dan mon fichier twig#}
-    {#  si mon message est supprimé j'affiche mon message grace a la variable globale app sur la page principale#}
+{# dans une boucle for j'appel si success le message add flash que j'ai defini dans une des functions de
+mon controller testimony#}
+{# si mon temoignage est supprimé mon message s'affichera grace à la variable globale app sur la page principale#}
 {% endblock message%}
 {% block main %}
-<div id="but"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
+{# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
+<div id="lien_temoignage"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
 <div class="admin_container_testimonys">
-{# lien pour creer un temoignage avec la propriété path #}
-{% for testimony in testimonys %}
-{# avec la boucle for j'appel un temoignage parmis tous les temoignages avec un lien clipable a href  #}
-{# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}
+    {# avec la boucle for j'appel un temoignage parmis tous les temoignages #}
+    {# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}
+    {% for testimony in testimonys %}
     <h2 class="title_testimonys_admin">{{ testimony.title }}</h2>
-    <div class ="display_testimonys_admin">
-        {% if loop.index is odd %}
-            <article class="box_testimonys_admin">
-                 <p>{{ testimony.article }}</p>
-            </article>
-                <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
-        {% else %}
-                <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
-            <article class="box_testimonys_admin">
-                 <p>{{ testimony.article }}</p>
-            </article>
-        {% endif %}
-    <div>
-        <div id="button_testimony"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">supprimer</a></div>
-        <div id="button_testimony"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">modifier</a></div>
+        <div class ="display_testimonys_admin">
+            {# ma condition if et la methode loop.index me permet de récuperer les entités de mes temoignages
+            et de les afficher en les alternants grâce à else #}
+            {% if loop.index is odd %}
+               <article class="box_testimonys_admin">
+                   <p>{{ testimony.article }}</p>
+               </article>
+                   {# la methode asset(uploads:testimony me permet de recuperer les images qui ont été uploadé en bdd #}
+                   <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
+           {% else %}
+                   <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
+               <article class="box_testimonys_admin">
+                   <p>{{ testimony.article }}</p>
+               </article>
+           {% endif %}
+        </div>
+          <div id="button_testimony"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">supprimer</a></div>
+          <div id="button_testimony"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">modifier</a></div>
 {# {% if testimony.picture %}
 {#
 je récupère le nom du fichier uploadé

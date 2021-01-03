@@ -53,39 +53,39 @@
     </header>
 {% endblock header %}
 
-<main class="container-fluid ">
+
     {% block main %}
-        {#     <!--lien vers asso -->
-        <main class="container-fluid mt-5 ">
+            <!--lien vers asso -->
+        <div class="container-fluid mt-5 ">
             <div class="row p-3" id="dons">
                  <div class="col-12 d-flex">
                     <p class="faireundon">Faire un Don <br>Pour la ligue contre le cancer</p>
                     <a href="https://don.ligue-cancer.net/octobrerose2020/~mon-don?utm_source=sidiese&utm_medium=octobrerose20&utm_campaign=LP&utm_content=boutondon" target="_blank" id="button"><span>Faire un don</span></a>
                 </div>
+            </div>
         </div>
         {% block message %}{% endblock message %}
         {% block section%}{% endblock section%}
-       #}
     {% endblock main %}
-</main>
 
+{# footer du site il contient les liens cliquables de redirection vers reseaux sociaux #}
     <footer class="container-fluid py-5" id="footer">
         <div class="container">
             <div class="row position-relative justify-content-center">
                 <div class="col-12 col-sm-8 col-md-6 ml-3 text-center">
                     <a class="col-6 col-md-6 text-center" id="footer" href=" #mentionslégales/ #Copyright ">Mentions légales||©Labat</a>
                 </div>
-                <div class="col-2 col-md-1 col-lg-1 position-absolute offset-lg-2" id="logoarrow">
-                    {# la fonction asset permet de recuperer dans un autre dossier son contenu ici dossier img  #}
+                <div class=" col-md-1 col-lg-1 position-absolute offset-lg-2" id="logoarrow">
+                    {# la fonction asset permet de recuperer dans un autre dossier du contenu ici dossier img  #}
                     <a href="#"><img src="{{ asset('assets/img/up-arrow.svg') }}" alt="" class="arrow"></a>
                 </div>
-                <div class="col-2 col-md-1 position-absolute offset-lg-1" id="facebook">
+                <div class=" col-md-1 position-absolute offset-lg-1" id="facebook">
                     <a href="https://fr-fr.facebook.com/" target="_blank"><img src=" {{ asset('assets/img/facebook.svg') }}" alt="" class=""></a>
                 </div>
-                <div class="col-2 col-md-1 col-lg-1 position-absolute" id="twitter">
+                <div class="col-md-1 col-lg-1 position-absolute" id="twitter">
                     <a href="https://mobile.twitter.com/?lang=fr" target="_blank"><img src=" {{ asset('assets/img/twitter.svg') }}" alt="" class="twitter"></a>
                 </div>
-                <div class="col-2 col-md-1 col-lg-1  position-absolute" id="instagram">
+                <div class="col-md-1 col-lg-1  position-absolute" id="instagram">
                     <a href="https://www.instagram.com/?hl=fr" target="_blank"><img src="{{ asset('assets/img/instagram.svg') }}" alt="" class="instagram"></a>
                 </div>
             </div>

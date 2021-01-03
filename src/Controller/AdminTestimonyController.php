@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Testimony;
 
 use App\Form\TestimonyType;
+use App\Repository\CategoryRepository;
 use App\Repository\TestimonyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +20,20 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminTestimonyController extends AbstractController
 {
+/**
+ * @Route("Admin/Admin_testimony", name="home_testimony")
+ * @param TestimonyRepository $testimonyRepository
+ * @return Response
+ */
+public function indexTestimony(TestimonyRepository $testimonyRepository)
+    {
+        $testimonys = $testimonyRepository->findAll();
+        return $this->render('Admin/Admin_testimony.html.twig', [
+            'testimonys' => $testimonys
+        ]);
+
+    }
+
 /**
  * @Route("admin/testimony/testimonys", name="admin_testimony_list")
  * @param TestimonyRepository $testimonyRepository
@@ -45,7 +60,6 @@ public function TestimonyList(TestimonyRepository $testimonyRepository)
 public function testimonyShow($id, TestimonyRepository $testimonyRepository)
     {
         $testimony = $testimonyRepository->find($id);
-
         return $this->render("Front/testimony.html.twig", [
             'testimony' => $testimony
         ]);
@@ -57,59 +71,53 @@ public function testimonyShow($id, TestimonyRepository $testimonyRepository)
  * @param EntityManagerInterface $entityManager
  * @return RedirectResponse|Response
  */
-
-//je crée une methode pour créer un formulaire avec la methode inserttestimony en parametre
+//je crée une methode pour créer un formulaire avec la methode inserttestimony, en parametre
 // methode request pour recuperer les infos post, get dans l'url
 // entitymanager gerer les entités les champs de ma bdd
 public function insertTestimony(Request $request , EntityManagerInterface $entityManager,SluggerInterface $slugger)
     {   //j' indique a sf que je crée un nouvelle objet
         $testimony = new Testimony();
-        //autowire fait le liens entre les fichiers dependance
-        //je crée un formulaire grâce à la fonction createFrom et je passe en paramétre le chemin vers le fichierArticleType
+        //autowire fait le liens entre les fichiers, dependances
+        //je crée un formulaire grâce à la fonction createFrom et je passe en paramétre le chemin vers le fichier
+        // testimonyType
         $form = $this->createForm(TestimonyType::class, $testimony);
         //avec la methode handle de la class form je récupère les données en post
-        $form->handleRequest($request); //autowire fait le liens entre les fichiers dependance
-            //je fait une contidion si mon formulaire et envoyer et valide alors je pré-sauvegarde
-            //avec la fonction persist
+        $form->handleRequest($request); //autowire fait le liens entre les fichiers
+        //je fait une contidion si mon formulaire et envoyer et valide alors je pré-sauvegarde
+        //avec la fonction persist
+     if($form->isSubmitted() && $form->isValid()) {
+        // je récupère le fichier uploadé dans le formulaire
+        //je recupere le contenu du champ imageFileName
+        $picture=$form->get('picture')->getData();
 
-        if($form->isSubmitted() && $form->isValid()){
-            // je récupère le fichier uploadé dans le formulaire
-            //je recupere le contenu du champ imageFileName
-            //je fait une contidion si mon formulaire et envoyer et valide alors je pré-sauvegarde
-            //avec la fonction persist
-            $picture=$form->get('picture')->getData();
-
-            if($picture){
-                //je recupere le nom d'origine de l'image
-                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
-                // grâce à la classe Slugger, je change le nom de mon image
-                // et pour sortir tous les caractères spéciaux
-                $safeFilename = $slugger->slug($originalFilename);
-
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$picture->guessExtension();
-                //je déplace l'image dans un dossier temporaire services.yaml ou je precise  en parametre son nom
-                $picture->move(
-                    $this->getParameter('picture_directory'),//recuperer envoyer les données vers parametres
-                    $newFilename
+     if($picture) {
+        //je recupere le nom d'origine de l'image
+        $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+        // grâce à la classe Slugger, je change le nom de mon image
+        // et pour sortir tous les caractères spéciaux
+        $safeFilename = $slugger->slug($originalFilename);
+        $newFilename = $safeFilename.'-'.uniqid().'.'.$picture->guessExtension();
+        //je déplace l'image dans un dossier temporaire services.yaml ou je precise  en parametre son nom
+        $picture->move(
+            $this->getParameter('picture_directory'),//recuperer envoyer les données vers parametres
+            $newFilename
                 );
-                $testimony->setPicture($newFilename);
+                 $testimony->setPicture($newFilename);
             }
-            $entityManager->persist($testimony);
-            // j'insere avec la fonction flush
-            $entityManager->flush();
-            $this->addFlash(
-                "sucess",
-                "le témoignage a été ajouté"
+                 $entityManager->persist($testimony);
+                 $entityManager->flush();
+                   $this->addFlash(
+                    "sucess",
+            "le témoignage a été ajouté"
             );
              return $this->redirectToRoute('admin_testimony_list');
-
-            }
-        //je crée grâce à la fonction createview une vue qui pourra  en suite être lu par twig
-        $formView = $form-> createView();
-        //la fonction render me permet d'envoyer a twig les infos qui seront affichés
-            return $this->render('Testimony/Admin/insert_testimony.html.twig',[
-            'formView' => $formView
-        ]);
+     }
+             //je crée grâce à la fonction createview une vue sera envoyer lu par twig
+             $formView = $form-> createView();
+             //la fonction render me permet d'envoyer a twig les infos qui seront affichés
+             return $this->render('Testimony/Admin/insert_testimony.html.twig',[
+                 'formView' => $formView
+            ]);
     }
 
 /**
@@ -123,7 +131,8 @@ public function insertTestimony(Request $request , EntityManagerInterface $entit
 //je crée une methode updatetestimony pour modifier le contenu du formulaire je lui passe en parametre id pour pouvoir
 //  modifier le temoignage grace a son id,la prropriété repository me permettra de modifier les données de la bdd et
 // la propriéte request me permettra de recuperer les modification
-public function updatetesimony($id, TestimonyRepository $testimonyRepository,Request $request, EntityManagerInterface $entityManager)
+public function updatetesimony($id, TestimonyRepository $testimonyRepository,
+                               Request $request, EntityManagerInterface $entityManager)
     {
 
         //je récupére en bdd  l'id wild card qui correspond a celui renseigner dans url
@@ -169,7 +178,8 @@ public function updatetesimony($id, TestimonyRepository $testimonyRepository,Req
 //testimonyrepository(qui me permettra de récuperer les données des champs de la base de données)
 //, sf effectuera la requete delete et entityManagerinterface,(me permettra de faire des réquetes ici delete)
 // ces classes seront intanciés grace a entitymanager qui le gerera à ma place
-public function deleteTestimony($id,TestimonyRepository $testimonyRepository,EntityManagerInterface $entityManager)
+public function deleteTestimony($id,TestimonyRepository $testimonyRepository,
+                                EntityManagerInterface $entityManager)
     {
         //je récupére en bdd  l'id wild card qui correspond a celui renseigner dans url
         $testimony = $testimonyRepository->find($id);

@@ -16,6 +16,21 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminCategoryController extends AbstractController
 {    // chemin de ma route et son name
+
+    /**
+     * @Route("Admin/Admin_category", name="home_category")
+     * @param CategoryRepository $categoryRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexCategory(CategoryRepository $categoryRepository)
+    {
+        $categorys = $categoryRepository->findAll();
+        return $this->render('Admin/Admin_category.html.twig', [
+            'categorys' => $categorys
+        ]);
+
+    }
+
 /**
  * @Route("category/admin/categorys", name="admin_categorylist")
  * @param CategoryRepository $categoryRepository

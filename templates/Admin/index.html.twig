@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Gérer les articles{% endblock %}
-
 {% block main %}
 <h1 class="administrateur">Administrateur</h1>
-<div class="display_index_admin">
+{# grace à la proprieté path,je crée des liens qui renvoient vers les names de des functions
+que j'ai defini dans mes controllers admincategory et admintestimony #}
+<a href="{{ path("home_category") }}"><h2>Gérer les catégories</h2></a>
+<a href="{{ path("home_testimony") }}"><h2>Gérer les témoignages</h2></a>
+    <div class="display_index_admin">
     <table class="table striped">
         <h2>Gérer vos articles</h2>
+        {# je cree un tableau dont je choisi les titres #}
         <thead>
         <tr>
             <th>ID</th>
@@ -15,23 +19,20 @@
         </tr>
         </thead>
         <tbody>
-
+        {# j'appel dans ce tableau un articles dans mes articles et j'affiche son id et son titre #}
         {% for article in articles %}
             <tr>
                 <td>{{article.id}}</td>
                 <td>{{article.title}}</td>
-
                 <td class="text-center">
+                    {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
+                     pour pouvoir supprimer ou modifier un article #}
                     <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
                     <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
                 </td>
             </tr>
         {% endfor %}
-
-
-
         </tbody>
     </table>
 </div>
-
 {% endblock %}

@@ -5,13 +5,10 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
-
 }
-
 body {
     font-family: 'Dancing Script', cursive;
     font-size: 16px;;
-
 }
 .resp{
     width:100%;
@@ -25,14 +22,12 @@ header {
     background-repeat: no-repeat;
     height: 100vh;
 }
-
 .filtre {
     width: 100%;
     height: 100%;
     background-color: rgba(30, 30, 30, 0.2);
 }
 #logo {
-
     left: 30px;
     width: 12%;
 }
@@ -106,7 +101,6 @@ span {
 #dons {
     height: 150px;
 }
-
 #button {
     width: 100px;
     height: 50px;
@@ -146,9 +140,8 @@ p {
     margin-left:180px;
 }
  #vivre-avec{
-    margin: 50px 0 0 200px;
+    margin: 10px 0 0 200px;
 }
-
 #solution,
 #mieux {
     padding-top: 50px;
@@ -164,7 +157,6 @@ p {
 #logoNewsletter {
     width: 70px;
 }
-
 /*page article admin*/
 /*.container{
     display:flex;
@@ -178,17 +170,14 @@ p {
     width: 40%;
 }
 /*footer liens facebook*/
-
 #news {
     margin-top: 20%;
     text-align: center;
     margin-left: 50%
 }
-
 #logoNewsletter {
     width: 70px;
 }
-
 #ins {
     text-align: center;
 }
@@ -204,20 +193,19 @@ p {
     right: 2%;
     bottom: 2px;
     top: 1px;
-    width: 5%;
+    width:60px;
 }
 #facebook {
     margin-left: 70%;
-    width: 50px;
+    width:40px;
 }
 #twitter {
     margin-right: 60%;
-    width:5%;
+    width:60px;
 }
-
 #instagram {
     margin-right: 83%;
-    width: 5%;
+    width:60px;
 }
 /*formulaire*/
 .form-group{
@@ -227,7 +215,7 @@ p {
     margin-left: 50%;
 }
 @media  (max-width:768px){
-   ul{
+    ul{
        flex-wrap: nowrap;
         padding-left: 10px;
     }
@@ -241,26 +229,16 @@ p {
     ul li:hover {
         background:transparent;
     }
+    /*images home*/
+    #main-unis{
+        margin-left:-8px;
+    }
+    #vivre{
+    margin-left:60px;
+    }
+    #vivre-avec{
+        margin: 10px;
+    }
 }
 
 
-
-/*@media screen and (min-width: 100px) and (max-width: 640px ){
-    nav{
-       margin-left:50px ;
-        display:flex;
-    }
-    #dons{
-        margin-top:50%;
-    }
-    li.logo{
-        width:20px;
-        margin-right: 40px;
-    }
-
-}*/
-/*section{
-    background:url(../img/rubans.jpg) no-repeat;
-    background-size: cover;
-    height:calc(100vh - 80px);
-}*/

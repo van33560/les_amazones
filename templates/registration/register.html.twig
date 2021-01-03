@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block main %}
 {% block title %}Register{% endblock %}
+ {# boucle affiche un message d'erreur si email incorrect #}
 {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
 {% endfor %}
@@ -9,36 +10,34 @@
         <img src="{{ asset('assets/img/sport-rose.jpg') }}" alt="" class="img-fluid" id="sport-rose">
     </div>
 </div>
-
-
-  {{ form_start(registrationForm) }}
-
-    <div class="form-group-register">
-        <h1 class="titre-inscription">Inscription</h1>
+    {# form_start et ca fonction registrationForm me permet de generer un gabarit de formulaire ou je peux peronnalisé
+    les champs et le stylisé
+    avec bootstrap#}
+    {{ form_start(registrationForm) }}
+       <div class="form-group-register">
+          <h1 class="titre-inscription">Inscription</h1>
                  <div class="form-group col-6 col-md-4 col-lg-3">
                      {{ form_label(registrationForm.firstname) }}
                      {{ form_widget(registrationForm.firstname,{ 'attr':{'class':'form-control'}}) }}
-                     {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+                     {#  la fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis
+                     dans les entités#}
                      {{ form_errors(registrationForm.firstname) }}
                 </div>
                 <div class="form-group col-6 col-md-4 col-lg-3">
                     {{ form_label(registrationForm.name) }}
                     {{ form_widget(registrationForm.name,{ 'attr':{'class':'form-control'}}) }}
-                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
                     {{ form_errors(registrationForm.name) }}
                 </div>
 
                 <div class="form-group col-6 col-md-4 col-lg-3">
                     {{ form_label(registrationForm.age) }}
                     {{ form_widget(registrationForm.age,{ 'attr':{'class':'form-control'}}) }}
-                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
                     {{ form_errors(registrationForm.age) }}
                 </div>
 
                 <div class="form-group col-6 col-md-4 col-lg-3">
                     {{ form_label(registrationForm.email) }}
                     {{ form_widget(registrationForm.email,{ 'attr':{'class':'form-control'}}) }}
-                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
                     {{ form_errors(registrationForm.email) }}
                 </div>
 
@@ -60,8 +59,7 @@
                     {{ form_label(registrationForm.valider) }}
                     {{ form_widget(registrationForm.valider,{ 'attr':{'class':'form-control'}}) }}
                 </div>
-    </div>
-
+       </div>
     {{ form_end(registrationForm) }}
 {% endblock %}
 

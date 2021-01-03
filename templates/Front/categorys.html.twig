@@ -1,21 +1,30 @@
 {% extends 'base.html.twig' %}
 {% block message %}
-    {# je mets mon message dans un block message, qui  est redefini dan mon fichier twig#}
-    {#  si mon message est supprimé j'affiche mon message grace a la variable globale app sur l page principale#}
+{# dans une boucle for j'appel si success le message add flash que j'ai defini dans une des functions de
+mon controller category#}
+{# si ma category est supprimée mon message s'affichera grace à la variable globale app sur la page principale#}
 {%  for message in app.flashes ('success') %}
       <p>{{ message }}</p>
 {% endfor%}
 {% endblock message%}
 {% block main %}
-<div id="but"><a href="{{ path('admin_category_insert')}}"><h1>Créer votre catégory</h1></a></div>
+{# lien de redirection de don #}
+<div class="container-fluid">
+    <div class="row" id="dons">
+        <div class="col-12 col-lg-6 d-flex">
+            <p class="faireundon">Faire un Don <br>Pour la ligue contre le cancer</p>
+            <a href="https://don.ligue-cancer.net/octobrerose2020/~mon-don?utm_source=sidiese&utm_medium=octobrerose20&utm_campaign=LP&utm_content=boutondon" target="_blank" id="button"><span>Faire un don</span></a>
+        </div>
+    </div>
+</div>
+{# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
+<div id="lien_category"><a href="{{ path('admin_category_insert')}}"><h1>Créer votre catégory</h1></a></div>
 <div class="admin_container_categorys">
-        {# lien pour creer un article avec la propriété path #}
+        {# avec la boucle for j'appel une category dans les categorys #}
         {% for category in categorys %}
-            {# avec la boucle for j'appel un article dans mes articles avec clipable avec le lien a href  #}
-            {# avec la propriete path j'appel un de mes articles qui sera clipable et qui affichera le contenu
-             de ma page modify_static.html.twig#}
-            {# avec la proprieté path je recupére un titre de mes articles et son id, grace au name de ma route articles #}
-            {# j'appel mes images et mes titres  #}
+        {# ma condition if et la methode loop.index me permet de récuperer les entités de mes categorys
+        et de les afficher en les alternants grâce à else #}
+        {# j'appel mes images et mes titres  #}
             <h2 class="title_categorys_admin">{{ category.title}}</h2>
             <div class="display_categorys_admin">
                 {% if loop.index is odd %}
@@ -23,6 +32,7 @@
                         <p>{{ category.Date|date("m/d/Y") }}</p>
                         <p>{{ category.article }}</p>
                     </article>
+                    {# la methode asset(uploads:category me permet de recuperer les images qui ont été uploadé en bdd #}
                     <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" class="box_categorys_admin">
                 {% else %}
                     <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" class="box_categorys_admin">
@@ -32,11 +42,13 @@
                     </article>
                 {% endif %}
             </div>
+                {# la condition if is granted me permet de choisir les élements du site qui seront visible pas les personnes
+                ayant le role_admin#}
                 {% if is_granted('ROLE_ADMIN')%}
-                     <div id="but"><a href="{{ path('admin_category_insert')}}"><h1>Créer votre catégory</h1></a></div>
-                     <div class="button_category"><a href="{{ path('admin_category_update', {'id': category.id}) }}">Modifier</a></div>
-                     {#  Je créer le lien qui va supprimer la category de la liste via son id #}
-                     <div class="button_category"><a href="{{ path('admin_category_delete', {'id': category.id}) }}">Supprimer</a></div>
+                    {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
+                    pour pouvoir supprimer ou modifier une category #}
+                    <div class="button_category"><a href="{{ path('admin_category_update', {'id': category.id}) }}">Modifier</a></div>
+                    <div class="button_category"><a href="{{ path('admin_category_delete', {'id': category.id}) }}">Supprimer</a></div>
                 {% endif %}
 
         {% endfor %}

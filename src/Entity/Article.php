@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use PhpParser\Node\Scalar\String_;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -29,16 +30,20 @@ class Article
     }
 
     /**
+     * @Assert\Date
+     * @var string A "Y-m-d" formatted value
      * @ORM\Column(type="datetime")
      */
     private $date;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=6500)
      */
     private $content;
@@ -49,12 +54,19 @@ class Article
     private $users;
 
     /**
+     * @Assert\NotBlank
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="Article")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
     /**
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $illustration;
@@ -103,9 +115,6 @@ class Article
         return $this;
     }
 
-
-
-
     /**
      * @return Collection|User[]
      */
@@ -132,7 +141,6 @@ class Article
 
         return $this;
     }
-
 
     /**
      * toString

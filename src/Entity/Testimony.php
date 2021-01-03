@@ -47,7 +47,7 @@ class Testimony
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank (
-     *     message="Merci renseigner votre nom"
+     *     message="Merci de renseigner votre nom"
      * )
      */
     private $author;
@@ -59,6 +59,7 @@ class Testimony
 
 
     /**
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $picture;
@@ -96,6 +97,10 @@ class Testimony
     }
 
     /**
+     *  @Assert\NotBlank (
+     *     message="Merci de remplir ce champ"
+     * )
+     *
      * @ORM\Column(type="string", length=2000)
      */
     private $article;

@@ -9,16 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 
-/**
- * @Route   ("/admin", name="admin_page")
- * @package App\controller\Admin
- */
+
 
 class AdminController extends AbstractController
 {
 
     /**
-     * @Route("/", name="home")
+     * @Route ("/admin", name="admin_page")
+     * @package App\controller\Admin
      * @param ArticleRepository $articleRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -29,6 +27,7 @@ class AdminController extends AbstractController
         ]);
 
     }
+
 
 
 }

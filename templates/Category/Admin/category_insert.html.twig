@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 {# j'utilise la fonction form de twig et en paramétre formView pour afficher la vue de mon formulaire #}
-
 {% block main%}
     {%  for message in app.flashes ('success') %}
         <p>{{ message }}</p>
@@ -14,11 +13,9 @@ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elem
         <img src="{{ asset('assets/img/smiles.jpg') }}" alt="" class="img-fluid" id="smiles">
     </div>
 </div>
-    {{ form_start(formView) }}
-
+      {{ form_start(formView) }}
             <div class="form-insert-category">
-
-                  <div class="form-group col-6 col-md-4 col-lg-3">
+                    <div class="form-group col-6 col-md-4 col-lg-3">
                         {{ form_label(formView.title) }}
                         {{ form_widget(formView.title,{ 'attr':{'class':'form-control'}}) }}
                         {{ form_errors(formView.title) }}
@@ -45,7 +42,6 @@ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elem
                         {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
                     </div>
             </div>
-
-    {{ form_end(formView) }}
+      {{ form_end(formView) }}
 
 {% endblock main%}

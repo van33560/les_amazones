@@ -1,21 +1,18 @@
+/*pages principales header*/
 *{
     margin:0;
     padding:0;
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
-
 }
-
 body {
     font-family: 'Dancing Script', cursive;
     font-size: 16px;
-
 }
 .resp{
     width:100%;
     height:auto;
-
 }
 /*inscription*/
 #sport-rose{
@@ -25,19 +22,15 @@ body {
     margin-top: 280px;
     clear: both;
 }
-
-/*login /logout/form*/
-
+/*login/logout/form*/
 li.connexion{
     font-size: 30px;
    margin-bottom: 60px;
-
 }
 form#connect{
     margin-left: 500px;
     margin-top: 300px;
     padding-bottom: 200px;
-
 }
 /*formulaires inserer article*/
 #creer-article{
@@ -73,7 +66,6 @@ form#connect{
 #gerer-category{
     margin:250px 550px 100px;
 }
-
 .form-group2{
     margin-left: 40%;
 }
@@ -91,7 +83,6 @@ form#connect{
 .form-insert-category{
     margin-left: 200px;
 }
-
 /*articles police */
 .cont{
     margin-top:10%;
@@ -107,7 +98,6 @@ p {
     left: 30px;
     width: 12%;
 }
-
 /*nav*/
 nav{
     padding-top: 20px;
@@ -160,9 +150,7 @@ a:hover{
 ul li ul li{
     border-bottom:#e0e0e0;
 }
-
 /*lien don */
-
 a{
     color: #6897be;
 }
@@ -172,8 +160,11 @@ a:hover {
 span {
     font-size: 20px;
 }
+.faireundon{
+    margin-top: 20px;
+}
 #dons {
-    margin-top: 15%;
+    margin-top: 20%;
 }
 /*button*/
 #button {
@@ -192,7 +183,6 @@ span {
     display: inline-block;
     font-size: x-large;
     margin:30px 50px;
-
 }
 #but{
     width: 210px;
@@ -207,16 +197,31 @@ span {
     margin-top: 300px;
     margin-left:40%;
 }
-
-
+#lien_temoignage,
+#lien_articles,
+#lien_category{
+    width:100%;
+    height: 30%;
+    border:solid 2px #616161;
+    box-shadow: 0px 1px 2px #616161;
+    text-align: center;
+    margin-top: 150px;
+}
 /*admin crud articles category testimony*/
 td,tr{
     border:solid 1px black;
     background-color: #F5F5F5;
-
 }
-.display_index_admin{
+.display_index_admin,
+.display_index_admin_testimony{
     margin-bottom: 100px;
+}
+.display_index_admin_category{
+    margin: 90px 0 150px 0;
+}
+.titre_category_administrateur,
+.display_index_admin_testimony{
+margin-top: 100px;
 }
 #creer{
     margin-top:200px;
@@ -226,22 +231,29 @@ td,tr{
 }
 .administrateur{
     text-align: center;
-    margin-top:250px;
+    margin:250px 0 100px 0;
 }
-.admin_container_articles,.admin_container_categorys,.admin_container_testimonys{
+.admin_container_articles,
+.admin_container_categorys,
+.admin_container_testimonys{
     margin: 100px 30px;
 }
-.display_articles_admin,.display_categorys_admin{
+.display_articles_admin,
+.display_categorys_admin{
     display: flex;
     justify-content: space-around;
     background-color:#F5F5F5;
 }
-.title_articles_admin,.title_categorys_admin,.title_testimonys_admin{
+.title_articles_admin,
+.title_categorys_admin,
+.title_testimonys_admin{
     margin: 20px 40px;
     padding:50px  30px;
 }
-.box_articles_admin,.box_categorys_admin,.box_testimonys_admin{
-    width: 45%;
+.box_articles_admin,
+.box_categorys_admin,
+.box_testimonys_admin{
+    width: 44%;
     height: auto;
 }
 .display_testimonys_admin{
@@ -250,7 +262,6 @@ td,tr{
     justify-content: space-around;
     background-color:#F5F5F5;
 }
-
 /*images form testimony*/
 .titre-testimony-modif{
     margin: 250px 480px 100px;
@@ -299,7 +310,6 @@ td,tr{
 #logoNewsletter {
     width: 70px;
 }
-
 #ins {
     text-align: center;
 }
@@ -311,28 +321,25 @@ td,tr{
     color: #6897be;
     font-size: 27px;
 }
-
 #logoarrow {
     float: right;
     right: 2%;
     bottom: 2px;
     top: 1px;
-    width: 5%;
+    width:60px;
 }
-
 #facebook {
     margin-left: 70%;
-    width: 50px;
+    width: 40px;
     margin-bottom: 10px;
 }
 #twitter {
     margin-right: 60%;
-    width: 5%;
+    width:60px;
 }
-
 #instagram {
     margin-right: 83%;
-    width: 5%;
+    width:60px;
 }
 /*responsive menu*/
 @media  (max-width:968px){
@@ -354,7 +361,6 @@ td,tr{
         display: block;
         font-size: 30px;
         margin-bottom: 60px;
-
     }
     form#connect{
         display: block;
@@ -363,7 +369,8 @@ td,tr{
 
 }
 @media (max-width:768px) {
-    .modifier-article,#gerer-category{
+    .modifier-article,
+     #gerer-category{
         margin:220px 0 90px 0;
         text-align: center;
     }
@@ -381,19 +388,27 @@ td,tr{
     }
 
 /*crud articles et buttons*/
-    .display_articles-admin,.display_categorys-admin{
+    .display_articles_admin,
+    .display_testimonys_admin,
+    .display_categorys_admin{
         display: block;
         margin: 0 auto;
     }
-    .title_articles-admin,.title_categorys_admin{
+    .title_articles-admin,
+    .title_categorys_admin,
+    .title_testimonys_admin{
         display:inline-block;
         font-size: 30px;
     }
-    .box_articles_admin,.box_categorys_admin{
+    .box_articles_admin,
+    .box_testimonys_admin,
+    .box_categorys_admin{
         width: 100%;
         height: auto;
     }
-    #admin_button,.button_category{
+
+    #admin_button,
+    .button_category{
         display: inline-block;
         width: 100px;
         height: 50px;
@@ -417,18 +432,15 @@ td,tr{
         font-size: x-large;
         margin-top: 300px;
         margin-left: 140px;
-
     }
-
-
-
-
+/*lien de bon*/
+    .faireundon{
+        margin-top: 30px;
+    }
+    #dons {
+        margin-top: 250px;
+    }
 
 }
 
-    /*section{
-        background:url(../img/rubans.jpg) no-repeat;
-        background-size: cover;
-        height:calc(100vh - 80px);
-    }*/
 

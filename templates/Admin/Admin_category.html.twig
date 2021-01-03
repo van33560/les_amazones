@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+
+<h1 class="administrateur">Administrateur</h1>
+{# grace à la proprieté path,je crée des liens qui renvoient vers les names de des functions
+que j'ai defini dans mes controllers admincarticles et admintestimony #}
+<a href="{{ path("admin_page") }}"><h2>Gérer les articles</h2></a>
+<a href="{{ path("home_testimony") }}"><h2>Gérer les témoignages</h2></a>
+<div class="display_index_admin_category">
+<h2 class="titre_category_administrateur">Gérer vos categories</h2>
+    <table class="table striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th class="text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {# j'appel dans ce tableau une category dans mes category et j'affiche son id et son titre #}
+          {% for category in categorys %}
+            <tr>
+                <td>{{category.id}}</td>
+                <td>{{category.title}}</td>
+                <td class="text-center">
+                    {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
+                     pour pouvoir supprimer ou modifier un article #}
+                    <div class="button_category"><a href="{{ path('admin_category_update', {'id': category.id}) }}">Modifier</a></div>
+                    <div class="button_category"><a href="{{ path('admin_category_delete', {'id': category.id}) }}">Supprimer</a></div>
+                </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock main%}

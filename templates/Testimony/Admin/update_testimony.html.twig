@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block main%}
-{# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
- generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
-#}
+{# dans une boucle for j'appel si success le message add flash que j'ai defini dans une des functions de
+mon controller testimony#}
+{# si mon temoignage est supprimé mon message s'affichera grace à la variable globale app sur la page principale#}
 {%  for message in app.flashes ('success') %}
         <p>{{ message }}</p>
 {% endfor %}
@@ -12,9 +12,10 @@
         <img src="{{ asset('assets/img/assurances.png') }}" alt="" class="img-fluid" id="assurances-testimony">
     </div>
 </div>
+    {# je crée un formulaire avec form_start grace a cette fonction je vais pouvoir demander à sf de
+    generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
+    #}
     {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
-    {# avec la fonction form_label je crée un label title  #}
-
             <div class="form-group-testimony-modify">
                 <div class="form-group col-6 col-md-4 col-lg-3">
                     {{ form_label(formView.title) }}
@@ -26,16 +27,13 @@
 
                 <div class="form-group col-6 col-md-4 col-lg-3">
                     {{ form_label(formView.author) }}
-                    {# avec la fonction form_widget je crée un input  #}
                     {{ form_widget(formView.author,{ 'attr':{'class':'form-control'}}) }}
-                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
                     {{ form_errors(formView.author) }}
                 </div>
 
                 <div class="form-group col-6 col-md-4 col-lg-3">
                     {{ form_label(formView.date) }}
                     {{ form_widget(formView.date,{ 'attr':{'class':'form-control'}}) }}
-                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
                     {{ form_errors(formView.date) }}
                 </div>
 
