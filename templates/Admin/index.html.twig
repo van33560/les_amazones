@@ -9,7 +9,7 @@ que j'ai defini dans mes controllers admincategory et admintestimony #}
 <a href="{{ path("home_testimony") }}"><h2>Gérer les témoignages</h2></a>
     <div class="display_index_admin">
     <table class="table striped">
-        <h2>Gérer vos articles</h2>
+        <h3>Gérer vos articles</h3>
         {# je cree un tableau dont je choisi les titres #}
         <thead>
         <tr>
@@ -27,8 +27,8 @@ que j'ai defini dans mes controllers admincategory et admintestimony #}
                 <td class="text-center">
                     {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
                      pour pouvoir supprimer ou modifier un article #}
-                    <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
                     <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
+                    <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
                 </td>
             </tr>
         {% endfor %}

@@ -10,38 +10,38 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController
 {
-/**
- * @Route("Front/article/articles", name="Front_articlelist")
- * @param ArticleRepository $articlesRepository
- * @return Response
- */
-//ma methode acticle repository me permet de recuperer via la bdd les données et de les afficher avec return render
-public function Articlelist(ArticleRepository $articlesRepository)
-    {    //find all est une methode qui permet de recuperer tous les articles
-        //doctrine effectue la requete pour moi ici select*from article
-        $articles = $articlesRepository->findAll();
-        //la fonction render me permet d'envoyer a twig les infos qui seront affichés
-        return $this->render("Front/articles.html.twig",[
-            'articles' => $articles
-        ]);
-    }
+    /**
+     * @Route("Front/article/articles", name="Front_articlelist")
+     * @param ArticleRepository $articlesRepository
+     * @return Response
+     */
+    //je créer une function qui me permet de récuperer mes articles
+    public function Articlelist(ArticleRepository $articlesRepository)
+        {    //find all est une méthode qui permet de récuperer tous les articles
+            //doctrine éffectue la requête pour moi ici select*from article
+            $articles = $articlesRepository->findAll();
+            //la fonction render me permet de renvoyer vers mon fichier twig les infos via sa route
+                return $this->render("Front/articles.html.twig",[
+                    'articles' => $articles
+                ]);
+        }
 
-// chemin de ma route avec id
-/**
- * @route("Front/article/show/{id}",name="Front_articleShow")
- * @param $id
- * @param ArticleRepository $articlesRepository
- * @return Response;
- */
-// ma methode articlerepository me permet de recuperer les données de ma bdd et de retourner un resultat via la propriete render
-public function articleShow($id, ArticleRepository $articlesRepository)
-    {   //find($id) est une methode qui permet de recuperer une category via son id
-        //doctrine effectue la requete pour moi ici select category.name form category where id=
-        $article = $articlesRepository->find($id);
-        //la fonction render me permet d'envoyer a twig les infos qui seront affichés
-        return $this->render("Front/article.html.twig", [
-            'article' => $article
-        ]);
 
-    }
+    /**
+     * @route("Front/article/show/{id}",name="Front_articleShow")
+     * @param $id
+     * @param ArticleRepository $articlesRepository
+     * @return Response;
+     */
+    //je créer une function qui me permet de récuperer un article et son id
+    public function articleShow($id, ArticleRepository $articlesRepository)
+        {   //find($id) est une méthode qui permet de récuperer une category via son id
+            //doctrine éffectue la requête pour moi ici select category.name form category where id =
+            $article = $articlesRepository->find($id);
+            //la fonction render me permet de renvoyer vers un fichier twig via sa route
+                return $this->render("Front/article.html.twig", [
+                    'article' => $article
+                ]);
+
+        }
 }

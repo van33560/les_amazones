@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Category;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\DomCrawler\Field\TextareaFormField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -23,8 +24,8 @@ class CategoryType extends AbstractType
                 'widget'=>'single_text'])
             ->add('article',TextareaType::class)
             ->add('photo', FileType::class, [
-                'required' => false,
-                'mapped' => false
+                //'required' => false,
+                'mapped' => false,
                 //require =>le champs doit etre renseigner
                 //mapped pour sf ne gere pas le contenu
             ])

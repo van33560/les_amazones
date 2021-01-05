@@ -53,13 +53,18 @@ class Testimony
     private $author;
 
     /**
+     * @Assert\NotBlank(message="Veuillez choisir une date")
      * @ORM\Column(type="datetime", length=255)
      */
     private $date;
 
 
     /**
-     *
+     * @Assert\NotBlank
+     * @Assert\Image(
+     *   maxWidth = 400,
+     *   maxHeight = 400
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $picture;

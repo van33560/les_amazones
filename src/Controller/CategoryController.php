@@ -15,33 +15,33 @@ class CategoryController extends AbstractController
      * @param CategoryRepository $categoryRepository
      * @return Response
      */
-//ma methode acticle repository me permet de recuperer via la bdd les données et de les afficher avec return render
-public function CategoryList(CategoryRepository $categoryRepository)
-    {
-        $categorys = $categoryRepository->findAll();
+     //je crée une fonction category qui me permet de recuperer toutes mes categories
+     public function CategoryList(CategoryRepository $categoryRepository)
+        {
+            $categorys = $categoryRepository->findAll();
 
-        return $this->render("Front/categorys.html.twig", [
-            'categorys' => $categorys
+                return $this->render("Front/categorys.html.twig", [
+                    'categorys' => $categorys
         ]);
 
     }
 
 
-// chemin de ma route qui renvoi au contenu d'une de mes categories via son id
+     // chemin de ma route qui renvoi au contenu d'une de mes categories via son id
     /**
      * @route("/category/show/{id}",name="Front_categoryShow")
      * @param $id
      * @param CategoryRepository $categoryRepository
      * @return Response
      */
-// ma methode articlerepository me permet de recuperer les données de ma bdd et de retourner un resultat via la propriete render
-public function categoryShow($id, CategoryRepository $categoryRepository)
+     // je vrée une function qui me permet de recupere une categorie et son id
+     public function categoryShow($id, CategoryRepository $categoryRepository)
     {
-        $category = $categoryRepository->find($id);
+            $category = $categoryRepository->find($id);
 
-        return $this->render("Front/category.html.twig", [
-            'category' => $category
-      ]);
+                return $this->render("Front/category.html.twig", [
+                    'category' => $category
+          ]);
 
     }
 

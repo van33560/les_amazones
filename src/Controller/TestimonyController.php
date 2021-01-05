@@ -16,15 +16,15 @@ class TestimonyController  extends AbstractController
      * @param TestimonyRepository $testimonyRepository
      * @return Response
      */
-    //ma methode testimonyrepository me permet de recuperer via la bdd les données et de les afficher
-// via mon fichier twig et la propriete  render
+    //la methode testimonyrepository me permet de recuperer via la bdd les données et de les afficher
+    // via mon fichier twig et la methode render
     public function TestimonyList(TestimonyRepository $testimonyRepository)
     {    //find all est une methode qui permet de recuperer tous les temoignages
         //doctrine effectue la requete pour moi ici select*from testimony
         $testimonys = $testimonyRepository->findAll();
         //la methode render me permet d'envoyer a twig les infos qui seront affichés
-      return $this->render("front/testimonys.html.twig",[
-          'testimonys'=>$testimonys
+              return $this->render("front/testimonys.html.twig",[
+                  'testimonys'=>$testimonys
       ]);
     }
     /**
@@ -33,13 +33,14 @@ class TestimonyController  extends AbstractController
      * @param TestimonyRepository $testimonyRepository
      * @return Response
      */
-// ma methode testimonyrepository me permet de recuperer les données de ma bdd et de retourner un resultat via la propriete render
+    // la methode testimonyrepository me permet de recuperer les données de ma bdd et
+    // de retourner un resultat via la methode render
     public function testimonyShow($id, TestimonyRepository $testimonyRepository)
     {
         $testimony = $testimonyRepository->find($id);
 
-        return $this->render("Front/testimony.html.twig", [
-            'testimony' => $testimony
+            return $this->render("Front/testimony.html.twig", [
+                'testimony' => $testimony
         ]);
 
     }

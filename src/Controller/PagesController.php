@@ -12,7 +12,7 @@ class PagesController extends AbstractController
     /**
      * @Route("/home", name="home_page")
      */
-
+    // je cree une function qui renvoi vers ma home page
     public function homepage() {
 
         return $this->render('home.html.twig');

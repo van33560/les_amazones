@@ -6,6 +6,7 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 use PhpParser\Node\Scalar\String_;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -30,14 +31,13 @@ class Article
     }
 
     /**
-     * @Assert\Date
-     * @var string A "Y-m-d" formatted value
-     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="veuillez choisir une date")
+     * @ORM\Column(type="datetime",nullable=false)
      */
     private $date;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="veuillez donner un titre")
      * @ORM\Column(type="string", length=255)
      */
     private $title;
@@ -54,7 +54,7 @@ class Article
     private $users;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="veuillez remplir le champ")
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="Article")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -62,10 +62,7 @@ class Article
 
     /**
      * @Assert\Image(
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
+     *    maxWidth = 400,maxHeight = 400
      * )
      * @ORM\Column(type="string", length=255)
      */
@@ -79,12 +76,12 @@ class Article
 
 
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate()
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate($date): self
     {
         $this->date = $date;
 

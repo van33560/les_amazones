@@ -28,8 +28,8 @@
         </div>
             {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
              pour pouvoir supprimer ou modifier un article #}
-           <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
            <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
+           <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
     {% endfor %}
   </div>
 {% endblock main %}

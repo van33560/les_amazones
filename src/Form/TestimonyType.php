@@ -21,8 +21,8 @@ class TestimonyType extends AbstractType
             ->add('date',DateType::class,[
                 'widget'=>'single_text'])
             ->add('picture', FileType::class, [
-                'required' => false,
-                'mapped' => false
+                //'required' => false,
+                //'mapped' => false,
                 //require =>le champs doit etre renseigner
                 //mapped pour sf ne gere pas le contenu
             ])

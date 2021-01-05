@@ -184,6 +184,9 @@ span {
     font-size: x-large;
     margin:30px 50px;
 }
+h2{
+    margin-left: 50px;
+}
 #but{
     width: 210px;
     height: 100px;
@@ -207,17 +210,19 @@ span {
     text-align: center;
     margin-top: 150px;
 }
+
 /*admin crud articles category testimony*/
 td,tr{
     border:solid 1px black;
     background-color: #F5F5F5;
 }
+
 .display_index_admin,
 .display_index_admin_testimony{
-    margin-bottom: 100px;
+    margin:80px 50px;
 }
 .display_index_admin_category{
-    margin: 90px 0 150px 0;
+    margin:80px 50px;
 }
 .titre_category_administrateur,
 .display_index_admin_testimony{

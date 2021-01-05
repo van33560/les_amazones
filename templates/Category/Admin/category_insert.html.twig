@@ -24,11 +24,13 @@ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elem
                     <div class="form-group col-6 col-md-4 col-lg-3">
                         {{ form_label(formView.date) }}
                         {{ form_widget(formView.date,{ 'attr':{'class':'form-control'}}) }}
+                        {{ form_errors(formView.date) }}
                     </div>
 
                     <div class="form-group col-6 col-md-4 col-lg-3">
                         {{ form_label(formView.article) }}
                         {{ form_widget(formView.article,{ 'attr':{'class':'form-control'}}) }}
+                        {{ form_errors(formView.article) }}
                     </div>
 
                     <div class="form-group col-6 col-md-4 col-lg-3">
@@ -37,7 +39,7 @@ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elem
                         {{ form_errors(formView.photo) }}
                     </div>
 
-                    <div class="form-group col-6 col-md-2 mt-5 col-lg-2">
+                    <div class="form-group col-6 col-md-2 mt-5 col-lg-2 mb-5">
                         {{ form_label(formView.valider) }}
                         {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
                     </div>

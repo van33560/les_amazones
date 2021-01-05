@@ -9,7 +9,7 @@
     <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="img-fluid">
     </div>
 {# nav barre de la home#}
-<nav>
+    <nav>
     <ul>
         <li class=""><a href="#Généralités">Généralités &ensp;</a>
             <ul class="soubmenu">
@@ -37,14 +37,16 @@
             </ul>
         </li>
     </ul>
-</nav>
-{# logo clipable de connection redirection vers formulaire grâce à la propriete path#}
+    </nav>
+
+    {# logo clipable de connection redirection vers formulaire grâce à la propriete path#}
     <div class="col-lg-1  col-2 " id="login">
         <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
     </div>
 {% block section%}
     <h1 class="d-none d-lg-block text-center w-100" id="">Bienvenue sur <br>votre site les Amazones!<br> Toutes unies contre le cancer du sien!! </h1>
 {% endblock section%}
+
 </header>
 {% endblock header %}
 

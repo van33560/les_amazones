@@ -6,6 +6,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
@@ -20,38 +21,41 @@ class Category
     private $id;
 
     /**
+     * @Assert\NotBlank(message="veuillez donner un titre")
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
-    /**
-     * @return mixed
-     */
+
     public function getTitle()
     {
         return $this->title;
     }
 
-    /**
-     * @param mixed $title
-     */
+
     public function setTitle($title): void
     {
         $this->title = $title;
     }
 
     /**
+     * @Assert\NotBlank(message="veuillez choisir une date")
      * @ORM\Column(type="datetime")
      */
     private $date;
 
     /**
+     * @Assert\NotBlank(message="veuillez remplir le champ")
      * @ORM\Column(type="string", length=6500)
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
      */
     private $article;
 
     /**
+     *
+     * @Assert\Image(
+     *    maxWidth = 400,maxHeight = 400
+     * )
      * @ORM\Column(type="string", length=6500)
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
      */
@@ -74,18 +78,12 @@ class Category
     }
 
 
-
-    /**
-     * @return mixed
-     */
     public function getArticle()
     {
         return $this->article;
     }
 
-    /**
-     * @param mixed $article
-     */
+
     public function setArticle($article): void
     {
         $this->article = $article;
@@ -101,12 +99,12 @@ class Category
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate()
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate( $date): self
     {
         $this->date = $date;
 

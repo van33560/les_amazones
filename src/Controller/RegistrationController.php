@@ -20,7 +20,7 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 class RegistrationController extends AbstractController
 {
     private $emailVerifier;
-
+    // je cree une function qui verifie l'email de l'utilisateur
     public function __construct(EmailVerifier $emailVerifier)
     {
         $this->emailVerifier = $emailVerifier;
@@ -34,12 +34,18 @@ class RegistrationController extends AbstractController
      * @param AppCustomAuthenticator $authenticator
      * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, AppCustomAuthenticator $authenticator): Response
-    {
+    // la function register me permet de recuperer le données,de crypté le mot de passe
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder,
+                             GuardAuthenticatorHandler $guardHandler, AppCustomAuthenticator
+                             $authenticator): Response
+    {   //je cree un nouvel objet user
         $user = new User();
+        //je cree et renvoi vers le formulaire d'uinscription grace a :: class
         $form = $this->createForm(RegistrationFormType::class, $user);
+        //avec la methode handleRequest de la class form je récupère les données en post
         $form->handleRequest($request);
-
+        //je fait une contidion si mon formulaire et envoyer et valide alors je recupere le mot de passe
+        // et je le crypte
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -48,7 +54,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            //
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -96,7 +102,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('home_page');
         }
 
-        // /*@TODO Change the redirect on success and handle or remove the flash message in your templates
+        //*@TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Votre adresse mail a bien été vérifier.');
 
         return $this->redirectToRoute('home_page');
