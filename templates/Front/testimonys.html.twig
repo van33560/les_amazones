@@ -32,9 +32,9 @@ mon controller testimony#}
                         <p>{{ testimony.article }}</p>
                      </article>
                         {# la methode asset(uploads:testimony me permet de recuperer les images qui ont été uploadé en bdd #}
-                        <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
+                        <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" id="img_box_testimonys_admin">
              {% else %}
-                     <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
+                     <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" id="img_box_testimonys_admin">
                      <article class="box_testimonys_admin">
                          <p>{{ testimony.article }}</p>
                      </article>
@@ -42,8 +42,8 @@ mon controller testimony#}
             {% if is_granted ("ROLE_USER") %}
                 {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
                  pour pouvoir supprimer ou modifier un article #}
-                <div id="button_testimony"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">Modifier</a></div>
-                <div id="button_testimony"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">Supprimer</a></div>
+                <div id="button_testimony_m"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">Modifier</a></div>
+                <div id="button_testimony_s"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">Supprimer</a></div>
             {% endif %}
         </div>
 

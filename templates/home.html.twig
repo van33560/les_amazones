@@ -5,10 +5,12 @@
 {# fichier base de mon projet ou le header et le footer se repeterons sur mes autres pages  #}
 {% block header %}
 <header>
+
     <div class="d-none col-lg-2 mr-0 d-lg-block position-absolute" id="logo">
     <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="img-fluid">
     </div>
 {# nav barre de la home#}
+
     <nav>
     <ul>
         <li class=""><a href="#Généralités">Généralités &ensp;</a>
@@ -38,7 +40,9 @@
         </li>
     </ul>
     </nav>
-
+    <div class="col-lg-2 position-absolute" id="google">
+        <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
+    </div>
     {# logo clipable de connection redirection vers formulaire grâce à la propriete path#}
     <div class="col-lg-1  col-2 " id="login">
         <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
@@ -48,6 +52,7 @@
 {% endblock section%}
 
 </header>
+
 {% endblock header %}
 
 {% block main %}
@@ -103,7 +108,10 @@
             </div>
         </div>
     </div>
-
+    <h5 class="w-100 text-center" id="Un-peu-de-sport">Un peu de sport!</h5>
+    <div class="col-12 col-lg-6 mt-5">
+        <iframe id="pilate" width="560" height="315" src="https://www.youtube.com/embed/4_45donECpI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
     <!--newsletter recuperation email-->
     <div class="row justify-content-center" id="newsletter">
         <h5 class="col-2 text-center" id="new">Newsletter

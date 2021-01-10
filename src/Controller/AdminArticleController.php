@@ -45,7 +45,8 @@ class AdminArticleController extends AbstractController
         // request pour récuperer les infos post get url
         // je crée un nouvel objet, la méthode slugg me permet de change
         // le nom de mon image et gérer les caractères spéciaux
-        public function insertArticle(Request $request, EntityManagerInterface $entityManager,SluggerInterface $slugger)
+        public function insertArticle(Request $request, EntityManagerInterface $entityManager,
+                                      SluggerInterface $slugger)
         {
         //j'indique a sf que je crée un nouvelle objet
         $article = new Article();
@@ -68,7 +69,8 @@ class AdminArticleController extends AbstractController
                 $safeFilename = $slugger->slug($originalFilename);
 
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$illustration->guessExtension();
-                //je déplace grace a la méthode move l'image dans un dossier temporaire dans le fichier services.yaml
+                //je déplace grace a la méthode move l'image dans un dossier temporaire dans le fichier
+                // services.yaml
                 // ou je précise en parametre son nom
                 $illustration->move(
                     $this->getParameter('images_directory'),

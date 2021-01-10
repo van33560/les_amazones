@@ -2,9 +2,12 @@
 
 namespace App\Repository;
 
+
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+
 use Doctrine\Persistence\ManagerRegistry;
+
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +50,21 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+    /**
+     * @route("/search",name="search_articles")
+     * @return int|mixed|string
+     */
+
+      public function search($search) {
+
+        $qb= $this->createQueryBuilder('a')
+            ->Where('a.title LIKE :search')
+            ->setParameter('search', '%'.$search.'%')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
 }

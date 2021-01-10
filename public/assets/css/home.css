@@ -18,25 +18,31 @@ body {
 header {
     background-image: url(../img/rubans.jpg);
     background-size: cover;
+    -webkit-filter : contrast(70%); /* Chrome, Safari, Opera */
+    filter : contrast(70%);
     padding-left: 1em;
     background-repeat: no-repeat;
     height: 100vh;
 }
-.filtre{
-    height: 100vh;
-    background-color: rgba(30, 30, 30, 0.2);
-}
 #logo {
+    filter: drop-shadow(10px 10px 10px darkgrey);
     left: 30px;
     width: 12%;
 }
 #login {
+    filter: drop-shadow(10px 10px 10px darkgrey);
     position: relative;
     left: 1270px;
     bottom: 70px;
 }
+#google{
+    width: 2%;
+    margin-left: 1220px;
+    margin-top: -35px;
+}
 /*nav*/
 nav{
+    filter: drop-shadow(10px 10px 10px darkgrey);
     padding-top: 20px;
 }
 ul{
@@ -87,6 +93,7 @@ ul li ul li{
 /*lien don*/
 h1 {
     font-family: 'Dancing Script', cursive;
+    filter: drop-shadow(10px 10px 10px darkgrey);
     display: inline-block;
     margin-top: 200px;
     color: #616161;
@@ -109,6 +116,7 @@ span {
     line-height: 50px;
     background-color: #fdf4f9;
     box-shadow: 0px 1px 2px #616161;
+    filter: drop-shadow(16px 16px 10px silver);
     display: inline-block;
     font-size: medium;
     display: inline-block;
@@ -116,45 +124,58 @@ span {
     margin-top: 12%;
 }
 /*articles images*/
+h2{
+    filter: drop-shadow(16px 16px 10px silver);
+}
 h3,h4,h5{
     font-size: 2em;
+    filter: drop-shadow(16px 16px 10px silver);
 }
 p {
     font-size: 16px;
     font-family: 'Philosopher', sans-serif;
     margin-left: 2%;
 }
-#depistage-centre{
-    background-color: #F5F5F5;
-}
+
 .depistage {
     margin-left: 80px;
     margin-top: 10px;
+
 }
 #vivre{
     margin-top: 11%;
     width: 80%;
+    filter: drop-shadow(16px 16px 10px silver);
 }
 #main-unis{
     margin-left:180px;
+    filter: drop-shadow(16px 16px 10px silver);
 }
  #vivre-avec{
-    margin: 10px 0 0 200px;
+     width:27%;
+    margin: 45px 0 0 200px;
+     filter: drop-shadow(16px 16px 10px silver);
 }
 #solution,
 #mieux {
     padding-top: 50px;
 }
+/*video*/
+#Un-peu-de-sport{
+    margin-top: 200px;
+}
+#pilate{
+    margin-left: 440px;
+    filter: drop-shadow(16px 16px 10px silver);
+}
 /*footer liens facebook*/
 #new{
     margin-top: 10%;
 }
-#newsletter{
-    background-color: #F5F5F5;
-    height: 90%;
-}
+
 #logoNewsletter {
     width: 70px;
+    filter: drop-shadow(16px 16px 10px silver);
 }
 /*page article admin*/
 /*.container{
@@ -233,10 +254,11 @@ p {
         margin-left:-8px;
     }
     #vivre{
-    margin-left:60px;
+     margin-left:60px;
     }
     #vivre-avec{
         margin: 10px;
+        width:90%;
     }
 }
 

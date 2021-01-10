@@ -33,9 +33,9 @@ mon controller articles#}
                      <p>{{ article.content }}</p>
                  </article>
                  {# la methode asset(uploads:articles me permet de recuperer les images qui ont ete uploader en bdd #}
-                 <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="box_articles_admin">
+                 <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="img_box_articles_admin">
               {% else %}
-                 <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="box_articles_admin">
+                 <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="img_box_articles_admin">
                  <article class="box_articles_admin">
                      <p>{{ article.content }}</p>
                  </article>

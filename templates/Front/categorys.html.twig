@@ -33,9 +33,9 @@ mon controller category#}
                         <p>{{ category.article }}</p>
                     </article>
                     {# la methode asset(uploads:category me permet de recuperer les images qui ont été uploadé en bdd #}
-                    <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" class="box_categorys_admin">
+                    <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" id="img_box_categorys_admin">
                 {% else %}
-                    <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" class="box_categorys_admin">
+                    <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" id="img_box_categorys_admin">
                     <article class="box_categorys_admin">
                         <p>{{ category.article }}</p>
                         <p>{{ category.Date|date("m/d/Y") }}</p>

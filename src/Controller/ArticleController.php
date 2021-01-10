@@ -3,7 +3,13 @@
 
 namespace App\Controller;
 
+
+use App\Form\searchType;
 use App\Repository\ArticleRepository;
+
+
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,10 +19,11 @@ class ArticleController extends AbstractController
     /**
      * @Route("Front/article/articles", name="Front_articlelist")
      * @param ArticleRepository $articlesRepository
+     * @param Request $request
      * @return Response
      */
     //je créer une function qui me permet de récuperer mes articles
-    public function Articlelist(ArticleRepository $articlesRepository)
+    public function Articlelist(ArticleRepository $articlesRepository,Request $request)
         {    //find all est une méthode qui permet de récuperer tous les articles
             //doctrine éffectue la requête pour moi ici select*from article
             $articles = $articlesRepository->findAll();
@@ -24,6 +31,8 @@ class ArticleController extends AbstractController
                 return $this->render("Front/articles.html.twig",[
                     'articles' => $articles
                 ]);
+
+
         }
 
 
@@ -44,4 +53,45 @@ class ArticleController extends AbstractController
                 ]);
 
         }
+
+
+    /**
+     * @Route("/recherche", name="search")
+     * @param Request $request
+     * @param ArticleRepository $repo
+     * @param PaginatorInterface $paginator
+     * @return Response
+     */
+    public function recherche(Request $request, ArticleRepository $repo, PaginatorInterface $paginator) {
+
+        $form = $this->createForm(SearchType::class);
+        $form->handleRequest($request);
+
+        $donnees = $repo->findAll();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $title = $form->getData()->getTitle();
+            $donnees = $repo->search($title);
+            if ($donnees == null) {
+                $this->addFlash('erreur', 'Aucun article contenant ce mot clé dans le titre n\'a été trouvé, essayez en un autre.');
+
+            }
+
+        }
+
+        // Paginate the results of the query
+        $articles = $paginator->paginate(
+        // Doctrine Query, not results
+            $donnees,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            4
+        );
+        $formView = $form-> createView();
+                 return $this->render('search.html.twig',[
+                    'articles' => $articles,
+                    'formView' => $formView
+                ]);
+            }
 }

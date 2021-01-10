@@ -30,15 +30,16 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-           return $this->render('Connexion/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+             return $this->render('Connexion/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
 
-        if ('ROLE_ADMIN') {
-            return $this->redirectToRoute('admin_page');
+                 if ('ROLE_ADMIN') {
+                        return $this->render('admin_page');
+                    }else if('ROLE_USER'){
+                        return $this->render('home_page');
+                    }else{
+                        return $this->render('home_page');
+                    }
         }
-
-
-
-    }
 
     /**
      * @Route("/logout", name="app_logout")
@@ -51,19 +52,19 @@ class SecurityController extends AbstractController
     }
 
     ///**
-    // * @route("/admin/home", name="admin_home")
+     //* @route("/admin/home", name="admin_home")
      //* @return Response
      //*/
 
     //public function redirectAction(){
 
-        //$authCheker =$this->container->get('security.authorization_cheker');
+       // $authCheker =$this->container->get('security.authorization_cheker');
         //if($authCheker->isGranted('ROLE_ADMIN')){
-            //return $this->render('Admin/index.html.twig');
+            //return $this->render('admin_page');
         //}else if ($authCheker->isGranted('ROLE_USER')){
-             //return $this->render('home.html.twig');
+            // return $this->render('home_page');
         //}else{
-           // return $this->render('home.html.twig');
+           //   return $this->render('home_page');
         //}
 
     //}

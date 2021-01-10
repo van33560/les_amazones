@@ -62,7 +62,7 @@ class Testimony
     /**
      * @Assert\NotBlank
      * @Assert\Image(
-     *   maxWidth = 400,
+     *   maxWidth = 600,
      *   maxHeight = 400
      * )
      * @ORM\Column(type="string", length=255)
