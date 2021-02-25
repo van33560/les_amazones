@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -22,20 +23,25 @@ class User implements UserInterface
      */
     private $id;
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string")
      */
     private $firstname;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string")
      */
     private $name;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string")
      */
     private $age;
     /**
+     * @Assert\Regex("/^[^\W][a-zA-Z0-9\-\._]+[^\W]@[^\W][a-zA-Z0-9\-\._]+[^\W]\.[a-zA-Z]{2,6}$/")
+     * @Assert\NotBlank(message="ce champ ne doit pas être vide")
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;

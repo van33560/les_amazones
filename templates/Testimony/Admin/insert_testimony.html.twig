@@ -1,19 +1,18 @@
 {% extends 'base.html.twig' %}
 
+
 {% block main%}
-    {%  for message in app.flashes ('success') %}
-        <p>{{ message }}</p>
-    {% endfor %}
-<div class="row position relative">
-    <div class="position absolute">
-      <img src="{{ asset('assets/img/mainsunis.jpg') }}" alt="" class="img-fluid" id="mainsunis">
-    </div>
-</div>
+    <div class="insert-testimony">
+        <h1 class="titre-temoignage-insert">Témoignagez</h1>
+            <div>
+                <p class="insert-article">Vous pouvez créer votre article et le partager avec d'autres utilisateurs !!</p>
+              <img src="{{ asset('assets/img/mainsunis.jpg') }}" alt="" class="img-fluid position absolute" id="mainsunis">
+            </div>
+
 {# j'utilise la fonction form_start de twig et en paramétre formView pour afficher la vue de mon formulaire #}
 {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
     <div class="form-group-testimony-insert">
-           <h1 class="titre-temoignage-insert">Témoignagez</h1>
-                <div class="form-group col-6 col-md-4 col-lg-3">
+           <div class="form-group col-6 col-md-4 col-lg-3">
                     {# avec la fonction form_label je crée un label title  #}
                     {{ form_label(formView.title) }}
                     {# avec la fonction form_widget je crée un input  #}
@@ -52,5 +51,5 @@
     {# form_end ferme mon formulaire #}
     {{ form_end(formView) }}
     </div>
-
+</div>
 {% endblock main%}

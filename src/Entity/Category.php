@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository", repositoryClass=CategoryRepository::class)
  */
 class Category
 {
@@ -26,18 +26,6 @@ class Category
      */
     private $title;
 
-
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-
-    public function setTitle($title): void
-    {
-        $this->title = $title;
-    }
-
     /**
      * @Assert\NotBlank(message="veuillez choisir une date")
      * @ORM\Column(type="datetime")
@@ -48,14 +36,11 @@ class Category
      * @Assert\NotBlank(message="veuillez remplir le champ")
      * @ORM\Column(type="string", length=6500)
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $article;
 
     /**
-     *
-     * @Assert\Image(
-     *    maxWidth = 400,maxHeight = 400
-     * )
      * @ORM\Column(type="string", length=6500)
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
      */
@@ -77,6 +62,17 @@ class Category
         $this->photo = $photo;
     }
 
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+
+    public function setTitle($title): void
+    {
+        $this->title = $title;
+    }
 
     public function getArticle()
     {

@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
+
+
 {# j'utilise la fonction form de twig et en paramétre formView pour afficher la vue de mon formulaire #}
 {% block main %}
-<h1 class="text-center" id="creer-article">Créer votre article</h1>
-{# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
- generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
-#}
-<div class="row position relative">
-    <div class="position absolute">
+<div class="insert">
+<h1  id="creer-article">Créer votre article</h1>
+    <div>
+        <p class="insert-article">Vous pouvez créer votre article et le partager avec d'autres utilisateurs !!</p>
         <img src="{{ asset('assets/img/contrats-assurance.png') }}" alt="" class="img-fluid" id="contrats-assurance">
     </div>
-</div>
+    {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
+     generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
+    #}
     {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
     {# avec la fonction form_label je crée un label title  #}
         <div class="form-group-article-insert">
@@ -45,11 +47,12 @@
                     {{ form_errors(formView.category) }}
                 </div>
 
-                <div class="form-group col-6 col-md-2 mt-5 col-lg-2">
+                <div class=" col-6 col-md-2 col-lg-2" id="recherche">
                     {{ form_label(formView.valider) }}
                     {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
                 </div>
           </div>
     {# form_end ferme mon formulaire #}
     {{ form_end(formView) }}
+</div>
 {% endblock main%}

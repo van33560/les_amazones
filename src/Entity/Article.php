@@ -61,9 +61,6 @@ class Article
     private $category;
 
     /**
-     * @Assert\Image(
-     *    maxWidth = 400,maxHeight = 400
-     * )
      * @ORM\Column(type="string", length=255)
      */
     private $illustration;

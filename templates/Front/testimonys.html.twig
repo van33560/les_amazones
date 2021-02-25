@@ -1,51 +1,53 @@
 {% extends 'base.html.twig' %}
-{% block message %}
-{# dans une boucle for j'appel si success le message add flash que j'ai defini dans une des functions de
-mon controller testimony#}
-{# si mon temoignage est supprimé mon message s'affichera grace à la variable globale app sur la page principale#}
-{%  for message in app.flashes ('success') %}
-    <p>{{ message }}</p>
-{% endfor%}
-{% endblock message%}
+
 
 {% block main %}
     {# lien de redirection de don #}
-    <div class="container-fluid">
-        <div class="row" id="dons">
-            <div class="col-12 col-lg-6 d-flex">
-                <p class="faireundon">Faire un Don <br>Pour la ligue contre le cancer</p>
-                <a href="https://don.ligue-cancer.net/octobrerose2020/~mon-don?utm_source=sidiese&utm_medium=octobrerose20&utm_campaign=LP&utm_content=boutondon" target="_blank" id="button"><span>Faire un don</span></a>
-            </div>
-        </div>
-    </div>
+
 {# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
-<div id="lien_temoignage"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
+<div id="lien_temoignage"><a href="{{ path('admin_testimony_insert') }}"><h1 class="lien_temoignage">Créer votre témoignage</h1></a></div>
  <div class="admin_container_testimonys">
      {# avec la boucle for j'appel un temoignage dans mes temoignages #}
      {% for testimony in testimonys %}
-         <h2 class="title_testimonys_admin">{{ testimony.title }}</h2>
-           <div class ="display_testimonys_admin">
+
+
              {# ma condition if et la methode loop.index me permet de récuperer les entités de mes temoignages
              et de les afficher en les alternants grâce à else #}
              {% if loop.index is odd %}
                      <article class="box_testimonys_admin">
-                        <p>{{ testimony.article }}</p>
+                         <div class="row-test">
+                             <h2 class="title_testimonys_admin">{{ testimony.title }}</h2>
+                             <p>{{ testimony.article }}</p>
+                             <a href="" class="article">lire la suite..</a>
+                         </div>
                      </article>
-                        {# la methode asset(uploads:testimony me permet de recuperer les images qui ont été uploadé en bdd #}
-                        <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" id="img_box_testimonys_admin">
+                 {# la methode asset(uploads:testimony me permet de recuperer les images qui ont été uploadé en bdd #}
+                 <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" id="img_box_testimonys_admin">
              {% else %}
-                     <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" id="img_box_testimonys_admin">
+                     <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" id="img_test_admin">
                      <article class="box_testimonys_admin">
-                         <p>{{ testimony.article }}</p>
+                         <div class="row2-test">
+                             <h2 class="title_testimonys_admin">{{ testimony.title }}</h2>
+                             <p>{{ testimony.article }}</p>
+                             <a href="" class="article">lire la suite..</a>
+                         </div>
                      </article>
-            {% endif %}
-            {% if is_granted ("ROLE_USER") %}
-                {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
-                 pour pouvoir supprimer ou modifier un article #}
-                <div id="button_testimony_m"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">Modifier</a></div>
-                <div id="button_testimony_s"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">Supprimer</a></div>
-            {% endif %}
-        </div>
+             {% endif %}
+         <div class="row3-test">
+             <article>
+                 <h3 class="title_testimonys_admin">{{ testimony.title }}</h3>
+                 <p>{{ testimony.article }}</p>
+                 <a href="" class="article">lire la suite..</a>
+             </article>
+         </div>
+         {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
+          pour pouvoir supprimer ou modifier un article #}
+        {#  {% if is_granted ('ROLE_ADMIN') %}
+            <div id="button_testimony_m"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">Modifier</a></div>
+            <div id="button_testimony_s"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">Supprimer</a></div>
+        {% endif %}#}
+
+
 
 
 {% endfor %}

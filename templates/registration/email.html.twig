@@ -1,0 +1,11 @@
+<h3>Vous êtes inscrit!</h3>
+
+salut {{ user.name }}! .
+
+{# example, assuming you have a route named "login" #}
+pour vous connectez aller: <a href="{{ url('app_login') }}"></a>.
+
+Merci!
+
+{# Makes an absolute URL to the /images/logo.png file
+<img src="{{ absolute_url(asset('images/logo.png')) }}">#}

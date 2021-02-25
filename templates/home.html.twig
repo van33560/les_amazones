@@ -4,123 +4,138 @@
 {% block stylesheet %}{{ asset('assets/css/home.css') }}{% endblock stylesheet %}
 {# fichier base de mon projet ou le header et le footer se repeterons sur mes autres pages  #}
 {% block header %}
-<header>
+    <header class="haut">
+        {# nav barre de la home#}
+        <nav class="position-relative">
+            <ul>
+                <li class=""><a href="#Généralités">Généralités &ensp;</a>
+                    <ul class="soubmenu">
+                        <li class=""><a href="{{path('home_page')}}">Statistiques</a></li>
+                        <li class=""><a href="#">Newsletter</a></li>
+                        <li class=""><a href="contact.html">Contact</a></li>
+                        <li class=""><a href="Apropos.html">A propos</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="#Pages">Pages &ensp;</a>
+                    <ul class="submenu">
+                        <li class=""><a href="psychologique.html">Psychologique</a></li>
+                        <li class=""><a href="esthetique.html">Esthétique</a></li>
+                        <li class=""><a href="perruques.html">Pérruques</a></li>
+                        <li class=""><a href="assurances.html">Assurances</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="#Actualités">Actualités&ensp;</a>
+                    <ul class="soumenu">
+                        <li class=""><a href="larecherche.html">Recherche</a></li>
+                        <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
+                        <li class=""><a href="{{path('Front_categorylist')}}">Categories</a></li>
+                        <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
+                        <li class=""><a href="annuaire.html">Annuaire</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    <div class="position-absolute text">
+        <p class="amazones">Les Amazones</p>
+    </div>
+    <div class="position-absolute don">
+        <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
+    </div>
+    <div class="position-absolute login">
+        <a href=""><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
+    </div>
 
-    <div class="d-none col-lg-2 mr-0 d-lg-block position-absolute" id="logo">
-    <img src="{{ asset('assets/img/LESAMAZONES1.svg') }}" alt="" class="img-fluid">
-    </div>
-{# nav barre de la home#}
-
-    <nav>
-    <ul>
-        <li class=""><a href="#Généralités">Généralités &ensp;</a>
-            <ul class="soubmenu">
-                <li class=""><a href="{{path('home_page')}}">Statistiques</a></li>
-                <li class=""><a href="#">Newsletter</a></li>
-                <li class=""><a href="contact.html">Contact</a></li>
-                <li class=""><a href="Apropos.html">A propos</a></li>
-            </ul>
-        </li>
-        <li class=""><a href="#Pages">Pages &ensp;</a>
-            <ul class="submenu">
-                <li class=""><a href="psychologique.html">Psychologique</a></li>
-                <li class=""><a href="esthetique.html">Esthétique</a></li>
-                <li class=""><a href="perruques.html">Pérruques</a></li>
-                <li class=""><a href="assurances.html">Assurances</a></li>
-            </ul>
-        </li>
-        <li class=""><a href="#Actualités">Actualités&ensp;</a>
-            <ul class="soumenu">
-                <li class=""><a href="larecherche.html">Recherche</a></li>
-                <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
-                <li class=""><a href="{{path('Front_categorylist')}}">Categories</a></li>
-                <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
-                <li class=""><a href="annuaire.html">Annuaire</a></li>
-            </ul>
-        </li>
-    </ul>
-    </nav>
-    <div class="col-lg-2 position-absolute" id="google">
-        <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
-    </div>
-    {# logo clipable de connection redirection vers formulaire grâce à la propriete path#}
-    <div class="col-lg-1  col-2 " id="login">
-        <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
-    </div>
-{% block section%}
-    <h1 class="d-none d-lg-block text-center w-100" id="">Bienvenue sur <br>votre site les Amazones!<br> Toutes unies contre le cancer du sien!! </h1>
-{% endblock section%}
+    {% if is_granted('ROLE_ADMIN')%}
+        <div class="col-lg-2 position-absolute" id="google">
+            <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
+        </div>
+    {% endif %}
+        {# logo clipable de connection redirection vers formulaire grâce à la propriete path#}
 
 </header>
-
 {% endblock header %}
 
 {% block main %}
-    <div class="row p-3" id="don">
-        <div class="col-10 mt-3 d-flex">
-            <p class="don">Faire un Don <br>A la ligue contre le cancer!</p>
-            <a href="https://don.ligue-cancer.net/octobrerose2020/~mon-don?utm_source=sidiese&utm_medium=octobrerose20&utm_campaign=LP&utm_content=boutondon " target="_blank" id="button"><span>Faire un don</span></a>
-        </div>
-    </div>
-    {# les blocks  permettent  de rappeler le contenu d'un autre ficher twig #}
+    <h1 class="actualites">Actualités</h1>
     <div class="container">
-        <div class="row position-relative mt-5">
-            <h2 class=" mt-5 w-100 text-center">Les Statistiques en France</h2>
-            <div class="col-12 col-lg-5 mt-5">
-                <P> 58 459 nouveaux cas de cancer du sein en France métropolitaine en 2018. <br> Taux d’incidence : entre 1990 et 2018, le nombre annuel de nouveaux cas de cancer du sein chez la femme a presque doublé, passant de 30 000 à 58 400 cas annuels,
-                    soit +1,1 % par an en moyenne 12 146 décès estimés en 2018. <br> Âge médian au moment du décès :74 <br> Diminution du taux de mortalité : -1,5 par an en moyenne entre 2005 et 2012 Survie nette standardisée sur l’âge à 5 ans : 87
-                    % ; à 10 ans : 76 %.
-                    <br> Le cancer du sein se situe au 1er rang des cancers incidents chez la femme, nettement devant le cancer du côlon-rectum et le cancer du poumon. <br>C’est aussi celui qui cause le plus grand nombre de décès chez la femme, avec
-                    14 % des décès féminins par cancer (ref. 2018). </P>
-                <em>Source: Estimation nationale de l'indice et de la mortalité par cancer en France entre 1990 et 2018 - Volume 1 - Tumeurs solides.</em>
-            </div>
-            <div class="col-12 col-lg-5 ml-5 mt-5">
-                <img src="{{ asset ('assets/img/mainsunis.png')}}" alt="" class="resp" id="main-unis">
+        <div class="row">
+            <div class="element2">
+                <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt=""  />
+                <p class="titre">Les Accéssoires</p>
+                <a href="" class="article">lire la suite..</a>
             </div>
         </div>
-        <div class="container mr-5 mt-5">
-            <div class="row mt-5" id="depistage-centre">
-                <h3 class=" mt-5 w-100 text-center">Le dépistage</h3>
-                <div class="col-12 col-lg-6 mb-5">
-                    <img src="{{ asset ('assets/img/statistiques.png')}}" alt="" class="resp" id="vivre">
+
+        <div class="row">
+            <div class="element2">
+                <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt="" />
+                <p class="titre">Le Sport</p>
+                <a href="" class="article">lire la suite..</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="element2">
+                <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt=""  />
+                <p class="titre">La Recherche</p>
+                <a href="" class="article">lire la suite..</a>
+            </div>
+        </div>
+    </div>
+    <div class="button">
+        <a href="">
+            Lire plus..
+        </a>
+    </div>
+    <div class=row1>
+        <p class="unis">" Toutes unis contre le cancer !! "</p>
+        <div id="img">
+            <img src="{{ asset('assets/img/karate.jpg') }}" alt="" class="img">
+        </div>
+    </div>
+    {# carousel #}
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('assets/img/woman.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('assets/img/moi.jpg') }}" class="d-block w-100" alt="...">
                 </div>
-                <div class="col-12 col-lg-5 mb-5 mt-5" id="solutions">
-                    <p class="depistage">Au cours de l’année 2019, 2 551 000 femmes se sont fait dépistées, ce qui correspond à un taux national de participation de 48,6 % (voir tableau onglet annuels). <br> Pour la période 2018-2019, le taux de participation est de 49,3
-                        %. Tous les taux standardisés annuels et biennaux sont disponibles ici.<br> Il y a une évolution de la participation nationale, de tous âges et par tranche d’âge. <br> Après avoir augmenté jusqu’en 2011-2012 pour atteindre un pic
-                        à 52,4 %, la participation au programme est en diminution. <br> Les derniers indicateurs de participation, pour la période 2018-2019, indiquent que cette diminution se poursuit lentement. <br> Cette baisse s’observe pour toutes
-                        les tranches d’âge et est particulièrement marquée pour les 55-59 ans, chez qui le taux de participation est le plus bas.</p>
-                    <em>Source: Santé Public France</em>
-                </div>
+            <div class="carousel-item">
+                <img src="{{ asset('assets/img/people.jpg') }}" class="d-block w-100" alt="...">
             </div>
         </div>
-        <div class="row position-relative mt-5">
-            <h4 class=" mt-5 w-100 text-center">Vivre avec le cancer</h4>
-            <div class="col-12 col-lg-5  ml-5 mr-5 mt-5">
-                <p>Les semaines que vous venez de vivre, partagées entre la peur et l’espoir, ont usé vos forces tant physiques que morales et vous ont peut-être amenée à remettre en question des choses qui vous semblaient parfaitement claires jusqu’à
-                    aujourd’hui.
-                    <br> Malgré les soins et l’attention que l’on vous prodigue à l’hôpital pour vous faciliter le retour à la vie de tous les jours, vous avez peut-être l’impression d’être seule avec vos incertitudes. <br>Mais vous sentirez bientôt
-                    renaître en vous la volonté de vivre. <br> Vous recommencerez à songer à l’avenir, même si celui- ci vous apparaît encore bien flou. Des solutions peuvent vous aider:
-                    <br> - Aide psychologique:(Médecins, Hypnose,séance de relaxation, Yoga, reiki, séance énergetique,groupe de soutien).<br> - Conseils ésthétique:(Prothéses capillaires, turban, tatouages des sourcils de l'aréole mammaire, extention
-                    de cils).<br> - Conseils financier(Crédits et assurances). <br>Retouvez tous les détailles dans les pages du menu.</p> <em>Source: Mon réseaux cancer du sein</em>
-            </div>
-            <div class="col-10 col-lg-4" id="vivre-avec">
-                <img src="{{ asset ('assets/img/vivre-avec.png')}}" alt="" class="resp">
-            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden"></span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden"></span>
+            </a>
+    </div>
+
+{# formulaire newsletter #}
+    <div class="forcont">
+        <div class=" position-absolute informe">
+            <P class="news">Newsletter</P>
+            <p class="informer">Choisissez l'actualité qui vous intéresse et rester informer !!!</p>
+        </div>
+        <div class="formContainer">
+            <form>
+                <input type="text" id="email" name="email" placeholder="email" onfocus="this.placeholder=''" onblur="this.placeholder='email'"><br><br>
+                <input type="submit" value="Submit" class="submit">
+            </form>
+
         </div>
     </div>
-    <h5 class="w-100 text-center" id="Un-peu-de-sport">Un peu de sport!</h5>
-    <div class="col-12 col-lg-6 mt-5">
-        <iframe id="pilate" width="560" height="315" src="https://www.youtube.com/embed/4_45donECpI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <!--newsletter recuperation email-->
-    <div class="row justify-content-center" id="newsletter">
-        <h5 class="col-2 text-center" id="new">Newsletter
-            <a class="d-block mt-5 mx-auto" href="newsletter.html"><img src="{{ asset('assets/img/newsletter.svg') }}" alt="" id="logoNewsletter"></a>
-        </h5>
-        <div class="col-12 py-5 mb-5 text-center mr-5">
-            <p>Choisissez l'actualité qui vous intéresse et rester informer !!!</p>
-        </div>
-    </div>
+
 {% endblock main%}
 
 

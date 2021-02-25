@@ -2,12 +2,9 @@
 {# dans une boucle for j'appel si success le message add flash que j'ai defini dans une des functions de
 mon controller category#}
 {# si ma category est supprimée mon message s'affichera grace à la variable globale app sur la page principale#}
-{% block main %}
-{%  for message in app.flashes ('success') %}
-    <p>{{ message }}</p>
-{% endfor %}
+{% block main%}
 {# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
-<div id="but"><a href="{{ path('admin_category_insert')}}"><h1>Créer votre catégory</h1></a></div>
+<div id="admin_lien_category"><a href="{{ path('admin_category_insert')}}"><h1>Créer votre catégory</h1></a></div>
     <div class="admin_container_categorys">
         {# avec la boucle for j'appel une category dans les categorys #}
         {% for category in categorys %}
@@ -22,9 +19,9 @@ mon controller category#}
                             <p>{{ category.article }}</p>
                         </article>
                         {# la methode asset(uploads:category me permet de recuperer les images qui ont été uploadé en bdd #}
-                        <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" class="box_categorys_admin">
+                        <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" class="box_categorys_admin_photo">
                     {% else %}
-                        <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" class="box_categorys_admin">
+                        <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" class="box_categorys_admin_photo">
                         <article class="box_categorys_admin">
                             <p>{{ category.article }}</p>
                             <p>{{ category.Date|date("m/d/Y") }}</p>

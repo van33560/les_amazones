@@ -100,8 +100,8 @@ class AdminCategoryController extends AbstractController
                 $entityManager->flush();
                 //la methode addflash me permet d'afficher un message apres ajout via un fichier twig
                         $this->addFlash(
-                        "sucess",
-                        "la catégory a ete ajouté"
+                        "success",
+                        "la catégorie a été ajoutée"
                     );
             return $this->redirectToRoute('admin_categorylist');
         }
@@ -148,10 +148,10 @@ class AdminCategoryController extends AbstractController
 
             //je crée un message grace a la methode addflash qui s'affichera à la modification de l'article
                 $this->addFlash(
-                    "sucess",
-                    "la category a été modifié"
+                    "success",
+                    "la categorie a été modifiée"
                 );
-
+            return $this->redirectToRoute('admin_categorylist');
         }
         //je crée grâce à la fonction createview une vue qui pourra être lu par twig
         $formView = $form-> createView();
@@ -184,7 +184,7 @@ class AdminCategoryController extends AbstractController
             //je cree un message addflash qui s'affiche à la suppression de la category
                 $this->addFlash(
                     "success",
-                    "la category a été supprimé"
+                    "la categorie a été supprimée"
                 );
 
         }

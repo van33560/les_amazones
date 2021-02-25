@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
+
 {# j'utilise la fonction form-start de twig et en paramétre formView pour afficher la vue de mon formulaire #}
 {% block main%}
-{%  for message in app.flashes ('success') %}
-    <p>{{ message }}</p>
-{% endfor %}
-<h1 class="modifier-article">Modifier votre article</h1>
-<div class="row position relative">
-    <div class="position absolute">
+
+<div class="insert">
+    <h1 class="modifier-article">Modifier votre article</h1>
+    <div>
+        <p class="insert-article">Vous pouvez modifier votre article et le partager avec d'autres utilisateurs !!</p>
         <img src="{{ asset('assets/img/contrats-assurance.png') }}" alt="" class="img-fluid" id="contrats-assurance">
     </div>
-</div>
+
     {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
         {# avec la fonction form_label je crée un label title  #}
             <div class="form-group-article-modify">
@@ -50,4 +50,5 @@
                </div>
             </div>
     {{ form_end(formView) }}
+</div>
 {% endblock main%}

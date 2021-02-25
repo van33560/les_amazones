@@ -19,7 +19,7 @@ security:
             lazy: true
             provider: app_user_provider
             #use_default_taget_path: false
-            #default_target_path: /admin/home
+            #default_target_path: /home
 
             guard:
                 authenticators:

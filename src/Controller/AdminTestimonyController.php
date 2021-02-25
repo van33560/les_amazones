@@ -8,7 +8,7 @@ namespace App\Controller;
 use App\Entity\Testimony;
 
 use App\Form\TestimonyType;
-use App\Repository\CategoryRepository;
+use Symfony\Component\HttpFoundation\File\File;
 use App\Repository\TestimonyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -50,22 +50,7 @@ class AdminTestimonyController extends AbstractController
                 'testimonys' => $testimonys
             ]);
     }
-    /**
-    * @route("admin/testimony/show/{id}",name="testimonyShow")
-    * @param $id
-    * @param TestimonyRepository $testimonyRepository
-    * @return Response
-    */
-    // ma methode testimonyrepository me permet de recuperer les données de ma bdd et de retourner
-    // un resultat via la methode render
-    public function testimonyShow($id, TestimonyRepository $testimonyRepository)
-    {
-        $testimony = $testimonyRepository->find($id);
-            return $this->render("Front/testimony.html.twig", [
-                'testimony' => $testimony
-            ]);
 
-    }
     /**
     * @route("admin/testimony/insert",name="admin_testimony_insert")
     * @param Request $request
@@ -110,7 +95,7 @@ class AdminTestimonyController extends AbstractController
                  $entityManager->flush();
                  //la methode addflash me permet d'afficher un message de confirmation
                        $this->addFlash(
-                        "sucess",
+                        "success",
                 "le témoignage a été ajouté"
                 );
              return $this->redirectToRoute('admin_testimony_list');
@@ -135,16 +120,15 @@ class AdminTestimonyController extends AbstractController
     // id pour pouvoir modifier le temoignage grace a son id
     // la propriété repository me permettra de modifier les données de la bdd et
     // la propriéte request me permettra de recuperer les modifications
-    public function updatetesimony($id, TestimonyRepository $testimonyRepository,
-                               Request $request, EntityManagerInterface $entityManager)
+    public function updatetesimony($id, TestimonyRepository $testimonyRepository, Request $request, EntityManagerInterface $entityManager)
     {
-
         //je récupére en bdd le temoignage et son id
         $testimony = $testimonyRepository -> find($id);
 
         if(is_null($testimony)){
             return $this->redirectToRoute('admin_testimony_list');
         }
+
         //je crée un formulaire grâce à la fonction createFrom et je passe en paramétre le chemin grace :: class
         //qui renvois vers le fichier testimonyType
         $form = $this -> createForm(TestimonyType::class,$testimony);
@@ -155,9 +139,10 @@ class AdminTestimonyController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $entityManager->persist($testimony);
             $entityManager->flush();
+
             //je crée un message grace a la methode addflash qui s'affichera à la modification du témoignage
                 $this->addFlash(
-                    "sucess",
+                    "success",
                     "le temoignage a été modifié"
                 );
 

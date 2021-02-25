@@ -26,6 +26,7 @@ class AdminController extends AbstractController
             'articles' => $articleRepository->findAll()
         ]);
 
+
     }
 
 

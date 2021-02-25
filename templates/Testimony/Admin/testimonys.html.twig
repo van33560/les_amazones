@@ -1,12 +1,8 @@
 {% extends 'base.html.twig' %}
-{% block message %}
-{# dans une boucle for j'appel si success le message add flash que j'ai defini dans une des functions de
-mon controller testimony#}
-{# si mon temoignage est supprimé mon message s'affichera grace à la variable globale app sur la page principale#}
-{% endblock message%}
+
 {% block main %}
 {# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
-<div id="lien_temoignage"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
+<div id="admin_lien_temoignage"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
 <div class="admin_container_testimonys">
     {# avec la boucle for j'appel un temoignage parmis tous les temoignages #}
     {# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}
@@ -20,16 +16,18 @@ mon controller testimony#}
                    <p>{{ testimony.article }}</p>
                </article>
                    {# la methode asset(uploads:testimony me permet de recuperer les images qui ont été uploadé en bdd #}
-                   <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
+                   <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin_picture">
            {% else %}
-                   <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin">
+                   <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" class="box_testimonys_admin_picture">
                <article class="box_testimonys_admin">
                    <p>{{ testimony.article }}</p>
                </article>
            {% endif %}
         </div>
+        {% if is_granted ('ROLE_ADMIN') %}
           <div id="button_testimony_m"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">Modifier</a></div>
           <div id="button_testimony_s"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">Supprimer</a></div>
+        {% endif %}
 {# {% if testimony.picture %}
 {#
 je récupère le nom du fichier uploadé

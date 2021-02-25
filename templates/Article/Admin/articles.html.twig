@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
+
 {% block main%}
-{%  for message in app.flashes ('success') %}
-    <p>{{ message }}</p>
-{% endfor %}
 {# grace à la methode path je cree un lien qui renvoi vers mon formulaire creer dans un fichier twig#}
-<div id="but"><a href="{{ path('admin_article_insert') }}"><h1>Créer votre article</h1></a></div>
+<div id="admin_lien_articles"><a href="{{ path('admin_article_insert') }}"><h1>Créer votre article</h1></a></div>
   <div class="admin_container_articles">
     {% for article in articles %}
     {# avec la boucle for j'appel un article dans mes articles #}
@@ -18,9 +16,9 @@
                     <p>{{ article.content }}</p>
                 </article>
                 {# la methode asset(uploads:category me permet de recuperer les images qui ont été uploadé en bdd #}
-                <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="box_articles_admin">
+                <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="box_articles_admin_illustration">
               {% else %}
-                  <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="box_articles_admin">
+                  <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="box_articles_admin_illustration">
                   <article class="box_articles_admin">
                     <p>{{ article.content }}</p>
                 </article>

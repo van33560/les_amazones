@@ -24,7 +24,7 @@ class CategoryType extends AbstractType
                 'widget'=>'single_text'])
             ->add('article',TextareaType::class)
             ->add('photo', FileType::class, [
-                //'required' => false,
+                'required' => false,
                 'mapped' => false,
                 //require =>le champs doit etre renseigner
                 //mapped pour sf ne gere pas le contenu

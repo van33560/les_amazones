@@ -24,7 +24,14 @@ class ArticleController extends AbstractController
      */
     //je créer une function qui me permet de récuperer mes articles
     public function Articlelist(ArticleRepository $articlesRepository,Request $request)
-        {    //find all est une méthode qui permet de récuperer tous les articles
+        {
+           // $search = $request->query->get('search');
+
+            //if(!is_null($search)){
+                //$articles = $articlesRepository->searchInTitle($search);
+
+            //}
+            //find all est une méthode qui permet de récuperer tous les articles
             //doctrine éffectue la requête pour moi ici select*from article
             $articles = $articlesRepository->findAll();
             //la fonction render me permet de renvoyer vers mon fichier twig les infos via sa route
@@ -77,21 +84,23 @@ class ArticleController extends AbstractController
 
             }
 
-        }
-
-        // Paginate the results of the query
-        $articles = $paginator->paginate(
-        // Doctrine Query, not results
-            $donnees,
-            // Define the page parameter
-            $request->query->getInt('page', 1),
-            // Items per page
-            4
-        );
-        $formView = $form-> createView();
+        }       // Paginate the results of the query
+                $articles = $paginator->paginate(
+                // Doctrine Query, not results
+                    $donnees,
+                    // Define the page parameter
+                    $request->query->getInt('page', 1),
+                    // Items per page
+                    4
+                );
+            $formView = $form-> createView();
                  return $this->render('search.html.twig',[
                     'articles' => $articles,
                     'formView' => $formView
                 ]);
+        return $this->render("search.html.twigch.html.twig", [
+            'article' => $article
+        ]);
             }
+
 }

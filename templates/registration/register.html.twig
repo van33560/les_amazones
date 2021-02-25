@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block main %}
-{% block title %}Register{% endblock %}
- {# boucle affiche un message d'erreur si email incorrect #}
+{# boucle affiche un message d'erreur si email incorrect #}
 {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
 {% endfor %}

@@ -1,38 +1,63 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Gérer les articles{% endblock %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Site pour les femmes qui ont eu un cancer du sein">
+    <meta name="author" content="vanessa">
+    <meta name="keywords" content="cancer,sein,maladie,accessoires">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.0.0/dist/css/axentix.min.css">
+    <link rel="stylesheet" media="screen and (max-width: 540px)" href="smallscreen.css" type="text/css" />
+    <link rel="stylesheet" href="{% block stylesheet %}{{ asset('assets/css/base.css') }}{% endblock stylesheet %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
 {% block main %}
-<h1 class="administrateur">Administrateur</h1>
+
 {# grace à la proprieté path,je crée des liens qui renvoient vers les names de des functions
 que j'ai defini dans mes controllers admincategory et admintestimony #}
-<a href="{{ path("home_category") }}"><h2>Gérer les catégories</h2></a>
-<a href="{{ path("home_testimony") }}"><h2>Gérer les témoignages</h2></a>
-    <div class="display_index_admin">
-    <table class="table striped">
-        <h3>Gérer vos articles</h3>
-        {# je cree un tableau dont je choisi les titres #}
-        <thead>
+    <h1 class="titre">Les Articles</h1>
+           <div id="example-sidenav" data-ax="sidenav" class="sidenav shadow-1 large fixed white">
+                <div class="sidenav-header">
+                    <button data-target="example-sidenav" class="sidenav-trigger"><i class="fas fa-times"></i></button>
+                    <img class="sidenav-logo dropshadow-1" src="{{ asset('assets/img/girl.svg') }}" alt="Logo" id="ad-compte" />
+                </div>
+                <h3 class="Compte_admin">Compte administrateur</h3>
+
+                <a href="{{ path("home_category") }}" class="sidenav-link active" id="gerer-catagories">Gérer les catégories</a>
+               <a href="{{ path("home_testimony") }}" class="sidenav-link active" id="Gérer les témoignages">Gérer les témoignages</a>
+            </div>
+<table id="customers">
+{# j'appel dans ce tableau un articles dans mes articles et j'affiche son id et son titre #}
+{% for article in articles %}
+    <tbody>
         <tr>
             <th>ID</th>
             <th>Nom</th>
-            <th class="text-center">Actions</th>
+            <th>Actions</th>
         </tr>
-        </thead>
-        <tbody>
-        {# j'appel dans ce tableau un articles dans mes articles et j'affiche son id et son titre #}
-        {% for article in articles %}
             <tr>
                 <td>{{article.id}}</td>
                 <td>{{article.title}}</td>
                 <td class="text-center">
                     {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
-                     pour pouvoir supprimer ou modifier un article #}
-                    <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
-                    <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
+                             pour pouvoir supprimer ou modifier un article #}
+                    <div><a href="{{ path('admin_article_insert') }}">Créer</a></div>
+                    <div><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
+                    <div><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
                 </td>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
+    </tbody>
+{% endfor %}
+
+</table>
 {% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axentix@1.0.0/dist/js/axentix.min.js"></script>

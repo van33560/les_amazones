@@ -59,26 +59,14 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('vanlab33@hotmail.fr', 'les_amazones Mail'))
-                    ->to($user->getEmail())
-                    ->subject('Veuillez confirmer votre email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
-            // do anything else you need here, like send an email
-
-            return $guardHandler->authenticateUserAndHandleSuccess(
-                $user,
-                $request,
-                $authenticator,
-                'main' // firewall name in security.yaml
-            );
+                $this->addFlash(
+                    "success",
+                    "Vous étes inscrit"
+                );
             return $this->redirectToRoute('home_page');
         }
 
-        return $this->render('registration/register.html.twig', [
+         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
 
@@ -89,7 +77,7 @@ class RegistrationController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function verifyUserEmail(Request $request): Response
+    public function verifyEmail(Request $request): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -99,12 +87,50 @@ class RegistrationController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason());
 
-            return $this->redirectToRoute('home_page');
         }
 
-        //*@TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Votre adresse mail a bien été vérifier.');
+
+        $this->addFlash('success', 'Votre adresse mail a bien été vérifié.');
 
         return $this->redirectToRoute('home_page');
     }
+
+
+    /**
+     * @route("/email", name="email")
+     * @param $name
+     * @param \Swift_Mailer $mailer
+     * @return Response
+     */
+    public function index($name, \Swift_Mailer $mailer)
+    {
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('send@example.com')
+            ->setTo('recipient@example.com')
+            ->setBody(
+                $this->renderView(
+                // templates/emails/registration.html.twig
+                    'email.html.twig',
+                    ['name' => $name]
+                ),
+                'text/html'
+            );
+
+        $mailer->send($message);
+        return $this->redirectToRoute('home_page');
+       // return $this->render(...);
+    }
+
+
+
+
+    // you can remove the following code if you don't define a text version for your emails
+    //->addPart(
+    // $this->renderView(
+    // templates/emails/registration.txt.twig
+    //  'emails/registration.txt.twig',
+    // ['name' => $name]
+    // ),
+    // 'text/plain'
+    //)
 }

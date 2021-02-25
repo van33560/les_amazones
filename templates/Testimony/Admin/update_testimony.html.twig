@@ -1,22 +1,21 @@
 {% extends 'base.html.twig' %}
+
 {% block main%}
 {# dans une boucle for j'appel si success le message add flash que j'ai defini dans une des functions de
 mon controller testimony#}
 {# si mon temoignage est supprimé mon message s'affichera grace à la variable globale app sur la page principale#}
-{%  for message in app.flashes ('success') %}
-        <p>{{ message }}</p>
-{% endfor %}
+<div class="insert-testimony">
 <h1 class="titre-testimony-modif">Modifier votre Témoignage</h1>
-<div class="row position relative">
-    <div class="position absolute">
-        <img src="{{ asset('assets/img/assurances.png') }}" alt="" class="img-fluid" id="assurances-testimony">
+    <div>
+        <p class="insert-article">Vous pouvez créer votre article et le partager avec d'autres utilisateurs !!</p>
+        <img src="{{ asset('assets/img/assurances.png') }}" alt="" class="img-fluid position-absolute" id="assurances-testimony">
     </div>
-</div>
+
     {# je crée un formulaire avec form_start grace a cette fonction je vais pouvoir demander à sf de
     generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
     #}
-    {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
-            <div class="form-group-testimony-modify">
+         {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
+            <div class="form-group-test-modify">
                 <div class="form-group col-6 col-md-4 col-lg-3">
                     {{ form_label(formView.title) }}
                     {# avec la fonction form_widget je crée un input  #}
@@ -54,7 +53,7 @@ mon controller testimony#}
                     {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
                 </div>
             </div>
-
-{# form_end ferme mon formulaire #}
-{{ form_end(formView) }}
-{% endblock main%}
+        {# form_end ferme mon formulaire #}
+        {{ form_end(formView) }}
+</div>
+ {% endblock main%}

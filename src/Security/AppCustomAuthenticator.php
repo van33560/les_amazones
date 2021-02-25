@@ -71,7 +71,7 @@ class AppCustomAuthenticator extends AbstractFormLoginAuthenticator implements P
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email non pas  trouvé');
+            throw new CustomUserMessageAuthenticationException('Email non trouvé');
         }
 
         return $user;

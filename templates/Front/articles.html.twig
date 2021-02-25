@@ -1,55 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block message %}
-{# dans une boucle for j'appel si success le message add flash que j'ai defini dans une des functions de
-mon controller articles#}
-{# si mon article est supprimé mon message s'affichera grace à la variable globale app sur la page principale#}
-    {%  for message in app.flashes ('success') %}
-         <p>{{ message }}</p>
-    {% endfor%}
-{% endblock message %}
-{% block main %}
 
+{% block main %}
+   {#  <form action="">
+        <input name="search" type="text">
+        <button type="submit">recherche</button>
+    </form>#}
 {#lien de redirection de don #}
-<div class="container-fluid">
-    <div class="row" id="dons">
-        <div class="col-12 col-lg-6 d-flex">
-            <p class="faireundon">Faire un Don <br>Pour la ligue contre le cancer</p>
-            <a href="https://don.ligue-cancer.net/octobrerose2020/~mon-don?utm_source=sidiese&utm_medium=octobrerose20&utm_campaign=LP&utm_content=boutondon" target="_blank" id="button"><span>Faire un don</span></a>
-        </div>
-    </div>
-</div>
 {# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
-<div id="lien_articles"><a href="{{ path('admin_article_insert') }}"><h1>Créer votre article</h1></a></div>
+<div id="lien_articles"><a href="{{ path('admin_article_insert') }}"><h1 class="lien_articles">Créer votre article</h1></a></div>
 <div class="admin_container_articles">
 {% for article in articles %}
 {# avec la boucle for j'appel un article dans mes articles #}
-    <h2 class="title_articles_admin">{{ article.title }}</h2>
-         <div class="display_articles_admin">
-             {# ma condition if et la methode loop.index me permet de récuperer les entités de mes articles
-             et de les afficher en les alternants grâce à else #}
-             {% if loop.index is odd %}
-                 <article class="box_articles_admin">
-                     <p>{{ article.content }}</p>
-                 </article>
-                 {# la methode asset(uploads:articles me permet de recuperer les images qui ont ete uploader en bdd #}
-                 <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="img_box_articles_admin">
-              {% else %}
-                 <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="img_box_articles_admin">
-                 <article class="box_articles_admin">
-                     <p>{{ article.content }}</p>
-                 </article>
-             {% endif %}
-         </div>
-         {# la condition if is granted me permet de choisir les élements du site qui seront visible pas les personnes
-         ayant le role_admin#}
-         {% if is_granted('ROLE_ADMIN')%}
-              {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
-              pour pouvoir supprimer ou modifier un article #}
-              <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
-              <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
-         {% endif %}
-
+  {# ma condition if et la methode loop.index me permet de récuperer les entités de mes articles
+  et de les afficher en les alternants grâce à else #}
+    {% if loop.index is odd %}
+        <article class="box_articles">
+             <div class="row">
+                 <h1 class="title_articles_admin">{{ article.title }}</h1>
+                <p>{{ article.content }}</p>
+                 <a href="" class="article">lire la suite..</a>
+             </div>
+        </article>
+             {# la methode asset(uploads:articles me permet de recuperer les images qui ont ete uploader en bdd #}
+             <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="img_box_articles_admin">
+    {% else %}
+        {# la methode asset(uploads:articles me permet de recuperer les images qui ont ete uploader en bdd #}
+        <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="img_art_ad">
+        <article class="box_articles">
+            <div class="row2">
+                <h2 class="title_articles_admin">{{ article.title }}</h2>
+                <p>{{ article.content }}</p>
+                <a href="" class="article">lire la suite..</a>
+            </div>
+        </article>
+    {% endif %}
+    <div class="row1">
+        <article class="box_articles_admin">
+            <h3 class="title_articles_admin">{{ article.title }}</h3>
+            <p>{{ article.content }}</p>
+            <a href="" class="article">lire la suite..</a>
+        </article>
+    </div>
+{# la condition if is granted me permet de choisir les élements du site qui seront visible pas les personnes
+ ayant le role_admin#}
+    {#
+    {% if is_granted('ROLE_ADMIN')%}
+    {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
+    pour pouvoir supprimer ou modifier un article #}
+    {#
+    <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
+    <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
+  {% endif %}#}
 {% endfor %}
 </div>
 {% endblock main%}

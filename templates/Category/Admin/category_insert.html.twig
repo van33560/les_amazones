@@ -1,18 +1,19 @@
 {% extends 'base.html.twig' %}
+
+
 {# j'utilise la fonction form de twig et en paramétre formView pour afficher la vue de mon formulaire #}
 {% block main%}
-    {%  for message in app.flashes ('success') %}
-        <p>{{ message }}</p>
-    {% endfor %}
 {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
 generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
 #}
- <h1 class="form-group" id="gerer-category">Créer vos categories</h1>
-<div class="row position relative">
-    <div class="position absolute">
+
+<div class="insert">
+    <h1 class="form-group" id="gerer-category">Créer vos categories</h1>
+    <div>
+        <p class="insert-article">Vous pouvez créer votre catégorie et le partager avec d'autres utilisateurs !!</p>
         <img src="{{ asset('assets/img/smiles.jpg') }}" alt="" class="img-fluid" id="smiles">
     </div>
-</div>
+
       {{ form_start(formView) }}
             <div class="form-insert-category">
                     <div class="form-group col-6 col-md-4 col-lg-3">
@@ -45,5 +46,5 @@ generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elem
                     </div>
             </div>
       {{ form_end(formView) }}
-
+</div>
 {% endblock main%}
