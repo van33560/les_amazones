@@ -6,10 +6,10 @@
  generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
 #}
 
-<div class="insert">
+<div class="insert position-relative">
     <h1 id="modif-category">Modifier vos catégories</h1>
     <div>
-        <p class="insert-article">Vous pouvez modifier votre catégorie et le partager avec d'autres utilisateurs !!</p>
+        <p class="insert-article position-absolute">Vous pouvez modifier votre catégorie et le partager avec d'autres utilisateurs !!</p>
         <img src="{{ asset('assets/img/assurances.jpg') }}" alt="" class="img-fluid position-absolute" id="assurances">
     </div>
     {{ form_start(formView) }}

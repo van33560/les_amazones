@@ -10,7 +10,7 @@ use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
@@ -51,23 +51,23 @@ class SecurityController extends AbstractController
         par la clé de déconnexion sur votre parefeu.');
     }
 
-    ///**
-     //* @route("/admin/home", name="admin_home")
-     //* @return Response
-     //*/
+    /**
+     * @route("/admin/home", name="admin_home")
+     * @return Response
+     */
 
-    //public function redirectAction(){
+    public function redirectAction(){
 
-       // $authCheker =$this->container->get('security.authorization_cheker');
-        //if($authCheker->isGranted('ROLE_ADMIN')){
-            //return $this->render('admin_page');
-        //}else if ($authCheker->isGranted('ROLE_USER')){
-            // return $this->render('home_page');
-        //}else{
-           //   return $this->render('home_page');
-        //}
+       $authCheker =$this->container->get('security.authorization_cheker');
+            if($authCheker->isGranted('ROLE_ADMIN')){
+                return $this->render('admin_page');
+            }else if ($authCheker->isGranted('ROLE_USER')){
+                 return $this->render('home_page');
+            }else{
+                  return $this->render('home_page');
+            }
 
-    //}
+    }
 
 
 

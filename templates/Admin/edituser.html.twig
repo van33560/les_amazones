@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Modifier un utilisateur</h1>
+
+    {{ form(userForm, {attr: {novalidate: 'novalidate'}}) }}
+    {# avec la fonction form_label je crée un label title  #}
+    <div class="form-group-article-insert">
+        <div class="form-group col-6 col-md-4 col-lg-3">
+            {{ form_label(userForm.email) }}
+            {{ form_widget(userForm.email,{ 'attr':{'class':'form-control'}}) }}
+            {{ form_errors(userForm.email) }}
+        </div>
+
+        <div class="form-group col-6 col-md-4 col-lg-3">
+            {{ form_label(userForm.role) }}
+            {# avec la fonction form_widget je crée un input  #}
+            {{ form_widget(userForm.role,{ 'attr':{'class':'form-control'}}) }}
+            {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+            {{ form_errors(formView.role) }}
+        </div>
+
+        <div class=" col-6 col-md-2 col-lg-2" id="recherche">
+            {{ form_label(userForm.valider) }}
+            {{ form_widget(userForm.valider,{ 'attr':{'class':'form-control'}}) }}
+        </div>
+
+    {# form_end ferme mon formulaire #}
+    {{ form_end(userForm) }}
+    </div>
+{% endblock %}

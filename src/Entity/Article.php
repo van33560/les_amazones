@@ -61,6 +61,7 @@ class Article
     private $category;
 
     /**
+     * @Assert\NotBlank(message="veuillez remplir le champ")
      * @ORM\Column(type="string", length=255)
      */
     private $illustration;

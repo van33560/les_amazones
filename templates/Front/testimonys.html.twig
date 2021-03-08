@@ -5,7 +5,9 @@
     {# lien de redirection de don #}
 
 {# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
-<div id="lien_temoignage"><a href="{{ path('admin_testimony_insert') }}"><h1 class="lien_temoignage">Créer votre témoignage</h1></a></div>
+ {% if is_granted('ROLE_USER')%}
+    <div id="lien_temoignage"><a href="{{ path('Front_utilisateurs_insert_testimony') }}"><h1 class="lien_temoignage">Créer votre témoignage</h1></a></div>
+ {% endif %}
  <div class="admin_container_testimonys">
      {# avec la boucle for j'appel un temoignage dans mes temoignages #}
      {% for testimony in testimonys %}

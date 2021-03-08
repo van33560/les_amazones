@@ -4,17 +4,16 @@
 {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
 {% endfor %}
-<div class="row position relative">
-    <div class="position absolute">
-        <img src="{{ asset('assets/img/sport-rose.jpg') }}" alt="" class="img-fluid" id="sport-rose">
+<div class="insert-register position-relative">
+    <div class="inscription position-absolute">
+        <p class="inscrivez-vous">Pour vous inscrire nous avons besoin de renseignements.<br> Parler nous de vous!</p>
     </div>
-</div>
     {# form_start et ca fonction registrationForm me permet de generer un gabarit de formulaire ou je peux peronnalisé
     les champs et le stylisé
     avec bootstrap#}
     {{ form_start(registrationForm) }}
        <div class="form-group-register">
-          <h1 class="titre-inscription">Inscription</h1>
+          <h1 class="titre-inscription">Inscrivez-vous!</h1>
                  <div class="form-group col-6 col-md-4 col-lg-3">
                      {{ form_label(registrationForm.firstname) }}
                      {{ form_widget(registrationForm.firstname,{ 'attr':{'class':'form-control'}}) }}
@@ -59,7 +58,9 @@
                     {{ form_widget(registrationForm.valider,{ 'attr':{'class':'form-control'}}) }}
                 </div>
        </div>
+
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}
 
 

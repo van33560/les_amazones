@@ -135,23 +135,49 @@ ul li ul li {
     margin-top: 100px;
 }
 /*inscription*/
-#sport-rose{
-    filter: drop-shadow(16px 16px 10px silver);
-    position: absolute;
-    width: 30%;
-    margin-left: 800px;
-    margin-top: 280px;
-    clear: both;
+.titre-inscription{
+    padding: 100px 0  40px 20px;
+    font-size:30px;
+}
+.inscrivez-vous{
+    font-family: 'Philosopher', sans-serif;
+    font-size:25px;
+}
+.form-group-register{
+    margin-left: 150px;
+    margin-bottom: 100px;
+
+}
+.insert-register{
+    background-color: rgb(245, 229, 229);
+    height: 950px;
+    margin-top: -20px;
+}
+.inscription{
+    display:block;
+    font-size: 20px;
+    padding: 190px 60px 0 700px;
 }
 /*login/logout/form*/
-li.connexion{
-    font-size: 30px;
+p.connexion{
+    font-size: 25px;
     margin-bottom: 60px;
 }
+.login-inscription{
+    display:block;
+    font-size: 25px;
+    padding: 90px 60px 0 350px;
+    font-family: 'Philosopher', sans-serif;
+
+}
 form#connect{
-    margin-left: 500px;
-    margin-top: 300px;
-    padding-bottom: 200px;
+    margin: 300px 0  0 200px;
+    padding: 100px 0  0 0;
+    height:600px;
+}
+.insert-login{
+    background-color: rgb(245, 229, 229);
+    margin-top: -300px;
 }
 
 /*formulaires inserer article*/
@@ -162,7 +188,7 @@ form#connect{
 }
 .titre-temoignage-insert,.titre-testimony-modif{
     font-family: 'Philosopher', sans-serif;
-    margin: 100px 0 10px 600px;
+    margin: 100px 0 20px 600px;
     padding-top:50px;
 }
 #gerer-category{
@@ -177,24 +203,22 @@ form#connect{
 .insert-testimony{
     background-color: rgb(245, 229, 229);
     margin-top: -200px;
-    margin-bottom: -200px;
+
 }
 .insert-article{
     font-size: 25px;
     font-family: 'Philosopher', sans-serif;
     margin-left: 600px;
-
 }
 #recherche{
     width:150px;
     height:30px;
     margin:10px 0 70px 0;
-
 }
 #contrats-assurance{
     position: absolute;
     width: 50%;
-    margin-top: 2px;
+    margin-top: 80px;
     margin-left: 600px;
     clear: both;
 }
@@ -212,23 +236,25 @@ form#connect{
 .form-group-test-modify,
 .form-group-testimony-insert{
     margin-left:150px;
-    padding-bottom: 250px;
+    padding-bottom: 150px;
 }
-
 #smiles{
     position: absolute;
     width: 40%;
+    margin-top: 80px;
     margin-left: 600px;
     clear: both;
 }
 #assurances{
     width: 40%;
+    margin-top: 80px;
     margin-left: 600px;
     clear: both;
 }
 #mainsunis{
     position: absolute;
     width: 40%;
+    margin-top: 80px;
     margin-left: 600px;
 
     clear: both;
@@ -237,15 +263,10 @@ form#connect{
     position: absolute;
     width: 40%;
     margin-left: 600px;
-    margin-top: 20px;
+    margin-top: 80px;
     clear: both;
 }
 
-
-.form-group-register{
-    margin-left: 150px;
-    margin-bottom: 100px;
-}
 /*page recherche*/
 .form-group-recherche-article{
     margin-left: 100px;
@@ -277,21 +298,11 @@ form#connect{
     background-color: rgb(216, 189, 189);
 }
 
-
-.titre-inscription{
-    margin: 230px 450px 100px;
-    filter: drop-shadow(16px 16px 10px silver);
-}
 /*inserer modifier category*/
 
 .form-group2{
     margin-left: 40%;
 }
-.form-insert-register{
-    margin-left: 100px;
-    margin-top: 200px;
-}
-
 #form-update-category{
     margin-left: 230px;
 }
@@ -300,12 +311,6 @@ form#connect{
 .cont{
     margin-top:10%;
     margin-left: -2%;
-}
-
-/*logo*/
-#logo {
-    left: 30px;
-    width: 12%;
 }
 
 /*button*/
@@ -325,8 +330,7 @@ form#connect{
     text-align: center;
     line-height: 50px;
     background-color: #fdf4f9;
-    box-shadow: 0px 1px 2px #616161;
-    filter: drop-shadow(16px 16px 10px silver);
+    box-shadow: 0 1px 2px #616161;
     display: inline-block;
     font-size: x-large;
     margin:30px 50px;
@@ -341,8 +345,8 @@ form#connect{
     text-align: center;
     line-height: 50px;
     background-color: #fdf4f9;
-    box-shadow: 0px 1px 2px #616161;
-    filter: drop-shadow(16px 16px 10px silver);
+    box-shadow: 0 1px 2px #616161;
+
     display: inline-block;
     font-size: x-large;
 }
@@ -354,18 +358,16 @@ form#connect{
     color: black;
     text-align: center;
     background-color: #fdf4f9;
-    box-shadow: 0px 1px 2px #616161;
+    box-shadow: 0 1px 2px #616161;
     display: inline-block;
     font-size: x-large;
     margin-top: 300px;
     margin-left:40%;
 }
 /*box*/
-
 #lien_temoignage,
 #lien_articles,
 #lien_category{
-
     margin-top:-30px;
 }
 .lien_articles,
@@ -395,22 +397,17 @@ form#connect{
 .titre,
 .admin {
     margin:50px 0 50px 300px;
-
 }
-
 .Compte_admin {
     font-size: 19px;
     margin-left: 10px;
 }
-
 .profile {
     margin-left: 10px;
 }
-
 .table {
     margin-left: 50px;
 }
-
 #customers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -435,36 +432,15 @@ form#connect{
     background-color: rgb(216, 189, 189);
 }
 /*admin crud articles category testimony*/
-.display_index_admin,
-.display_index_admin_testimony{
-    margin:80px 50px;
-}
-.display_index_admin_category{
-    margin:80px 50px;
-}
-.titre_category_administrateur,
-.display_index_admin_testimony{
-    margin-top: 100px;
-}
-#creer{
-    margin-top:200px;
-    filter: drop-shadow(16px 16px 10px silver);
-}
-.display_index_admin{
-    margin-top:100px;
-}
-.administrateur{
-    text-align: center;
-    margin:250px 0 100px 0;
-}
+
 /*block pages base*/
 .row{
     background-color: rgb(216, 189, 189);
     width:650px;
-    height:350px;
+    height:360px;
     padding:15px 50px 0 70px;
     margin-left: 240px;
-    margin-top: -16px;
+    margin-top: -25px;
 
 }
 .row-test{
@@ -547,7 +523,7 @@ form#connect{
 #img_categorys_admin{
     width: 40%;
     height: auto;
-    margin-bottom: -210px;
+    margin-bottom: -215px;
     margin-left: 250px;
 }
 #img_box_testimonys_admin{
@@ -563,7 +539,7 @@ form#connect{
     margin:0 0 145px 0;
 }
 .img_art_ad {
-    width: 40%;
+    width: 39%;
     height: auto;
     margin:-200px 0 0 120px;
 }
@@ -579,16 +555,7 @@ form#connect{
     margin:-140px 0 0 140px;
 
 }
-/*image form category*/
 
-#sport-rose{
-    filter: drop-shadow(16px 16px 10px silver);
-    position: absolute;
-    width: 30%;
-    top:220px;
-    margin-left: 800px;
-    clear: both;
-}
 /*retour vers le haut*/
 
 .top {

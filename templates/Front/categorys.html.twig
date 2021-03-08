@@ -4,7 +4,9 @@
 {# lien de redirection de don #}
 
 {# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
+{% if is_granted('ROLE_USER')%}
 <div id="lien_category"><a href="{{ path('admin_category_insert')}}"><h1 class="lien_category">Créer votre catégorie</h1></a></div>
+{% endif %}
 <div class="admin_container_categorys">
 {# avec la boucle for j'appel une category dans les categorys #}
 {% for category in categorys %}

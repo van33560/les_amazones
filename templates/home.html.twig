@@ -10,7 +10,7 @@
             <ul>
                 <li class=""><a href="#Généralités">Généralités &ensp;</a>
                     <ul class="soubmenu">
-                        <li class=""><a href="{{path('home_page')}}">Statistiques</a></li>
+                        <li class=""><a href="{{path('home_page')}}">Actualité</a></li>
                         <li class=""><a href="#">Newsletter</a></li>
                         <li class=""><a href="contact.html">Contact</a></li>
                         <li class=""><a href="Apropos.html">A propos</a></li>
@@ -42,8 +42,13 @@
         <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
     </div>
     <div class="position-absolute login">
-        <a href=""><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
+        <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
     </div>
+        {% if is_granted('ROLE_USER')%}
+            <div class="col-lg-2 position-absolute">
+                <a href="{{path('users')}}"><img src="{{ asset('assets/img/login2.svg') }}" alt="" id="mon-compte"></a>
+            </div>
+        {% endif %}
 
     {% if is_granted('ROLE_ADMIN')%}
         <div class="col-lg-2 position-absolute" id="google">
@@ -56,7 +61,7 @@
 {% endblock header %}
 
 {% block main %}
-    <h1 class="actualites">Actualités</h1>
+    <h1 class="actualites">Actualité</h1>
     <div class="container">
         <div class="row">
             <div class="element2">
@@ -88,7 +93,7 @@
         </a>
     </div>
     <div class=row1>
-        <p class="unis">" Toutes unis contre le cancer !! "</p>
+        <p class="unis">" Toutes unis!! "</p>
         <div id="img">
             <img src="{{ asset('assets/img/karate.jpg') }}" alt="" class="img">
         </div>
@@ -102,13 +107,13 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('assets/img/woman.jpg') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('assets/img/woman.jpg') }}" class="d-block img-carousel" alt="...">
             </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('assets/img/moi.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('assets/img/moi2.jpg') }}" class="d-block img-carousel" alt="...">
                 </div>
             <div class="carousel-item">
-                <img src="{{ asset('assets/img/people.jpg') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('assets/img/people2.jpg') }}" class="d-block img-carousel" alt="...">
             </div>
         </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">

@@ -2,7 +2,9 @@
 
 {% block main %}
 {# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
-<div id="admin_lien_temoignage"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
+{% if is_granted('ROLE_USER')%}
+   <div id="admin_lien_temoignage"><a href="{{ path('admin_testimony_insert') }}"><h1>Créer votre témoignage</h1></a></div>
+{% endif %}
 <div class="admin_container_testimonys">
     {# avec la boucle for j'appel un temoignage parmis tous les temoignages #}
     {# avec la proprieté path je recupére un titre de mes temoignages et son id, grace au name de ma route temoignages #}

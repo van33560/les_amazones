@@ -35,7 +35,7 @@ class Category
     /**
      * @Assert\NotBlank(message="veuillez remplir le champ")
      * @ORM\Column(type="string", length=6500)
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
+     * @ORM\OneToOne(targetEntity=Article::class, mappedBy="Category")
      * @ORM\JoinColumn(nullable=false)
      */
     private $article;
@@ -79,11 +79,6 @@ class Category
         return $this->article;
     }
 
-
-    public function setArticle($article): void
-    {
-        $this->article = $article;
-    }
 
     public function __construct()
     {

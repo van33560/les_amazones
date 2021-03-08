@@ -42,6 +42,11 @@ body {
     margin-left: 1220px;
     margin-top: -46px;
 }
+#mon-compte{
+    width: 37%;
+    margin-left: 1050px;
+    margin-top: -92px;
+}
 /*nav*/
 
 .don {
@@ -180,21 +185,20 @@ ul li ul li {
 
 .article {
     color: rgb(241, 121, 121);
-    margin: 0px;
+    margin: 0;
 }
 /*milieu de page*/
 .titre {
     font-size: 23px;
     margin: 30px 10px;
 }
-
 p.unis {
-    font-size: 40px;
+    font-size: 35px;
     height: 100vh;
     font-family: 'Dancing Script', cursive;
-    text-align: center;
-    padding-top: 230px;
-    margin: 0;
+    padding: 230px 0 0 20px;
+    margin:10px 5px;
+
 }
 #img,
 .img {
@@ -214,6 +218,10 @@ p.unis {
 /*carousel*/
 .carousel-item {
     height: 70vh;
+}
+.img-carousel{
+    width:100vw;
+    height:630px;
 }
 /*formulaire newsletter*/
 .informe {
@@ -251,7 +259,7 @@ p.unis {
     height: 60vh;
     width: 80vw;
     margin-top: 180px;
-    font-family:"Arial";
+    font-family: "Arial", serif;
 }
 
 input {
@@ -267,7 +275,7 @@ input {
 input[type=text]::placeholder {
     text-align: center;
     color: black;
-    font-family:"Arial";
+    font-family: "Arial", serif;
 }
 
 input[type=submit] {

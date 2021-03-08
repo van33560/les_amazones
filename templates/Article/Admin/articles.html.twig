@@ -2,7 +2,9 @@
 
 {% block main%}
 {# grace à la methode path je cree un lien qui renvoi vers mon formulaire creer dans un fichier twig#}
-<div id="admin_lien_articles"><a href="{{ path('admin_article_insert') }}"><h1>Créer votre article</h1></a></div>
+    {% if is_granted('ROLE_USER')%}
+        <div id="admin_lien_articles"><a href="{{ path('admin_article_insert') }}"><h1>Créer votre article</h1></a></div>
+    {% endif %}
   <div class="admin_container_articles">
     {% for article in articles %}
     {# avec la boucle for j'appel un article dans mes articles #}
