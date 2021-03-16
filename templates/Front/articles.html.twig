@@ -25,7 +25,7 @@
              </div>
         </article>
              {# la methode asset(uploads:articles me permet de recuperer les images qui ont ete uploader en bdd #}
-             <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="img_box_articles_admin">
+             <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="ls-sample4" class="img_box_articles_admin">
     {% else %}
         {# la methode asset(uploads:articles me permet de recuperer les images qui ont ete uploader en bdd #}
         <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="img_art_ad">

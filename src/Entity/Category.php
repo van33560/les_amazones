@@ -35,7 +35,7 @@ class Category
     /**
      * @Assert\NotBlank(message="veuillez remplir le champ")
      * @ORM\Column(type="string", length=6500)
-     * @ORM\OneToOne(targetEntity=Article::class, mappedBy="Category")
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
      * @ORM\JoinColumn(nullable=false)
      */
     private $article;

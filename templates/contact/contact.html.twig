@@ -1,0 +1,52 @@
+{% extends 'base2.html.twig' %}
+{# extends permet d'etendre le code html du fichier base.html pour eviter la repetition du code #}
+
+{% block main %}
+    {# formulaire de contact #}
+        <div class="contacte">
+            <h1  id="contactez">Contactez-nous</h1>
+        </div>
+    {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
+     generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
+    #}
+    {{ form_start(formView, {attr: {novalidate: 'novalidate'}}) }}
+    {# avec la fonction form_label je crée un label title  #}
+        <div class="form-group-contact-insert">
+                <div class="form-group col-6 col-md-4 col-lg-6">
+                    {{ form_label(formView.Nom) }}
+                    {{ form_widget(formView.Nom,{ 'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(formView.Nom) }}
+                </div>
+
+                <div class="form-group col-6 col-md-4 col-lg-6">
+                    {{ form_label(formView.Mail) }}
+                    {# avec la fonction form_widget je crée un input  #}
+                    {{ form_widget(formView.Mail,{ 'attr':{'class':'form-control'}}) }}
+                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+                    {{ form_errors(formView.Mail) }}
+                </div>
+
+                <div class="form-group col-6 col-md-4 col-lg-6">
+                    {{ form_label(formView.Phone) }}
+                    {{ form_widget(formView.Phone,{ 'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(formView.Phone) }}
+                </div>
+
+                <div class="form-group col-6 col-md-4 col-lg-6">
+                    {{ form_label(formView.Message) }}
+                    {# avec la fonction form_widget je crée un input  #}
+                    {{ form_widget(formView.Message,{ 'attr':{'class':'form-control'}}) }}
+                    {# avec le fonction form_errer me permet d'afficher les messages d'erreur que j'ai definis dans les entités#}
+                    {{ form_errors(formView.Message) }}
+                </div>
+
+                <div class="col-6 col-md-2 col-lg-2">
+                    {{ form_label(formView.Valider) }}
+                    {{ form_widget(formView.Valider,{ 'attr':{'class':'btn btn-primary'}}) }}
+                </div>
+
+                    {# form_end ferme mon formulaire #}
+                    {{ form_end(formView) }}
+        </div>
+
+{% endblock main%}

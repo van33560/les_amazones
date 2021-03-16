@@ -1,22 +1,21 @@
 {% extends 'base.html.twig' %}
 {# extends permet d'etendre le code html du fichier base.html pour eviter la repetition du code #}
-{% block title %}sitelesamazones{% endblock %}
+{% block title %}Les amazones{% endblock %}
 {% block stylesheet %}{{ asset('assets/css/home.css') }}{% endblock stylesheet %}
 {# fichier base de mon projet ou le header et le footer se repeterons sur mes autres pages  #}
 {% block header %}
-    <header class="haut">
+    <header>
         {# nav barre de la home#}
         <nav class="position-relative">
             <ul>
                 <li class=""><a href="#Généralités">Généralités &ensp;</a>
                     <ul class="soubmenu">
                         <li class=""><a href="{{path('home_page')}}">Actualité</a></li>
-                        <li class=""><a href="#">Newsletter</a></li>
-                        <li class=""><a href="contact.html">Contact</a></li>
+                        <li class=""><a href="{{path('contact')}}">Contact</a></li>
                         <li class=""><a href="Apropos.html">A propos</a></li>
                     </ul>
                 </li>
-                <li class=""><a href="#Pages">Pages &ensp;</a>
+                <li class=""><a href="#Pages">Thémes &ensp;</a>
                     <ul class="submenu">
                         <li class=""><a href="psychologique.html">Psychologique</a></li>
                         <li class=""><a href="esthetique.html">Esthétique</a></li>
@@ -24,9 +23,8 @@
                         <li class=""><a href="assurances.html">Assurances</a></li>
                     </ul>
                 </li>
-                <li class=""><a href="#Actualités">Actualités&ensp;</a>
+                <li class=""><a href="#Actualités">Vos rubriques&ensp;</a>
                     <ul class="soumenu">
-                        <li class=""><a href="larecherche.html">Recherche</a></li>
                         <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
                         <li class=""><a href="{{path('Front_categorylist')}}">Categories</a></li>
                         <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
@@ -35,29 +33,41 @@
                 </li>
             </ul>
         </nav>
+
     <div class="position-absolute text">
         <p class="amazones">Les Amazones</p>
     </div>
-    <div class="position-absolute don">
-        <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
-    </div>
-    <div class="position-absolute login">
-        <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
-    </div>
-        {% if is_granted('ROLE_USER')%}
-            <div class="col-lg-2 position-absolute">
-                <a href="{{path('users')}}"><img src="{{ asset('assets/img/login2.svg') }}" alt="" id="mon-compte"></a>
+        <div class="col-lg-2 position-absolute" id="logo4">
+            <img src="{{ asset('assets/img/logo5.svg') }}" alt="">
+        </div>
+            <div class="position-absolute don">
+                <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
             </div>
-        {% endif %}
+        <div class="position-absolute login">
+            <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
+        </div>
+{% if is_granted('ROLE_USER')%}
+    <div class="col-lg-2 position-absolute mon-compte">
+        <a href="{{path('users')}}">Profil</a>
+    </div>
+{% endif %}
 
     {% if is_granted('ROLE_ADMIN')%}
-        <div class="col-lg-2 position-absolute" id="google">
-            <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
-        </div>
+    <div class="col-lg-2 position-absolute" id="google">
+        <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
+    </div>
     {% endif %}
-        {# logo clipable de connection redirection vers formulaire grâce à la propriete path#}
+        <div class="haut">
+        </div>
 
+        <figure class="snip1504">
+            <figcaption>
+                <h1>Ensemble contre</h1>
+                <h2>le cancer du sein</h2>
+            </figcaption>
+        </figure>
 </header>
+
 {% endblock header %}
 
 {% block main %}

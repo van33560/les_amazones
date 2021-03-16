@@ -43,13 +43,24 @@ body {
     background-color: rgb(158, 109, 94);
 }
 
-.amazones {
+/*.amazones {
     font-family: 'Dancing Script', cursive;
     font-size: 50px;
     margin-top:-50px;
     margin-left: 20px;
+}*/
+/*essaie titre js*/
+.ml2 {
+    font-size: 55px;
+    margin:-66px 0 0  20px;
+    font-family: 'Dancing Script', cursive;
 }
 
+.ml2 .letter {
+    display: inline-block;
+
+}
+/*fin essai*/
 .turban {
     width: 100%;
     height: 400px;
@@ -222,6 +233,21 @@ form#connect{
     margin-left: 600px;
     clear: both;
 }
+/*image formulaire de contact*/
+
+#contactez{
+    margin: 0;
+    padding-top: 200px;
+    font-family: 'Philosopher', sans-serif;
+    font-size: 80px;
+    text-align: center;
+}
+.contacte{
+    background-image: url(../img/paper.jpg);
+    background-repeat: no-repeat;
+    height:500px;
+    margin:0px;
+}
 
 .form-group-article-insert,
 .form-group-article-modify,
@@ -229,6 +255,12 @@ form#connect{
     margin-left: 150px;
     padding-bottom: 100px;
 }
+.form-group-contact-insert{
+    background-color: rgb(245, 229, 229);
+    width: 100%;
+    padding: 100px 0 100px 500px;
+}
+
 .form-update-category{
     margin-left: 150px;
     padding-bottom: 150px;
@@ -526,6 +558,10 @@ form#connect{
     margin-bottom: -215px;
     margin-left: 250px;
 }
+/*essaie JS*/
+
+/*fin essai js*/
+
 #img_box_testimonys_admin{
     width: 35%;
     height: auto;
@@ -568,7 +604,7 @@ form#connect{
 .arrow2 {
     width: 3%;
     color: gold;
-    margin-left: 700px;
+    margin-left: 685px;
 }
 
 .arrow-text {
@@ -591,7 +627,29 @@ form#connect{
     padding-top: 50px;
     font-size: 18px;
 }
+@keyframes scale {
+    0% {
+        transform: scale(1.3);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1.3);
+    }
+}
 
+footer:not(.visible) {
+    overflow: hidden;
+}
+
+footer>.redirection{
+    transition: all 1s ease;
+}
+
+footer:hover>.redirection{
+    transform: scale(1.4);
+}
 #facebook {
     width: 22px;
     margin-left: 420px;
@@ -605,7 +663,6 @@ form#connect{
     margin-top: 40px;
 
 }
-
 #instagram {
     width: 37px;
     margin-left:30px;
