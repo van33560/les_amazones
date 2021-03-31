@@ -1,99 +1,99 @@
-{% extends 'base.html.twig' %}
-{# extends permet d'etendre le code html du fichier base.html pour eviter la repetition du code #}
+{% extends'base.html.twig' %}
+
 {% block title %}Les amazones{% endblock %}
+
+{# extends permet d'etendre le code html du fichier base.html pour eviter la repetition du code #}
 {% block stylesheet %}{{ asset('assets/css/home.css') }}{% endblock stylesheet %}
-{# fichier base de mon projet ou le header et le footer se repeterons sur mes autres pages  #}
 {% block header %}
     <header>
         {# nav barre de la home#}
         <nav class="position-relative">
             <ul>
-                <li class=""><a href="#Généralités">Généralités &ensp;</a>
+                <li class=""><a href="{{path('home_page')}}">Actualités &ensp;</a>
                     <ul class="soubmenu">
-                        <li class=""><a href="{{path('home_page')}}">Actualité</a></li>
                         <li class=""><a href="{{path('contact')}}">Contact</a></li>
-                        <li class=""><a href="Apropos.html">A propos</a></li>
+                        <li class=""><a href="{{path('apropos')}}">Apropos</a></li>
                     </ul>
                 </li>
-                <li class=""><a href="#Pages">Thémes &ensp;</a>
+                <li class=""><a href="{{path('Front_articlelist')}}">Articles &ensp;</a>
                     <ul class="submenu">
-                        <li class=""><a href="psychologique.html">Psychologique</a></li>
-                        <li class=""><a href="esthetique.html">Esthétique</a></li>
-                        <li class=""><a href="perruques.html">Pérruques</a></li>
-                        <li class=""><a href="assurances.html">Assurances</a></li>
+                        <li class=""><a href="">Annuaire</a></li>
                     </ul>
                 </li>
-                <li class=""><a href="#Actualités">Vos rubriques&ensp;</a>
+                <li class=""><a href="{{path('Front_categorylist')}}">Catégories&ensp;</a>
                     <ul class="soumenu">
-                        <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
-                        <li class=""><a href="{{path('Front_categorylist')}}">Categories</a></li>
                         <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
-                        <li class=""><a href="annuaire.html">Annuaire</a></li>
+
                     </ul>
                 </li>
             </ul>
         </nav>
 
-    <div class="position-absolute text">
-        <p class="amazones">Les Amazones</p>
-    </div>
+        <div class="position-absolute intro">
+            <h1>Ensemble contre le cancer du sein</h1>
+        </div>
+        <div class="position-absolute text">
+            <p class="amazones">Les Amazones</p>
+        </div>
         <div class="col-lg-2 position-absolute" id="logo4">
             <img src="{{ asset('assets/img/logo5.svg') }}" alt="">
         </div>
-            <div class="position-absolute don">
-                <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
-            </div>
-        <div class="position-absolute login">
-            <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" class="img-fluid"></a>
+        <div class="position-absolute don">
+            <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
         </div>
-{% if is_granted('ROLE_USER')%}
-    <div class="col-lg-2 position-absolute mon-compte">
-        <a href="{{path('users')}}">Profil</a>
-    </div>
-{% endif %}
+        <div class="position-absolute login">
+            <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" id="login"></a>
+        </div>
+        {% if is_granted('ROLE_USER')%}
+            <div class="col-lg-2 position-absolute mon-compte">
+                <a href="{{path('users')}}">Profil</a>
+            </div>
+        {% endif %}
 
-    {% if is_granted('ROLE_ADMIN')%}
-    <div class="col-lg-2 position-absolute" id="google">
-        <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
-    </div>
-    {% endif %}
+        {% if is_granted('ROLE_ADMIN')%}
+            <div class="col-lg-2 position-absolute" id="google">
+                <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
+            </div>
+        {% endif %}
         <div class="haut">
         </div>
 
-        <figure class="snip1504">
-            <figcaption>
-                <h1>Ensemble contre</h1>
-                <h2>le cancer du sein</h2>
-            </figcaption>
-        </figure>
-</header>
-
+    </header>
 {% endblock header %}
 
 {% block main %}
-    <h1 class="actualites">Actualité</h1>
+    <div class="container-actu">
+        <div class="ligne1">
+            <p class="entraide">Entraide</p>
+        </div>
+            <div class="ligne2">
+                <p class="solidarite">Solidarité</p>
+            </div>
+        <div class="ligne3">
+            <p class="partage">Partage</p>
+        </div>
+
+    </div>
+  <h1 class="actualites">Actualités</h1>
     <div class="container">
         <div class="row">
             <div class="element2">
                 <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt=""  />
-                <p class="titre">Les Accéssoires</p>
-                <a href="" class="article">lire la suite..</a>
+                <p class="titre">Les Accéssoires...</p>
             </div>
         </div>
 
         <div class="row">
             <div class="element2">
                 <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt="" />
-                <p class="titre">Le Sport</p>
-                <a href="" class="article">lire la suite..</a>
+                <p class="titre">Le Sport...</p>
             </div>
         </div>
 
         <div class="row">
             <div class="element2">
                 <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt=""  />
-                <p class="titre">La Recherche</p>
-                <a href="" class="article">lire la suite..</a>
+                <p class="titre">La Recherche...</p>
             </div>
         </div>
     </div>
@@ -103,10 +103,9 @@
         </a>
     </div>
     <div class=row1>
-        <p class="unis">" Toutes unis!! "</p>
-        <div id="img">
-            <img src="{{ asset('assets/img/karate.jpg') }}" alt="" class="img">
-        </div>
+        <p class="unis">"La maladie la plus constante et la plus mortelle,
+            mais aussi la plus méconnue de toute société, est l'indifférence."<br><br> Abbé Pierre</p>
+
     </div>
     {# carousel #}
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -116,13 +115,16 @@
             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active position-relative">
+                <p class="position-absolute woman" >"Mes amies m'ont soutenu"</p>
                 <img src="{{ asset('assets/img/woman.jpg') }}" class="d-block img-carousel" alt="...">
             </div>
-                <div class="carousel-item">
+                <div class="carousel-item position-relative">
+                    <p class="position-absolute moi2" >"Aprés ma maladie <br>j'ai crée une boutique de perruque"</p>
                     <img src="{{ asset('assets/img/moi2.jpg') }}" class="d-block img-carousel" alt="...">
                 </div>
-            <div class="carousel-item">
+            <div class="carousel-item position-relative">
+                <p class="position-absolute people2" >"Nous avons soutenu notre mére"</p>
                 <img src="{{ asset('assets/img/people2.jpg') }}" class="d-block img-carousel" alt="...">
             </div>
         </div>
@@ -130,25 +132,29 @@
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden"></span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden"></span>
-            </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden"></span>
+        </a>
     </div>
 
 {# formulaire newsletter #}
     <div class="forcont">
         <div class=" position-absolute informe">
-            <P class="news">Newsletter</P>
-            <p class="informer">Choisissez l'actualité qui vous intéresse et rester informer !!!</p>
+            <P class="news">Newsletter<br>Choisissez l'actualité qui vous intéresse et rester informer !!!</P>
         </div>
         <div class="formContainer">
-            <form>
-                <input type="text" id="email" name="email" placeholder="email" onfocus="this.placeholder=''" onblur="this.placeholder='email'"><br><br>
-                <input type="submit" value="Submit" class="submit">
-            </form>
-
+            <form action="{{path('newsletter')}}">
+                    <input type="text" id="email" name="email" placeholder="Email" onfocus="this.placeholder=''" onblur="this.placeholder='email'"><br><br>
+                    <input type="submit" value="Submit" class="submit">
+               </form>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
         </div>
+
     </div>
 
 {% endblock main%}

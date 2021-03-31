@@ -29,9 +29,9 @@ que j'ai defini dans mes controllers admincarticles et admintestimony #}
                 <td class="text-center">
                     {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
                      pour pouvoir supprimer ou modifier un article #}
-                    <div><a href="{{ path('admin_category_insert')}}">Créer</a></div>
-                    <div><a href="{{ path('admin_category_update', {'id': category.id}) }}">Modifier</a></div>
-                    <div><a href="{{ path('admin_category_delete', {'id': category.id}) }}">Supprimer</a></div>
+                    <div><a href="{{ path('admin_category_insert')}}" id="couleur-inscription">Créer</a></div>
+                    <div><a href="{{ path('admin_category_update', {'id': category.id}) }}" id="couleur-inscription">Modifier</a></div>
+                    <div><a href="{{ path('admin_category_delete', {'id': category.id}) }}" id="couleur-inscription">Supprimer</a></div>
                 </td>
             </tr>
           {% endfor %}

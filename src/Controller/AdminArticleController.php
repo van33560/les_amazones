@@ -29,12 +29,12 @@ class AdminArticleController extends AbstractController
             //doctrine éffectue la requête pour moi ici select*from article
             $articles = $articleRepository->findAll();
                 //la fonction render me permet d'envoyer à twig les infos qui seront affichés
-                return $this->render("Article/Admin/articles.html.twig",[
+                return $this->render("Front/articles.html.twig",[
                 'articles' => $articles
                ]);
      }
     /**
-     * @route ("admin/article/insert",name="admin_article_insert")
+     * @Route ("admin/article/insert",name="admin_article_insert")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
      * @param SluggerInterface $slugger
@@ -46,6 +46,7 @@ class AdminArticleController extends AbstractController
     // avec entitymanager via ses classes je pre-sauvegarde et envoi grace a (persist,flush,move)
     // je crée un nouvel objet, la méthode slugg me permet de changer
     // le nom de mon image et gérer les caractères spéciaux
+    //les methodes en parametre on demande l'instanciation a sf
      public function insertArticle(Request $request, EntityManagerInterface $entityManager,
                                       SluggerInterface $slugger)
      {
@@ -60,25 +61,26 @@ class AdminArticleController extends AbstractController
          if($form->isSubmitted() && $form->isValid())
         {
             //je crée une variable illustration que je recupere dans mon formulaire
-            $illustration=$form->get('illustration')->getData();
+            $illustration = $form->get('illustration')->getData();
 
-            if($illustration){
-                //je recupere le nom d'origine de l'image
-                $originalFilename = pathinfo($illustration->getClientOriginalName(), PATHINFO_FILENAME);
-                // grâce à la classe Slugger, je change le nom de mon image
-                // et je sort tous les caractères spéciaux grace à la methode slug
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$illustration->guessExtension();
-                    //je creer un stockage temporaire pour l'image dans le fichier
-                    // services.yaml que j'appel images_directory
-                    //je deplace l'image renommée grace à la methode move
-                    $illustration->move(
-                        $this->getParameter('images_directory'),
-                        $newFilename
-                    );
-                    //je recupere l'image modifiée contenu dans ma variable article
+                if($illustration){
+                    //je recupere, l'image uploade par le client (origine) le chemin pour la stocker ds dossier temporaire $illustration c'est l'image
+                    $originalFilename = pathinfo($illustration->getClientOriginalName(), PATHINFO_FILENAME);
+                    // grâce à la classe Slugger, je change le nom de mon image
+                    // et je sort tous les caractères spéciaux grace à la methode slug
+                    $safeFilename = $slugger->slug($originalFilename);
+                    //je stock ce slug dans une variable newimage nouvelle extention unique avec le methode uniqid
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$illustration->guessExtension();
+                            //l'image par defaut est pres sauvgarder dans mon fichier
+                            // services.yaml que j'appel images_directory je recupere ce fichier que
+                            //grace à la methode move
+                            $illustration->move(
+                                $this->getParameter('images_directory'),
+                                $newFilename
+                            );
+                            //je recupere l'image modifiée contenu dans ma variable article
                     $article->setIllustration($newFilename);
-            }
+                    }
 
             // si mon formulaire et envoyer et valide alors je pré-sauvegarde avec la fonction persist
             $entityManager->persist($article);
@@ -90,10 +92,10 @@ class AdminArticleController extends AbstractController
                         "success",
                         "l'article a été ajouté"
                     );
-            return $this->redirectToRoute('admin_articleList');
+            return $this->redirectToRoute('Front_articlelist');
         }
         //je crée grâce à la fonction createview une vue qui pourra être lu par twig
-        $formView = $form-> createView();
+         $formView = $form-> createView();
             //la fonction render me permet de renvoyer vers mon fichier a twig mon formulaire
             return $this->render('Article/Admin/article_insert.html.twig',[
             'formView' => $formView
@@ -119,8 +121,10 @@ class AdminArticleController extends AbstractController
         $article = $articleRepository -> find($id);
 
             if(is_null($article)){
-                return $this->redirectToRoute('admin_articleList');
+                //throw $this->createNotFoundException('article non trouvée');
+                return $this->redirectToRoute('Front_articlelist');
             }
+
         //je crée un formulaire grâce à la fonction createFrom et je passe en paramétre le chemin vers
         // le fichierArticleType grace a :: class
         $form = $this->createForm(ArticleType::class, $article);
@@ -139,13 +143,14 @@ class AdminArticleController extends AbstractController
                                 "success",
                                 "l'article a été modifié"
                             );
-                        return $this->redirectToRoute('admin_articleList');
+                        return $this->redirectToRoute('Front_articlelist');
                    }
             //je crée grâce à la function createview je crée une vue qui pourra en suite être lu par twig
             $formView = $form-> createView();
             //la fonction render me permet de renvoyer vers mon fichier twig mon formulaire de modification
                 return $this->render('Article/Admin/article_update.html.twig',[
-                    'formView' => $formView
+                    'formView' => $formView,
+                    'article' => $article
                 ]);
     }
 
@@ -154,7 +159,7 @@ class AdminArticleController extends AbstractController
      * @param $id
      * @param ArticleRepository $articleRepository
      * @param EntityManagerInterface $entityManager
-     * @return RedirectResponse
+     * @return Response
      */
      public function deletearticle($id,ArticleRepository $articleRepository,EntityManagerInterface $entityManager)
      {
@@ -163,20 +168,25 @@ class AdminArticleController extends AbstractController
         //je fait une condition qui va permet de verifier si il y a un temoignage et un fois le temoignage
         // et son id supprimé
         if(!is_null($article)){
+            //throw est une instruction qui permet via sa methode createnotfoundexception d'afficher une erreur type 404
+            //throw $this->createNotFoundException('article non trouvée');
             //entitymanager avec le methode remove efface l'article dont l'id est renseigné dans url
             $entityManager->remove($article);
             //la fonction flush renvoi les nouvelles modifs
             $entityManager->flush();
             //la méthode addflash me permet d'afficher un message qui s'affichera a la suppression du temoignage
-                    $this->addFlash(
-                        "success",
-                        "l'article a été supprimé"
-                    );
 
+        } else {
+
+           return $this->render('Front/delete_confirmation.html.twig');
         }
+                 $this->addFlash(
+                     "success",
+                     "l'article a été supprimé"
+                 );
         // la fonction redirectToRoute permet de retrouner un visuel via le name de mon fichier 'articlelist'
-        return $this->redirectToRoute('admin_articleList');
 
+         return $this->redirectToRoute('Front_articlelist');
      }
 
 

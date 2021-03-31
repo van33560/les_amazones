@@ -25,6 +25,7 @@ class ArticleType extends AbstractType
             ->add('title')
             ->add('content',TextareaType::class)
             ->add('illustration', FileType::class, [
+                //'label'=> 'illustration', pour pouvoir modifer le mot du label
                 'required' => false,
                 'mapped' => false
                 //require =>le champs doit etre renseigner

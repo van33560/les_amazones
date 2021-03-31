@@ -22,7 +22,8 @@ class CategoryType extends AbstractType
             ->add('title')
             ->add('date',DateType::class,[
                 'widget'=>'single_text'])
-            ->add('article',TextareaType::class)
+            ->add('article',TextareaType::class,[
+                'mapped'=>false,])
             ->add('photo', FileType::class, [
                 'required' => false,
                 'mapped' => false,

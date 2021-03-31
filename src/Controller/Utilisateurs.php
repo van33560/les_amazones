@@ -49,9 +49,9 @@ class Utilisateurs extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->addFlash('message', 'Utilisateur modifié avec succès');
-            return $this->redirectToRoute('utilisateurs');
-        }
+                $this->addFlash('message', 'Utilisateur modifié avec succès');
+                return $this->redirectToRoute('utilisateurs');
+            }
 
         return $this->render('Admin/edituser.html.twig', [
             'userForm' => $form->createView(),
@@ -98,6 +98,7 @@ class Utilisateurs extends AbstractController
                     $this->getParameter('images_directory'),
                     $newFilename
                 );
+
                 $article->setIllustration($newFilename);
             }
 
@@ -171,13 +172,13 @@ class Utilisateurs extends AbstractController
                 "success",
                 "le témoignage a été ajouté"
             );
-            return $this->redirectToRoute('admin_testimony_list');
+                 return $this->redirectToRoute('admin_testimony_list');
         }
         //je crée grâce à la fonction createview une vue qui sera lu par twig
         $formView = $form-> createView();
         //la fonction render me permet de renvoyer vers mon fichier twig via sa route
-        return $this->render('Front/utilisateurs_insert_testimony.html.twig',[
-            'formView' => $formView
-        ]);
+                 return $this->render('Front/utilisateurs_insert_testimony.html.twig',[
+                     'formView' => $formView
+                ]);
     }
 }

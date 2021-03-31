@@ -1,3 +1,4 @@
+{% block head %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,60 +7,62 @@
     <meta name="description" content="Site pour les femmes qui ont eu un cancer du sein">
     <meta name="author" content="vanessa">
     <meta name="keywords" content="cancer,sein,maladie,accessoires">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Chango&family=Concert+One&family=Francois+One&family=Fredoka+One&family=Pragati+Narrow&family=Prata&family=Ramabhadra&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet1">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.0.0/dist/css/axentix.min.css">
     <link rel="stylesheet" media="screen and (max-width: 540px)" href="smallscreen.css" type="text/css" />
     <link rel="stylesheet" href="{% block stylesheet %}{{ asset('assets/css/base.css') }}{% endblock stylesheet %}">
+
     <title>{% block title %}Les amazones{% endblock %}</title>
 </head>
-
+{% endblock head %}
 <body>
 {% block header%}
 <header class="haut">
         <nav class="positionrelative">
             <ul>
-                <li class=""><a href="#Généralités">Généralités &ensp;</a>
+                <li class=""><a href="{{path('home_page')}}">Actualités &ensp;</a>
                     <ul class="soubmenu">
-                        <li class=""><a href="{{path('home_page')}}">Actualité</a></li>
                         <li class=""><a href="{{path('contact')}}">Contact</a></li>
-                        <li class=""><a href="Apropos.html">A propos</a></li>
+                        <li class=""><a href="{{path('apropos')}}">Apropos</a></li>
                     </ul>
                 </li>
-                <li class=""><a href="#Pages">Thémes &ensp;</a>
+                <li class=""><a href="{{path('Front_articlelist')}}">Articles &ensp;</a>
                     <ul class="submenu">
-                        <li class=""><a href="psychologique.html">Psychologique</a></li>
-                        <li class=""><a href="esthetique.html">Esthétique</a></li>
-                        <li class=""><a href="perruques.html">Pérruques</a></li>
-                        <li class=""><a href="assurances.html">Assurances</a></li>
+                        <li class=""><a href="">Annuaire</a></li>
                     </ul>
                 </li>
-                <li class=""><a href="#Actualités">Vos rubriques&ensp;</a>
+                <li class=""><a href="{{path('Front_categorylist')}}">Catégories&ensp;</a>
                     <ul class="soumenu">
-                        <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
-                        <li class=""><a href="{{path('Front_categorylist')}}">Categories</a></li>
                         <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
-                        <li class=""><a href="annuaire.html">Annuaire</a></li>
+
                     </ul>
                 </li>
             </ul>
+
+            <form class=" position-absolute search-form-articles" action="{{path('search_articles')}}">
+                <label>
+                    <input type="text" name="search" placeholder="Recherche" class="input-search">
+                </label>
+                <button type="submit" class="btn">Valider</button>
+            </form>
+
         </nav>
-   {#  <div class="position-absolute text">
-        <p class="amazones">Les Amazones</p>
-    </div>#}
+
     {# animation js du titre #}
-    <h1 class="ml2">Les Amazones</h1>
+    <a href="{{path('home_page')}}" class="position-absolute ml2">Les Amazones</a>
 
         <div class="position-absolute don">
-           <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
+           <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE" class="faireD">Faire un Don</a>
         </div>
-    <div class="col-lg-2 position-absolute" id="loupe">
-        <a href="{{path('search')}}"><img src="{{ asset('assets/img/magnifying-glass.svg') }}" alt="" class="img-fluid"></a>
-    </div>
+
         {% if is_granted('ROLE_ADMIN')%}
             <div class="col-lg-2 position-absolute" id="google">
                 <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
@@ -81,34 +84,26 @@ mon controller articles#}
     {% endfor%}
 {% block main %}{% endblock main %}
     {# retour vers le haut #}
-    <div class="top">
-    <div class=" d-block col-12 sm-2 lg-6">
-        <img src="{{ asset('assets/img/arrow2.svg') }}" alt="" class="arrow2">
-        <a href="">
-            <p class="arrow-text">Revenir en haut</p>
-        </a>
-    </div>
-    </div>
+
 {% block footer %}
-{# footer du site il contient les liens cliquables de redirection vers reseaux sociaux #}
-<footer class="container-fluid position-relative" id="footer">
+    <footer class="container-fluid position-relative" id="footer">
 
-            <div class="liens position-absolute">
-                <a class=""href=" #mentionslégales/ #Copyright ">Mentions légales||©Labat</a>
-            </div>
+        <div class="liens position-absolute">
+            <a class=""href="{{path('mentionlegales')}}">Mentions légales||©Labat</a>
+        </div>
 
-            <div class="position-absolute redirection" id="facebook">
-                <a href="https://fr-fr.facebook.com/" target="_blank"><img src="{{ asset('assets/img/facebook.svg') }}" alt=""></a>
-            </div>
-            <div class="position-absolute redirection" id="twitter">
-                <a href="https://mobile.twitter.com/?lang=fr" target="_blank"><img src="{{ asset('assets/img/twitter.svg') }}" alt=""></a>
-            </div>
-            <div class="position-absolute redirection" id="instagram">
-                <a href="https://www.instagram.com/?hl=fr" target="_blank"><img src="{{ asset('assets/img/instagram.svg') }}" alt=""></a>
-            </div>
+        <div class="position-absolute redirection" id="facebook">
+            <a href="https://fr-fr.facebook.com/" target="_blank"><img src="{{ asset('assets/img/facebook.svg') }}" alt=""></a>
+        </div>
+        <div class="position-absolute redirection" id="twitter">
+            <a href="https://mobile.twitter.com/?lang=fr" target="_blank"><img src="{{ asset('assets/img/twitter.svg') }}" alt=""></a>
+        </div>
+        <div class="position-absolute redirection" id="instagram">
+            <a href="https://www.instagram.com/?hl=fr" target="_blank"><img src="{{ asset('assets/img/instagram.svg') }}" alt=""></a>
+        </div>
 
 
-</footer>
+    </footer>
 {% endblock footer %}
 
 {% block javascripts %}
@@ -117,6 +112,6 @@ mon controller articles#}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
-{% endblock  %}
+{% endblock javascripts %}
 </body>
 </html>

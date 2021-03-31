@@ -4,7 +4,7 @@
 {# j'utilise la fonction form de twig et en paramétre formView pour afficher la vue de mon formulaire #}
 {% block main %}
 <div class="insert position-relative">
-<h1  id="creer-article">Créer votre article</h1>
+  <h1  id="creer-article">Créer votre article</h1>
     <div>
         <p class="insert-article position-absolute">Vous pouvez créer votre article et le partager avec d'autres utilisateurs !!</p>
         <img src="{{ asset('assets/img/contrats-assurance.png') }}" alt="" class="img-fluid" id="contrats-assurance">
@@ -49,7 +49,7 @@
 
                 <div class=" col-6 col-md-2 col-lg-2" id="recherche">
                     {{ form_label(formView.valider) }}
-                    {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
+                    {{ form_widget(formView.valider,{ 'attr':{'class':'btn btn-secondary'}}) }}
                 </div>
           </div>
     {# form_end ferme mon formulaire #}

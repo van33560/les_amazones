@@ -34,15 +34,14 @@ class Category
 
     /**
      * @Assert\NotBlank(message="veuillez remplir le champ")
-     * @ORM\Column(type="string", length=6500)
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
+     * @ORM\Column(type="string", length=2500)
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="category")
      * @ORM\JoinColumn(nullable=false)
      */
     private $article;
 
     /**
      * @ORM\Column(type="string", length=6500)
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Category")
      */
     private $photo;
 

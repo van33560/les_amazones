@@ -100,11 +100,17 @@ class RegistrationController extends AbstractController
     /**
      * @route("/email", name="email")
      * @param $name
+     * @param Request $request
      * @param \Swift_Mailer $mailer
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param GuardAuthenticatorHandler $guardHandler
      * @return Response
      */
-    public function index($name, \Swift_Mailer $mailer)
+    public function index($name, Request $request,\Swift_Mailer $mailer,UserPasswordEncoderInterface $passwordEncoder,
+                          GuardAuthenticatorHandler $guardHandler):Response
     {
+        $user = new Users();
+        $form = $this->createForm(RegistrationFormType::class, $user);
         $message = (new \Swift_Message('Hello Email'))
             ->setFrom('send@example.com')
             ->setTo('recipient@example.com')
@@ -118,8 +124,15 @@ class RegistrationController extends AbstractController
             );
 
         $mailer->send($message);
-        return $this->redirectToRoute('home_page');
+       // return $this->redirectToRoute('home_page');
        // return $this->render(...);
+            return $guardHandler->authenticateUserAndHandleSuccess(
+
+                $user,
+                $request,
+                $authenticator,
+                'main' // firewall name in security.yaml
+            );
     }
 
 

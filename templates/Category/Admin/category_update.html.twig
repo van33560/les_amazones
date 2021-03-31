@@ -32,6 +32,7 @@
                 {{ form_widget(formView.article,{ 'attr':{'class':'form-control'}}) }}
             </div>
             <div class="form-group col-6 col-md-4 col-lg-3">
+                <img src="{{ asset('uploads/Category/'~ category.photo) }}" alt="">
                 {{ form_label(formView.photo) }}
                 {{ form_widget(formView.photo, {'attr': {'class': 'form-control'}}) }}
                 {{ form_errors(formView.photo) }}
@@ -39,7 +40,7 @@
 
             <div class="form-group col-6 col-md-2 mt-5 col-lg-2">
                 {{ form_label(formView.valider) }}
-                {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
+                {{ form_widget(formView.valider,{ 'attr':{'class':'btn btn-secondary'}}) }}
             </div>
         </div>
     {# form_end ferme mon formulaire #}

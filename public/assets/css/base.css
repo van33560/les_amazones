@@ -3,24 +3,22 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-
 }
 
 body {
-    font-family:"Arial";
+    font-family: 'Concert One', cursive;
     background-color: white;
-    font-size: 16px;
+    font-size: 18px;
 }
 .resp{
     width:100%;
     height:auto;
 }
 .accroche {
-    background-image: url(../img/turban.png);
-    background-size: contain;
+    background-image: url(../img/team.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
-    height: 400px;
-    margin-top: 0;
+    height: 500px;
     background-attachment: fixed;
 
 }
@@ -31,8 +29,8 @@ body {
     top: 1px;
     padding: 15px;
     width: 200px;
-    height: 60px;
-    background-color: rgb(158, 109, 94);
+    height: 59px;
+    background-color:#FF1493;
 }
 
 .don-base {
@@ -42,23 +40,16 @@ body {
     height: 60px;
     background-color: rgb(158, 109, 94);
 }
-
-/*.amazones {
-    font-family: 'Dancing Script', cursive;
-    font-size: 50px;
-    margin-top:-50px;
-    margin-left: 20px;
-}*/
 /*essaie titre js*/
 .ml2 {
+    color:white;
     font-size: 55px;
-    margin:-66px 0 0  20px;
+    top: -15px;
     font-family: 'Dancing Script', cursive;
 }
 
 .ml2 .letter {
     display: inline-block;
-
 }
 /*fin essai*/
 .turban {
@@ -68,11 +59,7 @@ body {
     background-repeat: no-repeat;
 
 }
-#loupe{
-    width: 4%;
-    margin-left: 1100px;
-    margin-top: -42px;
-}
+
 #google{
     width: 4%;
     margin-left: 1150px;
@@ -83,15 +70,20 @@ nav {
     padding: 5px;
     width: 100%;
     height: 60px;
-    background-color: rgb(216, 189, 189);
+    background-color: #451313;
+    opacity: 0.9;
+    border:solid 1px black;
+
 }
 
 a {
-    color: black;
     padding: 0 25px;
     font-size: 20px;
+    font-family: 'Concert One', cursive;
 }
-
+.faireD{
+    color:white;
+}
 ul {
     display: flex;
     justify-content: flex-end;
@@ -108,13 +100,14 @@ ul li {
 }
 
 ul li:hover {
-    background-color: rgb(216, 189, 189);
+    background-color: #451313;
+
 }
 
 ul li a {
     text-decoration: none;
     padding: 0 30px;
-    color: black;
+    color: white;
 }
 
 ul li ul {
@@ -130,12 +123,12 @@ ul li ul {
 
 ul li:hover ul {
     opacity: 1;
-    background-color: rgb(216, 189, 189);
+    background-color: #451313;
     visibility: visible;
 }
 
 a:hover {
-    color: #616161;
+    color: white;
 }
 
 ul li ul li {
@@ -146,9 +139,22 @@ ul li ul li {
     margin-top: 100px;
 }
 /*inscription*/
+#couleur-inscription{
+    color:black;
+}
+#couleur-compte{
+    color:black;
+}
+#couleur-inscription:hover{
+    color:black;
+}
+#couleur-compte:hover{
+    color:black;
+}
 .titre-inscription{
     padding: 100px 0  40px 20px;
     font-size:30px;
+    font-family: 'Concert One', cursive;
 }
 .inscrivez-vous{
     font-family: 'Philosopher', sans-serif;
@@ -160,10 +166,10 @@ ul li ul li {
 
 }
 .insert-register{
-    background-color: rgb(245, 229, 229);
     height: 950px;
     margin-top: -20px;
 }
+
 .inscription{
     display:block;
     font-size: 20px;
@@ -187,19 +193,18 @@ form#connect{
     height:600px;
 }
 .insert-login{
-    background-color: rgb(245, 229, 229);
-    margin-top: -300px;
+    margin-top: -320px;
 }
 
 /*formulaires inserer article*/
 #creer-article,.modifier-article,#modif-category{
     margin: 100px 0 50px 600px;
     font-family: 'Philosopher', sans-serif;
-    padding-top:100px;
+    padding-top:200px;
 }
 .titre-temoignage-insert,.titre-testimony-modif{
     font-family: 'Philosopher', sans-serif;
-    margin: 100px 0 20px 600px;
+    margin: 200px 0 20px 600px;
     padding-top:50px;
 }
 #gerer-category{
@@ -208,13 +213,10 @@ form#connect{
     padding-top:200px;
 }
 .insert{
-    background-color: rgb(245, 229, 229);
-    margin-top: -100px;
+    margin-top: -200px;
 }
 .insert-testimony{
-    background-color: rgb(245, 229, 229);
     margin-top: -200px;
-
 }
 .insert-article{
     font-size: 25px;
@@ -234,11 +236,10 @@ form#connect{
     clear: both;
 }
 /*image formulaire de contact*/
-
 #contactez{
     margin: 0;
-    padding-top: 200px;
-    font-family: 'Philosopher', sans-serif;
+    padding-top: 150px;
+    font-family: 'Concert One', cursive;
     font-size: 80px;
     text-align: center;
 }
@@ -246,7 +247,44 @@ form#connect{
     background-image: url(../img/paper.jpg);
     background-repeat: no-repeat;
     height:500px;
-    margin:0px;
+    margin:0;
+}
+/*apropos*/
+.presentation{
+    margin-top: -17px;
+    font-size:20px;
+    height: 500px;
+}
+.presentation1{
+    background-color: rgb(245, 229, 229);
+    font-size:20px;
+    height: 2000px;
+
+}
+.ecris{
+    font-size:20px;
+    font-family: 'Philosopher', sans-serif;
+    text-overflow: ellipsis;
+    padding:100px 150px 50px 150px;
+}
+.avis{
+    text-align: center;
+    font-size: 30px;
+    color: darkred;
+}
+/*mentionlegales*/
+.mentions{
+    margin:0;
+    padding:50px;
+    font-size:30px;
+    text-align: center;
+    color: rgb(241, 121, 121);
+
+}
+.info-mentions{
+    font-size:20px;
+    font-family: 'Philosopher', sans-serif;
+    padding:50px 150px 100px 150px;
 }
 
 .form-group-article-insert,
@@ -256,7 +294,7 @@ form#connect{
     padding-bottom: 100px;
 }
 .form-group-contact-insert{
-    background-color: rgb(245, 229, 229);
+
     width: 100%;
     padding: 100px 0 100px 500px;
 }
@@ -300,6 +338,7 @@ form#connect{
 }
 
 /*page recherche*/
+
 .form-group-recherche-article{
     margin-left: 100px;
 }
@@ -320,14 +359,30 @@ form#connect{
     border-radius: 50px;
     background-color: rgb(216, 189, 189);
 }
-.suite{
-    text-align: center;
-    width:200px;
-    height:50px;
-    border-radius: 50px;
-    margin:10px 0 70px 0;
-    padding:5px 0 5px 0;
+.articles-search{
     background-color: rgb(216, 189, 189);
+    height:600px;
+}
+.search{
+    margin:0;
+    padding: 20px 0 0 60px;
+    font-size: 30px;
+    font-family: 'Philosopher', sans-serif;
+}
+.input-search{
+    width:150px;
+    height:30px;
+}
+.search-form-articles{
+    margin:-45px 0 0 350px;
+}
+.btn{
+    width:90px;
+    height:30px;
+    color:white;
+    margin: 0 0 10px 0 ;
+    background-color: #9b3636;
+    line-height: 8px;
 }
 
 /*inserer modifier category*/
@@ -378,7 +433,6 @@ form#connect{
     line-height: 50px;
     background-color: #fdf4f9;
     box-shadow: 0 1px 2px #616161;
-
     display: inline-block;
     font-size: x-large;
 }
@@ -400,17 +454,26 @@ form#connect{
 #lien_temoignage,
 #lien_articles,
 #lien_category{
-    margin-top:-30px;
+    margin-top:-120px;
 }
-.lien_articles,
-.lien_category,
-.lien_temoignage{
+.lien_articles{
+    color:white;
     width: 500px;
-    height: 60px;
+    height: 70px;
     font-size: 30px;
     padding: 10px 0 0 30px;
     margin-bottom:100px;
-    background-color: rgb(158, 109, 94);
+    background-color: #451313;
+}
+.lien_category,
+.lien_temoignage{
+    color:white;
+    width: 500px;
+    height: 80px;
+    font-size: 30px;
+    padding: 10px 0 0 30px;
+    margin-bottom:100px;
+    background-color: #451313;
 
 }
 #admin_lien_articles,
@@ -424,15 +487,15 @@ form#connect{
     margin-top: 250px;
 }
 /*page admin*/
-/*admin*/
-
 .titre,
 .admin {
     margin:50px 0 50px 300px;
+
 }
 .Compte_admin {
     font-size: 19px;
     margin-left: 10px;
+
 }
 .profile {
     margin-left: 10px;
@@ -441,7 +504,6 @@ form#connect{
     margin-left: 50px;
 }
 #customers {
-    font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 70%;
     margin-left: 300px;
@@ -454,92 +516,187 @@ form#connect{
     padding: 8px;
 }
 #customers tr:hover {
-    background-color: #ddd;
+    background-color: #c1bcbc;
 }
 
 #customers th {
+
+    color:black;
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: rgb(216, 189, 189);
+    background-color: #9b3636;
 }
-/*admin crud articles category testimony*/
 
-/*block pages base*/
+/*block pages articles*/
+.love{
+    width:2%;
+    margin: 45px 0 0 400px;
+}
+.love2{
+    width:5%;
+    margin:45px 0 0 350px;
+}
+.top{
+    width:100%;
+    height: 200px;
+    background-color: #9b3636;
+}
+.top-article{
+    font-size:60px;
+    text-align: center;
+    color:white;
+    margin-top: -150px;
+    padding:60px 0 30px;
+}
+.bas{
+    width:100%;
+    height: 200px;
+    margin-top: 100px;
+    background-color: #9b3636;
+}
+.bas-temoignage{
+     width:100%;
+     height: 200px;
+     margin-top: -60px;
+     background-color: #9b3636;
+ }
+.bas-article{
+    font-size:40px;
+    text-align: center;
+    color:white;
+    padding:60px 0 30px;
+
+}
+
+.faire-un-don:hover{
+    color:#FF1493;
+}
+
 .row{
-    background-color: rgb(216, 189, 189);
     width:650px;
-    height:360px;
-    padding:15px 50px 0 70px;
-    margin-left: 240px;
-    margin-top: -25px;
-
+    height:291px;
+    padding:0 40px 20px;
+    margin: 90px 0 50px 150px;
+    border:solid 2px gray;
 }
-.row-test{
-    background-color: rgb(216, 189, 189);
-    width:650px;
-    height:340px;
-    padding:15px 50px 0 70px;
-    margin-left: 130px;
-}
-.row1{
-    height: 360px;
-    display:inline-block;
-    background-color: rgb(221, 214, 212);
-    padding:50px 50px 0 50px;
-}
-.row1-test{
-    height: 380px;
-    display:inline-block;
-    background-color: rgb(221, 214, 212);
-    padding:50px 50px 0 50px;
-}
-.row3-test{
-    height: 380px;
-    display:inline-block;
-    background-color: rgb(221, 214, 212);
-    padding:50px 50px 0 50px;
-}
-
 .row2{
-    background-color: rgb(216, 189, 189);
-    width:650px;
-    height:350px;
-    padding:15px 50px 0 50px;
-    margin-left: 110px;
+    width: 650px;
+    height:291px;
+    margin:200px 0 0 -8px;
+    padding:0 40px 20px;
+    border:solid 2px gray;
 }
-.row2-test{
-    background-color: rgb(216, 189, 189);
-    width:650px;
-    height:470px;
-    padding:15px 50px 0 50px;
-    margin-left:-5px;
-
+.row2-articles{
+    width: 650px;
+    height:291px;
+    margin:250px 0 0 -8px;
+    padding: 0 40px 20px;
+    border:solid 2px gray;
 }
-.article {
-    color: rgb(241, 121, 121);
-    margin: 0;
-    padding-bottom:30px;
-}
-
-
-.title_articles_admin,
-.title_categorys_admin,
-.title_testimonys_admin{
+.contente-article,.contente-category{
+    font-family: 'Concert One', cursive;
+    color:black;
     font-size: 25px;
-    margin-left: -9px;
-}
-
-.box_articles_admin{
-    padding: 70px 70px 70px 70px;
 }
 
 .box_articles,.box_categorys_admin
 {
     width: 44%;
     height: 270px;
-    margin-left:-120px;
 }
+.img_art_ad {
+    margin:300px 0 100px 150px;
+
+}
+#img_cat_ad{
+    margin:-59px 0 100px 155px;
+}
+.img_box_articles_admin,
+#img_categorys_admin{
+    height: auto;
+    margin:-20px 0 -170px 159px;
+
+}
+/*box temoignage*/
+.row-test{
+    width:650px;
+    height:340px;
+    padding:15px 50px 0 70px;
+    margin: 100px 0 0 181px;
+    border:solid 2px gray;
+
+
+}
+#img_box_testimonys_admin{
+    width: 35%;
+    height: auto;
+    margin:-130px 0 0 190px;
+}
+.img-caroussel2{
+    height: 800px;
+}
+#img_test_admin{
+    width: 35%;
+    height: auto;
+    margin:100px 0 0 190px;
+
+}
+.row2-test{
+    width:650px;
+    height:336px;
+    padding:15px 50px 0 50px;
+    margin:207px 0 100px -10px;
+    border:solid 2px gray;
+
+}
+.row1{
+    display:block;
+    height: 360px;
+    padding:50px 50px 0 50px;
+    margin-bottom: 20px;
+}
+.row1-test{
+    height: 380px;
+    display:inline-block;
+    padding:50px 50px 0 50px;
+}
+.row3-test{
+    height: 380px;
+    display:inline-block;
+    padding:50px 50px 0 50px;
+
+}
+
+.article {
+    color: rgb(241, 121, 121);
+    margin: 0;
+    padding-bottom:30px;
+}
+.admin_container_articles{
+    margin-top: 50px;
+
+}
+.title_articles_admin,
+.title_categorys_admin,
+.title_testimonys_admin{
+    font-size: 55px;
+    padding:0 0 10px -9px;
+    font-family: 'Concert One', cursive;
+}
+.title_testimonys_admin{
+    color:rgb(241, 121, 121);
+}
+.title_articles_admin:hover,
+.title_categorys_admin:hover{
+    color: rgb(241, 121, 121);
+}
+
+.box_articles_admin{
+    padding: 70px 70px 70px 70px;
+}
+
+
 .box_testimonys_admin{
     width: 44%;
     height: 300px;
@@ -551,78 +708,28 @@ form#connect{
     width: 43%;
     height: auto;
 }
-.img_box_articles_admin,
-#img_categorys_admin{
-    width: 40%;
-    height: auto;
-    margin-bottom: -215px;
-    margin-left: 250px;
-}
+
 /*essaie JS*/
 
 /*fin essai js*/
-
-#img_box_testimonys_admin{
-    width: 35%;
-    height: auto;
-    margin-left: 140px;
-    margin-top: -230px;
-}
-
 .img_articles_admin{
     width: 39%;
     height: auto;
     margin:0 0 145px 0;
 }
-.img_art_ad {
-    width: 39%;
-    height: auto;
-    margin:-200px 0 0 120px;
-}
-#img_cat_ad{
-    width: 38%;
-    height: auto;
-    margin:-160px 0 0 120px;
-}
-
-#img_test_admin{
-    width: 34%;
-    height: auto;
-    margin:-140px 0 0 140px;
-
-}
-
-/*retour vers le haut*/
-
-.top {
-    width: 100%;
-    height: 100px;
-    margin-top: 0;
-    background-color: rgb(160, 116, 102);
-}
-
-.arrow2 {
-    width: 3%;
-    color: gold;
-    margin-left: 685px;
-}
-
-.arrow-text {
-    text-align: center;
-    font-size: 20px;
-}
 
 /*footer liens facebook*/
 #footer {
     height: 120px;
-    margin: 0;
+
     padding: 0;
     text-align: center;
-    background-color: rgb(216, 189, 189);
+    background-color:#451313;
     font-size: 27px;
 }
 
 .liens {
+    color:white;
     margin-left: 1100px;
     padding-top: 50px;
     font-size: 18px;
@@ -672,6 +779,10 @@ footer:hover>.redirection{
 /*responsive*/
 
 @media screen and (max-width:843px) and (min-width:400px) {
+    .search-form-articles{
+        top:60px;
+        left:-100px;
+    }
     .accroche {
         display: block;
         width: 100%;
@@ -685,14 +796,24 @@ footer:hover>.redirection{
     .button {
         display: none;
     }
+    /*titre en JS*/
+    .ml2 {
+        color:white;
+        font-size: 40px;
+        top: -5px;
+        position: fixed;
+        font-family: 'Dancing Script', cursive;
+    }
+    /*nav*/
     nav {
         padding: 60px;
         width: 100%;
         height: 120px;
-        background-color: rgb(216, 189, 189);
+        background-color:#451313;
+        position:static;
     }
     a {
-        color: black;
+        color: white;
         padding: 0 25px;
         font-size: 20px;
     }
@@ -710,12 +831,12 @@ footer:hover>.redirection{
         transition: 0.5s;
     }
     ul li:hover {
-        background-color: rgb(216, 189, 189);
+        color: white;
     }
     ul li a {
         text-decoration: none;
         padding: 0 30px;
-        color: black;
+        color: white;
     }
     ul li ul {
         color: #f1f1f1;
@@ -729,14 +850,14 @@ footer:hover>.redirection{
     }
     ul li:hover ul {
         opacity: 1;
-        background-color: rgb(216, 189, 189);
+        background-color:#451313;
         visibility: visible;
     }
     a:hover {
-        color: #616161;
+        color: white;
     }
     ul li ul li {
-        border-bottom: #e0e0e0;
+        border-bottom: white;
     }
     .amazones,
     .site {
@@ -745,25 +866,138 @@ footer:hover>.redirection{
         margin-top: -100px;
         margin-left: 20px;
     }
-    .arrow2 {
-        width: 4%;
-        display: none;
+    /*img header*/
+    .accroche {
+        background-image: url(../img/team.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 500px;
+        background-attachment: fixed;
+
     }
-    /*blocks pages du site home et  base*/
-    .row{
+
+    .lien_articles{
+        color:white;
+        width: 500px;
+        height: 80px;
+        font-size: 30px;
+        padding: 10px 0 0 30px;
+        background-color: #451313;
+    }
+    #lien_temoignage,
+    #lien_articles,
+    #lien_category{
+        margin-top:-50px;
+    }
+    /*bande article*/
+    .top{
+        width:100%;
+        height: 150px;
+        background-color: #9b3636;
+    }
+    .top-article{
+        font-size:60px;
+        text-align: center;
+        color:white;
+        padding:60px 0;
+    }
+    .row,.row2-articles{
         display: block;
-        background-color: rgb(216, 189, 189);
-        width:550px;
+        width:500px;
         height:350px;
-        padding:30px 10px 20px 70px;
-        margin-left: 80px;
+        padding:0 40px 20px;
+        margin: 90px 0 50px 0;
+        border:solid 2px gray;
+        background-color: #b5c7e2;
     }
-    .img_box_articles_admin,
-    #img_categorys_admin,.img_art_ad {
+    .row2-articles{
+        margin:0;
+    }
+    .contente-article{
+        font-family: 'Concert One', cursive;
+        color:black;
+        padding:20px 10px 30px 10px;
+        font-size: 20px;
+    }
+    .contente-category{
+        font-family: 'Concert One', cursive;
+        color:black;
+        font-size: 20px;
+    }
+    .bas-article{
+        font-size:40px;
+        text-align: center;
+        color:white;
+        padding:60px 0 30px;
+    }
+    .bas{
+        width:100%;
+        height: 200px;
+        margin-top: 200px;
+        background-color: #9b3636;
+
+    }
+    .bas-temoignage{
+        width:100%;
+        height: 200px;
+     margin-top: -503px;
+        background-color: #9b3636;
+    }
+    /*titres*/
+    .title_testimonys_admin,
+    .title_articles_admin,
+    .title_categorys_admin{
+        padding: 10px 0 0 0;
+    }
+    /*icones articles*/
+    .love{
+        width:6%;
+        margin: -50px 0 0 400px;
+    }
+    .love2{
+        width:6%;
+        margin:55px 0 0 350px;
+    }
+    /*images articles*/
+    .img_art_ad {
+        width: 100%;
+        height: auto;
+        margin:-30px 0;
+    }
+
+    /*search*/
+    .search{
+        margin:0;
+        padding: 20px 0 0 60px;
+        font-size: 30px;
+        font-family: 'Philosopher', sans-serif;
+    }
+    .input-search{
+        width:150px;
+        height:30px;
+        margin-top:-100px;
+    }
+    /*blocks articles categories*/
+
+    .img_box_articles_admin,.img_art_ad {
         display:block;
         width: 100%;
         height: auto;
         margin: 80px 0 0 3px;
+    }
+    .row2{
+        width: 650px;
+        height:291px;
+        margin:0;
+        padding: 10px 160px 20px 30px;
+        border:solid 2px gray;
+    }
+    #img_categorys_admin{
+        display:block;
+        width: 100%;
+        height: auto;
+        margin: 0 0 80px 0;
+
     }
     .row1{
         height: 460px;
@@ -773,23 +1007,14 @@ footer:hover>.redirection{
     .box_articles_admin{
         padding: 10px 10px 20px 10px;
     }
-    .img_art_ad {
-        width: 100%;
-        height: auto;
-        margin:0;
-    }
-    .row2{
-        background-color: rgb(216, 189, 189);
-        width:510px;
-        height:550px;
-        margin-bottom: 50px;
-        padding:15px 50px 0 50px;
-    }
+
+
     #img_cat_ad{
         width: 100%;
         height: auto;
         margin:1px 0 0 0;
     }
+    /*plus actif
     #img_box_testimonys_admin{
         width: 34%;
         height: auto;
@@ -809,10 +1034,24 @@ footer:hover>.redirection{
         padding:15px 60px 0 40px;
         margin-left: -20px;
     }
+    .row2-test{
+        background-color: rgb(216, 189, 189);
+        width:500px;
+        height:400px;
+        padding:15px 50px 0 50px;
+
+
+    }
     .box_testimonys_admin{
         width: 44%;
         height: 300px;
         margin:0;
+    }
+     */
+    #img-testimony-caroussel{
+        width: 100%;
+        height: auto;
+
     }
     .row1-test{
         width:490px;
@@ -864,44 +1103,74 @@ footer:hover>.redirection{
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
-        background-color: rgb(216, 189, 189);
+        background-color: #9b3636;
     }
-/*page recherche*/
+
+    /*page recherche*/
     .form-group-recherche-article{
         margin-left: 20px;
     }
+    /*update categorie*/
+    .form-update-category{
+        margin-top: -10px;
 
+    }
 
-    #footer {
+    #creer-article,.modifier-article,#modif-category{
+        margin: 50px 0 50px 50px;
+        font-family: 'Philosopher', sans-serif;
+        padding-top:200px;
+    }
+    /*form contact*/
+    .form-group-contact-insert{
         width: 100%;
+        padding: 80px 0 100px 150px;
+    }
+    /*apropos*/
+    .ecris{
+        font-size:20px;
+        font-family: 'Philosopher', sans-serif;
+        text-overflow: ellipsis;
+        padding:100px 50px 50px 50px;
+    }
+/*footer*/
+    #footer {
         height: 120px;
-        margin: 0;
         padding: 0;
         text-align: center;
-        background-color: rgb(216, 189, 189);
+        background-color: #451313;
         font-size: 27px;
     }
     .liens {
         margin-left: 220px;
         font-size: 18px;
-        padding-top: 50px;
     }
+
     #facebook {
         width: 22px;
-        margin-left: 170px;
+        margin-left: 160px;
         margin-top: 40px;
     }
+
     #twitter {
         width: 37px;
-        margin-left: 100px;
+        margin-left: 90px;
         margin-top: 40px;
     }
+
     #instagram {
         width: 37px;
+        margin-left:10px;
         margin-top: 40px;
     }
  }
-@media (max-width:768px) {
+@media (max-width:768px)and (min-width:400px) {
+
+
+    .search-form-articles{
+        top:60px;
+        left:-100px;
+    }
     .modifier-article,
      #gerer-category{
         margin:220px 0 90px 40px;
@@ -919,11 +1188,7 @@ footer:hover>.redirection{
         margin:250px 130px 90px 0;
         text-align: center;
     }
-    .title_testimonys_admin,
-    .title_articles_admin,
-    .title_categorys_admin{
-        margin: 0 0 0 -10px;
-    }
+
 
 /*crud articles et buttons*/
     .display_articles_admin,

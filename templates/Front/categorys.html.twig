@@ -7,53 +7,52 @@
 {% if is_granted('ROLE_USER')%}
 <div id="lien_category"><a href="{{ path('admin_category_insert')}}"><h1 class="lien_category">Créer votre catégorie</h1></a></div>
 {% endif %}
+    <div class="top">
+        <p class="top-article">
+            Catégories
+        </p>
+    </div>
 <div class="admin_container_categorys">
 {# avec la boucle for j'appel une category dans les categorys #}
 {% for category in categorys %}
 {# ma condition if et la methode loop.index me permet de récuperer les entités de mes categorys
 et de les afficher en les alternants grâce à else #}
 {# j'appel mes images et mes titres  #}
-
-
-                {% if loop.index is odd %}
-                    <article class="box_categorys_admin">
-                        <div class="row">
-                            <h2 class="title_categorys_admin">{{ category.title}}</h2>
-                            <p>{{ category.article }}</p>
-                        </div>
-                    </article>
-
-                    {# la methode asset(uploads:category me permet de recuperer les images qui ont été uploadé en bdd #}
-                    <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" id="img_categorys_admin">
-                {% else %}
-                    <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" id="img_cat_ad">
-                        <article class="box_categorys_admin">
-                            <div class="row2">
-                                <h2 class="title_categorys_admin">{{ category.title}}</h2>
-                                <p>{{ category.article }}</p>
-                                <p>{{ category.Date|date("m/d/Y") }}</p>
-                            </div>
-                        </article>
-                {% endif %}
-                <div class="row1">
-                    <h2 class="title_categorys_admin">{{ category.title}}</h2>
-                    <p>{{ category.article }}</p>
-                    <p>{{ category.Date|date("m/d/Y") }}</p>
-                    <a href="" class="article">lire la suite..</a>
+    {% if loop.index is odd %}
+            <article class="box_categorys_admin">
+                <div class="row">
+                   <h2 class="title_categorys_admin">{{ category.title}}...</h2>
+                    <p class="contente-category">{{ category.article}}</p>
                 </div>
+            </article>
 
-                {# la condition if is granted me permet de choisir les élements du site qui seront visible pas les personnes
-                ayant le role_admin#}
-                {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
-                pour pouvoir supprimer ou modifier une category #}
+            {# la methode asset(uploads:category me permet de recuperer les images qui ont été uploadé en bdd #}
+            <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" id="img_categorys_admin">
+        {% else %}
+            <img src="{{ asset('uploads/category/' ~ category.photo) }}" alt="" id="img_cat_ad">
+                <article class="box_categorys_admin">
+                    <div class="row2">
+                        <h2 class="title_categorys_admin">{{ category.title}}...</h2>
+                        <p>{{ category.Date|date("m/d/Y") }} </p>
+                        <p class="contente-category">{{ category.article}}</p>
+                    </div>
+                </article>
+        {% endif %}
+{# la condition if is granted me permet de choisir les élements du site qui seront visible pas les personnes
+ayant le role_admin#}
+{# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
+pour pouvoir supprimer ou modifier une category #}
 
-                 {#{% if is_granted('ROLE_ADMIN')%}
-                    <div class="button_category"><a href="{{ path('admin_category_update', {'id': category.id}) }}">Modifier</a></div>
-                    <div class="button_category"><a href="{{ path('admin_category_delete', {'id': category.id}) }}">Supprimer</a></div>
-                {% endif %}  #}
-
-        {% endfor %}
+ {#{% if is_granted('ROLE_ADMIN')%}
+    <div class="button_category"><a href="{{ path('admin_category_update', {'id': category.id}) }}">Modifier</a></div>
+    <div class="button_category"><a href="{{ path('admin_category_delete', {'id': category.id}) }}">Supprimer</a></div>
+{% endif %}  #}
+{% endfor %}
 </div>
+    <div class="bas">
+        <p class="bas-article">Nous avons besoin de vous!<br><br><a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE" class="faire-un-don">Faire un don</a></p>
+
+    </div>
 {% endblock main%}
 
 

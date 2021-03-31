@@ -1,0 +1,26 @@
+{% extends 'base.html.twig'%}
+
+{% block main %}
+
+<div class="articles-search">
+
+    {% if articles|length > 0 %}
+
+           {% for article in articles %}
+
+               <a href="{{ path('Front_articlelist', {'id': article.id}) }}">
+
+                   <h1 class="search">{{ article.title }}</h1>
+
+               </a>
+
+           {% endfor %}
+
+    {% else %}
+
+        <p>Aucun article trouvé</p>
+
+    {% endif %}
+</div>
+
+{% endblock main%}

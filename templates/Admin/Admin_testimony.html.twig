@@ -13,6 +13,7 @@
             <a href="{{ path("admin_page") }}"class="sidenav-link active" >Gérer les articles</a>
             <a href="{{ path("home_category") }}" class="sidenav-link active">Gérer les catégories</a>
     </div>
+
     <table id="customers">
             {# j'appel dans ce tableau un articles dans mes articles et j'affiche son id et son titre #}
             {% for testimony in testimonys %}
@@ -29,9 +30,9 @@
                 <td class="text-center">
                     {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
                     pour pouvoir supprimer ou modifier un article #}
-                    <div><a href="{{ path('admin_testimony_insert') }}">Créer</a></div>
-                    <div><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">Modifier</a></div>
-                    <div><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">Supprimer</a></div>
+                    <div><a href="{{ path('admin_testimony_insert') }}" id="couleur-inscription">Créer</a></div>
+                    <div><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}" id="couleur-inscription">Modifier</a></div>
+                    <div><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}" id="couleur-inscription">Supprimer</a></div>
                 </td>
             </tr>
             {% endfor %}

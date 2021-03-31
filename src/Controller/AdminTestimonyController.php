@@ -146,14 +146,15 @@ class AdminTestimonyController extends AbstractController
                     "le temoignage a été modifié"
                 );
 
-            return $this->redirectToRoute('admin_testimony_list');
+            return $this->redirectToRoute('Front_testimony_list');
 
         }
         //je crée grâce à la fonction createview une vue qui sera lu par twig
         $formView = $form-> createView();
         //la methode render me permet de renvoyer vers mon fichier twig via sa route
             return $this->render('Testimony/Admin/update_testimony.html.twig',[
-                'formView' => $formView
+                'formView' => $formView,
+                'testimony' => $testimony
             ]);
     }
     /**
@@ -188,7 +189,7 @@ class AdminTestimonyController extends AbstractController
         }
              // la fonction redirectToRoute me permet de retrouner vers un visuel
              // via le name de mon fichier 'les temoignages'
-            return $this->redirectToRoute('admin_testimony_list');
+            return $this->redirectToRoute('Front_testimony_list');
 
     }
 

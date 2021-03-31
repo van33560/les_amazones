@@ -37,6 +37,7 @@ mon controller testimony#}
                 </div>
 
                 <div class="form-group col-6 col-md-4 col-lg-3">
+                    <img src="{{ asset('uploads/testimony/'~ testimony.picture) }}" alt="">
                     {{ form_label(formView.picture) }}
                     {{ form_widget(formView.picture, {'attr': {'class': 'form-control'}}) }}
                     {{ form_errors(formView.picture) }}
@@ -50,7 +51,7 @@ mon controller testimony#}
 
                 <div class="form-group col-6 col-md-2 mt-5 col-lg-2">
                     {{ form_label(formView.valider) }}
-                    {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
+                    {{ form_widget(formView.valider,{ 'attr':{'class':'btn btn-secondary'}}) }}
                 </div>
             </div>
         {# form_end ferme mon formulaire #}

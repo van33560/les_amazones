@@ -21,14 +21,14 @@
                 </div>
             {% endif %}
                  {# la proprieté path me permet de redigiger l'utilisateur vers un lien un formulaire d'inscription#}
-                <p class="connexion">Connexion<a href="{{ path('app_register') }}">/Inscription</a></p>
+            <p class="connexion">Connexion<a href="{{ path('app_register') }}" class="couleur-inscription">/Inscription</a></p>
                 <label for="inputEmail">Email</label>
                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus><br>
                 <label for="inputPassword mt-3">Password</label>
                 <input type="password" name="password" id="inputPassword" class="form-control" required>
                 {# csrf_token securise les données de l'utilisateur #}
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                <button class=" mb-5 mt-5 btn btn-lg btn-primary" type="submit">Valider</button>
+                <button class=" mb-5 mt-5 btn btn-lg btn btn-secondary" type="submit">Valider</button>
          </div>
     </form>
 </div>

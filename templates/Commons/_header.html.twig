@@ -1,0 +1,57 @@
+<header class="haut">
+    <nav class="positionrelative">
+        <ul>
+            <li class=""><a href="#Généralités">Généralités &ensp;</a>
+                <ul class="soubmenu">
+                    <li class=""><a href="{{path('home_page')}}">Actualité</a></li>
+                    <li class=""><a href="{{path('contact')}}">Contact</a></li>
+                    <li class=""><a href="{{path('apropos')}}">A propos</a></li>
+                </ul>
+            </li>
+            <li class=""><a href="#Pages">Thémes &ensp;</a>
+                <ul class="submenu">
+                    <li class=""><a href="">Psychologique</a></li>
+                    <li class=""><a href="">Esthétique</a></li>
+                    <li class=""><a href="">Pérruques</a></li>
+                    <li class=""><a href="">Assurances</a></li>
+                </ul>
+            </li>
+            <li class=""><a href="#Actualités">Rubriques&ensp;</a>
+                <ul class="soumenu">
+                    <li class=""><a href="{{path('Front_articlelist')}}">Articles</a></li>
+                    <li class=""><a href="{{path('Front_categorylist')}}">Categories</a></li>
+                    <li class=""><a href="{{path('Front_testimony_list')}}">Témoignages</a></li>
+                    <li class=""><a href="">Annuaire</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <form class="search-form-articles" action="{{path('search_articles')}}">
+            <label>
+                <input type="text" name="search" placeholder="Recherche" class="input-search">
+            </label>
+            <button type="submit" class="btn btn-secondary">Valider</button>
+        </form>
+
+    </nav>
+    {#  <div class="position-absolute text">
+        <p class="amazones">Les Amazones</p>
+    </div>#}
+    {# animation js du titre #}
+    <h1 class="ml2">Les Amazones</h1>
+
+    <div class="position-absolute don">
+        <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
+    </div>
+    <div class="col-lg-2 position-absolute" id="loupe">
+        <a href="{{path('search_articles')}}"><img src="{{ asset('assets/img/magnifying-glass.svg') }}" alt="" class="img-fluid"></a>
+    </div>
+    {% if is_granted('ROLE_ADMIN')%}
+        <div class="col-lg-2 position-absolute" id="google">
+            <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
+        </div>
+    {% endif %}
+    <div class="accroche">
+    </div>
+
+</header>

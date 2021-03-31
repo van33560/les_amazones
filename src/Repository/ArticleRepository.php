@@ -22,24 +22,48 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    /**
-     * @route("/search",name="search_articles")
-     * @param $search
-     * @return int|mixed|string
-     */
 
-    public function searchInTitle($search) {
-        //ecrire une requete sql qui utilise le like pour trouver
-        //dans tous les articles ceux qui ont le mot recherché dans les titres
-        $qb = $this->createQueryBuilder('a');
+    public function searchByTerm($search)
+   {
+        $queryBuilder = $this->createQueryBuilder('a');
 
-        $query = $qb->select('a')
+        $query = $queryBuilder
+            ->select('a')
             ->Where('a.title LIKE :search')
             ->setParameter('search', '%'.$search.'%')
             ->getQuery();
 
-        return $query->getResult();
-    }
+       return $query->getResult();
+
+   }
+
+
+
+
+
+
+
+
+
+
+    ///**
+     //* @route("/search",name="search_articles")
+     //* @param $search
+     //* @return int|mixed|string
+     //*/
+
+    //public function searchInTitle($search) {
+        //ecrire une requete sql qui utilise le like pour trouver
+        //dans tous les articles ceux qui ont le mot recherché dans les titres
+       // $qb = $this->createQueryBuilder('a');
+
+        //$query = $qb->select('a')
+           // ->Where('a.title LIKE :search')
+            //->setParameter('search', '%'.$search.'%')
+            //->getQuery();
+
+        //return $query->getResult();
+    //}
 
     // /**
     //  * @return Articles[] Returns an array of Articles objects

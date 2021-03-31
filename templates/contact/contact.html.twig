@@ -2,9 +2,15 @@
 {# extends permet d'etendre le code html du fichier base.html pour eviter la repetition du code #}
 
 {% block main %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     {# formulaire de contact #}
         <div class="contacte">
             <h1  id="contactez">Contactez-nous</h1>
+            <p class="avis">Votre avis nous interesse</p>
         </div>
     {# je crée un formulaire avec  form_start grace a cette fonction je vais pouvoir demander à sf  de
      generer un cabarit que je pourrai styliser avec bootstrap en placant chaque elements dans des div,
@@ -27,12 +33,6 @@
                 </div>
 
                 <div class="form-group col-6 col-md-4 col-lg-6">
-                    {{ form_label(formView.Phone) }}
-                    {{ form_widget(formView.Phone,{ 'attr':{'class':'form-control'}}) }}
-                    {{ form_errors(formView.Phone) }}
-                </div>
-
-                <div class="form-group col-6 col-md-4 col-lg-6">
                     {{ form_label(formView.Message) }}
                     {# avec la fonction form_widget je crée un input  #}
                     {{ form_widget(formView.Message,{ 'attr':{'class':'form-control'}}) }}
@@ -42,11 +42,12 @@
 
                 <div class="col-6 col-md-2 col-lg-2">
                     {{ form_label(formView.Valider) }}
-                    {{ form_widget(formView.Valider,{ 'attr':{'class':'btn btn-primary'}}) }}
+                    {{ form_widget(formView.Valider,{ 'attr':{'class':'btn btn-secondary'}}) }}
                 </div>
 
                     {# form_end ferme mon formulaire #}
                     {{ form_end(formView) }}
         </div>
+
 
 {% endblock main%}

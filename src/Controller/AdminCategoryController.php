@@ -43,7 +43,7 @@ class AdminCategoryController extends AbstractController
         //doctrine effectue la requete pour moi ici select*from category
         $categorys = $categoryRepository->findAll();
         //la methode render me permet de renvoyer vers mon fichier a twig et d'afficher son contenu
-            return $this->render("Category/Admin/categorys.html.twig",[
+            return $this->render("Front/categorys.html.twig",[
                 'categorys' => $categorys
             ]);
 
@@ -76,18 +76,19 @@ class AdminCategoryController extends AbstractController
 
               if($photo){
                 //je récupere le nom d'origine de l'image
-                $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
-                // grâce à la class Slugger, je change le nom de mon image
-                // et je sort les caractères spéciaux
-                $safeFilename = $slugger->slug($originalFilename);
+                    $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+                    // grâce à la class Slugger, je change le nom de mon image
+                    // et je sort les caractères spéciaux
+                    $safeFilename = $slugger->slug($originalFilename);
 
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$photo->guessExtension();
-                //je déplace dans un fichier temporaire (services.yaml) l'image ou je precise en parametre son nom
-                //la méthode move me permet de déplacer l'image
-                $photo->move(
-                    $this->getParameter('photo_directory'),
-                    $newFilename
+                        $newFilename = $safeFilename.'-'.uniqid().'.'.$photo->guessExtension();
+                        //je déplace dans un fichier temporaire (services.yaml) l'image ou je precise en parametre son nom
+                        //la méthode move me permet de déplacer l'image
+                        $photo->move(
+                        $this->getParameter('photo_directory'),
+                        $newFilename
                 );
+
                 $category->setPhoto($newFilename);
 
               }
@@ -103,13 +104,15 @@ class AdminCategoryController extends AbstractController
                         "success",
                         "la catégorie a été ajoutée"
                     );
-            return $this->redirectToRoute('admin_categorylist');
+
+            return $this->redirectToRoute('Front_categorylist');
         }
         //je crée grâce à la fonction createview une vue qui pourra en suite être lu par twig
         $formView = $form-> createView();
         //la fonction render me permet renvoyer vers mon twig les infos qui seront affichés
             return $this->render('Category/Admin/category_insert.html.twig',[
                 'formView' => $formView
+
             ]);
 
     }
@@ -131,33 +134,33 @@ class AdminCategoryController extends AbstractController
         //je récupére en bdd  l'id passer dans url
         $category = $categoryRepository -> find($id);
 
-        if(is_null($category)){
-            return $this->redirectToRoute('admin_categorylist');
-        }
+            if(is_null($category)){
+                return $this->redirectToRoute('admin_categorylist');
+            }
         //je crée un formulaire grâce à la fonction createFrom et je passe en paramétre le chemin grace a :: class
         // vers  le fichierArticleType
         $form = $this -> createForm(CategoryType::class,$category);
-
-        //avec la methode handleRequest de la class form je récupère les données en post
+            //avec la methode handleRequest de la class form je récupère les données en post
         $form->handleRequest($request);
         //je fait une contidion si mon formulaire et renseigner et valide alors je pré-sauvegarde
         //avec la fonction persist et je renvoi les données grace la fonction flush
-        if($form->isSubmitted() && $form->isValid()){
-            $entityManager->persist($category);
-            $entityManager->flush();
+            if($form->isSubmitted() && $form->isValid()){
+                $entityManager->persist($category);
+                $entityManager->flush();
 
-            //je crée un message grace a la methode addflash qui s'affichera à la modification de l'article
-                $this->addFlash(
-                    "success",
-                    "la categorie a été modifiée"
-                );
-            return $this->redirectToRoute('admin_categorylist');
+                //je crée un message grace a la methode addflash qui s'affichera à la modification de l'article
+                    $this->addFlash(
+                        "success",
+                        "la categorie a été modifiée"
+                    );
+                return $this->redirectToRoute('Front_categorylist');
         }
         //je crée grâce à la fonction createview une vue qui pourra être lu par twig
         $formView = $form-> createView();
         //la fonction render me permet renvoyer vers mon fichier twig formulaire
             return $this->render('Category/Admin/category_update.html.twig',[
-                'formView' => $formView
+                'formView' => $formView,
+                'category' => $category
             ]);
     }
     /**
@@ -189,7 +192,7 @@ class AdminCategoryController extends AbstractController
 
         }
         // la fonction redirecttoroute permet de retrouner un visuel via la route de mon fichier category'
-        return $this->redirectToRoute('admin_categorylist');
+        return $this->redirectToRoute('Front_categorylist');
 
      }
 

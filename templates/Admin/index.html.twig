@@ -26,17 +26,20 @@ que j'ai defini dans mes controllers admincategory et admintestimony #}
             <th>Actions</th>
         </tr>
             <tr>
-                <td>{{article.id}}</td>
-                <td>{{article.title}}</td>
+                    <td>{{article.id}}</td>
+                    <td>{{article.title}}</td>
                 <td class="text-center">
                     {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
                              pour pouvoir supprimer ou modifier un article #}
-                    <div><a href="{{ path('admin_article_insert') }}">Créer</a></div>
-                    <div><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
-                    <div><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
+                    <div><a href="{{ path('admin_article_insert') }}" id ="couleur-compte">Créer</a></div>
+                    <div><a href="{{ path('admin_article_update', {'id':article.id}) }}" id="couleur-compte">Modifier</a></div>
+                    <div><a href="{{ path('admin_article_delete', {'id':article.id}) }}" id="couleur-compte">Supprimer</a></div>
+
+
                 </td>
             </tr>
     </tbody>
+
 {% endfor %}
 
 </table>

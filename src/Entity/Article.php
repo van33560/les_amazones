@@ -55,13 +55,13 @@ class Article
 
     /**
      * @Assert\NotBlank(message="veuillez remplir le champ")
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="Article")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="article")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
     /**
-     * @Assert\NotBlank(message="veuillez remplir le champ")
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $illustration;

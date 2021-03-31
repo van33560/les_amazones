@@ -33,6 +33,7 @@
                 </div>
 
                 <div class="form-group col-6 col-md-4 col-lg-3">
+                    <img src="{{ asset('uploads/articles/'~ article.illustration) }}" alt="">
                     {{ form_label(formView.illustration) }}
                     {{ form_widget(formView.illustration, {'attr': {'class':'article_form_illustration'}}) }}
                     {{ form_errors(formView.illustration) }}
@@ -46,7 +47,7 @@
 
                <div class="form-group col-6 col-md-2 mt-5 col-lg-2">
                    {{ form_label(formView.valider) }}
-                   {{ form_widget(formView.valider,{ 'attr':{'class':'form-control'}}) }}
+                   {{ form_widget(formView.valider,{ 'attr':{'class':'btn btn-secondary'}}) }}
                </div>
             </div>
     {{ form_end(formView) }}
