@@ -27,23 +27,24 @@
                     </ul>
                 </li>
             </ul>
+            <div class="position-absolute login">
+                <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" id="login"></a>
+            </div>
         </nav>
 
         <div class="position-absolute intro">
             <h1>Ensemble contre le cancer du sein</h1>
-        </div>
-        <div class="position-absolute text">
-            <p class="amazones">Les Amazones</p>
-        </div>
-        <div class="col-lg-2 position-absolute" id="logo4">
-            <img src="{{ asset('assets/img/logo5.svg') }}" alt="">
-        </div>
-        <div class="position-absolute don">
-            <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
-        </div>
-        <div class="position-absolute login">
-            <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" id="login"></a>
-        </div>
+            </div>
+                <div class="position-absolute text">
+                   <p class="amazones">Les Amazones</p>
+                </div>
+            <div class="col-lg-2 position-absolute" id="logo4">
+                <img src="{{ asset('assets/img/logo5.svg') }}" alt="">
+            </div>
+            <div class="position-absolute don">
+                <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
+            </div>
+
         {% if is_granted('ROLE_USER')%}
             <div class="col-lg-2 position-absolute mon-compte">
                 <a href="{{path('users')}}">Profil</a>
@@ -64,38 +65,33 @@
 {% block main %}
     <div class="container-actu">
         <div class="ligne1">
-            <p class="entraide">Entraide</p>
+           <a href><p class="entraide">Entraide</p></a>
         </div>
             <div class="ligne2">
-                <p class="solidarite">Solidarité</p>
+               <a href><p class="solidarite">Solidarité</p></a>
             </div>
         <div class="ligne3">
-            <p class="partage">Partage</p>
+            <a href><p class="partage">Partage</p></a>
         </div>
 
     </div>
-  <h1 class="actualites">Actualités</h1>
+  <h2 class="actualites">Actualités</h2>
     <div class="container">
-        <div class="row">
-            <div class="element2">
+        <div class="element2">
                 <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt=""  />
                 <p class="titre">Les Accéssoires...</p>
-            </div>
         </div>
 
-        <div class="row">
             <div class="element2">
-                <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt="" />
-                <p class="titre">Le Sport...</p>
+                    <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt="" />
+                    <p class="titre">Le Sport...</p>
             </div>
-        </div>
 
-        <div class="row">
             <div class="element2">
-                <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt=""  />
-                <p class="titre">La Recherche...</p>
+                    <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt=""  />
+                    <p class="titre">La Recherche...</p>
             </div>
-        </div>
+
     </div>
     <div class="button">
         <a href="">
@@ -108,35 +104,58 @@
 
     </div>
     {# carousel #}
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active position-relative">
-                <p class="position-absolute woman" >"Mes amies m'ont soutenu"</p>
-                <img src="{{ asset('assets/img/woman.jpg') }}" class="d-block img-carousel" alt="...">
-            </div>
-                <div class="carousel-item position-relative">
-                    <p class="position-absolute moi2" >"Aprés ma maladie <br>j'ai crée une boutique de perruque"</p>
-                    <img src="{{ asset('assets/img/moi2.jpg') }}" class="d-block img-carousel" alt="...">
+
+
+    <div class="text-light">
+        <div id="client-testimonial-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active text-center p-4">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0"><i class="fa fa-quote-left"></i>"Mes amies m'ont soutenu!"
+                        </p>
+                        <footer class="blockquote-footer">Estelle<cite title="Source Title"></cite></footer>
+                    </blockquote>
+                    <div>
+                        <img src="{{ asset('assets/img/woman.jpg') }}" class="d-block w-100 img-carousel" alt="">
+                    </div>
                 </div>
-            <div class="carousel-item position-relative">
-                <p class="position-absolute people2" >"Nous avons soutenu notre mére"</p>
-                <img src="{{ asset('assets/img/people2.jpg') }}" class="d-block img-carousel" alt="...">
+                <div class="carousel-item text-center p-4">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0"><i class="fa fa-quote-left"></i>"Aprés ma maladie <br>j'ai crée une boutique de perruque!"
+                        </p>
+                        <footer class="blockquote-footer">Léa <cite title="Source Title"></cite></footer>
+                    </blockquote>
+                    <div>
+                        <img src="{{ asset('assets/img/moi2.jpg') }}" class="d-block w-100 img-carousel" alt="">
+                    </div>
+                </div>
+                <div class="carousel-item text-center p-4">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0"><i class="fa fa-quote-left"></i> "Nous avons soutenu notre mére!"
+                        </p>
+                        <footer class="blockquote-footer">La famille Henri <cite title="Source Title"></cite></footer>
+                    </blockquote>
+                    <div>
+                        <img src="{{ asset('assets/img/people2.jpg') }}" class="d-block w-100 img-carousel" alt="">
+                    </div>
+                </div>
+                <div class="carousel-control-prev"  role="button" data-target="#client-testimonial-carousel"  data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden"></span>
+                </div>
+                <div class="carousel-control-next" role="button" data-target="#client-testimonial-carousel"  data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden"></span>
+                </div>
             </div>
+            <ol class="carousel-indicators">
+                <li data-target="#client-testimonial-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#client-testimonial-carousel" data-slide-to="1"></li>
+                <li data-target="#client-testimonial-carousel" data-slide-to="2"></li>
+            </ol>
         </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden"></span>
-            </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden"></span>
-        </a>
     </div>
+
 
 {# formulaire newsletter #}
     <div class="forcont">

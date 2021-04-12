@@ -4,7 +4,9 @@
     margin: 0;
     padding: 0;
 }
-
+.cls{
+    clear: both;
+}
 body {
     font-family: 'Concert One', cursive;
     background-color: white;
@@ -15,7 +17,7 @@ body {
     height:auto;
 }
 .accroche {
-    background-image: url(../img/team.jpg);
+    background-image: url(../img/beautiful3.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 500px;
@@ -197,12 +199,15 @@ form#connect{
 }
 
 /*formulaires inserer article*/
-#creer-article,.modifier-article,#modif-category{
+#creer-article,
+.modifier-article,
+#modif-category{
     margin: 100px 0 50px 600px;
     font-family: 'Philosopher', sans-serif;
     padding-top:200px;
 }
-.titre-temoignage-insert,.titre-testimony-modif{
+.titre-temoignage-insert,
+.titre-testimony-modif{
     font-family: 'Philosopher', sans-serif;
     margin: 200px 0 20px 600px;
     padding-top:50px;
@@ -213,7 +218,8 @@ form#connect{
     padding-top:200px;
 }
 .insert{
-    margin-top: -200px;
+    margin: -100px;
+    padding:  0 0 200px 200px;
 }
 .insert-testimony{
     margin-top: -200px;
@@ -287,11 +293,14 @@ form#connect{
     padding:50px 150px 100px 150px;
 }
 
-.form-group-article-insert,
-.form-group-article-modify,
+
+.form-group-article-modify
+{
+    margin-left: 30px;
+    padding:0 0 100px 90px;
+}
 .form-insert-category{
-    margin-left: 150px;
-    padding-bottom: 100px;
+    margin-left: 20px;
 }
 .form-group-contact-insert{
 
@@ -315,25 +324,12 @@ form#connect{
     margin-left: 600px;
     clear: both;
 }
-#assurances{
-    width: 40%;
-    margin-top: 80px;
-    margin-left: 600px;
-    clear: both;
-}
+
 #mainsunis{
     position: absolute;
     width: 40%;
     margin-top: 80px;
     margin-left: 600px;
-
-    clear: both;
-}
-#assurances-testimony{
-    position: absolute;
-    width: 40%;
-    margin-left: 600px;
-    margin-top: 80px;
     clear: both;
 }
 
@@ -342,7 +338,7 @@ form#connect{
 .form-group-recherche-article{
     margin-left: 100px;
 }
-#recherche_articles,.card-body,article{
+#recherche_articles,.card-body{
     display: inline-block;
     justify-content: space-around;
     margin-bottom: 30px;
@@ -462,7 +458,7 @@ form#connect{
     height: 70px;
     font-size: 30px;
     padding: 10px 0 0 30px;
-    margin-bottom:100px;
+    margin-top:90px;
     background-color: #451313;
 }
 .lien_category,
@@ -472,7 +468,7 @@ form#connect{
     height: 80px;
     font-size: 30px;
     padding: 10px 0 0 30px;
-    margin-bottom:100px;
+    margin-top:90px;
     background-color: #451313;
 
 }
@@ -520,34 +516,70 @@ form#connect{
 }
 
 #customers th {
-
     color:black;
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #9b3636;
 }
+.gérer-les-témoignages,.gerer-articles{
+    margin: 0 270px 0 280px;
+}
+.gerer-les-temoignages{
+    margin-right: -380px;
+}
+.gerer-catagories{
+    margin: 0 0 0 60px;
+}
+/*block info*/
+.container-actu{
+    display: flex;
+    border: 1px solid black;
 
+}
+.ligne1,.ligne2,.ligne3{
+    width:100%;
+    height: 150px;
+    margin-left:0;
+
+}
+.ligne1{
+    background-color:#FF1493;
+}
+.ligne2{
+    background-color: #9b3636;
+}
+.ligne3{
+    background-color: #451313;
+}
+.entraide,
+.solidarite,
+.partage{
+    font-size:40px;
+    color:white;
+    text-align: center;
+    padding: 20px 0;
+}
 /*block pages articles*/
 .love{
     width:2%;
-    margin: 45px 0 0 400px;
+    margin: 64px 0 0 355px;
 }
 .love2{
-    width:5%;
-    margin:45px 0 0 350px;
+    width:4%;
+    margin:63px 0 0 310px;
 }
 .top{
+    margin-top:180px;
     width:100%;
-    height: 200px;
-    background-color: #9b3636;
+    height: 100px;
+
 }
 .top-article{
     font-size:60px;
     text-align: center;
-    color:white;
-    margin-top: -150px;
-    padding:60px 0 30px;
+    color:black;
+
 }
 .bas{
     width:100%;
@@ -558,67 +590,137 @@ form#connect{
 .bas-temoignage{
      width:100%;
      height: 200px;
-     margin-top: -60px;
+     margin-top: -960px;
      background-color: #9b3636;
  }
 .bas-article{
     font-size:40px;
     text-align: center;
     color:white;
+    margin-top: 1150px;
     padding:60px 0 30px;
 
 }
+.bas-category{
+    font-size:40px;
+    text-align: center;
+    color:white;
+    margin-top: 250px;
+    padding:60px 0 30px;
 
+}
 .faire-un-don:hover{
     color:#FF1493;
 }
+.admin_container_articles,
+.admin_container_categorys{
+   width:100%;
 
+}
 .row{
-    width:650px;
-    height:291px;
+    width:900px;
+    height:991px;
     padding:0 40px 20px;
-    margin: 90px 0 50px 150px;
+    margin: 100px 0 0 280px;
+    border-radius: 5%;
     border:solid 2px gray;
 }
 .row2{
     width: 650px;
     height:291px;
-    margin:200px 0 0 -8px;
+    margin:60px 0 0 140px;
+    padding:0 40px 20px;
+    border:solid 2px gray;
+}
+.row2-test{
+    width: 650px;
+    height:291px;
+    margin:60px 0 0 720px;
     padding:0 40px 20px;
     border:solid 2px gray;
 }
 .row2-articles{
-    width: 650px;
-    height:291px;
-    margin:250px 0 0 -8px;
+    width: 900px;
+    height:991px;
+    margin:100px 0 0 280px;
     padding: 0 40px 20px;
+    border-radius: 5%;
     border:solid 2px gray;
 }
-.contente-article,.contente-category{
+.contente-article{
     font-family: 'Concert One', cursive;
     color:black;
     font-size: 25px;
+    margin-top: 150px;
+}
+.contente-category{
+    font-family: 'Concert One', cursive;
+    color: black;
+    font-size: 24px;
+}
+.contente-article2{
+    font-family: 'Concert One', cursive;
+    color:black;
+    font-size: 25px;
+    margin-top: 80px;
 }
 
-.box_articles,.box_categorys_admin
+.box_categorys_admin
 {
-    width: 44%;
-    height: 270px;
+    display:inline-block;
+    margin: 50px 0 50px -70px;
+}
+.box_categorys{
+    display: inline-block;
+
 }
 .img_art_ad {
-    margin:300px 0 100px 150px;
-
-}
-#img_cat_ad{
-    margin:-59px 0 100px 155px;
-}
-.img_box_articles_admin,
-#img_categorys_admin{
+    width: 40%;
     height: auto;
-    margin:-20px 0 -170px 159px;
+    margin:650px 0 0 455px;
 
+}
+.img_cat_ad{
+    margin:110px 0 50px -1162px;
+}
+.img_categorys_admin{
+    margin:512px 0 50px -510px;
+}
+.img_box_articles_admin{
+    width: 40%;
+    height: auto;
+    margin:-840px 0 0 445px;
 }
 /*box temoignage*/
+.text-light-testimony{
+    width: 100%;
+    height:auto;
+    background-color: white;
+}
+.mb-1{
+    color:black;
+    font-size: 25px;
+    padding:20px 0;
+}
+.testimony-target{
+    padding:20px 20px;
+
+}
+.carousel-indicators>li{
+    width:70px;
+    height:9px;
+    background-color: black;
+
+}
+.blockquote-footer{
+    font-size: 25px;
+    padding:30px 20px;
+    color:black;
+}
+
+.blockquote1{
+  border:none;
+}
 .row-test{
     width:650px;
     height:340px;
@@ -633,29 +735,15 @@ form#connect{
     height: auto;
     margin:-130px 0 0 190px;
 }
-.img-caroussel2{
-    height: 800px;
-}
+
 #img_test_admin{
     width: 35%;
     height: auto;
     margin:100px 0 0 190px;
 
 }
-.row2-test{
-    width:650px;
-    height:336px;
-    padding:15px 50px 0 50px;
-    margin:207px 0 100px -10px;
-    border:solid 2px gray;
 
-}
-.row1{
-    display:block;
-    height: 360px;
-    padding:50px 50px 0 50px;
-    margin-bottom: 20px;
-}
+
 .row1-test{
     height: 380px;
     display:inline-block;
@@ -673,15 +761,13 @@ form#connect{
     margin: 0;
     padding-bottom:30px;
 }
-.admin_container_articles{
-    margin-top: 50px;
 
-}
 .title_articles_admin,
 .title_categorys_admin,
 .title_testimonys_admin{
-    font-size: 55px;
-    padding:0 0 10px -9px;
+    font-size: 50px;
+
+    margin-top: 40px;
     font-family: 'Concert One', cursive;
 }
 .title_testimonys_admin{
@@ -868,61 +954,85 @@ footer:hover>.redirection{
     }
     /*img header*/
     .accroche {
-        background-image: url(../img/team.jpg);
-        background-size: cover;
+        background-image: url(../img/beautiful2.jpg);
+        background-size:cover ;
         background-repeat: no-repeat;
         height: 500px;
         background-attachment: fixed;
 
     }
-
+    /*bandes*/
+    .entraide,
+    .solidarite,
+    .partage{
+        font-size:30px;
+        color:white;
+        text-align: center;
+        padding: 30px 0;
+    }
+    .ligne1,.ligne2,.ligne3{
+        width:100%;
+        height: 150px;
+        margin-left:0;
+    }
     .lien_articles{
         color:white;
         width: 500px;
         height: 80px;
         font-size: 30px;
-        padding: 10px 0 0 30px;
-        background-color: #451313;
+        padding: 20px 0 0 30px;
+        margin-top: 18px;
+        background-color: #f13f3f;
     }
-    #lien_temoignage,
-    #lien_articles,
+    .lien_category,.lien_temoignage{
+        background-color: #f13f3f;
+    }
+    #lien_temoignage
     #lien_category{
+        margin-top:-50px;
+
+    }
+    #lien_articles{
         margin-top:-50px;
     }
     /*bande article*/
     .top{
         width:100%;
         height: 150px;
+        margin-top: -130px;
         background-color: #9b3636;
     }
     .top-article{
         font-size:60px;
         text-align: center;
         color:white;
+        margin-top: 88px;
         padding:60px 0;
-    }
-    .row,.row2-articles{
-        display: block;
-        width:500px;
-        height:350px;
-        padding:0 40px 20px;
-        margin: 90px 0 50px 0;
-        border:solid 2px gray;
-        background-color: #b5c7e2;
-    }
-    .row2-articles{
-        margin:0;
+
     }
     .contente-article{
         font-family: 'Concert One', cursive;
         color:black;
         padding:20px 10px 30px 10px;
-        font-size: 20px;
+        font-size: 25px;
+        margin-top: 230px;
+    }
+    .contente-article2{
+        font-family: 'Concert One', cursive;
+        color:black;
+        font-size: 25px;
+        margin-top: 280px;
     }
     .contente-category{
         font-family: 'Concert One', cursive;
         color:black;
         font-size: 20px;
+    }
+    .contente-category1{
+        font-family: 'Concert One', cursive;
+        color:black;
+        font-size: 20px;
+
     }
     .bas-article{
         font-size:40px;
@@ -937,32 +1047,55 @@ footer:hover>.redirection{
         background-color: #9b3636;
 
     }
+    .bas-category{
+        font-size:40px;
+        text-align: center;
+        color:white;
+        margin-top: 150px;
+        padding:60px 0 30px;
+
+    }
     .bas-temoignage{
         width:100%;
         height: 200px;
-     margin-top: -503px;
+        margin-top: -1103px;
         background-color: #9b3636;
     }
     /*titres*/
     .title_testimonys_admin,
     .title_articles_admin,
     .title_categorys_admin{
+        font-size: 40px;
         padding: 10px 0 0 0;
+    }
+
+    a:hover,.gerer-catagories,.gerer-les-témoignages,.gerer-articles{
+        display: block;
+        margin:0 0 5px 40px;
+        color:black;
+
+
     }
     /*icones articles*/
     .love{
         width:6%;
-        margin: -50px 0 0 400px;
+        margin: 68px 0 0 300px;
     }
     .love2{
         width:6%;
-        margin:55px 0 0 350px;
+        margin:68px 0 0 265px;
     }
     /*images articles*/
     .img_art_ad {
-        width: 100%;
+        width: 80%;
         height: auto;
-        margin:-30px 0;
+        margin:-600px 0 0 45px;
+    }
+    .img_box_articles_admin{
+        display:block;
+        width: 80%;
+        height: auto;
+        margin:230px 0 0 45px;
     }
 
     /*search*/
@@ -978,27 +1111,48 @@ footer:hover>.redirection{
         margin-top:-100px;
     }
     /*blocks articles categories*/
-
-    .img_box_articles_admin,.img_art_ad {
-        display:block;
-        width: 100%;
-        height: auto;
-        margin: 80px 0 0 3px;
-    }
-    .row2{
-        width: 650px;
-        height:291px;
-        margin:0;
-        padding: 10px 160px 20px 30px;
+    .row{
+        width:450px;
+        height:691px;
+        padding:0 40px 20px;
+        margin: 100px 0 0 25px;
         border:solid 2px gray;
     }
-    #img_categorys_admin{
-        display:block;
-        width: 100%;
-        height: auto;
-        margin: 0 0 80px 0;
+    .row2{
+        width: 480px;
+        height:350px;
+        margin: 610px 0 0 25px;
+        padding: 10px 40px 20px 30px;
+        border:solid 2px gray;
+    }
+    .row2-articles{
+        width: 450px;
+        height:691px;
+        margin:100px 0 0 20px;
+        padding: 0 40px 20px;
+        border:solid 2px gray;
+    }
+    .row2-test{
+        width:480px;
+        height:400px;
+        margin-left: 80px;
+        padding:15px 50px 0 50px;
 
     }
+    .img_cat_ad{
+        margin:340px 0 50px 8px;
+        display:block;
+        width: 96%;
+        height: auto;
+    }
+    .img_categorys_admin{
+        display:block;
+        width: 96%;
+        height: auto;
+        margin: -50px 0 80px 10px;
+        padding-bottom: 100px;
+    }
+
     .row1{
         height: 460px;
         display:block;
@@ -1007,47 +1161,11 @@ footer:hover>.redirection{
     .box_articles_admin{
         padding: 10px 10px 20px 10px;
     }
-
-
     #img_cat_ad{
         width: 100%;
         height: auto;
         margin:1px 0 0 0;
     }
-    /*plus actif
-    #img_box_testimonys_admin{
-        width: 34%;
-        height: auto;
-        margin-left: 140px;
-        margin-top: -290px;
-    }
-    #img_test_admin{
-        width: 99%;
-        height: auto;
-        margin:1px 0 0 0;
-
-    }
-    .row-test{
-        background-color: rgb(216, 189, 189);
-        width:510px;
-        height:450px;
-        padding:15px 60px 0 40px;
-        margin-left: -20px;
-    }
-    .row2-test{
-        background-color: rgb(216, 189, 189);
-        width:500px;
-        height:400px;
-        padding:15px 50px 0 50px;
-
-
-    }
-    .box_testimonys_admin{
-        width: 44%;
-        height: 300px;
-        margin:0;
-    }
-     */
     #img-testimony-caroussel{
         width: 100%;
         height: auto;
@@ -1061,14 +1179,7 @@ footer:hover>.redirection{
         padding:50px 50px 0 50px;
 
     }
-    .row2-test{
-        background-color: rgb(216, 189, 189);
-        width:500px;
-        height:400px;
-        padding:15px 50px 0 50px;
 
-
-    }
     .row3-test{
         width:495px;
         height: 400px;
@@ -1079,7 +1190,7 @@ footer:hover>.redirection{
     /*page admin*/
     .titre,
     .admin {
-        margin:50px 0 50px 0;
+        margin:50px 0 50px 60px;
     }
 
     #customers {
@@ -1094,6 +1205,7 @@ footer:hover>.redirection{
     #customers th {
         border: 1px solid #ddd;
         padding: 8px;
+        background-color: #b8b6b6;
     }
     #customers tr:hover {
         background-color: #ddd;
@@ -1117,14 +1229,33 @@ footer:hover>.redirection{
     }
 
     #creer-article,.modifier-article,#modif-category{
-        margin: 50px 0 50px 50px;
+        margin: 50px 0 50px -10px;
         font-family: 'Philosopher', sans-serif;
         padding-top:200px;
     }
     /*form contact*/
     .form-group-contact-insert{
         width: 100%;
-        padding: 80px 0 100px 150px;
+        padding: 80px 0 100px 10px;
+    }
+    /*form insert*/
+    .insert-article{
+      display:none;
+    }
+    #contrats-assurance{
+     display:none;
+    }
+    /*formcategory insert*/
+    #smiles{
+        display:none;
+    }
+    /*form testimony*/
+    .insert{
+        margin: 50px;
+        padding:  0 0 200px 50px;
+    }
+    .insert-testimony{
+        margin-top: -100px;
     }
     /*apropos*/
     .ecris{
@@ -1166,18 +1297,17 @@ footer:hover>.redirection{
  }
 @media (max-width:768px)and (min-width:400px) {
 
-
     .search-form-articles{
         top:60px;
         left:-100px;
     }
-    .modifier-article,
-     #gerer-category{
+    .modifier-article{
         margin:220px 0 90px 40px;
         text-align: center;
     }
+
     .titre-temoignage-insert{
-        margin:250px 160px 90px 0;
+        margin:150px 160px 90px 120px;
         text-align: center;
     }
     .titre-testimony-modif{
@@ -1277,12 +1407,8 @@ footer:hover>.redirection{
         justify-content: space-around;
         margin-bottom: 30px;
     }
-    #loupe{
-        width:4%;
-    }
-    #google{
-        width:4%;
-    }
+
+
 
 }
 

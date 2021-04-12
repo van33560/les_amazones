@@ -2,7 +2,18 @@
 
 
 {% block main %}
-    {# lien de redirection de don #}
+    <div class="container-actu">
+        <div class="ligne1">
+            <a href><p class="entraide">Entraide</p></a>
+        </div>
+        <div class="ligne2">
+            <a href><p class="solidarite">Solidarité</p></a>
+        </div>
+        <div class="ligne3">
+            <a href><p class="partage">Partage</p></a>
+        </div>
+
+    </div>
 
 {# grace a la methode path je cree un lien qui renvoi mon formulaire creer dans un fichier twig#}
  {% if is_granted('ROLE_USER')%}
@@ -13,66 +24,42 @@
             Témoignages
         </p>
     </div>
-{#
- <div class="admin_container_testimonys">
- {# avec la boucle for j'appel un temoignage dans mes temoignages #
- {% for testimony in testimonys %}
-        {# ma condition if et la methode loop.index me permet de récuperer les entités de mes temoignages
-         et de les afficher en les alternants grâce à else #
-         {% if loop.index is odd %}
-                 <article class="box_testimonys_admin">
-                     <div class="row-test">
-                         <h2 class="title_testimonys_admin">{{ testimony.title }}!!</h2>
-                         <p class="contente-article">{{ testimony.article }}</p>
-                     </div>
-                 </article>
-             {# la methode asset(uploads:testimony me permet de recuperer les images qui ont été uploadé en bdd #
-             <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" id="img_box_testimonys_admin">
-         {% else %}
-                 <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" id="img_test_admin">
-                 <article class="box_testimonys_admin">
-                     <div class="row2-test position-absolute">
-                         <h2 class="title_testimonys_admin">{{ testimony.title }}!!</h2>
-                         <p class="contente-article">{{ testimony.article }}</p>
 
-                     </div>
-                 </article>
-         {% endif %}
- {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
-  pour pouvoir supprimer ou modifier un article #}
-{#  {% if is_granted ('ROLE_ADMIN') %}
-    <div id="button_testimony_m"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">Modifier</a></div>
-    <div id="button_testimony_s"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">Supprimer</a></div>
-{% endif %}#
-{% endfor %}#}
-     {% for testimony in testimonys %}
+    {% for testimony in testimonys %}
+    <div class=" text-light-testimony">
+        <div id="client-testimonial-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                {% if loop.index is odd %}
+                    <div class="carousel-item active text-center p-4">
+                        <blockquote class="blockquote1 text-center">
+                            <p class="mb-1">{{ testimony.article }}<i class="fa fa-quote-left"></i>
+                            </p>
+                            <footer class="blockquote-footer">Estelle <cite title="Source Title">{{ testimony.title }}</cite></footer>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item text-center p-4">
+                        <blockquote class="blockquote1 text-center">
+                            <p class="mb-1">{{ testimony.article }}<i class="fa fa-quote-left"></i>
+                            </p>
+                            <footer class="blockquote-footer">Estelle <cite title="Source Title">{{ testimony.title }}</cite></footer>
+                        </blockquote>
+                    </div>
+                {% endif %}
+            </div>
+    {% endfor %}
+            <ol class="carousel-indicators testimony-target">
+                <li data-target="#client-testimonial-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#client-testimonial-carousel" data-slide-to="1"></li>
 
- <div class="carousel-inner d-inline-block">
-     {% if loop.index is odd %}
-         <div class="carousel-item active">
-             <div class="img-caroussel2">
-                <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" class="d-inline-block w-100" alt="Vaisselle"></div>
-             <div class="carousel-caption d-none d-md-inline-block">
-                 <h2 class="title_testimonys_admin">{{ testimony.title }}!!</h2>
-                 <p class="contente-article">{{ testimony.article }}</p>
-             </div>
-                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                     <span class="sr-only">Previous</span>
-                 </a>
-                 <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                     <span class="sr-only">Next</span>
-                 </a>
-      {% endif %}
-     </div>
-</div>
+            </ol>
 
-{% endfor %}
-     <div class="bas-temoignage">
+        </div>
+    </div>
+    <div class="bas-temoignage">
          <p class="bas-article">Nous avons besoin de vous!<br><br><a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE" class="faire-un-don">Faire un don</a></p>
      </div>
 {% endblock main%}
+
 
 {#  {% if testimony.picture %}#}
 {# je récupère le nom du fichier uploadé
@@ -82,3 +69,64 @@
 {#  <img src="{{ asset('uploads/testimonys/' ~ testimony.picture) }}" alt="">
 {% endif %}#}
 
+{#
+<div class="admin_container_testimonys">
+{# avec la boucle for j'appel un temoignage dans mes temoignages #
+{% for testimony in testimonys %}
+       {# ma condition if et la methode loop.index me permet de récuperer les entités de mes temoignages
+        et de les afficher en les alternants grâce à else #
+        {% if loop.index is odd %}
+                <article class="box_testimonys_admin">
+                    <div class="row-test">
+                        <h2 class="title_testimonys_admin">{{ testimony.title }}!!</h2>
+                        <p class="contente-article">{{ testimony.article }}</p>
+                    </div>
+                </article>
+            {# la methode asset(uploads:testimony me permet de recuperer les images qui ont été uploadé en bdd #
+            <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" id="img_box_testimonys_admin">
+        {% else %}
+                <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" alt="" id="img_test_admin">
+                <article class="box_testimonys_admin">
+                    <div class="row2-test position-absolute">
+                        <h2 class="title_testimonys_admin">{{ testimony.title }}!!</h2>
+                        <p class="contente-article">{{ testimony.article }}</p>
+
+                    </div>
+                </article>
+        {% endif %}
+{# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
+ pour pouvoir supprimer ou modifier un article #}
+{#  {% if is_granted ('ROLE_ADMIN') %}
+    <div id="button_testimony_m"><a href="{{ path('admin_testimony_update', {'id':testimony.id}) }}">Modifier</a></div>
+    <div id="button_testimony_s"><a href="{{ path('admin_testimony_delete', {'id':testimony.id}) }}">Supprimer</a></div>
+{% endif %}#
+{% endfor %}#}
+{#  {% for testimony in testimonys %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+         <ol class="carousel-indicators">
+             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></li>
+             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></li>
+             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></li>
+         </ol>
+            {% if loop.index is odd %}
+                 <div class="carousel-inner d-inline-block">
+                     <div class="carousel-item active">
+                         <img src="{{ asset('uploads/testimony/' ~ testimony.picture) }}" class="d-block w-100" alt="">
+                             <div class="carousel-caption d-none d-md-inline-block">
+                                 <h2 class="title_testimonys_admin">{{ testimony.title }}!!</h2>
+                                 <p class="contente-article">{{ testimony.article }}</p>
+                             </div>
+                                 <a class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" role="button" data-slide="prev">
+                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                     <span class="sr-only">Previous</span>
+                                 </a>
+                             <a class="carousel-control-next" data-bs-target="#carouselExampleIndicators" role="button" data-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="sr-only">Next</span>
+                             </a>
+
+                     </div>
+                 </div>
+            {% endif %}
+    </div>
+{% endfor %}#}
