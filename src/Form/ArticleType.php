@@ -17,8 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
+    {$builder
             ->add('date',DateType::class,[
                 'widget'=>'single_text',
             ])
@@ -36,18 +35,12 @@ class ArticleType extends AbstractType
                 'choice_label'=>'title'
             ])
 
-            ->add('valider', SubmitType::class)
-
-        ;
+            ->add('valider', SubmitType::class);
     }
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Article::class,
-
         ]);
     }
-
-
 }

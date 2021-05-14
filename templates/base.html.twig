@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,20 +14,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.0.0/dist/css/axentix.min.css">
     <link rel="stylesheet" media="screen and (max-width: 540px)" href="" type="text/css" />
     <link rel="stylesheet" href="{% block stylesheet %}{{ asset('assets/css/base.css') }}{% endblock stylesheet %}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-
     <title>{% block title %}Les amazones{% endblock %}</title>
 </head>
-
 <body>
 {% block header%}
 <header class="haut">
@@ -52,28 +44,23 @@
                     </ul>
                 </li>
             </ul>
-
             <form class=" position-absolute search-form-articles" action="{{path('search_articles')}}">
                 <label>
                     <input type="text" name="search" placeholder="Recherche" class="input-search">
                 </label>
                 <button type="submit" class="btn">Valider</button>
             </form>
-
         </nav>
-
     {# animation js du titre #}
     <a href="{{path('home_page')}}" class="position-absolute ml2">Les Amazones</a>
-
         <div class="position-absolute don">
-           <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE" class="faireD">Faire un Don</a>
+           <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE"
+              class="faireD">Faire un Don</a>
         </div>
-
     <div class="accroche">
+        <img src="{{ asset('assets/img/beautiful.jpg') }}" class="beautiful "alt="">
     </div>
-
 </header>
-
 {% endblock header %}
 {# dans une boucle for j'appel si success le message add flash que j'ai defini dans une des functions de
 mon controller articles#}
@@ -89,29 +76,27 @@ mon controller articles#}
 {% block footer %}
     <footer class="container-fluid position-relative" id="footer">
 
-        <div class="liens position-absolute">
-            <a href="{{path('mentionlegales')}}">Mentions légales||©Labat</a>
+        <div class="mentions position-absolute">
+            <a href="{{path('mentions_legals')}}" class="liens">Mentions légales||©Labat</a>
         </div>
 
         <div class="position-absolute redirection" id="facebook">
-            <a href="https://fr-fr.facebook.com/" target="_blank"><img src="{{ asset('assets/img/facebook.svg') }}" alt="slide1"></a>
+            <a href="https://fr-fr.facebook.com/" target="_blank"><img src="{{ asset('assets/img/facebook.svg') }}"
+                                                                       alt="slide1"></a>
         </div>
         <div class="position-absolute redirection" id="twitter">
-            <a href="https://mobile.twitter.com/?lang=fr" target="_blank"><img src="{{ asset('assets/img/twitter.svg') }}" alt="slide2"></a>
+            <a href="https://mobile.twitter.com/?lang=fr" target="_blank"><img src="{{ asset('assets/img/twitter.svg') }}"
+                                                                               alt="slide2"></a>
         </div>
         <div class="position-absolute redirection" id="instagram">
-            <a href="https://www.instagram.com/?hl=fr" target="_blank"><img src="{{ asset('assets/img/instagram.svg') }}" alt="slide3"></a>
+            <a href="https://www.instagram.com/?hl=fr" target="_blank"><img src="{{ asset('assets/img/instagram.svg') }}"
+                                                                            alt="slide3"></a>
         </div>
-
-
     </footer>
 {% endblock footer %}
-
 {% block javascripts %}
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-
 {% endblock javascripts %}
 </body>
 </html>

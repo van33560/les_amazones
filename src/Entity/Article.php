@@ -6,8 +6,6 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
-use PhpParser\Node\Scalar\String_;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -44,7 +42,7 @@ class Article
 
     /**
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=6500)
+     * @ORM\Column(type="string", length=4500)
      */
     private $content;
 
@@ -62,7 +60,7 @@ class Article
 
     /**
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=1000)
      */
     private $illustration;
 

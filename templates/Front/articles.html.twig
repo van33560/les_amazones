@@ -39,20 +39,24 @@
         </article>
              {# la methode asset(uploads:articles me permet de recuperer les images qui ont ete uploader en bdd #}
              <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class="position-absolute img_box_articles_admin">
-        <div class="cls"></div>
     {% else %}
         {# la methode asset(uploads:articles me permet de recuperer les images qui ont ete uploader en bdd #}
-        <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class =" position-absolute img_art_ad">
         <article class="box_articles">
-            <div class="row2-articles position-absolute">
-                <img src="{{ asset('assets/img/love.svg') }}"alt="" class="position-absolute love2">
+            <div class="row">
                 <h2 class="title_articles_admin">{{ article.title }}</h2>
-                <p class="contente-article2">{{ article.content }}</p>
-
+                <img src="{{ asset('assets/img/love.svg') }}"alt="" class="position-absolute love2">
+                <p class="contente-article1">{{ article.content }}</p>
             </div>
         </article>
+        <img src="{{ asset('uploads/articles/' ~ article.illustration) }}" alt="" class=" position-absolute img_art_ad">
     {% endif %}
-    
+{% endfor %}
+</div>
+    <div class="bas">
+        <p class="bas-article">Nous avons besoin de vous!<br><a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE" class="faire-un-don">Faire un don</a></p>
+
+    </div>
+{% endblock main%}
 {# la condition if is granted me permet de choisir les élements du site qui seront visible pas les personnes
  ayant le role_admin#}
     {#
@@ -63,13 +67,6 @@
     <div id="admin_button"><a href="{{ path('admin_article_update', {'id':article.id}) }}">Modifier</a></div>
     <div id="admin_button"><a href="{{ path('admin_article_delete', {'id':article.id}) }}">Supprimer</a></div>
   {% endif %}#}
-{% endfor %}
-</div>
-    <div class="bas">
-        <p class="bas-article">Nous avons besoin de vous!<br><br><a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE" class="faire-un-don">Faire un don</a></p>
-
-    </div>
-{% endblock main%}
 {#  {% if article.illustration %}
 {#
 je récupère le nom du fichier uploadé

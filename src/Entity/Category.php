@@ -41,7 +41,7 @@ class Category
     private $article;
 
     /**
-     * @ORM\Column(type="string", length=6500)
+     * @ORM\Column(type="string", length=1000)
      */
     private $photo;
 

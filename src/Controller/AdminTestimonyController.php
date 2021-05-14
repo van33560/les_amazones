@@ -46,7 +46,7 @@ class AdminTestimonyController extends AbstractController
         //doctrine effectue la requete pour moi ici select*from testimony
         $testimonys = $testimonyRepository->findAll();
         //la methode render me permet d'envoyer vers mon fichier twig
-            return $this->render("Testimony/admin/testimonys.html.twig",[
+            return $this->render("Front/testimonys.html.twig",[
                 'testimonys' => $testimonys
             ]);
     }
@@ -76,34 +76,34 @@ class AdminTestimonyController extends AbstractController
             //je recupere le contenu du champ imageFileName
             $picture=$form->get('picture')->getData();
 
-     if($picture) {
-        //je recupere le nom d'origine de l'image
-        $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
-        // grâce à la classe Slugger, je change le nom de mon image
-        // et je sort tous les caractères spéciaux
-        $safeFilename = $slugger->slug($originalFilename);
-        $newFilename = $safeFilename.'-'.uniqid().'.'.$picture->guessExtension();
-        //je déplace l'image dans un fichier temporaire dans services.yaml ou je precise en parametre son nom
-         //la methode remove me permet de déplacer le fichier
-        $picture->move(
-        $this->getParameter('picture_directory'), $newFilename
-            //je recupere, envoyer les données vers les parametres de mon fichier services
-                );
-                 $testimony->setPicture($newFilename);
-            }
-                 $entityManager->persist($testimony);
-                 $entityManager->flush();
-                 //la methode addflash me permet d'afficher un message de confirmation
-                       $this->addFlash(
-                        "success",
-                "le témoignage a été ajouté"
-                );
-             return $this->redirectToRoute('admin_testimony_list');
-     }
+             if($picture) {
+                //je recupere le nom d'origine de l'image
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // grâce à la classe Slugger, je change le nom de mon image
+                // et je sort tous les caractères spéciaux
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$picture->guessExtension();
+                //je déplace l'image dans un fichier temporaire dans services.yaml ou je precise en parametre son nom
+                 //la methode remove me permet de déplacer le fichier
+                $picture->move(
+                $this->getParameter('picture_directory'), $newFilename
+                    //je recupere, envoyer les données vers les parametres de mon fichier services
+                        );
+                         $testimony->setPicture($newFilename);
+                    }
+                             $entityManager->persist($testimony);
+                             $entityManager->flush();
+                             //la methode addflash me permet d'afficher un message de confirmation
+                                   $this->addFlash(
+                                    "success",
+                            "le témoignage a été ajouté"
+                            );
+                         return $this->redirectToRoute('Front_testimony_list');
+             }
              //je crée grâce à la fonction createview une vue qui sera lu par twig
              $formView = $form-> createView();
              //la fonction render me permet de renvoyer vers mon fichier twig via sa route
-                 return $this->render('Testimony/Admin/insert_testimony.html.twig',[
+                 return $this->render('Front/testimonys.html.twig',[
                      'formView' => $formView
                 ]);
     }

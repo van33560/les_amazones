@@ -4,15 +4,14 @@
     {# grace à la proprieté path,je crée des liens qui renvoient vers les names de des functions
 que j'ai defini dans mes controllers admincategory et admintestimony #}
     <h1 class="titre">Mes activités</h1>
-    <div id="example-sidenav" data-ax="sidenav" class="sidenav shadow-1 large fixed white">
-        <div class="sidenav-header">
-            <button data-target="example-sidenav" class="sidenav-trigger"><i class="fas fa-times"></i></button>
+
+        <div class="sidebar">
             <img class="sidenav-logo dropshadow-1" src="{{ asset('assets/img/girl.svg') }}" alt="Logo" id="ad-compte" />
-        </div>
-        <h3 class="Compte_admin"><p>Bienvenue vanessa</p></h3>
-        <a href="" class="sidenav-link active" id="gerer-catagories">Gérer mes articles</a>
-        <a href="" class="sidenav-link active" id="gerer-catagories">Gérer mes catégories</a>
-        <a href="" class="sidenav-link active" id="Gérer les témoignages">Gérer mes témoignages</a>
+
+            <h3 class="Compte_admin1"><p>Bienvenue vanessa</p></h3>
+            <a href=""  id="gerer-articles">Mes articles</a>
+            <a href=""  id="gerer-catagories">Mes catégories</a>
+            <a href=""  id="gerer-témoignages">Mes témoignages</a>
     </div>
     <table id="customers">
         {# j'appel dans ce tableau un articles dans mes articles et j'affiche son id et son titre #}
@@ -29,8 +28,8 @@ que j'ai defini dans mes controllers admincategory et admintestimony #}
                     {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
                              pour pouvoir supprimer ou modifier un article #}
 
-                    <div><a href="">Modifier</a></div>
-                    <div><a href="">Supprimer</a></div>
+                    <div><a href=""id="couleur-inscription">Modifier</a></div>
+                    <div><a href=""id="couleur-inscription">Supprimer</a></div>
                 </td>
             </tr>
             </tbody>

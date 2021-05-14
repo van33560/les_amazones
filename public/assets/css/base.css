@@ -20,10 +20,15 @@ body {
     background-image: url(../img/beautiful3.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 510px;
     background-attachment: fixed;
 
 }
+.beautiful{
+    display: none;
+}
+
+
 /*icones nav*/
 
 .don {
@@ -45,8 +50,9 @@ body {
 /*essaie titre js*/
 .ml2 {
     color:white;
-    font-size: 55px;
-    top: -15px;
+    font-size: 52px;
+    top: -8px;
+    left:20px;
     font-family: 'Dancing Script', cursive;
 }
 
@@ -69,22 +75,28 @@ body {
 }
 /*nav*/
 nav {
-    padding: 5px;
+
     width: 100%;
     height: 60px;
     background-color: #451313;
     opacity: 0.9;
+    padding:10px 100px;
     border:solid 1px black;
 
 }
 
-a {
-    padding: 0 25px;
-    font-size: 20px;
+a>nav {
+
+    font-size: 12px;
     font-family: 'Concert One', cursive;
 }
-.faireD{
+a.faireD{
     color:white;
+    font-size: 28px;
+    padding: 10px 5px 0 5px;
+}
+a>.faire-un-don{
+    padding-bottom: 40px;
 }
 ul {
     display: flex;
@@ -110,6 +122,7 @@ ul li a {
     text-decoration: none;
     padding: 0 30px;
     color: white;
+    font-size: 30px;
 }
 
 ul li ul {
@@ -202,15 +215,18 @@ form#connect{
 #creer-article,
 .modifier-article,
 #modif-category{
-    margin: 100px 0 50px 600px;
+    margin: 100px 0 50px 500px;
     font-family: 'Philosopher', sans-serif;
     padding-top:200px;
 }
-.titre-temoignage-insert,
-.titre-testimony-modif{
+.titre-temoignage-insert{
     font-family: 'Philosopher', sans-serif;
     margin: 200px 0 20px 600px;
     padding-top:50px;
+}
+.titre-testimony-modif{
+    font-family: 'Philosopher', sans-serif;
+    margin: 300px 0 20px 600px;
 }
 #gerer-category{
     margin: 100px 0 50px 600px;
@@ -224,7 +240,15 @@ form#connect{
 .insert-testimony{
     margin-top: -200px;
 }
+.insert-testimony-text{
+    margin-left: 500px;
+}
 .insert-article{
+    font-size: 25px;
+    font-family: 'Philosopher', sans-serif;
+    margin-left: 500px;
+}
+.insert-article-text{
     font-size: 25px;
     font-family: 'Philosopher', sans-serif;
     margin-left: 600px;
@@ -236,9 +260,9 @@ form#connect{
 }
 #contrats-assurance{
     position: absolute;
-    width: 50%;
+    width: 45%;
     margin-top: 80px;
-    margin-left: 600px;
+    margin-left: 500px;
     clear: both;
 }
 /*image formulaire de contact*/
@@ -258,20 +282,19 @@ form#connect{
 /*apropos*/
 .presentation{
     margin-top: -17px;
-    font-size:20px;
+    font-size:25px;
     height: 500px;
 }
 .presentation1{
-    background-color: rgb(245, 229, 229);
     font-size:20px;
     height: 2000px;
-
 }
+
 .ecris{
-    font-size:20px;
+    font-size:24px;
     font-family: 'Philosopher', sans-serif;
     text-overflow: ellipsis;
-    padding:100px 150px 50px 150px;
+    padding:100px 150px 100px 150px;
 }
 .avis{
     text-align: center;
@@ -280,10 +303,10 @@ form#connect{
 }
 /*mentionlegales*/
 .mentions{
-    margin:0;
-    padding:50px;
-    font-size:30px;
+    margin:50px 0 50px 0;
+    font-size:40px;
     text-align: center;
+    font-family: 'Alfa Slab One', cursive;
     color: rgb(241, 121, 121);
 
 }
@@ -370,7 +393,7 @@ form#connect{
     height:30px;
 }
 .search-form-articles{
-    margin:-45px 0 0 350px;
+    margin:-45px 0 0 220px;
 }
 .btn{
     width:90px;
@@ -452,26 +475,18 @@ form#connect{
 #lien_category{
     margin-top:-120px;
 }
-.lien_articles{
-    color:white;
-    width: 500px;
-    height: 70px;
-    font-size: 30px;
-    padding: 10px 0 0 30px;
-    margin-top:90px;
-    background-color: #451313;
-}
+.lien_articles,
 .lien_category,
 .lien_temoignage{
     color:white;
-    width: 500px;
-    height: 80px;
+    width: 481px;
+    height: 70px;
     font-size: 30px;
-    padding: 10px 0 0 30px;
-    margin-top:90px;
+    padding: 10px 0 10px 80px;
+    margin-top:120px;
     background-color: #451313;
-
 }
+
 #admin_lien_articles,
 #admin_lien_category,
 #admin_lien_temoignage{
@@ -483,14 +498,52 @@ form#connect{
     margin-top: 250px;
 }
 /*page admin*/
+
+.sidebar {
+    margin-top:-138px;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    background-color: #a09e9e;
+    color: black;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #a09e9e;
+    color: black;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}
 .titre,
 .admin {
+    font-size: 32px;
     margin:50px 0 50px 300px;
 
 }
-.Compte_admin {
+#ad-compte{
+    width:50%;
+    margin:10px 0 10px 50px;
+}
+.Compte_admin1 {
     font-size: 19px;
-    margin-left: 10px;
+    text-align: center;
 
 }
 .profile {
@@ -524,6 +577,7 @@ form#connect{
 }
 .gérer-les-témoignages,.gerer-articles{
     margin: 0 270px 0 280px;
+    display: inline-block;
 }
 .gerer-les-temoignages{
     margin-right: -380px;
@@ -531,6 +585,12 @@ form#connect{
 .gerer-catagories{
     margin: 0 0 0 60px;
 }
+#gerer-articles,
+#gerer-catagories,
+#gerer-témoignages{
+  text-align: center;
+ }
+
 /*block info*/
 .container-actu{
     display: flex;
@@ -552,22 +612,22 @@ form#connect{
 .ligne3{
     background-color: #451313;
 }
-.entraide,
-.solidarite,
-.partage{
+a>p.entraide,
+a>p.solidarite,
+a>p.partage{
     font-size:40px;
     color:white;
     text-align: center;
-    padding: 20px 0;
+    padding: 50px 10px 20px 10px;
 }
 /*block pages articles*/
 .love{
     width:2%;
-    margin: 64px 0 0 355px;
+    margin: 58px 0 0 270px;
 }
 .love2{
-    width:4%;
-    margin:63px 0 0 310px;
+    width:2%;
+    margin: 58px 0 0 300px;
 }
 .top{
     margin-top:180px;
@@ -575,8 +635,8 @@ form#connect{
     height: 100px;
 
 }
-.top-article{
-    font-size:60px;
+.top-article,.top-article1{
+    font-size:50px;
     text-align: center;
     color:black;
 
@@ -584,30 +644,39 @@ form#connect{
 .bas{
     width:100%;
     height: 200px;
-    margin-top: 100px;
+    margin: 200px 0 0 0;
+    padding: 20px 0;
+    background-color: #9b3636;
+}
+.bas-cat{
+    width:100%;
+    height: 200px;
+    margin: 100px 0 0 0;
+    padding: 20px 0;
     background-color: #9b3636;
 }
 .bas-temoignage{
      width:100%;
      height: 200px;
-     margin-top: -960px;
+     margin: 250px 0 0 0;
+     padding: 20px 0;
      background-color: #9b3636;
  }
-.bas-article{
+.bas-article,.bas_temoignage{
     font-size:40px;
     text-align: center;
     color:white;
-    margin-top: 1150px;
-    padding:60px 0 30px;
-
+    padding-top:20px;
+}
+a.faire-un-don{
+    color:#FF1493;
+    margin-bottom:20px;
 }
 .bas-category{
     font-size:40px;
     text-align: center;
     color:white;
-    margin-top: 250px;
-    padding:60px 0 30px;
-
+    padding-top:20px;
 }
 .faire-un-don:hover{
     color:#FF1493;
@@ -619,7 +688,7 @@ form#connect{
 }
 .row{
     width:900px;
-    height:991px;
+    height:800px;
     padding:0 40px 20px;
     margin: 100px 0 0 280px;
     border-radius: 5%;
@@ -641,7 +710,7 @@ form#connect{
 }
 .row2-articles{
     width: 900px;
-    height:991px;
+    height:800px;
     margin:100px 0 0 280px;
     padding: 0 40px 20px;
     border-radius: 5%;
@@ -650,13 +719,24 @@ form#connect{
 .contente-article{
     font-family: 'Concert One', cursive;
     color:black;
-    font-size: 25px;
-    margin-top: 150px;
+    font-size: 20px;
+    margin-top: 270px;
+}
+.contente-article1{
+    font-family: 'Concert One', cursive;
+    color:black;
+    font-size: 20px;
+    margin-top: 260px;
 }
 .contente-category{
     font-family: 'Concert One', cursive;
     color: black;
-    font-size: 24px;
+    font-size: 20px;
+}
+.contente-category1{
+    font-family: 'Concert One', cursive;
+    color: black;
+    font-size: 20px;
 }
 .contente-article2{
     font-family: 'Concert One', cursive;
@@ -677,19 +757,22 @@ form#connect{
 .img_art_ad {
     width: 40%;
     height: auto;
-    margin:650px 0 0 455px;
+    margin:-650px 0 0 440px;
+}
+/*.img_cat_ad{
+    margin:110px;
+}*/
+.img_categorys_admin,.img_categorys_admin1{
+    margin:110px 0 50px -1164px;
+}
 
-}
-.img_cat_ad{
-    margin:110px 0 50px -1162px;
-}
-.img_categorys_admin{
-    margin:512px 0 50px -510px;
-}
 .img_box_articles_admin{
     width: 40%;
     height: auto;
-    margin:-840px 0 0 445px;
+    margin:-650px 0 0 445px;
+}
+.img_box_articles_admin1{
+    display:none;
 }
 /*box temoignage*/
 .text-light-testimony{
@@ -765,8 +848,7 @@ form#connect{
 .title_articles_admin,
 .title_categorys_admin,
 .title_testimonys_admin{
-    font-size: 50px;
-
+    font-size: 40px;
     margin-top: 40px;
     font-family: 'Concert One', cursive;
 }
@@ -807,18 +889,26 @@ form#connect{
 /*footer liens facebook*/
 #footer {
     height: 120px;
-
     padding: 0;
     text-align: center;
     background-color:#451313;
     font-size: 27px;
 }
+.mentions {
+  margin:40px 0 0 -100px;
 
-.liens {
+}
+a.mention:hover{
     color:white;
-    margin-left: 1100px;
-    padding-top: 50px;
-    font-size: 18px;
+
+}
+a.liens {
+    color:white;
+    font-family: 'Concert One', cursive;
+    margin-left: 1200px;
+    font-size: 24px;
+
+
 }
 @keyframes scale {
     0% {
@@ -862,6 +952,7 @@ footer:hover>.redirection{
     margin-top: 40px;
 
 }
+
 /*responsive*/
 
 @media screen and (max-width:843px) and (min-width:400px) {
@@ -869,11 +960,16 @@ footer:hover>.redirection{
         top:60px;
         left:-100px;
     }
+
     .accroche {
-        display: block;
-        width: 100%;
-        margin: 0;
+        background-image: url(../img/beautiful2.jpg);
+        background-size: auto;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 600px;
+        margin-bottom:-310px ;
     }
+
     .login {
         display: none;
     }
@@ -883,92 +979,70 @@ footer:hover>.redirection{
         display: none;
     }
     /*titre en JS*/
-    .ml2 {
+    .ml2.letter{
+        position: fixed;
+    }
+    a.ml2 {
         color:white;
         font-size: 40px;
-        top: -5px;
+        top: 1px;
         position: fixed;
         font-family: 'Dancing Script', cursive;
     }
+    a.ml2:hover{
+        color:white;
+        margin-left:-1px;
+    }
+    span.letter{
+        font-size: 35px;
+    }
     /*nav*/
     nav {
-        padding: 60px;
+
+        padding: 80px 0 0 0;
         width: 100%;
-        height: 120px;
+        height: 130px;
         background-color:#451313;
-        position:static;
     }
-    a {
-        color: white;
-        padding: 0 25px;
-        font-size: 20px;
-    }
-    ul {
-        display: flex;
-        justify-content: flex-end;
-        max-width: 1100px;
-    }
+
     ul li {
         list-style: none;
-        margin-bottom: 10px;
+
         font-size: 30px;
-        padding: 0 -20px;
         position: relative;
-        transition: 0.5s;
     }
+    ul {
+        display:flex;
+        justify-content:space-between;
+        margin: 0;
+    }
+    ul li a{
+        font-size: 25px;
+        margin:0;
+    }
+    ul li a:hover {
+         color: white;
+    }
+
     ul li:hover {
-        color: white;
-    }
-    ul li a {
-        text-decoration: none;
-        padding: 0 30px;
-        color: white;
-    }
-    ul li ul {
-        color: #f1f1f1;
-        position: absolute;
-        top: 40px;
-        left: 0;
-        display: block;
-        transition: 0.5s;
-        opacity: 0;
-        visibility: hidden;
-    }
-    ul li:hover ul {
         opacity: 1;
+        width: 160px;
         background-color:#451313;
-        visibility: visible;
     }
-    a:hover {
-        color: white;
-    }
-    ul li ul li {
-        border-bottom: white;
-    }
+
     .amazones,
     .site {
         font-family: 'Dancing Script', cursive;
         font-size: 50px;
-        margin-top: -100px;
-        margin-left: 20px;
-    }
-    /*img header*/
-    .accroche {
-        background-image: url(../img/beautiful2.jpg);
-        background-size:cover ;
-        background-repeat: no-repeat;
-        height: 500px;
-        background-attachment: fixed;
-
     }
     /*bandes*/
-    .entraide,
-    .solidarite,
-    .partage{
-        font-size:30px;
+    a>p.entraide,
+    a>p.solidarite,
+    a>P.partage{
+        font-size:25px;
         color:white;
         text-align: center;
-        padding: 30px 0;
+        padding: 60px 0;
     }
     .ligne1,.ligne2,.ligne3{
         width:100%;
@@ -978,14 +1052,19 @@ footer:hover>.redirection{
     .lien_articles{
         color:white;
         width: 500px;
-        height: 80px;
+        height: 110px;
         font-size: 30px;
-        padding: 20px 0 0 30px;
-        margin-top: 18px;
-        background-color: #f13f3f;
+        padding: 30px 0 0 30px;
+        margin-top: 50px;
+        background-color: #072f47;
     }
     .lien_category,.lien_temoignage{
-        background-color: #f13f3f;
+        background-color: #072f47;
+        font-size: 30px;
+        width: 500px;
+        height: 110px;
+        margin-top: 120px;
+        padding: 30px 0 0 30px;
     }
     #lien_temoignage
     #lien_category{
@@ -1000,16 +1079,17 @@ footer:hover>.redirection{
         width:100%;
         height: 150px;
         margin-top: -130px;
-        background-color: #9b3636;
+        background-color: #f13f3f;
     }
-    .top-article{
-        font-size:60px;
+    .top-article,.top-article1{
+        font-size:50px;
         text-align: center;
         color:white;
-        margin-top: 88px;
-        padding:60px 0;
+        margin-top: 128px;
+        padding:30px 0 30px 0;
 
     }
+
     .contente-article{
         font-family: 'Concert One', cursive;
         color:black;
@@ -1017,16 +1097,24 @@ footer:hover>.redirection{
         font-size: 25px;
         margin-top: 230px;
     }
+    .contente-article1{
+        font-family: 'Concert One', cursive;
+        color:black;
+        padding:20px 10px 30px 10px;
+        font-size: 25px;
+        margin-top: 280px;
+    }
     .contente-article2{
         font-family: 'Concert One', cursive;
         color:black;
         font-size: 25px;
-        margin-top: 280px;
+        margin-top: 300px;
     }
     .contente-category{
         font-family: 'Concert One', cursive;
         color:black;
         font-size: 20px;
+        margin-top:310px;
     }
     .contente-category1{
         font-family: 'Concert One', cursive;
@@ -1035,7 +1123,7 @@ footer:hover>.redirection{
 
     }
     .bas-article{
-        font-size:40px;
+        font-size:35px;
         text-align: center;
         color:white;
         padding:60px 0 30px;
@@ -1051,14 +1139,14 @@ footer:hover>.redirection{
         font-size:40px;
         text-align: center;
         color:white;
-        margin-top: 150px;
+        margin-top: -40px;
         padding:60px 0 30px;
 
     }
     .bas-temoignage{
         width:100%;
         height: 200px;
-        margin-top: -1103px;
+        margin-top: 203px;
         background-color: #9b3636;
     }
     /*titres*/
@@ -1069,13 +1157,12 @@ footer:hover>.redirection{
         padding: 10px 0 0 0;
     }
 
-    a:hover,.gerer-catagories,.gerer-les-témoignages,.gerer-articles{
+   /*.gerer-catagories,.gerer-les-témoignages,.gerer-articles{
         display: block;
         margin:0 0 5px 40px;
         color:black;
+    }*/
 
-
-    }
     /*icones articles*/
     .love{
         width:6%;
@@ -1089,13 +1176,18 @@ footer:hover>.redirection{
     .img_art_ad {
         width: 80%;
         height: auto;
-        margin:-600px 0 0 45px;
+        margin:-730px 0 0 50px;
     }
     .img_box_articles_admin{
+        width: 80%;
+        height: auto;
+        margin:-760px 0 0 50px;
+    }
+    .img_box_articles_admin1{
         display:block;
         width: 80%;
         height: auto;
-        margin:230px 0 0 45px;
+        margin:220px 0 0 45px;
     }
 
     /*search*/
@@ -1108,12 +1200,12 @@ footer:hover>.redirection{
     .input-search{
         width:150px;
         height:30px;
-        margin-top:-100px;
+       margin: 10px 0 0 100px;
     }
-    /*blocks articles categories*/
+    /*blocks articles categories temoignage*/
     .row{
         width:450px;
-        height:691px;
+        height:850px;
         padding:0 40px 20px;
         margin: 100px 0 0 25px;
         border:solid 2px gray;
@@ -1121,7 +1213,7 @@ footer:hover>.redirection{
     .row2{
         width: 480px;
         height:350px;
-        margin: 610px 0 0 25px;
+        margin: 610px 0 0 9px;
         padding: 10px 40px 20px 30px;
         border:solid 2px gray;
     }
@@ -1134,9 +1226,9 @@ footer:hover>.redirection{
     }
     .row2-test{
         width:480px;
-        height:400px;
+        height:600px;
         margin-left: 80px;
-        padding:15px 50px 0 50px;
+        padding:15px 50px 0 20px;
 
     }
     .img_cat_ad{
@@ -1147,10 +1239,14 @@ footer:hover>.redirection{
     }
     .img_categorys_admin{
         display:block;
-        width: 96%;
+        width: 90%;
         height: auto;
-        margin: -50px 0 80px 10px;
+        margin: 200px 0 80px 25px;
         padding-bottom: 100px;
+    }
+    .img_categorys_admin1{
+        display:none;
+
     }
 
     .row1{
@@ -1187,17 +1283,24 @@ footer:hover>.redirection{
         background-color: rgb(221, 214, 212);
         padding:50px 50px 0 50px;
     }
+    /*carousel teste temoignage*/
+    .mb-1{
+        color:black;
+        font-size: 25px;
+        padding:20px 0;
+        margin-top: 50px;
+    }
     /*page admin*/
     .titre,
     .admin {
-        margin:50px 0 50px 60px;
+        margin:60px 0 60px 140px;
     }
 
     #customers {
         font-family: Arial, Helvetica, sans-serif;
         border-collapse: collapse;
-        width: 70%;
-        margin-left: 60px;
+        width: 100%;
+        margin-left: -1px;
         margin-bottom: 50px
     }
 
@@ -1217,6 +1320,24 @@ footer:hover>.redirection{
         text-align: left;
         background-color: #9b3636;
     }
+    .Compte_admin {
+        font-size: 19px;
+        margin-left: 25px;
+
+    }
+    #ad-compte{
+        width:20%;
+        margin:10px 0 10px 50px;
+    }
+    /* sidenav admin*/
+    .sidebar {
+        width: 100%;
+        height: auto;
+        margin-top:-20px;
+        position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
 
     /*page recherche*/
     .form-group-recherche-article{
@@ -1228,10 +1349,29 @@ footer:hover>.redirection{
 
     }
 
-    #creer-article,.modifier-article,#modif-category{
+    .modifier-article{
         margin: 50px 0 50px -10px;
         font-family: 'Philosopher', sans-serif;
         padding-top:200px;
+    }
+    #modif-category{
+        margin: 50px 0 50px 150px;
+        font-family: 'Philosopher', sans-serif;
+        padding-top:200px;
+    }
+    #creer-article{
+        margin: 50px 0 50px 190px;
+        font-family: 'Philosopher', sans-serif;
+        padding-top:200px;
+    }
+    /*form login*/
+    .login-inscription{
+        display:none;
+    }
+    form#connect{
+        margin: 330px 0  0 0;
+        padding: 100px 0  0 120px;
+        height:600px;
     }
     /*form contact*/
     .form-group-contact-insert{
@@ -1240,22 +1380,42 @@ footer:hover>.redirection{
     }
     /*form insert*/
     .insert-article{
-      display:none;
+        display:none;
     }
     #contrats-assurance{
-     display:none;
+        display:none;
     }
-    /*formcategory insert*/
+
+    /*form testimony*/
+
+    .form-group-testimony-insert{
+        margin-left: 160px;
+    }
+    /*form insert testimony*/
+    .form-group-test-modify
+   {
+        padding:0;
+        margin-left:10px;
+    }
+    #mainsunis{
+        display:none;
+    }
+    /*form categories*/
+    #gerer-category{
+        margin: 40px 0 50px 170px;
+        font-family: 'Philosopher', sans-serif;
+        padding-top:250px;
+    }
+    .form-insert-category{
+        padding-left: 80px;
+        margin-left: 110px;
+    }
     #smiles{
         display:none;
     }
-    /*form testimony*/
-    .insert{
-        margin: 50px;
-        padding:  0 0 200px 50px;
-    }
-    .insert-testimony{
-        margin-top: -100px;
+    /*form group article insert*/
+    .form-group-article-insert{
+        margin-left: 230px;
     }
     /*apropos*/
     .ecris{
@@ -1263,6 +1423,18 @@ footer:hover>.redirection{
         font-family: 'Philosopher', sans-serif;
         text-overflow: ellipsis;
         padding:100px 50px 50px 50px;
+    }
+    /*mentionsLegales*/
+    .info-mentions{
+        font-size:20px;
+        font-family: 'Philosopher', sans-serif;
+        padding:50px 50px 50px 50px;
+        margin-bottom: -10px;
+
+    }
+    .presentation1{
+        width: 100%;
+        height:auto;
     }
 /*footer*/
     #footer {
@@ -1272,9 +1444,17 @@ footer:hover>.redirection{
         background-color: #451313;
         font-size: 27px;
     }
-    .liens {
-        margin-left: 220px;
-        font-size: 18px;
+    .mentions {
+        margin:0;
+        padding:38px 0 25px 0;
+    }
+    a.mention:hover{
+        color:white;
+
+    }
+    a.liens {
+        margin-left:200px;
+
     }
 
     #facebook {
@@ -1302,12 +1482,12 @@ footer:hover>.redirection{
         left:-100px;
     }
     .modifier-article{
-        margin:220px 0 90px 40px;
+        margin:80px 0 90px 0;
         text-align: center;
     }
 
     .titre-temoignage-insert{
-        margin:150px 160px 90px 120px;
+        margin:250px 160px 90px 140px;
         text-align: center;
     }
     .titre-testimony-modif{
@@ -1332,6 +1512,7 @@ footer:hover>.redirection{
     .title_testimonys_admin{
         display:inline-block;
         font-size: 30px;
+        margin:0;
     }
     /*.box_articles_admin,
     .box_testimonys_admin,
@@ -1408,7 +1589,11 @@ footer:hover>.redirection{
         margin-bottom: 30px;
     }
 
-
+/*essaie sidbar*/
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
 
 }
 

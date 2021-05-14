@@ -21,12 +21,12 @@ class ArticleController extends AbstractController
      */
     //je créer une function qui me permet de récuperer mes articles
 
-     public function Articlelist(ArticleRepository $articleRepository, Request $request)
+     public function articlelist(ArticleRepository $articleRepository, Request $request)
         {
            //find all est une méthode qui permet de récuperer tous les articles
             //doctrine éffectue la requête pour moi ici select*from article
             //find by me permet de faire un select ( requete ) en passant des parametres ( 1er param = critere/ 2iem param = orderBy)
-            $articles = $articleRepository->findBy([], ['date'=>'DESC']);
+            $articles = $articleRepository->findAll();
             //la fonction render me permet de renvoyer vers mon fichier twig les infos via sa route
                 return $this->render("Front/articles.html.twig",[
                     'articles' => $articles
@@ -46,14 +46,14 @@ class ArticleController extends AbstractController
     {
         //récupère le contenu de mon input qui porte le name search
         $search = $request->query->get('search');
+            $articles = $articleRepository->searchByTerm($search);
+                $this->addFlash(
+                    "error",
+                    "l'article n'existe pas"
+                );
+          return $this->redirectToRoute('Front_articlelist');
 
 
-        $articles = $articleRepository->searchByTerm($search);
-
-              return $this->render("Front/articles.html.twig",[
-        'articles' => $articles,
-
-    ]);
 
     }
 

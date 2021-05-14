@@ -1,7 +1,6 @@
 {% extends'base.html.twig' %}
 
 {% block title %}Les amazones{% endblock %}
-
 {# extends permet d'etendre le code html du fichier base.html pour eviter la repetition du code #}
 {% block stylesheet %}{{ asset('assets/css/home.css') }}{% endblock stylesheet %}
 {% block header %}
@@ -31,34 +30,31 @@
                 <a href="{{path('app_login')}}"><img src="{{ asset('assets/img/woman4.png') }}" alt="" id="login"></a>
             </div>
         </nav>
-
         <div class="position-absolute intro">
             <h1>Ensemble contre le cancer du sein</h1>
-            </div>
+        </div>
                 <div class="position-absolute text">
                    <p class="amazones">Les Amazones</p>
                 </div>
             <div class="col-lg-2 position-absolute" id="logo4">
                 <img src="{{ asset('assets/img/logo5.svg') }}" alt="">
             </div>
-            <div class="position-absolute don">
-                <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE">Faire un Don</a>
-            </div>
-
+        <div class="position-absolute don">
+            <a href="https://www.monreseau-cancerdusein.com/?gclid=EAIaIQobChMI59bCo_rN7gIVjNrVCh1hTQxTEAAYASAAEgIv_fD_BwE" class="don1">Faire un Don</a>
+        </div>
         {% if is_granted('ROLE_USER')%}
             <div class="col-lg-2 position-absolute mon-compte">
                 <a href="{{path('users')}}">Profil</a>
             </div>
         {% endif %}
 
-        {% if is_granted('ROLE_ADMIN')%}
-            <div class="col-lg-2 position-absolute" id="google">
-                <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
-            </div>
-        {% endif %}
+            {% if is_granted('ROLE_ADMIN')%}
+                <div class="col-lg-2 position-absolute" id="google">
+                    <a href="{{path('admin_page')}}"><img src="{{ asset('assets/img/settings.svg') }}" alt="" class="img-fluid"></a>
+                </div>
+            {% endif %}
         <div class="haut">
         </div>
-
     </header>
 {% endblock header %}
 
@@ -73,7 +69,6 @@
         <div class="ligne3">
             <a href><p class="partage">Partage</p></a>
         </div>
-
     </div>
   <h2 class="actualites">Actualités</h2>
     <div class="container">
@@ -81,31 +76,26 @@
                 <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt=""  />
                 <p class="titre">Les Accéssoires...</p>
         </div>
-
             <div class="element2">
                     <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt="" />
                     <p class="titre">Le Sport...</p>
             </div>
-
-            <div class="element2">
-                    <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt=""  />
-                    <p class="titre">La Recherche...</p>
-            </div>
+        <div class="element2">
+                <img class="sidenav-logo dropshadow-1 image1" src="{{ asset('assets/img/severine.jpg') }}" alt=""  />
+                <p class="titre">La Recherche...</p>
+        </div>
 
     </div>
-    <div class="button">
-        <a href="">
-            Lire plus..
-        </a>
-    </div>
+        <div class="button">
+            <a href="" class="lire-plus">
+                Lire plus..
+            </a>
+        </div>
     <div class=row1>
         <p class="unis">"La maladie la plus constante et la plus mortelle,
             mais aussi la plus méconnue de toute société, est l'indifférence."<br><br> Abbé Pierre</p>
-
     </div>
     {# carousel #}
-
-
     <div class="text-light">
         <div id="client-testimonial-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
@@ -116,7 +106,7 @@
                         <footer class="blockquote-footer">Estelle<cite title="Source Title"></cite></footer>
                     </blockquote>
                     <div>
-                        <img src="{{ asset('assets/img/woman.jpg') }}" class="d-block w-100 img-carousel" alt="">
+                        <img src="{{ asset('assets/img/woman.jpg') }}" class="mt-5 d-block w-100 img-carousel" alt="">
                     </div>
                 </div>
                 <div class="carousel-item text-center p-4">
@@ -126,7 +116,7 @@
                         <footer class="blockquote-footer">Léa <cite title="Source Title"></cite></footer>
                     </blockquote>
                     <div>
-                        <img src="{{ asset('assets/img/moi2.jpg') }}" class="d-block w-100 img-carousel" alt="">
+                        <img src="{{ asset('assets/img/moi2.jpg') }}" class=" d-block w-100 img-carousel" alt="">
                     </div>
                 </div>
                 <div class="carousel-item text-center p-4">
@@ -136,7 +126,7 @@
                         <footer class="blockquote-footer">La famille Henri <cite title="Source Title"></cite></footer>
                     </blockquote>
                     <div>
-                        <img src="{{ asset('assets/img/people2.jpg') }}" class="d-block w-100 img-carousel" alt="">
+                        <img src="{{ asset('assets/img/people2.jpg') }}" class="d-block mt-5 w-100 img-carousel" alt="">
                     </div>
                 </div>
                 <div class="carousel-control-prev"  role="button" data-target="#client-testimonial-carousel"  data-bs-slide="prev">
@@ -155,27 +145,23 @@
             </ol>
         </div>
     </div>
-
-
-{# formulaire newsletter #}
+    {# formulaire newsletter #}
     <div class="forcont">
         <div class=" position-absolute informe">
             <P class="news">Newsletter<br>Choisissez l'actualité qui vous intéresse et rester informer !!!</P>
         </div>
-        <div class="formContainer">
-            <form action="{{path('newsletter')}}">
-                    <input type="text" id="email" name="email" placeholder="Email" onfocus="this.placeholder=''" onblur="this.placeholder='email'"><br><br>
-                    <input type="submit" value="Submit" class="submit">
-               </form>
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-
+            <div class="formContainer">
+                <form action="{{path('newsletter')}}">
+                        <input type="text" id="email" name="email" placeholder="Email" onfocus="this.placeholder=''" onblur="this.placeholder='email'"><br><br>
+                        <input type="submit" value="Valider" class="submit">
+                   </form>
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
     </div>
-
 {% endblock main%}
 
 

@@ -6,20 +6,16 @@
 {# grace à la proprieté path,je crée des liens qui renvoient vers les names de des functions
 que j'ai defini dans mes controllers admincategory et admintestimony #}
     <h1 class="titre">Les Articles</h1>
+        <div class="sidebar">
+            <div>
 
-        <a href="{{ path("home_category") }}"  class="gerer-catagories">Gérer les catégories</a>
-        <a href="{{ path("home_testimony") }}" class="gérer-les-témoignages">Gérer les témoignages</a>
-
-           <div id="example-sidenav" data-ax="sidenav" class="sidenav shadow-1 large fixed white col-12 lg-6">
-                <div class="sidenav-header">
-                    <button data-target="example-sidenav" class="sidenav-trigger"><i class="fas fa-times"></i></button>
-                    <img class="sidenav-logo dropshadow-1" src="{{ asset('assets/img/girl.svg') }}" alt="Logo" id="ad-compte" />
-                </div>
-                <h3 class="Compte_admin">Compte administrateur</h3>
-
-                <a href="{{ path("home_category") }}" class="sidenav-link active">Gérer les catégories</a>
-               <a href="{{ path("home_testimony") }}" class="sidenav-link active">Gérer les témoignages</a>
+                <img src="{{ asset('assets/img/girl.svg') }}" alt="Logo" id="ad-compte" />
             </div>
+            <h3 class="Compte_admin1">Compte administrateur</h3>
+
+            <a href="{{ path("home_category") }}" >Les Catégories</a>
+            <a href="{{ path("home_testimony") }}" >Les Témoignages</a>
+        </div>
 <table id="customers">
 {# j'appel dans ce tableau un articles dans mes articles et j'affiche son id et son titre #}
 {% for article in articles %}
@@ -27,24 +23,20 @@ que j'ai defini dans mes controllers admincategory et admintestimony #}
         <tr>
             <th>ID</th>
             <th>Nom</th>
-            <th>Actions</th>
+            <th class="text-center">Actions</th>
         </tr>
             <tr>
-                    <td>{{article.id}}</td>
-                    <td>{{article.title}}</td>
-                <td class="text-center">
-                    {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
-                             pour pouvoir supprimer ou modifier un article #}
-                    <div><a href="{{ path('admin_article_insert') }}" id ="couleur-compte">Créer</a></div>
-                    <div><a href="{{ path('admin_article_update', {'id':article.id}) }}" id="couleur-compte">Modifier</a></div>
-                    <div><a href="{{ path('admin_article_delete', {'id':article.id}) }}" id="couleur-compte">Supprimer</a></div>
-
-
-                </td>
+                <td>{{article.id}}</td>
+                <td>{{article.title}}</td>
+                    <td class="text-center">
+                        {# la methode path me permet de rappeler une function deja defini avec son id dans mon controller via son name
+                                 pour pouvoir supprimer ou modifier un article #}
+                        <div><a href="{{ path('admin_article_insert') }}" id ="couleur-compte">Créer</a></div>
+                        <div><a href="{{ path('admin_article_update', {'id':article.id}) }}" id="couleur-compte">Modifier</a></div>
+                        <div><a href="{{ path('admin_article_delete', {'id':article.id}) }}" id="couleur-compte">Supprimer</a></div>
+                    </td>
             </tr>
     </tbody>
-
 {% endfor %}
-
 </table>
 {% endblock %}

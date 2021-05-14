@@ -64,7 +64,8 @@ class AdminArticleController extends AbstractController
             $illustration = $form->get('illustration')->getData();
 
                 if($illustration){
-                    //je recupere, l'image uploade par le client (origine) le chemin pour la stocker ds dossier temporaire $illustration c'est l'image
+                    //je recupere, l'image uploade par le client (origine) le chemin pour la stocker ds dossier
+                    // temporaire $illustration c'est l'image
                     $originalFilename = pathinfo($illustration->getClientOriginalName(), PATHINFO_FILENAME);
                     // grâce à la classe Slugger, je change le nom de mon image
                     // et je sort tous les caractères spéciaux grace à la methode slug
@@ -115,7 +116,8 @@ class AdminArticleController extends AbstractController
     //  modifier un article grace a son id,la propriété repository me permet de modifier les données de la bdd et
     // la propriéte request me permet de récuperer les modifications
     // entitymanager via ces classes de gerer la pre-sauvegarde et l'envoi des  (persist et flush)
-    public function updateArticle($id, ArticleRepository $articleRepository,Request $request, EntityManagerInterface $entityManager)
+    public function updateArticle($id, ArticleRepository $articleRepository,Request $request,
+                                  EntityManagerInterface $entityManager)
     {
         //je récupére en bdd  l'id qui correspond a celui renseigner dans url
         $article = $articleRepository -> find($id);
